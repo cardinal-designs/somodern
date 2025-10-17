@@ -1,0 +1,17 @@
+{% comment %}
+    Renders a list of product's price (regular, sale)
+
+    Accepts:
+    - product: {Object} Product Liquid object (optional)
+    - classes: {String} Adds a price class to the price element (optional)
+
+    Usage:
+    {% render 'price', product: product %}
+{% endcomment %}
+
+<p class="price flex items-center gap-5 {{ classes }}">
+  {{ product.selected_or_first_available_variant.price | money }}
+  {% if product.selected_or_first_available_variant.compare_at_price > product.price %}
+    <span class="line-through opacity-50">{{ product.selected_or_first_available_variant.compare_at_price | money }}</span>
+  {% endif %}
+</p>

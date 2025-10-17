@@ -1,0 +1,111 @@
+{% assign bg_color = section.settings.background_color %}
+
+<video-section>
+  <div class="{% if bg_color != blank and bg_color != 'rgba(0,0,0,0)' %}py-60 md:py-80" style="background-color: {{ bg_color }}"{% else %}my-60 md:my-100{% endif %}">
+    <div class="page-width">
+      {% if section.settings.title != blank %}
+        <h2 class="mb-15 text-m-sh2 uppercase text-center md:mb-40 md:text-sh2" data-animate>{{ section.settings.title }}</h2>
+      {% endif %}
+      <div class="max-w-custom w-full mx-auto aspect-video rounded-[4px] relative overflow-hidden" data-animate style="--width: 1115px;">
+        {% if section.settings.video_source == 'shopify' %}
+          {{ section.settings.video | video_tag: loop: false, controls: false, image_size: '1400x', classes: 'size-full inset object-cover' }}
+        {% elsif section.settings.video_source == 'external' %}
+          <div class="[&_iframe]:size-full [&_iframe]:inset object-cover">
+            {{ section.settings.external_video }}
+          </div>
+        {% endif %}
+
+        <div data-placeholder>
+          {% render 'image'
+            image: section.settings.placeholder_image,
+            classes: 'size-full inset object-cover',
+            sizes: '100vw',
+            include_placeholder: true,
+            placeholder_name: 'lifestyle-1',
+            src_set_type: 'full-width',
+          %}
+
+          <button class="inset flex justify-center items-center text-white{% if section.settings.show_overlay %} bg-black/30{% endif %}" data-play aria-label="Play Video">
+            <span class="w-50 [&_svg]:w-full [&_svg]:h-auto md:w-60">{% render 'icon' icon: 'play' %}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</video-section>
+
+{% schema %}
+  {
+    "name": "Video",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Config"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#EBF1E6"
+      },
+      {
+        "type": "header",
+        "content": "Content"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Lorem Ipsum"
+      },
+      {
+        "type": "header",
+        "content": "Video"
+      },
+      {
+        "type": "select",
+        "id": "video_source",
+        "options": [
+          { "label": "Shopify", "value": "shopify" },
+          { "label": "External", "value": "external" }
+        ],
+        "default": "external",
+        "label": "Video Source"
+      },
+      {
+        "id": "video",
+        "type": "video",
+        "label": "Video",
+        "visible_if": "{{ section.settings.video_source == 'shopify' }}"
+      },
+      {
+        "type": "html",
+        "id": "external_video",
+        "label": "External Video Embed Code",
+        "default": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/_9VUPq3SxOc?si=aGvEseOqqcsqy0wR\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
+        "visible_if": "{{ section.settings.video_source == 'external' }}"
+      },
+      {
+        "type": "image_picker",
+        "id": "placeholder_image",
+        "label": "Placeholder Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_placeholder_image",
+        "label": "Mobile Placeholder Image"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_overlay",
+        "label": "Show Overlay"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Video",
+        "category": "Storytelling"
+      }
+    ]
+  }
+{% endschema %}

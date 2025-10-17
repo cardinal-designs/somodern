@@ -1,0 +1,19 @@
+<div class="article-card">
+  <div class="w-full aspect-wide relative overflow-hidden">
+    {% render 'image'
+      image: block.settings.image,
+      classes: 'size-full inset object-cover',
+      sizes: '(min-width: 767px) 33vw, 100vw',
+      include_placeholder: true,
+      placeholder_name: 'collection-3',
+      src_set_type: 'grid'
+    %}
+  </div>
+  <div class="mt-20">
+    <p class="mb-5 text-sh2 uppercase">Featured</p>
+    <a href="{{ article.url }}">
+      <h3 class="text-m-h3 font-serif md:text-h4">Lorem ipsum dolor</h3>
+    </a>
+    <p class="mt-10 text-m-body-2 md:text-body-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+  </div>
+</div>

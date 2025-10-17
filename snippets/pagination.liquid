@@ -1,0 +1,143 @@
+{% comment %}
+    Renders a set of links for paginated results. Must be used within paginate tags.
+
+    Usage:
+    {% paginate results by 2 %}
+      {% render 'pagination', paginate: paginate, anchor: '#yourID' %}
+    {% endpaginate %}
+
+    Accepts:
+    - paginate: {Object}
+    - anchor: {String} (optional) This can be added so that on page reload it takes you to wherever you've placed your anchor tag.
+{% endcomment %}
+
+{% liquid
+  assign pagination_current_item_start = paginate.current_offset | plus: 1
+  assign pagination_current_item_end = paginate.current_page | times: paginate.page_size
+  assign current_pagination_range = pagination_current_item_start
+
+  if pagination_current_item_end > paginate.items
+    assign pagination_current_item_end = paginate.items
+  endif
+
+  if load_more == true or load_more == 'true'
+    assign show_load_more_button = true
+  else
+    assign show_load_more_button = false
+  endif
+
+  if show_load_more_button == true and paginate.current_page > 1
+    assign current_pagination_range = 1
+  endif
+
+  assign current_pagination_range = current_pagination_range | append: '-' | append: pagination_current_item_end
+
+%}
+  
+  <div class="">
+    <nav id="pagination" class="pagination load-more-wrapper group/pagination text-center" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+      {% if paginate.pages > 1 %}
+        {% if show_load_more_button %}
+          {% if paginate.pages > 1 and paginate.next %}
+            <load-more 
+              role="button"
+              data-page="{{ paginate.current_page | plus: 1 }}"
+              data-load-more="{{ paginate.next.url }}"
+              data-target="{{ target }}"
+              class="button button--outline relative mt-70 flex flex-col justify-center items-center">
+              <span>See More</span>
+              <div class="loading-overlay__spinner loading-overlay__spinner z-[-1] group-[.loading]/pagination:z-[1] group-[.loading]/pagination:opacity-30 group-[.loading]/pagination:cursor-not-allowed">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  role="presentation"
+                  class="spinner"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                </svg>
+              </div>
+            </load-more>
+          {% endif %}
+        {% else %}
+          <ul class="flex justify-center items-center gap-40 [&:not(:empty)]:mt-40 [&:not(:empty)]:py-10 md:[&:not(:empty)]:mt-80" role="list" data-page="{{ paginate.current_page }}">
+            {% comment %} <a href="{{ paginate.previous.url }}{{ anchor }}" class="rotate-180" aria-label="{{ 'general.pagination.previous' | t }}">
+              {% render 'icon' icon: 'arrow' %}
+            </a> {% endcomment %}
+            <li>
+              <pagination-button 
+                role="button"
+                data-page="{{ paginate.current_page | minus: 1 }}"
+                data-url="{{ paginate.previous.url }}{{ anchor }}" 
+                data-target="{{ target }}"
+                class="*:rotate-180 {% if paginate.previous %}opacity-100{% else %}opacity-50 pointer-events-none{% endif %}" aria-label="{{ 'general.pagination.previous' | t }}">
+                {% render 'icon' icon: 'arrow' %}
+              </pagination-button>
+            </li>
+
+          {% for part in paginate.parts %}
+            <li>
+              {% if part.is_link %}
+                <pagination-button 
+                  role="button"
+                  data-url="{{ part.url }}{{ anchor }}"
+                  data-container="{{ container }}"
+                  data-target="{{ target }}"
+                  data-page="{{ part.title }}"
+                  class="p-5 block text-cta uppercase opacity-50" 
+                  aria-label="{{ 'general.pagination.page' | t: number: part.title }}">
+                  {{ part.title }}
+                </pagination-button>
+                {% comment %} <a href="{{ part.url }}{{ anchor }}" class="p-5 block text-cta uppercase opacity-50" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title }}</a> {% endcomment %}
+              {% else %}
+                {% if part.title == paginate.current_page %}
+                  <span class="p-5 block text-cta uppercase relative" aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">
+                    {{ part.title }}
+                    <span class="size-25 absolute top-half left-half -translate-x-half -translate-y-half block rounded-full border-1 border-black"></span>
+                  </span>
+                {% else %}
+                  <span class="p-5 block text-cta uppercase">{{ part.title }}</span>
+                {% endif %}
+              {% endif %}
+            </li>
+          {% endfor %}
+
+          
+            {% comment %} <a href="{{ paginate.next.url }}{{ anchor }}" class="" aria-label="{{ 'general.pagination.next' | t }}" >
+              {% render 'icon' icon: 'arrow' %}
+            </a> {% endcomment %}
+            <li>
+              <pagination-button 
+                role="button"
+                data-page="{{ paginate.current_page | plus: 1 }}"
+                data-url="{{ paginate.next.url }}{{ anchor }}" 
+                data-target="{{ target }}"
+                class="{% if paginate.next %}opacity-100{% else %}opacity-50 pointer-events-none{% endif %}" aria-label="{{ 'general.pagination.next' | t }}" >
+                  {% render 'icon' icon: 'arrow' %}
+              </pagination-button>
+            </li>
+          </ul>
+          <div class="loading-overlay__spinner z-[-1] group-[.loading]/pagination:z-[1] group-[.loading]/pagination:opacity-30 group-[.loading]/pagination:cursor-not-allowed">
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              role="presentation"
+              class="spinner"
+              viewBox="0 0 66 66"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+            </svg>
+          </div>
+        {% endif %}
+      {% endif %}
+    </nav>
+
+    {% if show_item_count and show_load_more_button == false %}
+      <p id="item-count" class="mt-30 text-center text-caption font-serif italic">
+        You're viewing {{ current_pagination_range }} of {{ paginate.items }} product{% unless paginate.items == 1 %}s{% endunless %}
+      </p>
+    {% endif %}
+  </div>
+

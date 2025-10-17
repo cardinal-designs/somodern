@@ -1,0 +1,99 @@
+<mobile-menu>
+  <predictive-search>
+    <div
+      id="mobile-menu"
+      class="
+        w-full h-full flex flex-col fixed left-0 right-0 bottom-0 overflow-x-hidden overflow-y-auto z-top bg-background opacity-0 invisible transition-visibility
+        aria-unhidden:opacity-100 aria-unhidden:visible
+      "
+      aria-hidden="true" aria-modal="true" aria-label="Menu Drawer" role="dialog" tabindex="-1"
+      style="top: var(--header-group-height); height: calc(100dvh - var(--header-group-height));"
+    >
+      <form action="{{ routes.search_url }}" method="get" role="search" class="w-full sticky top-0">
+        <input type="hidden" name="type" value="product">
+        <input type="hidden" name="options[prefix]" value="last">
+        <label id="search-label" for="mobile-search" class="hidden visually-hidden">Search</label>
+        <input aria-labelledby="search-label" id="mobile-search" class="w-full py-10 px-20 text-m-body-2 bg-beige placeholder:text-text placeholder:opacity-50" type="search" name="q" value="{{ search.terms | escape }}" placeholder="Search">
+        <button class="pr-20 pb-px flex items-center absolute top-0 right-0 bottom-0" aria-label="{{ 'general.search.search' | t }}">
+          {% render 'icon' icon: 'search' %}
+        </button>
+      </form>
+      <div class="h-full px-20 pb-20 flex flex-col justify-between relative">
+        <ul class="" role="list">
+          {% for link in section.settings.menu.links %}
+            <li class="border-b-1 border-mint">
+              {% if link.links != blank %}
+                <button class="dropdown-button w-full py-15 flex justify-between items-center text-m-body-3" href="{{ link.url }}">
+                  <span>{{ link.title }}</span>
+                  {% render 'icon' icon: 'caret' %}
+                </button>
+                <div class="dropdown group/dropdown">
+                  <div
+                    class="
+                      px-20 absolute top-0 right-0 bottom-0 left-0 overflow-y-auto translate-x-full transition-transform bg-background
+                      group-[.active]/dropdown:translate-x-0
+                    "
+                  >
+                    <button class="dropdown-back w-full pl-10 py-15 flex items-center gap-15 border-b-1 border-mint text-m-body-3">
+                      <span class="rotate-180">
+                        {% render 'icon' icon: 'caret' %}
+                      </span>
+                      <span>{{ link.title }}</span>
+                    </button>
+                    <ul class="" role="list">
+                      {% for child_link in link.links %}
+                        <li class="border-b-1 border-mint">
+                          <a class="-mt-5 py-15 pl-40 block text-m-body-3" href="{{ child_link.url }}">{{ child_link.title }}</a>
+                          {% if child_link.links != blank %}
+                            <ul class="pb-15 pl-60 flex flex-col">
+                              {% for grandchild_link in child_link.links %}
+                                <li>
+                                  <a class="pb-5 block text-m-body-2 opacity-50" href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
+                                </li>
+                              {% endfor %}
+                            </ul>
+                          {% endif %}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+              {% else %}
+                <a class="py-15 block text-m-body-3" href="{{ link.url }}">{{ link.title }}</a>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+        {% if section.settings.additional_menu != blank %}
+          <ul class="" role="list">
+            {% for link in section.settings.additional_menu.links %}
+              <li>
+                <a class="py-10 block text-m-body-2 border-b-1 border-mint" href="{{ link.url }}">{{ link.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        <div class="predictive-search inset bg-background overflow-auto" style="display: none;"></div>
+      </div>
+    </div>
+  </predictive-search>
+</mobile-menu>
+
+{% schema %}
+  {
+    "name": "Mobile Menu",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Menu"
+      },
+      {
+        "type": "link_list",
+        "id": "additional_menu",
+        "label": "Additional Menu"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,65 @@
+<div class="page-width my-60 md:my-80">
+  {% if section.settings.title != blank %}
+    <h2 class="mb-20 text-m-h2 font-serif italic md:mb-40 md:text-h2" data-animate>{{ section.settings.title }}</h2>
+  {% endif %}
+  <div class="grid{% if section.settings.desktop_columns == "4" %} gap-20 grid-cols-2 md:grid-cols-4{% elsif section.settings.desktop_columns == "3" %} gap-x-20 gap-y-40 md:grid-cols-3{% else %} gap-x-20 gap-y-40 md:grid-cols-2{% endif %}">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Columns",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Config"
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "options": [
+          { "value": "square", "label": "Square" },
+          { "value": "tall", "label": "Tall" }
+        ],
+        "default": "square",
+        "label": "Image Ratio"
+      },
+      {
+        "type": "select",
+        "id": "desktop_columns",
+        "options": [
+          { "value": "2", "label": "2" },
+          { "value": "3", "label": "3" },
+          { "value": "4", "label": "4" }
+        ],
+        "default": "2",
+        "label": "Desktop Columns"
+      },
+      {
+        "type": "header",
+        "content": "Content"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      }
+    ],
+    "blocks": [{ "type": "_column" }],
+    "presets": [
+      {
+        "name": "Columns",
+        "category": "Storytelling",
+        "blocks": [
+          {
+            "type": "_column"
+          },
+          {
+            "type": "_column"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

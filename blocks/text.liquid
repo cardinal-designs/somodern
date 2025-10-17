@@ -1,0 +1,80 @@
+{% liquid
+  assign classes = 'text-m-body-2 md:text-body-2'
+  case block.settings.font_size
+    when 'small'
+      assign classes = 'text-m-body-2 md:text-body-3'
+  endcase
+%}
+
+<div
+  class="rte {{ classes }}{% if block.settings.center_content %} mx-auto{% endif %}"
+  style="margin-top: {{ block.settings.margin_top }}px;margin-bottom: {{ block.settings.margin_bottom }}px;{% if block.settings.content_width != blank and block.settings.content_width != 0 %}max-width: {{ block.settings.content_width }}px;width: 100%;{% endif %}"
+  data-animate {{ block.shopify_attributes }}
+>
+  {{ block.settings.text }}
+</div>
+
+{% schema %}
+  {
+    "name": "Text",
+    "tag": null,
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text",
+        "default": "<p>Lorem ipsum dolor sit amet consectetur. Justo molestie etiam gravida eget egestas potenti. Lorem ipsum dolor sit amet consectetur. Justo molestie etiam gravida eget egestas potenti.</p>"
+      },
+      {
+        "type": "select",
+        "id": "font_size",
+        "options": [
+          { "value": "regular", "label": "Regular" },
+          { "value": "small", "label": "Small" }
+        ],
+        "default": "regular",
+        "label": "Font Size"
+      },
+      {
+        "type": "header",
+        "content": "Config"
+      },
+      {
+        "type": "checkbox",
+        "id": "center_content",
+        "label": "Center Content"
+      },
+      {
+        "type": "number",
+        "id": "content_width",
+        "label": "Content Width",
+        "info": "Only use if not full width."
+      },
+      {
+        "type": "range",
+        "id": "margin_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 0,
+        "unit": "px",
+        "label": "Margin Top"
+      },
+      {
+        "type": "range",
+        "id": "margin_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 0,
+        "unit": "px",
+        "label": "Margin Bottom"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Text"
+      }
+    ]
+  }
+{% endschema %}

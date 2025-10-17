@@ -1,0 +1,125 @@
+<div class="page-width">
+  <h1 class="mt-60 mb-40 text-m-h1 font-serif italic text-center md:mb-60 md:text-h1">My Account</h1>
+</div>
+
+<div class="px-20 border-b-1 border-mint overflow-scroll no-scrollbar md:px-40">
+  <div class="w-fit mx-auto flex items-center gap-40">
+    <button class="account-navigation-button group/link py-13 block text-cta uppercase relative whitespace-nowrap active" data-tab="addresses">
+      Addresses
+      <span class="absolute left-0 right-0 bottom-0 border-b-1 border-transparent transition-colors group-[.active]/link:border-black group-hover/link:border-black"></span>
+    </button>
+    <button class="account-navigation-button group/link py-13 block text-cta uppercase relative whitespace-nowrap" data-tab="orders">
+      Orders
+      <span class="absolute left-0 right-0 bottom-0 border-b-1 border-transparent transition-colors group-[.active]/link:border-black group-hover/link:border-black"></span>
+    </button>
+    <a href="{{ routes.account_logout_url }}" class="group/link py-13 block text-cta uppercase relative whitespace-nowrap">
+      Logout
+      <span class="absolute left-0 right-0 bottom-0 border-b-1 border-transparent transition-colors group-[.active]/link:border-black group-hover/link:border-black"></span>
+    </a>
+  </div>
+</div>
+
+<div class="page-width">
+  <div class="max-w-custom w-full mx-auto my-60 md:mt-60" style="--width: 890px;">
+    <div class="account-content" data-tab="addresses">
+      <h2 class="mb-30 pb-30 text-m-h2 font-serif italic border-b-1 border-mint md:text-h4">Billing Addresses</h2>
+
+      <div data-customer-addresses>
+        {% render 'addresses' %}
+      </div>
+    </div>
+    
+    <div class="account-content hidden" data-tab="orders">
+
+      {% paginate customer.orders by 20 %}
+        <div class="">
+
+          {% if customer.orders.size > 0 %}
+
+            <table role="table" class="order-history w-full block border-mint md:table">
+              <thead class="hidden md:table-header-group" role="rowgroup">
+                <tr class="text-left text-cta uppercase" role="row">
+                  <th class="pb-20 font-semibold border-b-1 border-mint" id="ColumnDate" scope="col" role="columnheader">{{ 'customer.orders.date' | t }}</th>
+                  <th class="pb-20 font-semibold border-b-1 border-mint" id="ColumnOrder" scope="col" role="columnheader">{{ 'customer.orders.order_number' | t }}</th>
+                  <th class="pb-20 font-semibold border-b-1 border-mint" id="ColumnTracking" scope="col" role="columnheader">Tracking No.</th>
+                  <th class="pb-20 font-semibold border-b-1 border-mint" id="ColumnTotal" scope="col" role="columnheader">{{ 'customer.orders.total' | t }}</th>
+                  <th class="pb-20 font-semibold border-b-1 border-mint" id="ColumnFulfillment" scope="col" role="columnheader">Status</th>
+                </tr>
+              </thead>
+              <tbody class="w-full block md:table-row-group" role="rowgroup">
+                {%- for order in customer.orders -%}
+                  <tr class="block md:table-row" role="row">
+                    <td class="text-body-2 border-b-0 border-mint block md:py-20 md:border-b-1 md:table-cell" headers="RowOrder ColumnDate" role="cell" data-label="{{ 'customer.orders.date' | t }}">
+                      <div class="py-5 flex justify-between items-center md:p-0">
+                        <div class="text-body-2 md:hidden">{{ 'customer.orders.date' | t }}</div>
+                        <div class="text-body-2">{{ order.created_at | time_tag: format: 'date' }}</div>
+                      </div>
+                    </td>
+                    <td
+                      class="text-body-2 border-b-0 border-mint block md:py-20 md:border-b-1 md:table-cell"
+                      id="RowOrder"
+                      role="cell"
+                      headers="ColumnOrder"
+                      data-label="{{ 'customer.orders.order_number' | t }}"
+                    >
+                      <div class="py-5 flex justify-between items-center md:p-0">
+                        <div class="text-body-2 md:hidden">{{ 'customer.orders.order_number' | t }}</div>
+                        <a href="{{ order.customer_url }}" class="text-body-2 underline" aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}">{{ order.name }}</a>
+                      </div>
+                    </td>
+                    <td
+                      class="text-body-2 border-b-0 border-mint block md:py-20 md:border-b-1 md:table-cell"
+                      headers="RowOrder ColumnTracking"
+                      role="cell"
+                      data-label="Tracking Number"
+                    >
+                      <div class="py-5 flex justify-between items-center md:p-0">
+                        <div class="text-body-2 md:hidden">Tracking No.</div>
+                        <div class="text-body-2">
+                          {% for item in order.line_items %}
+                            <a class="underline block" href="{{ item.fulfillment.tracking_url }}" target="_blank">{{ item.fulfillment.tracking_number }}</a>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </td>
+                    <td class="text-body-2 border-b-0 border-mint block md:py-20 md:border-b-1 md:table-cell" headers="RowOrder ColumnTotal" role="cell" data-label="{{ 'customer.orders.total' | t }}">
+                      <div class="py-5 flex justify-between items-center md:p-0">
+                        <div class="text-body-2 md:hidden">{{ 'customer.orders.total' | t }}</div>
+                        <div class="text-body-2">{{ order.total_net_amount | money_with_currency }}</div>
+                      </div>
+                    </td>
+                    <td
+                      class="border-b-1 border-mint block md:py-20 md:table-cell"
+                      headers="RowOrder ColumnFulfillment"
+                      role="cell"
+                      data-label="{{ 'customer.orders.fulfillment_status' | t }}"
+                    >
+                      <div class="py-5 flex justify-between items-center md:p-0">
+                        <div class="text-body-2 md:hidden">Status</div>
+                        <div class="text-body-2">{{ order.fulfillment_status_label }}</div>
+                      </div>
+                    </td>
+                  </tr>
+                {%- endfor -%}
+              </tbody>
+            </table>
+
+          {% else %}
+            <p class="mb-30 text-body-1">{{ 'customer.orders.none' | t }}</p>
+            <a href="{{ settings.shop_all_link }}" class="button">Shop All Products</a>
+          {% endif %}
+        </div>
+
+        {% if paginate.pages > 1 %}
+          {% render 'pagination', paginate: paginate, anchor: '' %}
+        {% endif %}
+      {% endpaginate %}
+    </div>
+  </div>
+</div>
+
+<script>
+  window.onload = () => {
+    typeof CustomerAddresses !== 'undefined' && new CustomerAddresses();
+  }
+</script>

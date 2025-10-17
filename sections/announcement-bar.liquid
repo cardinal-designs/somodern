@@ -1,0 +1,59 @@
+<div class="announcement-bar py-10 {{ section.settings.content_color }}" style="background-color: {{ section.settings.background_color }}">
+  <div class="page-width flex justify-center{% if section.settings.enable_country_selector %} md:justify-between{% endif %}">
+    <p class="text-cta uppercase">{{ section.settings.text }}</p>
+    {% if section.settings.enable_country_selector %}
+      <div class="hidden md:block">
+        {% render 'country-selector' %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Config"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "content_color",
+      "options": [
+        { "value": "text-white", "label": "Light" },
+        { "value": "text-text", "label": "Dark" }
+      ],
+      "default": "text-white",
+      "label": "Content Color"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Announcement",
+      "default": "Welcome to our store"
+    },
+    {
+      "type": "header",
+      "content": "Localization"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_country_selector",
+      "label": "Enable Country Selector",
+      "info": "To add a country, go to your [markets settings.](\/admin\/settings\/markets)",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

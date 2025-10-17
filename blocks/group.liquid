@@ -1,0 +1,131 @@
+{% liquid
+  assign classes = 'flex'
+  assign classes = classes | append: ' ' | append: block.settings.direction
+
+  if block.settings.direction == 'flex-row'
+    case block.settings.horizontal_alignment
+      when 'left'
+        assign classes = classes | append: ' justify-start'
+      when 'center'
+        assign classes = classes | append: ' justify-center'
+      when 'right'
+        assign classes = classes | append: ' justify-end'
+    endcase
+
+    case block.settings.vertical_alignment
+      when 'top'
+        assign classes = classes | append: ' items-start'
+      when 'center'
+        assign classes = classes | append: ' items-center'
+      when 'bottom'
+        assign classes = classes | append: ' items-end'
+    endcase
+  elsif block.settings.direction == 'flex-column'
+    case block.settings.horizontal_alignment
+      when 'left'
+        assign classes = classes | append: ' items-start'
+      when 'center'
+        assign classes = classes | append: ' items-center'
+      when 'right'
+        assign classes = classes | append: ' items-end'
+    endcase
+
+    case block.settings.vertical_alignment
+      when 'left'
+        assign classes = classes | append: ' justify-start'
+      when 'center'
+        assign classes = classes | append: ' justify-center'
+      when 'right'
+        assign classes = classes | append: ' justify-end'
+    endcase
+  endif
+
+  if block.settings.wrap == 'wrap'
+    assign classes = classes | append: ' flex-wrap'
+  endif
+%}
+
+<div class="{{ classes }}" data-animate style="margin-top: {{ block.settings.margin_top }}px;margin-bottom: {{ block.settings.margin_bottom }}px;gap: {{ block.settings.gap }}px;" {{ block.shopify_attributes }}>
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+  {
+    "name": "Group",
+    "tag": null,
+    "settings": [
+      {
+        "type": "header",
+        "content": "Config"
+      },
+      {
+        "type": "select",
+        "id": "direction",
+        "options": [
+          { "value": "flex-row", "label": "Row" },
+          { "value": "flex-col", "label": "Column" }
+        ],
+        "default": "flex-row",
+        "label": "Direction"
+      },
+      {
+        "type": "text_alignment",
+        "id": "horizontal_alignment",
+        "label": "Horizontal Alignment",
+        "default": "left"
+      },
+      {
+        "type": "select",
+        "id": "vertical_alignment",
+        "options": [
+          { "value": "top", "label": "Top" },
+          { "value": "center", "label": "Center" },
+          { "value": "bottom", "label": "Bottom" }
+        ],
+        "default": "center",
+        "label": "Vertical_alignment"
+      },
+      {
+        "type": "checkbox",
+        "id": "wrap",
+        "label": "Wrap"
+      },
+      {
+        "type": "range",
+        "id": "gap",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 20,
+        "unit": "px",
+        "label": "Gap"
+      },
+      {
+        "type": "range",
+        "id": "margin_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 0,
+        "unit": "px",
+        "label": "Margin Top"
+      },
+      {
+        "type": "range",
+        "id": "margin_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 0,
+        "unit": "px",
+        "label": "Margin Bottom"
+      }
+    ],
+    "blocks": [{ "type": "@theme" }],
+    "presets": [
+      {
+        "name": "Group"
+      }
+    ]
+  }
+{% endschema %}

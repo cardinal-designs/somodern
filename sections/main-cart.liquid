@@ -1,0 +1,183 @@
+{% capture cart_footer %}
+  <div class="mb-20 py-20 flex flex-col gap-15 border-b-1 border-mint md:mt-20 md:border-t-1">
+    {% if cart.cart_level_discount_applications.size > 0 %}
+      <div class="flex justify-between items-center gap-20" id="cart-drawer-subtotal">
+        <p class="text-sh5 uppercase">{{ discount_application.title }}</p>
+        <p class="text-sh5 uppercase">-{{ discount_application.total_allocated_amount | money }}</p>
+      </div>
+    {% endif %}
+
+    <div class="flex justify-between items-center gap-20" id="cart-drawer-subtotal">
+      <p class="text-sh5 uppercase">Subtotal</p>
+      <p class="text-sh5 uppercase">{{ cart.total_price | money }}</p>
+    </div>
+  </div>
+
+  {% if settings.enable_cart_note %}
+    <dropdown-item>
+      <div class="group/dropdown -mt-20 mb-10 border-b-1 border-mint" data-dropdown>
+        <button class="w-full py-5 flex justify-between items-center gap-20 text-left text-body-4" data-dropdown-toggle>
+          Add Gift Note
+          <span class="flex transition-transform group-[.active]/dropdown:rotate-180">
+            {% render 'icon' icon: 'dropdown' %}
+          </span>
+        </button>
+        <div class="hidden group-[.active]/dropdown:block" aria-hidden="true" data-dropdown-content>
+          <div class="w-full">
+            <cart-note>
+              <div class="cart-note pt-5">
+                <label class="visually-hidden" for="CartDrawer-Note">Cart Note</label>
+                <textarea
+                  id="CartDrawer-Note"
+                  class="field__input"
+                  name="note"
+                  placeholder="Enter a message..."
+                >{{ cart.note }}</textarea>
+              </div>
+            </cart-note>
+          </div>
+        </div>
+      </div>
+    </dropdown-item>
+  {% endif %}
+
+  <div>
+    <noscript>
+      <button type="submit" class="cart__update-button w-full button button--secondary" form="cart">
+        {{ 'sections.cart.update' | t }}
+      </button>
+    </noscript>
+
+    <button type="submit" class="cart__checkout-button w-full button" name="checkout"{% if cart == empty %} disabled{% endif %} form="cart">
+      Checkout
+    </button>
+
+    <p class="mt-10 text-m-body-2 text-center opacity-50 md:text-body-4">Shipping & Taxes Calculated at Checkout</p>
+  </div>
+{% endcapture %}
+
+<div class="overflow-hidden md:overflow-visible">
+  <div class="page-width mt-20 mb-40 md:my-80">
+    <div class="mb-30 flex justify-center gap-15 text-center">
+      <h1 class="text-m-h1 font-serif italic md:text-h1">{{ settings.cart_title }}</h1>
+      <div id="cart-item-count" class="h-25 w-25 flex justify-center items-center rounded-full text-cta uppercase border-1 border-black">{{ cart.item_count }}</div>
+    </div>
+
+    <div id="main-cart-items">
+      <cart-items class="max-w-custom mx-auto group{% if cart == empty %} is-empty{% endif %} block" style="--width: 1115px;">
+
+        <div class="mt-60 hidden group-[.is-empty]:block text-center">
+          <p class="mb-40 text-m-body-2 md:text-body-2">{{ 'sections.cart.empty' | t }}.</p>
+          <a href="{{ settings.shop_all_link }}" class="button">Continue Shopping</a>
+        </div>
+
+        <div id="cart-shipping-bar-mobile" class="group-[.is-empty]:hidden">
+          <div class="mb-20 md:hidden">
+            {% render 'shipping-bar' %}
+          </div>
+        </div>
+
+        <div class="flex flex-col-reverse md:mt-40 md:grid md:grid-cols-[1fr_320px] md:gap-50 group-[.is-empty]:hidden">
+
+          <div class="border-t-1 border-mint">
+            
+            <form
+              action="{{ routes.cart_url }}"
+              class="cart__contents critical-hidden"
+              method="post"
+              id="cart">
+              <div
+                class="cart__items"
+                data-id="{{ section.id }}">
+                <div class="js-contents-main">
+                  {% if cart != empty %}
+                    {% for item in cart.items %}
+                      <div class="py-15 border-b-1 border-mint">
+                        {% render 'cart-item' item: item, idx: forloop.index, is_cart: true %}
+                      </div>
+                    {% endfor %}
+                  {% endif %}
+                </div>
+              </div>
+            </form>
+
+            {% if settings.enable_cart_upsells %}
+              {% liquid
+                if settings.cart_upsells_source == 'collection'
+                  assign upsell_source = settings.cart_upsells_collection.products
+                elsif settings.cart_upsells_source == 'product_list'
+                  assign upsell_source = settings.cart_upsells_product_list
+                endif
+              %}
+
+              <div class="md:hidden">
+                {{ cart_footer }}
+              </div>
+
+              <div class="cart-upsells mt-40 md:px-60 md:p-20 md:border-1 md:border-mint">
+                <div class="max-w-custom w-full mx-auto" style="--width: 500px;">
+                  <div class="mb-20 flex justify-between items-center md:px-30 md:justify-center">
+                    <h3 class="text-sh2 uppercase">{{ settings.cart_upsells_title }}</h3>
+                    <div class="md:hidden">
+                      <div class="swiper-pagination"></div>
+                    </div>
+                  </div>
+                  <div class="relative">
+                    <div class="cart-upsells-slider swiper overflow-visible md:overflow-hidden">
+                      <div class="swiper-wrapper">
+                        {% for current_product in upsell_source limit: settings.cart_upsells_limit %}
+                          {% assign items_in_cart = cart | line_items_for: current_product | sum: 'quantity' %}
+
+                          {% unless items_in_cart > 0 or current_product.available == false %}
+                            <div class="swiper-slide">
+                              {% render 'product-upsell' prod: current_product, size: 'small' %}
+                            </div>
+                          {% endunless %}
+                        {% endfor %}
+                      </div>
+                    </div>
+                    <div class="swiper-buttons hidden md:block">
+                      <div class="absolute top-half -left-50 -translate-y-half">
+                        <button class="swiper-button swiper-button-prev p-5 rotate-180">
+                          {% render 'icon' icon: 'arrow-small' %}
+                        </button>
+                      </div>
+                      <div class="absolute top-half -right-50 -translate-y-half">
+                        <button class="swiper-button swiper-button-next p-5">
+                          {% render 'icon' icon: 'arrow-small' %}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+
+          <div class="">
+            <div class="w-full sticky-bar">
+              <div id="cart-shipping-bar-desktop">
+                <div class="hidden md:block">
+                  {% render 'shipping-bar' %}
+                </div>
+              </div>
+
+              <div class="hidden md:block">
+                {{ cart_footer }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </cart-items>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Cart",
+    "settings": [
+
+    ]
+  }
+{% endschema %}

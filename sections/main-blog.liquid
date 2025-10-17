@@ -1,0 +1,85 @@
+{% if section.settings.featured_article != blank %}
+  {% render 'featured-article' featured_article: articles[section.settings.featured_article], read_more: true %}
+{% endif %}
+
+<div class="main-blog my-60">
+
+  <div class="mb-30 md:mb-60">
+    <h2 class="mb-30 text-m-h1 font-serif italic text-center md:text-h2" data-animate>{{ blog.title }}</h2>
+
+    <div class="px-20 overflow-scroll no-scrollbar md:px-40" data-animate>
+      <div class="w-fit mx-auto flex items-center gap-40">
+        {% liquid
+          assign tags = blog.all_tags
+          if section.settings.article_categories != blank
+            assign tags = section.settings.article_categories | split: ', '
+          endif
+        %}
+
+        <a href="{{ blog.url }}" class="group/link pb-13 inline-block text-cta uppercase relative whitespace-nowrap{% if current_tags == blank %} active{% endif %}">
+          All Articles
+          <div class="absolute left-0 right-0 bottom-0 border-b-1 border-transparent transition-colors group-[.active]/link:border-black"></div>
+        </a>
+        {% for tag in tags %}
+          <a href="{{ blog.url }}/tagged/{{ tag | handleize }}" class="group/link pb-13 inline-block text-cta uppercase relative whitespace-nowrap{% if current_tags contains tag %} active{% endif %}">
+            {{ tag }}
+            <div class="absolute left-0 right-0 bottom-0 border-b-1 border-transparent transition-colors group-[.active]/link:border-black"></div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  {% paginate blog.articles by 2 %}
+    <div id="blog-grid" class="page-width">
+      <ul class="grid gap-40 md:grid-cols-2 md:gap-x-20 md:gap-y-60 lg:grid-cols-3">
+        {% for article in blog.articles %}
+          <li class="blog-articles__article" data-animate>
+            {% render 'article-card' article: article %}
+          </li>
+        {% endfor %}
+      </ul>
+
+      {% if paginate.pages > 1 %}
+        {% render 'pagination', paginate: paginate, load_more: section.settings.pagination, target: '#blog-grid' %}
+      {% endif %}
+    </div>
+  {% endpaginate %}
+</div>
+
+{% schema %}
+{
+  "name": "Blog",
+  "settings": [
+    {
+      "type": "header", 
+      "content": "Article Header"
+    },
+    {
+      "type": "article",
+      "id": "featured_article",
+      "label": "Featured Article"
+    },
+    {
+      "type": "header", 
+      "content": "Filters"
+    },
+    {
+      "type": "text",
+      "id": "article_categories",
+      "label": "Article Categories",
+      "info": "All tags are used as categories by default. To filter to specific tags, enter a comma separated list: \"News, Lifestyle, Beauty\"."
+    },
+    {
+      "type": "select",
+      "id": "pagination",
+      "label": "Pagination style",
+      "options": [
+        {"label": "Load More", "value": "true"},
+        {"label": "Page numbers", "value": "false"}
+      ],
+      "default": "false"
+    }
+  ]
+}
+{% endschema %}

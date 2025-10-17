@@ -1,0 +1,97 @@
+{% liquid
+  assign mobile_classes = 'font-serif italic text-m-h1'
+  case block.settings.mobile_font_size
+    when 'h2'
+      assign mobile_classes = 'font-serif italic text-m-h2'
+    when 'h3'
+      assign mobile_classes = 'font-serif italic text-m-h3'
+    when 'h4'
+      assign mobile_classes = 'font-serif text-m-sh4'
+  endcase
+
+  assign desktop_class = 'md:text-h1'
+  case block.settings.font_size
+    when 'h2'
+      assign desktop_class = 'md:text-h2'
+    when 'h3'
+      assign desktop_class = 'md:text-h3'
+    when 'h4'
+      assign desktop_class = 'md:text-sh3'
+  endcase
+%}
+
+<h2
+  class="{{ mobile_classes }} {{ desktop_class }}"
+  style="margin-top: {{ block.settings.margin_top }}px;margin-bottom: {{ block.settings.margin_bottom }}px;"
+  data-animate {{ block.shopify_attributes }}
+>
+  {{ block.settings.title }}
+</h2>
+
+{% schema %}
+  {
+    "name": "Title",
+    "tag": null,
+    "settings": [
+      {
+        "type": "inline_richtext",
+        "id": "title",
+        "label": "Title",
+        "default": "Title Lorem Ipsum"
+      },
+      {
+        "type": "select",
+        "id": "font_size",
+        "options": [
+          { "value": "h1", "label": "H1" },
+          { "value": "h2", "label": "H2" },
+          { "value": "h3", "label": "H3" },
+          { "value": "h4", "label": "H4" }
+        ],
+        "default": "h1",
+        "label": "Font Size"
+      },
+      {
+        "type": "select",
+        "id": "mobile_font_size",
+        "options": [
+          { "value": "h1", "label": "H1" },
+          { "value": "h2", "label": "H2" },
+          { "value": "h3", "label": "H3" },
+          { "value": "h4", "label": "H4" }
+        ],
+        "default": "h1",
+        "label": "Mobile Font Size"
+      },
+      {
+        "type": "header",
+        "content": "Config"
+      },
+      {
+        "type": "range",
+        "id": "margin_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 0,
+        "unit": "px",
+        "label": "Margin Top"
+      },
+      {
+        "type": "range",
+        "id": "margin_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 0,
+        "unit": "px",
+        "label": "Margin Bottom"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Title"
+      }
+    ]
+  }
+{% endschema %}

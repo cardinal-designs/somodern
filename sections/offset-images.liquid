@@ -1,0 +1,102 @@
+<div class="page-width my-60 gap-60{% if section.settings.reverse_layout %} flex flex-col-reverse md:grid{% else %} grid{% endif %} md:my-80 md:grid-cols-2 md:gap-20">
+  {% if section.settings.reverse_layout %}
+    <div data-animate>
+      <div class="w-full aspect-tall overflow-hidden relative">
+        {% render 'image'
+          image: section.settings.large_image,
+          classes: 'size-full inset object-cover',
+          sizes: '(min-width: 767px) 50vw, 100vw',
+          include_placeholder: true,
+          placeholder_name: 'product-1',
+          src_set_type: 'grid'
+        %}
+      </div>
+      {% if section.settings.caption != blank %}
+        <p class="max-w-custom w-full mt-30 text-body-2 md:mt-20" style="--width: 400px;">{{ section.settings.caption }}</p>
+      {% endif %}
+    </div>
+    <div class="flex justify-center items-center" data-animate>
+      <div class="max-w-[260px] w-full mx-auto aspect-tall overflow-hidden relative md:max-w-[350px]">
+        {% render 'image'
+          image: section.settings.small_image,
+          classes: 'size-full inset object-cover',
+          sizes: '(min-width: 767px) 50vw, 100vw',
+          include_placeholder: true,
+          placeholder_name: 'collection-1',
+          src_set_type: 'grid'
+        %}
+      </div>
+    </div>
+  {% else %}
+    <div class="mr-[16%] md:mr-[33%]" data-animate>
+      <div class="w-full aspect-tall overflow-hidden relative">
+        {% render 'image'
+          image: section.settings.small_image,
+          classes: 'size-full inset object-cover',
+          sizes: '(min-width: 767px) 50vw, 100vw',
+          include_placeholder: true,
+          placeholder_name: 'product-1',
+          src_set_type: 'grid'
+        %}
+      </div>
+      {% if section.settings.caption != blank %}
+        <p class="max-w-custom w-full mt-40 text-body-2 md:mt-20" style="--width: 310px;">{{ section.settings.caption }}</p>
+      {% endif %}
+    </div>
+    <div data-animate>
+      <div class="w-full aspect-tall overflow-hidden relative">
+        {% render 'image'
+          image: section.settings.large_image,
+          classes: 'size-full inset object-cover',
+          sizes: '(min-width: 767px) 50vw, 100vw',
+          include_placeholder: true,
+          placeholder_name: 'collection-1',
+          src_set_type: 'grid'
+        %}
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+  {
+    "name": "Offset Images",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Images"
+      },
+      {
+        "type": "image_picker",
+        "id": "large_image",
+        "label": "Large Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "small_image",
+        "label": "Small Image"
+      },
+      {
+        "type": "checkbox",
+        "id": "reverse_layout",
+        "label": "Reverse Layout"
+      },
+      {
+        "type": "header",
+        "content": "Content"
+      },
+      {
+        "type": "textarea",
+        "id": "caption",
+        "label": "Caption",
+        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore."
+      }
+    ],
+    "presets": [
+      {
+        "name": "Offset Images",
+        "category": "Storytelling"
+      }
+    ]
+  }
+{% endschema %}

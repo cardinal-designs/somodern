@@ -1,0 +1,57 @@
+<product-recommendations data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=8">
+  <div class="my-60 md:my-100">
+    <div class="overflow-hidden">
+      <div class="page-width">
+        {% if recommendations.performed and recommendations.products_count > 0 %}
+          <div class="mb-40 flex justify-between items-center">
+            <h2 class="text-m-h4 font-serif italic md:text-h4">{{ section.settings.title }}</h2>
+            <button class="recommendation-slider-button swiper-button swiper-button-next">
+              {% render 'icon' icon: 'arrow' %}
+            </button>
+          </div>
+        <div class="recommendation-slider swiper recommendation-slider-{{ section.id }}">
+            <div class="swiper-wrapper">
+              {% for recommendation in recommendations.products %}
+                <li class="swiper-slide">
+                  {% render 'product-card' prod: recommendation %}
+                </li>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</product-recommendations>
+
+<style>
+  /* Style before slider has loaded */
+  .recommendation-slider-{{ section.id }}:not(.swiper-initialized) .swiper-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    grid-auto-rows: 0;
+    gap: 20px;
+    overflow: hidden;
+  }
+
+  @media screen and (max-width: 767px) {
+    .recommendation-slider-{{ section.id }} {
+      overflow: visible;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Product Recommendations",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "You Might Like"
+    }
+  ]
+}
+{% endschema %}

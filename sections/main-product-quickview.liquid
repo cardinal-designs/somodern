@@ -1,0 +1,148 @@
+<div class="product-quickview">
+  {% liquid
+    assign product_url = shop.url | append: product.url
+  %}
+
+  <product-section class="block">
+    <div class="product md:grid md:grid-cols-[minmax(0,1fr)_365px] md:items-center md:gap-40">
+
+      <div class="relative">
+        <div class="block md:grid md:grid-cols-[minmax(0,50px)_minmax(0,1fr)] md:gap-10">
+          <div class="relative hidden md:block">
+            <ul class="product-thumbs swiper w-full inset md:overflow-hidden" style="position:absolute" role="list">
+              <div class="swiper-wrapper">
+                {% for media in product.media %}
+                  <li class="swiper-slide group/thumb cursor-pointer" style="height:auto; aspect-ratio: 3 / 4;" data-media-id="thumbs-{{ section.id }}-{{ media.id }}">
+                    <div class="aspect-product overflow-hidden relative border-1 border-transparent transition-colors group-[.swiper-slide-thumb-active]/thumb:border-black">
+                      {% render 'image'
+                        image: media,
+                        classes: 'size-full inset object-cover',
+                        sizes: '300x',
+                        include_placeholder: true,
+                        placeholder_name: 'product-1',
+                        src_set_type: 'thumbnail'
+                      %}
+                    </div>
+                  </li>
+                {% endfor %}
+              </div>
+            </ul>
+          </div>
+          <ul class="product-slider swiper w-full md:overflow-hidden" role="list">
+            <div class="swiper-wrapper{% if slider_desktop_style == 'grid' %} md:grid md:grid-cols-2 md:gap-[8px]{% endif %}">
+              {% for media in product.media %}
+                {% if media.media_type == "image" %}
+                  {% assign image_variants = product.images | where: 'src', media.src | first %}
+                {% endif %}
+                <li data-initial-slide="{% if product.selected_or_first_available_variant.image == media %}true{% else %}false{% endif %}" data-media-index="{{ forloop.index0 }}" class="swiper-slide" data-media-id="{{ section.id }}-{{ media.id }}" {% if media.media_type == "image" %}data-image-variants="{{ image_variants.variants | map: 'id' | join: "," }}"{% endif %}>
+                  <div class="aspect-product overflow-hidden relative">
+                    {% render 'image'
+                      image: media,
+                      classes: 'size-full inset object-cover',
+                      sizes: '(min-width: 769px) 60vw, 100vw',
+                      include_placeholder: true,
+                      placeholder_name: 'product-1',
+                      src_set_type: 'full-width'
+                    %}
+                  </div>
+                </li>
+              {% endfor %}
+            </div>
+            <div class="absolute z-20 bottom-20 left-half -translate-x-half md:hidden">
+              <div class="swiper-pagination"></div>
+            </div>
+          </ul>
+
+        </div>
+        <div class="absolute z-20 md:hidden{% if slider_mobile_style == 'center' %} top-10 left-0{% else %} top-13 left-13{% endif %}">
+          {% render 'product-badges' prod: product %}
+        </div>
+      </div>
+
+      <div id="ProductInfo-{{ section.id }}" class="pt-20">
+        {% assign product_form_id = 'product-form-' | append: section.id %}
+
+        <div class="sticky-bar w-full">
+          {% render 'product-badges' prod: product, classes: 'mb-20 hidden md:block' %}
+
+          <div class="{% if mobile_title_position == 'above' %} hidden md:block{% endif %}">
+            <h1 class="mb-10 text-m-h2 font-serif italic md:text-h4">
+              {{ product.title | escape }}
+            </h1>
+
+            <p class="price mb-20 flex items-center gap-5 text-m-sh1 uppercase md:text-sh5">
+              {{ product.price | money }}
+              {% if product.compare_at_price > product.price %}
+                <span class="line-through opacity-50">{{ product.compare_at_price | money }}</span>
+              {% endif %}
+            </p>
+          </div>
+
+          {% if product.description != blank %}
+            <div class="rte mb-30 text-body-4 hidden md:block">
+              {{ product.description }}
+            </div>
+          {% endif %}
+
+          {% render 'product-form' prod: product, product_form_id: product_form_id, show_quantity: false, change_url: false %}
+
+          {% if section.settings.extra_text != blank %}
+            <p class="mt-10 text-caption font-serif italic text-center">{{ section.settings.extra_text }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </product-section>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    function isIE() {
+      const ua = window.navigator.userAgent;
+      const msie = ua.indexOf('MSIE ');
+      const trident = ua.indexOf('Trident/');
+
+      return (msie > 0 || trident > 0);
+    }
+
+    if (!isIE()) return;
+    const hiddenInput = document.querySelector('#{{ product_form_id }} input[name="id"]');
+    const noScriptInputWrapper = document.createElement('div');
+    const variantSwitcher = document.querySelector('variant-radios[data-section="{{ section.id }}"]') || document.querySelector('variant-selects[data-section="{{ section.id }}"]');
+    noScriptInputWrapper.innerHTML = document.querySelector('.product-form__noscript-wrapper-{{ section.id }}').textContent;
+    variantSwitcher.outerHTML = noScriptInputWrapper.outerHTML;
+
+    document.querySelector('#Variants-{{ section.id }}').addEventListener('change', function(event) {
+      hiddenInput.value = event.currentTarget.value;
+    });
+  });
+</script>
+
+{% liquid
+  if product.selected_or_first_available_variant.featured_media
+    assign seo_media = product.selected_or_first_available_variant.featured_media
+  else
+    assign seo_media = product.featured_media
+  endif
+%}
+
+<script type="application/ld+json">
+  {{ product | structured_data }}
+</script>
+
+{% schema %}
+  {
+    "name": "Product - Quickview",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Content"
+      },
+      {
+        "type": "text",
+        "id": "extra_text",
+        "label": "Extra Text"
+      }
+    ]
+  }
+{% endschema %}

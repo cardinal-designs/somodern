@@ -1,0 +1,449 @@
+{% liquid
+  assign product_url = shop.url | append: product.url
+
+  assign slider_desktop_style = section.settings.slider_style
+  assign slider_mobile_style = section.settings.mobile_slider_style
+  
+  assign description_position = section.settings.description_position
+  assign mobile_title_position = section.settings.mobile_title_position
+%}
+
+{% capture title_section %}
+  <h1 class="mb-10 text-m-h2 font-serif italic md:text-h4">
+    {{ product.title | escape }}
+  </h1>
+
+  {% render 'price' product: product, classes: 'mb-10 text-m-sh1 uppercase md:text-sh5' %}
+{% endcapture %}
+
+<product-section>
+  {% if slider_desktop_style == 'thumbnails' %}
+    <nav class="my-10 md:m-0 md:py-10 md:bg-beige" role="navigation" aria-label="breadcrumbs">
+      <div class="page-width">
+        {% render 'breadcrumbs' breadcrumbs_only: true %}
+      </div>
+    </nav>
+  {% endif %}
+
+  <div class="page-width">
+    <div class="product md:grid{% if slider_desktop_style == 'thumbnails' %} mt-20 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-40 lg:grid-cols-[minmax(0,1fr)_455px] lg:gap-90{% else %} md:grid-cols-[minmax(0,1fr)_365px] md:gap-40 xxxl:grid-cols-[minmax(0,0.65fr)_minmax(0,0.35fr)]{% endif %}">
+      <a class="skip-to-content-link button visually-hidden" href="#ProductInfo-{{ section.id }}">
+        {{ "accessibility.skip_to_product_info" | t }}
+      </a>
+
+      {% if mobile_title_position == 'above' %}
+        <div class="my-20 md:hidden">
+          {{ title_section }}
+        </div>
+      {% endif %}
+
+      <div class="-mx-20 px-20 relative overflow-hidden md:m-0 md:p-0 md:overflow-visible">
+        <product-slider
+          class="
+            sticky-bar flex
+            {% if slider_desktop_style == 'thumbnails' and product.media.size > 1 %} lg:grid lg:grid-cols-[minmax(0,0.2fr)_minmax(0,1fr)] lg:gap-20 xl:grid-cols-[125px_minmax(0,1fr)]{% else %} block{% endif %}
+            {% if slider_mobile_style == 'center' %} px-15 md:p-0{% endif %}
+          "
+          data-desktop-style="{{ slider_desktop_style }}"
+          data-mobile-style="{{ slider_mobile_style }}"
+        >
+          {% if slider_desktop_style == 'thumbnails' and product.media.size > 1 %}
+            <div class="relative hidden lg:block">
+              <ul class="product-thumbs swiper w-full inset md:overflow-hidden" style="position: absolute" role="list">
+                <div class="swiper-wrapper">
+                  {% for media in product.media %}
+                    {%- liquid
+                      assign prioritize_loading = false
+
+                      if forloop.index < 3
+                        assign prioritize_loading = true
+                      endif
+                    -%}
+                    <li role="listitem" class="swiper-slide group/thumb cursor-pointer" aria-label="Product Thumbnail {{ forloop.index }}" style="height: auto; aspect-ratio: 3 / 4;" data-media-id="thumbs-{{ section.id }}-{{ media.id }}">
+                      <div class="aspect-product overflow-hidden relative border-1 border-transparent transition-colors group-[.swiper-slide-thumb-active]/thumb:border-black">
+                        {% render 'image'
+                          image: media,
+                          classes: 'size-full inset object-cover',
+                          sizes: '300x',
+                          include_placeholder: true,
+                          placeholder_name: 'product-1',
+                          src_set_type: 'thumbnail',
+                          prioritize_loading: prioritize_loading
+                        %}
+
+                        {% if media.media_type == 'video' %}
+                          <span class="inset flex justify-center items-center bg-black/5 text-white [&_svg]:w-40 [&_svg]:h-auto">{% render 'icon' icon: 'play' %}</span>
+                        {% endif %}
+                      </div>
+                    </li>
+                  {% endfor %}
+                </div>
+              </ul>
+            </div>
+          {% endif %}
+          <ul class="product-slider product-slider-{{ section.id }} swiper w-full md:overflow-hidden" role="list">
+            <div class="swiper-wrapper{% if slider_desktop_style == 'grid' %} md:grid md:grid-cols-2 md:gap-[8px]{% endif %}">
+              {% for media in product.media %}
+                {% if media.media_type == "image" %}
+                  {% assign image_variants = product.images | where: 'src', media.src | first %}
+                {% endif %}
+                {%- liquid
+                  assign image_zoom = false
+                  assign prioritize_loading = false
+                  assign image_ratio = 'aspect-product'
+
+                  if forloop.index < 3
+                    assign prioritize_loading = true
+                  endif
+
+                  if product.type == 'Gift Card'
+                    assign image_ratio = 'aspect-square'
+                  endif
+                -%}
+                <li role="listitem" aria-label="Product Main Image {{ forloop.index }}" data-initial-slide="{% if product.selected_or_first_available_variant.image == media %}true{% else %}false{% endif %}" data-media-index="{{ forloop.index0 }}" class="swiper-slide relative" data-media-id="{{ section.id }}-{{ media.id }}" {% if media.media_type == "image" %}data-image-variants="{{ image_variants.variants | map: 'id' | join: "," }}"{% endif %}>
+                  {% if section.settings.zoom_type == 'hover' and media.media_type != 'video' %}<image-zoom> {% assign image_zoom = true %}{% endif %}
+                  <div class="group/image overflow-hidden relative {{ image_ratio }}">
+                    {% if media.media_type == 'video' %}
+                      {{ media | video_tag: autoplay: true, loop: true, muted: true, controls: false, class: 'size-full inset object-cover', image_size: '800x' }}
+                    {% else %}
+                      {% render 'image'
+                        image: media,
+                        classes: 'size-full inset object-cover',
+                        sizes: '(min-width: 769px) 60vw, 100vw',
+                        include_placeholder: true,
+                        placeholder_name: 'product-1',
+                        src_set_type: 'full-width',
+                        prioritize_loading: prioritize_loading,
+                        image_zoom: image_zoom
+                      %}
+                    {% endif %}
+
+                    {% if section.settings.zoom_type == 'lightbox' and product.type != 'Gift Card' %}
+                      <button class="absolute left-10 bottom-10 opacity-0 transition-opacity text-white group-hover/image:opacity-100" data-open-zoom data-index="{{ forloop.index0 }}">
+                        {% render 'icon' icon: 'expand' %}
+                      </button>
+                    {% endif %}
+                  </div>
+                  {% if section.settings.zoom_type == 'hover' %}</image-zoom>{% endif %}
+                </li>
+              {% endfor %}
+            </div>
+            <div
+              class="
+                absolute z-20
+                {% if slider_desktop_style == 'grid' %} md:hidden{% else %} lg:hidden{% endif %}
+                {% if slider_mobile_style == 'center' %} bottom-20 left-half -translate-x-half{% else %} bottom-13 left-13{% endif %}
+              "
+            >
+              <div class="swiper-pagination"></div>
+            </div>
+          </ul>
+
+        </product-slider>
+        <div class="absolute z-20 md:hidden{% if slider_mobile_style == 'center' %} top-10 left-0{% else %} top-13 left-13{% endif %}">
+          {% render 'product-badges' prod: product %}
+        </div>
+      </div>
+
+      <div id="ProductInfo-{{ section.id }}" class="">
+        {% assign product_form_id = 'product-form-' | append: section.id %}
+
+        {% if slider_desktop_style == 'grid' %}
+          <div class="mb-10 hidden md:block">
+            {% render 'breadcrumbs' breadcrumbs_only: true %}
+          </div>
+        {% endif %}
+
+        <div class="sticky-bar w-full pt-20">
+          <div class="mb-20 hidden md:block">
+            {% render 'product-badges' prod: product %}
+          </div>
+
+          <div class="mb-30 md:mb-40{% if mobile_title_position == 'above' %} hidden md:block{% endif %}">
+            {{ title_section }}
+          </div>
+
+          {% if product.description != blank and description_position == 'above' %}
+            <div class="rte mt-40 mb-30 text-body-4 hidden md:block">
+              {{ product.description }}
+            </div>
+          {% endif %}
+
+          {% render 'product-form' prod: product, product_form_id: product_form_id, change_url: true %}
+
+          {% if section.settings.extra_text != blank %}
+            <p class="mt-10 text-caption font-serif italic text-center">{{ section.settings.extra_text }}</p>
+          {% endif %}
+
+          <div class="mt-50">
+            {% if product.description != blank %}
+              <div class="rte mb-30 text-m-body-2 md:text-body-4{% unless description_position == 'below' %} md:hidden{% endunless %}">
+                {{ product.description }}
+              </div>
+            {% endif %}
+
+            {% if slider_desktop_style == 'grid' or mobile_title_position == 'above' %}
+              <div class="mb-30 block md:hidden">
+                {% render 'breadcrumbs' breadcrumbs_only: true, change_url: true %}
+              </div>
+            {% endif %}
+
+            {% if section.blocks.size > 0 %}
+              <div class="mt-40 border-t-1 border-cream md:mt-30">
+                {% for block in section.blocks %}
+                  <dropdown-item {{ block.shopify_attributes }}>
+                    <div class="group/dropdown border-b-1 border-cream" data-dropdown>
+                      <button class="w-full py-20 flex justify-between text-caption font-serif" data-dropdown-toggle>
+                        {{ block.settings.title }}
+                        <span class="rotate-90 transition-transform group-[.active]/dropdown:rotate-[270deg]">
+                          {% render 'icon' icon: 'caret' %}
+                        </span>
+                      </button>
+                      <div class="hidden group-[.active]/dropdown:block" aria-hidden="true" data-dropdown-content>
+                        <div class="rte pb-20 text-m-body-2 md:text-body-4">{{ block.settings.text }}</div>
+                      </div>
+                    </div>
+                  </dropdown-item>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            {% if section.settings.value_props != blank %}
+              <div class="my-30 px-15 border-1 border-cream [&_p]:py-10 [&_p]:text-body-3 [&_p]:border-b-1 [&_p:last-child]:border-0 [&_p]:border-cream">{{ section.settings.value_props }}</div>
+            {% endif %}
+
+            {% if section.settings.show_sharing %}
+              {% render 'social-sharing' url: product_url, image: product.featured_image %}
+            {% endif %}
+
+            {% if section.settings.product_upsells != blank %}
+              {% assign upsell_count = section.settings.upsell_count | times: 1.0 | round %}
+              <div class="mt-90">
+                {% if section.settings.upsell_title != blank %}
+                  <p class="mb-20 text-sh2 uppercase">{{ section.settings.upsell_title }}</p>
+                  <div class="{% if upsell_count == 2 %} grid grid-cols-2 gap-20{% endif %}">
+                    {% for current_product in section.settings.product_upsells limit: upsell_count %}
+                      {% liquid
+                        assign size = 'small'
+                        if upsell_count == 1
+                          assign size = 'large'
+                        endif
+                      %}
+                      {% render 'product-upsell' prod: current_product, size: size %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  {% render 'product-bar' prod: product %}
+
+  {% if section.settings.zoom_type == "lightbox" %}
+    {% render 'product-lightbox' %}
+  {% endif %}
+</product-section>
+
+<style>
+  @media screen and (max-width: 767px) {
+    product-section {
+      overflow: hidden;
+    }
+
+    .product-slider-{{ section.id }} {
+      overflow: visible;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    function isIE() {
+      const ua = window.navigator.userAgent;
+      const msie = ua.indexOf('MSIE ');
+      const trident = ua.indexOf('Trident/');
+
+      return (msie > 0 || trident > 0);
+    }
+
+    if (!isIE()) return;
+    const hiddenInput = document.querySelector('#{{ product_form_id }} input[name="id"]');
+    const noScriptInputWrapper = document.createElement('div');
+    const variantSwitcher = document.querySelector('variant-radios[data-section="{{ section.id }}"]') || document.querySelector('variant-selects[data-section="{{ section.id }}"]');
+    noScriptInputWrapper.innerHTML = document.querySelector('.product-form__noscript-wrapper-{{ section.id }}').textContent;
+    variantSwitcher.outerHTML = noScriptInputWrapper.outerHTML;
+
+    document.querySelector('#Variants-{{ section.id }}').addEventListener('change', function(event) {
+      hiddenInput.value = event.currentTarget.value;
+    });
+
+    // Function to remove unnecessary aria attributes
+    function removeAriaAttributes() {
+      document.querySelectorAll('.swiper [aria-live], .swiper [aria-atomic]').forEach((element) => {
+        element.removeAttribute('aria-live');
+        element.removeAttribute('aria-atomic');
+      });
+    }
+    
+    // Run the function to clean existing elements
+    removeAriaAttributes();
+    
+    // Observe changes and clean dynamically added elements
+    const observer = new MutationObserver(() => {
+      removeAriaAttributes();
+    });
+    
+    // Start observing the Swiper container for changes
+    observer.observe(document.querySelector('.swiper'), {
+      childList: true,
+      subtree: true,
+    });
+  });
+</script>
+
+{% liquid
+  if product.selected_or_first_available_variant.featured_media
+    assign seo_media = product.selected_or_first_available_variant.featured_media
+  else
+    assign seo_media = product.featured_media
+  endif
+%}
+
+<script type="application/ld+json">
+  {{ product | structured_data }}
+</script>
+
+{% schema %}
+  {
+    "name": "Product",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Config"
+      },
+      {
+        "type": "select",
+        "id": "description_position",
+        "options": [
+          { "value": "above", "label": "Above" },
+          { "value": "below", "label": "Below" }
+        ],
+        "default": "above",
+        "label": "Description Position",
+        "info": "This applies to desktop only."
+      },
+      {
+        "type": "select",
+        "id": "mobile_title_position",
+        "options": [
+          { "value": "above", "label": "Above" },
+          { "value": "below", "label": "Below" }
+        ],
+        "default": "below",
+        "label": "Mobile Title Position"
+      },
+      {
+        "type": "select",
+        "id": "zoom_type",
+        "label": "Zoom Type",
+        "options": [
+          {"label": "Lightbox", "value": "lightbox"},
+          {"label": "Hover", "value": "hover"},
+          {"label": "None", "value": "none"}
+        ],
+        "default": "lightbox"
+      },
+      {
+        "type": "header",
+        "content": "Slider"
+      },
+      {
+        "type": "select",
+        "id": "slider_style",
+        "options": [
+          { "value": "grid", "label": "Grid" },
+          { "value": "thumbnails", "label": "Thumbnails" }
+        ],
+        "default": "grid",
+        "label": "Desktop Slider Style"
+      },
+      {
+        "type": "select",
+        "id": "mobile_slider_style",
+        "options": [
+          { "value": "center", "label": "Centered" },
+          { "value": "left", "label": "Left Aligned" }
+        ],
+        "default": "center",
+        "label": "Mobile Slider Style"
+      },
+      {
+        "type": "header",
+        "content": "Content"
+      },
+      {
+        "type": "text",
+        "id": "extra_text",
+        "label": "Extra Text"
+      },
+      {
+        "type": "richtext",
+        "id": "value_props",
+        "label": "Value Props"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_sharing",
+        "label": "Show Share Button"
+      },
+      {
+        "type": "header",
+        "content": "Upsells"
+      },
+      {
+        "type": "text",
+        "id": "upsell_title",
+        "label": "Upsell Title"
+      },
+      {
+        "type": "product_list",
+        "id": "product_upsells",
+        "label": "Product Upsells"
+      },
+      {
+        "type": "select",
+        "id": "upsell_count",
+        "options": [
+          { "value": "1", "label": "1" },
+          { "value": "2", "label": "2" }
+        ],
+        "default": "2",
+        "label": "Upsell Count"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "dropdown",
+        "name": "Dropdown",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

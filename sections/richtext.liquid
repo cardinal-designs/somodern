@@ -1,0 +1,64 @@
+{% assign bg_color = section.settings.background_color %}
+
+<div class="{{ section.settings.content_color }} {% if bg_color != blank and bg_color != 'rgba(0,0,0,0)' %}py-60 md:py-100" style="background-color: {{ bg_color }}"{% else %}my-60 md:my-100{% endif %}">
+  <div class="page-width">
+    <div class="max-w-custom w-full mx-auto flex flex-col gap-20 text-center" style="--width: {{ section.settings.content_width }}px;">
+      {% content_for 'blocks' %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Richtext",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Config"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#EBF1E6"
+      },
+      {
+        "type": "select",
+        "id": "content_color",
+        "options": [
+          { "value": "text-white", "label": "Light" },
+          { "value": "text-text", "label": "Dark" }
+        ],
+        "default": "text-text",
+        "label": "Content Color"
+      },
+      {
+        "type": "number",
+        "id": "content_width",
+        "label": "Content Width",
+        "default": 660
+      }
+    ],
+    "blocks": [{ "type": "@theme" }],
+    "presets": [
+      {
+        "name": "Richtext",
+        "category": "Content",
+        "blocks": [
+          {
+            "type": "subtitle"
+          },
+          {
+            "type": "title"
+          },
+          {
+            "type": "text"
+          },
+          {
+            "type": "button"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

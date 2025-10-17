@@ -1,0 +1,106 @@
+{% assign bg_color = section.settings.background_color %}
+
+{% capture blocks %}
+  {% for block in section.blocks %}
+    <div class="w-150 h-30 flex justify-center items-center gap-10 relative flex-shrink-0 md:w-[190px] md:h-40">
+      {% if block.settings.image != blank %}
+        {% render 'image'
+          image: block.settings.image,
+          classes: 'h-auto w-auto',
+          sizes: '250x',
+          placeholder_name: 'image',
+          src_set_type: 'grid'
+        %}
+      {% else %}
+        {% render 'icon' icon: 'logo' %}
+      {% endif %}
+    </div>
+  {% endfor %}
+{% endcapture %}
+
+<press-marquee>
+  <div class="press-marquee overflow-hidden{% if bg_color != blank and bg_color != 'rgba(0,0,0,0)' %} py-20 md:py-50" style="background-color: {{ bg_color }}"{% else %} my-20 md:my-50{% endif %}">
+    {% if section.settings.title != blank %}
+      <div class="page-width">
+        <h2 class="mb-40 text-cta uppercase text-center">{{ section.settings.title }}</h2>
+      </div>
+    {% endif %}
+
+    <div class="still w-fit mx-auto flex justify-center items-center gap-20">
+      {{ blocks }}
+    </div>
+    <div class="marquee hidden">
+      <div class="flex justify-center items-center shrink-0 overflow-x-hidden"> 
+        <div class="flex items-center shrink-0 whitespace-nowrap animate-marquee">
+          {{ blocks }}
+        </div>
+        <div class="flex items-center shrink-0 whitespace-nowrap animate-marquee">
+          {{ blocks }}
+        </div>
+        <div class="flex items-center shrink-0 whitespace-nowrap animate-marquee">
+          {{ blocks }}
+        </div>
+      </div>
+    </div>
+  </div>
+</press-marquee>
+
+{% schema %}
+  {
+    "name": "Press Marquee",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Config"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#F2F1E9"
+      },
+      {
+        "type": "header",
+        "content": "Content"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "block",
+        "name": "Block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Press Marquee",
+        "category": "Banners",
+        "blocks": [
+          {
+            "type": "block"
+          },
+          {
+            "type": "block"
+          },
+          {
+            "type": "block"
+          },
+          {
+            "type": "block"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

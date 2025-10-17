@@ -1,0 +1,160 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "richtext_g6mGiK": {
+      "type": "richtext",
+      "blocks": {
+        "title_bQTmbN": {
+          "type": "title",
+          "settings": {
+            "title": "Spring 2023",
+            "font_size": "h1",
+            "mobile_font_size": "h1",
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
+        "text_amJUKm": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Discover our latest arrivals, curated with care and precision, offering a blend of style and comfort for the adventurous individual. A collection designed to elevate your wardrobe effortlessly.</p>",
+            "font_size": "regular",
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        }
+      },
+      "block_order": [
+        "title_bQTmbN",
+        "text_amJUKm"
+      ],
+      "settings": {
+        "background_color": "rgba(0,0,0,0)",
+        "content_width": 630
+      }
+    },
+    "grid_Pkgt4c": {
+      "type": "grid",
+      "blocks": {
+        "grid_item_r4LngY": {
+          "type": "_grid-item",
+          "settings": {
+            "image": "shopify://shop_images/Image_-_2024-06-09T095250.200.jpg",
+            "add_overlay": true,
+            "link": "",
+            "content_position": "middle_center",
+            "content_color": "text-white"
+          }
+        },
+        "grid_item_kJXLf9": {
+          "type": "_grid-item",
+          "settings": {
+            "image": "shopify://shop_images/Image_-_2024-06-09T095253.327.jpg",
+            "add_overlay": true,
+            "link": "",
+            "content_position": "middle_center",
+            "content_color": "text-white"
+          }
+        },
+        "grid_item_gzD63g": {
+          "type": "_grid-item",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_61.jpg",
+            "add_overlay": true,
+            "link": "",
+            "content_position": "middle_center",
+            "content_color": "text-white"
+          }
+        },
+        "grid_item_MD98K4": {
+          "type": "_grid-item",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_61.jpg",
+            "add_overlay": true,
+            "link": "",
+            "content_position": "middle_center",
+            "content_color": "text-white"
+          }
+        },
+        "grid_item_n88Tiy": {
+          "type": "_grid-item",
+          "settings": {
+            "image": "shopify://shop_images/Image_-_2024-06-09T095250.200.jpg",
+            "add_overlay": true,
+            "link": "",
+            "content_position": "middle_center",
+            "content_color": "text-white"
+          }
+        },
+        "grid_item_bJngCj": {
+          "type": "_grid-item",
+          "settings": {
+            "image": "shopify://shop_images/Image_-_2024-06-09T095253.327.jpg",
+            "add_overlay": true,
+            "link": "",
+            "content_position": "middle_center",
+            "content_color": "text-white"
+          }
+        },
+        "grid_item_N4NNDc": {
+          "type": "_grid-item",
+          "settings": {
+            "image": "shopify://shop_images/Image_-_2024-06-09T095250.200.jpg",
+            "add_overlay": true,
+            "link": "",
+            "content_position": "middle_center",
+            "content_color": "text-white"
+          }
+        },
+        "grid_item_BCXYzE": {
+          "type": "_grid-item",
+          "settings": {
+            "image": "shopify://shop_images/Image_-_2024-06-09T095253.327.jpg",
+            "add_overlay": true,
+            "link": "",
+            "content_position": "middle_center",
+            "content_color": "text-white"
+          }
+        },
+        "grid_item_Fg9PaM": {
+          "type": "_grid-item",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_61.jpg",
+            "add_overlay": true,
+            "link": "",
+            "content_position": "middle_center",
+            "content_color": "text-white"
+          }
+        }
+      },
+      "block_order": [
+        "grid_item_r4LngY",
+        "grid_item_kJXLf9",
+        "grid_item_gzD63g",
+        "grid_item_MD98K4",
+        "grid_item_n88Tiy",
+        "grid_item_bJngCj",
+        "grid_item_N4NNDc",
+        "grid_item_BCXYzE",
+        "grid_item_Fg9PaM"
+      ],
+      "settings": {
+        "image_ratio": "tall",
+        "desktop_columns": "3",
+        "less_padding": true
+      }
+    }
+  },
+  "order": [
+    "richtext_g6mGiK",
+    "grid_Pkgt4c"
+  ]
+}

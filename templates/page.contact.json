@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "form": {
+      "type": "main-contact",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Image_-_2024-06-10T131341.912.jpg",
+        "hide_image_mobile": false,
+        "title": "Contact Us",
+        "text": "<p>Fill out the form below or contact us directly at <a href=\"mailto:hello@ohaei.com\" title=\"mailto:hello@ohaei.com\">hello@ohaei.com<\/a><\/p>"
+      }
+    }
+  },
+  "order": [
+    "form"
+  ]
+}

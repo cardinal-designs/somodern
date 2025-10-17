@@ -1,0 +1,184 @@
+<div class="login {% if section.settings.image != blank %} flex flex-col-reverse md:grid md:grid-cols-[0.6fr_0.4fr] md:items-center{% endif %}">
+  {% if section.settings.image != blank %}
+    <div class="pb-full relative overflow-hidden">
+      {% render 'image'
+        image: section.settings.image,
+        classes: 'size-full inset object-cover',
+        sizes: '(min-width: 767px) 65vw, 100vw',
+        src_set_type: 'full-width',
+        prioritize_loading: true
+      %}
+    </div>
+  {% endif %}
+  <div class="max-w-custom w-full mx-auto mt-40 mb-60 px-20 md:px-40 md:my-100" style="--width: 600px;">
+    <div class="max-w-custom mx-auto w-full" style="--width: 435px;">
+      <h1 class="mb-40 text-m-h1 font-serif italic text-center md:mb-60 md:text-h1" data-login-title>Log In</h1>
+
+      <div id="recover">
+        <p class="max-w-custom mx-auto -mt-30 mb-30 text-m-body-2 text-center md:text-body-3">Enter your email and we will send your login details to the email on file.</p>
+        
+        {% form 'recover_customer_password' %}
+          {% assign recover_success = form.posted_successfully? %}
+          <div class="mb-30">
+            <label class="field__label" for="RecoverEmail">Email</label>
+            <input type="email"
+              class="field__input"
+              value=""
+              name="email"
+              id="RecoverEmail"
+              autocorrect="off"
+              autocapitalize="off"
+              autocomplete="email"
+              {% if form.errors %}
+                aria-invalid="true"
+                aria-describedby="RecoverEmail-email-error"
+                autofocus
+              {% endif %}
+              placeholder="Email"
+            >
+            
+            {% if form.errors %}
+              <div class="mt-10 text-body-2 text-error">{{ form.errors | default_errors }}</div>
+            {% endif %}
+          </div>
+
+          <button class="button w-full">Submit</button>
+
+          <div class="mt-15 text-center">
+            {% render 'text-link' label: 'Back to Login', link: '#login', classes: 'forgot-password-cancel' %}
+          </div>
+        {% endform %}
+      </div>
+
+      <div class="customer-gate__container" id="login">
+
+        {% if recover_success == true %}
+          <p class="mb-20 text-body-3">An email will be sent to you shortly to reset.</p>
+        {% endif %}
+
+        {% form 'customer_login', novalidate: 'novalidate' %}
+        
+          <div class="mb-30">  
+            <label class="field__label" for="CustomerEmail">Email</label>      
+            <input
+              type="email"
+              class="field__input"
+              name="customer[email]"
+              id="CustomerEmail"
+              autocomplete="email"
+              autocorrect="off"
+              autocapitalize="off"
+              {% if form.errors contains 'form' %}
+                aria-invalid="true"
+              {% endif %}
+              placeholder="{{ 'customer.login_page.email' | t }}"
+            >
+          </div>
+
+          {% if form.password_needed %}
+            <div class="mb-30">         
+              <label class="field__label" for="CustomerPassword">Password</label> 
+              <input
+                type="password"
+                class="field__input"
+                value=""
+                name="customer[password]"
+                id="CustomerPassword"
+                autocomplete="current-password"
+                {% if form.errors contains 'form' %}
+                  aria-invalid="true"
+                {% endif %}
+                placeholder="{{ 'customer.login_page.password' | t }}"
+              >
+
+              {% if form.errors %}
+                <div class="mt-10 text-body-1 text-error">{{ form.errors | default_errors }}</div>
+              {% endif %}
+            </div>
+
+          {% endif %}
+
+          <button class="button w-full">Login</button>
+
+          <div class="mt-15 flex justify-between gap-20">
+            {% render 'text-link' label: 'Create Account', link: routes.account_register_url %}
+            {% render 'text-link' label: 'Forgot Password?', link: '#recover', classes: 'forgot-password' %}
+          </div>
+          
+        {% endform %}
+      </div>
+
+    </div>
+
+
+  </div>
+</div>
+
+<style>
+  {% if section.settings.image != blank %}
+    .header {
+      color: black;
+    }
+
+    .header-logo {
+      opacity: 1;
+    }
+
+    .header-logo-transparent {
+      opacity: 0;
+    }
+
+    @media screen and (max-width: 767px) {
+      .header {
+        border-color: #F8F7F3;
+      }
+      
+      #MainContent {
+        margin-top: 0;
+      }
+    }
+  {% endif %}
+
+  /* Formatting */
+  #recover,
+  #login {
+    scroll-margin-top: 500px;
+  }
+
+  #recover {
+    display: none;
+  }
+
+  #recover:target {
+    display: block;
+  }
+
+  #recover:target + #login {
+    display: none;
+  }
+
+  #login:target {
+    display: block;
+  }
+
+  #rc_login {
+    display: none !important;
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Login",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      }
+    ]
+  }
+{% endschema %}

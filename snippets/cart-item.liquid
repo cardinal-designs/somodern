@@ -1,0 +1,172 @@
+<div class="cart-item">
+  <div class="flex gap-20 relative">
+    <a href="{{ item.product.url }}" class="w-80 flex-shrink-0">
+      {% render 'image'
+        image: item.image,
+        classes: 'w-full aspect-tall object-cover',
+        sizes: '200px',
+        include_placeholder: true,
+        placeholder_name: 'product-1',
+        fallback_alt: item.product.title,
+        src_set_type: 'thumbnail'
+      %}
+    </a>
+
+    <div class="w-full flex flex-col justify-between gap-10">
+      <div>
+        <a href="{{ item.product.url }}">
+          <div class="mb-5 text-link-md font-serif">{{ item.product.title | escape }}</div>
+        </a>
+
+        {% if item.product.has_only_default_variant == false or item.properties.size != 0 or item.selling_plan_allocation != nil %}
+          <div class="text-body-4">
+            {% if item.product.has_only_default_variant == false %}
+              {% for option in item.options_with_values %}
+                <span>
+                  {{ option.value }}{% unless forloop.last %},{% endunless %}
+                </span>
+              {% endfor %}
+            {% endif %}
+
+            {% for property in item.properties %}
+              {% assign property_first_char = property.first | slice: 0 %}
+              {% if property.last != blank and property_first_char != '_' %}
+                <p class="text-body-4">
+                  {{ property.first }}:
+                  {% if property.last contains '/uploads/' %}
+                    <a href="{{ property.last }}" target="_blank">
+                      {{ property.last | split: '/' | last }}
+                    </a>
+                  {% else %}
+                    {{ property.last }}
+                  {% endif %}
+                </p>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="flex justify-between items-center gap-20">
+        <p class="price flex gap-5 flex-wrap text-link-md font-serif">
+          {{ item.final_price | money }}
+          {% if item.original_price > item.final_price %}
+            <span class="opacity-50 line-through">{{ item.original_price | money }}</span>
+          {% elsif item.product.compare_at_price > item.product.price %}
+            <span class="opacity-50 line-through">{{ item.product.compare_at_price | money }}</span>
+          {% endif %}
+        </p>
+        <div class="">
+          <div class="mt-10 flex items-center gap-10">
+            {% liquid
+              assign max_quantity = 20
+              assign item_variants = item.product.variants
+              assign item_variant = item_variants | where: 'id', item.id | first
+
+              if item_variant.inventory_quantity < 20
+                assign max_quantity = item_variant.inventory_quantity
+              endif
+            %}
+            
+            {% if settings.quantity_selector == 'standard' %}
+              <quantity-input class="quantity">
+                <label class="form__label visually-hidden" for="Quantity-{{ section.id }}">Quantity</label>
+                <div class="w-[65px] h-25 flex border-1 border-black [&_svg]:w-[8px]">
+                  <button class="quantity__button w-1/3 pl-[3px] flex justify-center items-center no-js-hidden" name="minus" type="button">
+                    <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: product.title | escape }}</span>
+                    {% render 'icon' icon: 'minus' %}
+                  </button>
+                  <input
+                    class="quantity-input w-1/3 text-body-3 text-center bg-transparent"
+                    type="number"
+                    name="updates[]"
+                    id="Quantity-{{ section.id }}"
+                    min="0"
+                    value="{{ item.quantity }}"
+                    aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
+                    id="Quantity-{{ item.index | plus: 1 }}"
+                    data-index="{{ item.index | plus: 1 }}"
+                  >
+                  <button class="quantity__button w-1/3 pr-[3px] flex justify-center items-center no-js-hidden" name="plus" type="button">
+                    <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: product.title | escape }}</span>
+                    {% render 'icon' icon: 'plus' %}
+                  </button>
+                </div>
+              </quantity-input>
+            {% else %}
+              <quantity-dropdown class="w-50 block md:relative">
+                <label class="form__label visually-hidden" for="Quantity-{{ section_id }}">Quantity</label>
+                <dropdown-item data-is-overlay="true">
+                  <div class="quantity group/dropdown text-center" data-dropdown>
+                    <div class="relative">
+                      <input class="quantity-input w-50 pl-15 pr-10 text-body-3 text-left bg-transparent"
+                        type="number"
+                        name="updates[]"
+                        value="{{ item.quantity }}"
+                        min="0"
+                        aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
+                        id="Quantity-{{ item.index | plus: 1 }}"
+                        data-index="{{ item.index | plus: 1 }}"
+                      >
+                      <div class="absolute top-half right-10 -translate-y-half rotate-90">
+                        {% render 'icon' icon: 'caret' %}
+                      </div>
+                      <button class="inset" data-dropdown-toggle>
+                        <span class="hidden visually-hidden">Dropdown Toggle</span>
+                      </button>
+                    </div>
+                    <div
+                      class="
+                        w-full h-[330px] overflow-scroll fixed bottom-0 left-0 flex flex-col z-30
+                        bg-background shadow-dropdown opacity-0 invisible transition-visibility
+                        group-[.active]/dropdown:visible group-[.active]/dropdown:opacity-100
+                        md:h-auto md:max-h-[200px] md:py-10 md:absolute md:top-full md:bottom-auto md:-translate-y-px md:gap-5
+                      "
+                      aria-hidden="true"
+                      tabindex="0"
+                      data-dropdown-content
+                    >
+                      <div class="w-full p-20 sticky top-0 flex justify-between items-center text-body-3 bg-background border-b-1 border-mint z-20 md:hidden">
+                        Select Quantity
+                        <button class="py-5 pl-5" data-close>
+                          {% render 'icon' icon: 'close' %}
+                        </button>
+                      </div>
+                      {% for i in (1..max_quantity) %}
+                        <button class="group/number px-20 py-15 text-body-3 text-left border-b-1 border-mint md:py-0 md:border-0 md:text-center{% if i == item.quantity %} active{% endif %}" data-number="{{ i }}">
+                          <span class="opacity-50 transition-opacity group-[.active]/number:opacity-100">{{ i }}</span>
+                        </button>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </dropdown-item>
+              </quantity-dropdown>
+            {% endif %}
+
+            {% if is_cart %}
+              <cart-remove-button id="Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}">
+                <a
+                  href="{{ item.url_to_remove }}"
+                  class="text-body-4 underline opacity-50"
+                  aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
+                  Remove
+                </a>
+              </cart-remove-button>
+            {% else %}
+              <cart-drawer-remove-button id="Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}">
+                <a
+                  href="{{ item.url_to_remove }}"
+                  class="text-body-4 underline opacity-50"
+                  aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
+                  Remove
+                </a>
+              </cart-drawer-remove-button>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

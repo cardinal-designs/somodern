@@ -1,0 +1,203 @@
+{% liquid
+  assign paginate_by = 3
+  assign total_active_values = 0
+  
+  for filter in collection.filters
+    assign total_active_values = total_active_values | plus: filter.active_values.size
+  endfor
+%}
+
+{% render 'breadcrumbs' show_home: true %}
+
+<div class="page-width overflow-hidden">
+  {% if collection.image != blank %}
+    <header class="flex flex-col-reverse md:mb-30 md:grid md:grid-cols-[430px_1fr] md:items-center lg:gap-40">
+      <div class="py-30 md:py-40">
+        <h1 class="text-m-h1 font-serif md:text-h1" data-animate>{{ collection.title }}</h1>
+        {% if collection.description != blank %}
+          <div class="mt-20 text-m-body-2 md:mt-20 md:text-body-2" data-animate>{{ collection.description }}</div>
+        {% endif %}
+      </div>
+      <div class="h-0 -mx-20 pb-[55%] relative md:min-h-[360px] md:p-0 md:translate-x-50">
+        {% render 'image'
+          image: collection.image,
+          classes: 'size-full inset object-cover',
+          sizes: '(min-width: 767px) 75vw, 100vw',
+          src_set_type: 'full-width'
+        %}
+      </div>
+    </header>
+  {% else %}
+    <header class="max-w-custom my-30 md:mt-60 md:mb-40" style="--width: 630px;">
+      <h1 class="text-m-h1 font-serif md:text-h1" data-animate>{{ collection.title }}</h1>
+      {% if collection.description != blank %}
+        <div class="mt-20 text-m-body-2 md:mt-20 md:text-body-2" data-animate>{{ collection.description }}</div>
+      {% endif %}
+    </header>
+  {% endif %}
+
+  <span data-animate>
+    {% render 'filters' %}
+  </span>
+
+  <div id="product-grid" class="mb-50 mb:mb-80">
+    {% paginate collection.products by paginate_by %}
+      {% if collection.products.size == 0 %}
+        <div class="page-width mt-60 mb-150" data-id="{{ section.id }}">
+          <div class="loading-overlay"></div>
+          <div class="text-center">
+            <p class="mb-20 text-body-1">No products found.</p>
+            <a href="{{ collection.url }}" class="button">Clear Filters</a>
+          </div>
+        </div>
+      {% else %}
+        <div class="collection">
+          <div class="loading-overlay"></div>
+
+          <ul
+            class="
+              product-grid-container group/product-grid grid gap-x-20 gap-y-40 grid-flow-row-dense
+              data-[mobile='2']:grid-cols-2
+              data-[desktop='4']:md:grid-cols-4 data-[desktop='3']:md:grid-cols-3 md:gap-y-60
+            "
+            data-id="{{ section.id }}"
+            data-desktop="4"
+            data-mobile="2"
+          >
+            {% for product in collection.products %}
+              {% liquid
+                assign current_page0 = paginate.current_page | minus: 1
+                assign page_start = paginate_by | times: current_page0
+                assign product_index = forloop.index | plus: page_start
+
+                assign prioritize_loading = false
+                if forloop.index < 5
+                  assign prioritize_loading = true
+                endif
+              %}
+
+              {% if total_active_values == 0 %}
+                {% for block in section.blocks %}
+                  {% assign card_position = block.settings.card_position | abs %}
+                  {% if product_index == card_position and total_active_values == 0 %}
+                    <li class="product-grid-item col-span-full{% if block.settings.card_size == 'large' %} md:col-span-2{% else %} md:col-span-1{% endif %}" data-animate>
+                      {% render 'collection-card' block: block, prioritize_loading: prioritize_loading %}
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+
+              <li class="product-grid-item" data-animate>
+                {% render 'product-card' prod: product, prioritize_loading: prioritize_loading %}
+              </li> 
+            {% endfor %}
+          </ul>
+
+          {% render 'pagination', paginate: paginate, anchor: '', show_item_count: true, load_more: section.settings.pagination, target: '#product-grid' %}
+        </div>
+      {% endif %}
+    {% endpaginate %}
+  </div>
+  {% if collection.metafields.custom.description != blank %}
+    <div class="max-w-[660px] w-full mx-auto mb-60 text-body-4 text-center opacity-50 md:mb-70" data-animate>{{ collection.metafields.custom.description | metafield_tag }}</div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Collection",
+  "settings": [
+    {
+      "type": "select",
+      "id": "pagination",
+      "label": "Pagination style",
+      "options": [
+        {"label": "Load More", "value": "true"},
+        {"label": "Page numbers", "value": "false"}
+      ],
+      "default": "false"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "promo_card",
+      "name": "Promo Card",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Config" 
+        },
+        {
+          "type": "number",
+          "id": "card_position",
+          "label": "Card Position",
+          "default": 1,
+          "info": "Enter in a number." 
+        },
+        {
+          "type": "select",
+          "id": "card_size",
+          "options": [
+            { "value": "small", "label": "Small" },
+            { "value": "large", "label": "Large" }
+          ],
+          "default": "small",
+          "label": "Card Size"
+        },
+        {
+          "type": "header",
+          "content": "Media"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "checkbox",
+          "id": "add_overlay",
+          "label": "Add Overlay"
+        },
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "header",
+          "content": "Button"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "options": [
+            { "value": "button", "label": "Button" },
+            { "value": "text", "label": "Text" }
+          ],
+          "default": "text",
+          "label": "Button Style"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

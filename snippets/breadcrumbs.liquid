@@ -1,0 +1,59 @@
+{% assign current_template = template | split: '.' | first %}
+
+{% capture breadcrumbs_inner %}
+  <ol class="flex">
+    {% if show_home %}
+      <li class="text-body-4 opacity-50">
+        <a class="" href="{{ routes.root_url }}">Home</a> /&nbsp;
+      </li>
+    {% endif %}
+    {% case current_template %}
+      {% when 'product' %}
+        {% if settings.shop_all_link != collection.url and settings.shop_all_link != blank %}
+          <li class="text-body-4 opacity-50">
+            <a class="" href="{{ settings.shop_all_link }}">Shop All</a> /&nbsp;
+          </li>
+        {% endif %}
+        {% if collection.url %}
+          <li class="text-body-4 opacity-50">
+            <a class="" href="{{ collection.url }}">{{ collection.title }}</a> /&nbsp;
+          </li>
+        {% endif %}
+        <li class="text-body-4 opacity-50">
+          <span class="active" aria-current="page">{{ product.title }}</span>
+        </li>
+      {% when 'collection' and collection.handle %}
+        {% if settings.shop_all_link != collection.url and settings.shop_all_link != blank %}
+          <li class="text-body-4 opacity-50">
+            <a class="" href="{{ settings.shop_all_link }}">Shop All</a> /&nbsp;
+          </li>
+        {% endif %}
+        {% if current_tags %}
+          <li class="text-body-4 opacity-50">
+            <a class="" href="{{ collection.url }}">{{ collection.title }}</a> /&nbsp;
+          </li>
+          <li class="text-body-4 opacity-50">
+            <span class="active" aria-current="page">{{- current_tags | join: ' + ' -}}</span>
+          </li>
+        {% else %}
+          <li class="text-body-4 opacity-50">
+            <span class="active" aria-current="page">{{ collection.title }}</span>
+          </li>
+        {% endif %}
+      {% when 'search' %}
+        <li class="text-body-4 opacity-50">
+          <a class="" href="{{ routes.search_url }}">Search</a>
+        </li>
+    {% endcase %}
+  </ol>
+{% endcapture %}
+
+{% if breadcrumbs_only %}
+  {{ breadcrumbs_inner }}
+{% else %}
+  <nav class="py-10 bg-beige" role="navigation" aria-label="breadcrumbs">
+    <div class="page-width">
+      {{ breadcrumbs_inner }}
+    </div>
+  </nav>
+{% endif %}

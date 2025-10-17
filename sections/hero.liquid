@@ -1,0 +1,225 @@
+{% liquid
+  assign content_position = ''
+  case section.settings.content_position
+    when 'top_left'
+      assign content_position = 'top md:justify-start md:text-left'
+    when 'top_center'
+      assign content_position = 'top md:justify-center md:text-center'
+    when 'top_right'
+      assign content_position = 'top md:justify-end md:text-right'
+    when 'middle_left'
+      assign content_position = 'md:justify-start md:items-center md:text-left'
+    when 'middle_center'
+      assign content_position = 'md:justify-center md:items-center md:text-center'
+    when 'middle_right'
+      assign content_position = 'md:justify-end md:items-center md:text-right'
+    when 'bottom_left'
+      assign content_position = 'md:justify-start md:items-end md:text-left'
+    when 'bottom_center'
+      assign content_position = 'md:justify-center md:items-end md:text-center'
+    when 'bottom_right'
+      assign content_position = 'md:justify-end md:items-end md:text-right'
+  endcase
+
+  assign mobile_content_position = ''
+  case section.settings.mobile_content_position
+    when 'top_left'
+      assign mobile_content_position = 'top justify-start'
+    when 'top_center'
+      assign mobile_content_position = 'top justify-center text-center'
+    when 'top_right'
+      assign mobile_content_position = 'top justify-end text-right'
+    when 'middle_left'
+      assign mobile_content_position = 'justify-start items-center'
+    when 'middle_center'
+      assign mobile_content_position = 'justify-center items-center text-center'
+    when 'middle_right'
+      assign mobile_content_position = 'justify-end items-center text-right'
+    when 'bottom_left'
+      assign mobile_content_position = 'justify-start items-end'
+    when 'bottom_center'
+      assign mobile_content_position = 'justify-center items-end text-center'
+    when 'bottom_right'
+      assign mobile_content_position = 'justify-end items-end text-right'
+  endcase
+%}
+
+<div class="hero page-width h-[600px] flex relative overflow-hidden  {{ mobile_content_position }} {{ content_position }} md:h-[700px]">
+  <div>
+    {% if section.settings.media_type == 'image' %}
+      {% liquid
+        assign desktop_classes = 'size-full inset object-cover'
+        if section.settings.mobile_image != blank
+          assign desktop_classes = 'size-full inset object-cover hidden md:block'
+        endif
+
+        assign prioritize_loading = false
+        if section.index == 1
+          assign prioritize_loading = true
+        endif
+      %}
+      
+      {% render 'image'
+        image: section.settings.image,
+        classes: desktop_classes,
+        sizes: '100vw',
+        include_placeholder: true,
+        placeholder_name: 'lifestyle-2',
+        src_set_type: 'full-width',
+        prioritize_loading: prioritize_loading
+      %}
+
+      {% if section.settings.mobile_image != blank %}
+        {% render 'image'
+          image: section.settings.mobile_image,
+          classes: 'size-full inset object-cover md:hidden',
+          sizes: '100vw',
+          include_placeholder: true,
+          placeholder_name: 'lifestyle-2',
+          src_set_type: 'full-width',
+          prioritize_loading: true
+        %}
+      {% endif %}
+    {% else %}
+      {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, class: 'size-full inset object-cover', image_size: '1200x' }}
+    {% endif %}
+    
+    {% if section.settings.add_overlay != blank %}
+      <div class="inset bg-black/20"></div>
+    {% endif %}
+  </div>
+
+  <div
+    class="max-w-custom py-40 flex flex-col gap-20 relative {{ section.settings.content_color }} md:py-60"
+    style="--width: {{ section.settings.content_width }}px;"
+  >
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% style %}
+  .transparent-header #MainContent > .shopify-section:first-child .hero.top {
+    padding-top: var(--header-height);
+  }
+{% endstyle %}
+
+{% schema %}
+  {
+    "name": "Hero",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Config"
+      },
+      {
+        "type": "select",
+        "id": "content_position",
+        "options": [
+          { "value": "top_left", "label": "Top Left" },
+          { "value": "top_center", "label": "Top Center" },
+          { "value": "top_right", "label": "Top Right" },
+          { "value": "middle_left", "label": "Middle Left" },
+          { "value": "middle_center", "label": "Middle Center" },
+          { "value": "middle_right", "label": "Middle Right" },
+          { "value": "bottom_left", "label": "Bottom Left" },
+          { "value": "bottom_center", "label": "Bottom Center" },
+          { "value": "bottom_right", "label": "Bottom Right" }
+        ],
+        "default": "middle_center",
+        "label": "Content Position"
+      },
+      {
+        "type": "select",
+        "id": "mobile_content_position",
+        "options": [
+          { "value": "top_left", "label": "Top Left" },
+          { "value": "top_center", "label": "Top Center" },
+          { "value": "top_right", "label": "Top Right" },
+          { "value": "middle_left", "label": "Middle Left" },
+          { "value": "middle_center", "label": "Middle Center" },
+          { "value": "middle_right", "label": "Middle Right" },
+          { "value": "bottom_left", "label": "Bottom Left" },
+          { "value": "bottom_center", "label": "Bottom Center" },
+          { "value": "bottom_right", "label": "Bottom Right" }
+        ],
+        "default": "middle_center",
+        "label": "Mobile Content Position"
+      },
+      {
+        "type": "number",
+        "id": "content_width",
+        "label": "Content Width",
+        "default": 560
+      },
+      {
+        "type": "select",
+        "id": "content_color",
+        "options": [
+          { "value": "text-white", "label": "Light" },
+          { "value": "text-text", "label": "Dark" }
+        ],
+        "default": "text-white",
+        "label": "Content Color"
+      },
+      {
+        "type": "header",
+        "content": "Media"
+      },
+      {
+        "type": "select",
+        "id": "media_type",
+        "options": [
+          { "value": "image", "label": "Image" },
+          { "value": "video", "label": "Video" }
+        ],
+        "default": "image",
+        "label": "Media Type"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "visible_if": "{{ section.settings.media_type == 'image' }}"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_image",
+        "label": "Mobile Image",
+        "visible_if": "{{ section.settings.media_type == 'image' }}"
+      },
+      {
+        "type": "video",
+        "id": "video",
+        "label": "Video",
+        "visible_if": "{{ section.settings.media_type == 'video' }}"
+      },
+      {
+        "type": "checkbox",
+        "id": "add_overlay",
+        "label": "Add Overlay",
+        "default": true
+      }
+    ],
+    "blocks": [{ "type": "@theme" }],
+    "presets": [
+      {
+        "name": "Hero",
+        "category": "Banners",
+        "blocks": [
+          {
+            "type": "subtitle"
+          },
+          {
+            "type": "title"
+          },
+          {
+            "type": "text"
+          },
+          {
+            "type": "button"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

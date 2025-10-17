@@ -1,0 +1,126 @@
+<faq-section class="faq mt-60 mb-40 block md:mt-80 md:mb-100">
+  <div class="page-width">
+    <div class="max-w-custom w-full mb-50 mx-auto text-center" style="--width: 435px;">
+      <h1 class="mb-10 text-m-h1 font-serif italic md:mb-20 md:text-h1">{{ section.settings.title }}</h1>
+      {% if section.settings.text != blank %}
+        <div class="text-m-body-2 md:text-body-3">{{ section.settings.text }}</div>
+      {% endif %}
+    </div>
+  </div>
+
+  {% unless section.settings.hide_navigation %}
+    <div class="faq-navigation sticky-bar w-full px-20 overflow-x-scroll no-scrollbar bg-background border-b-1 border-mint md:px-40">
+      <div class="w-fit mx-auto flex justify-center gap-30">
+        {% for block in section.blocks %}
+          {% if block.type == 'header' %}
+            <button class="faq-link group/link py-13 block text-cta uppercase relative whitespace-nowrap" data-section="{{ block.settings.title | handleize }}">
+              {{ block.settings.title }}
+              <span class="absolute left-0 right-0 bottom-0 border-b-1 border-transparent transition-colors group-[.active]/link:border-black group-hover/link:border-black"></span>
+            </button>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endunless %}
+
+  <div class="page-width">
+    <div class="max-w-custom w-full mx-auto" style="--width: 1115px;">
+      {% assign is_first_faq = true %}
+
+      {% for block in section.blocks %}
+        {% if block.type == 'header' %}
+          <div class="faq-component" data-section="{{ block.settings.title | handleize }}" id="{{ block.settings.title | handleize }}">
+            <div class="pt-50 pb-20 text-m-h2 font-serif italic md:pt-80 md:pb-40 md:text-h2">{{ block.settings.title }}</div>
+        {% endif %}
+
+        {% if block.type == 'faq_item' %}
+          <dropdown-item {{ block.shopify_attributes }}>
+            <div class="group/dropdown border-b-1 border-mint{% if is_first_faq %} border-t-1{% endif %}" data-dropdown>
+              <button class="w-full py-20 flex justify-between items-center gap-20 text-left text-m-body-1 font-serif md:py-25 md:text-body-1" data-dropdown-toggle>
+                {{ block.settings.title }}
+                <span class="flex transition-transform group-[.active]/dropdown:rotate-180">
+                  {% render 'icon' icon: 'dropdown' %}
+                </span>
+              </button>
+              <div class="{% unless forloop.first %}hidden{% endunless %} group-[.active]/dropdown:block" aria-hidden="true" data-dropdown-content>
+                <div class="max-w-custom w-full pb-20 rte text-m-body-2 md:text-body-3" style="--width: 650px;">{{ block.settings.answer }}</div>
+              </div>
+            </div>
+          </dropdown-item>
+
+          {% assign is_first_faq = false %}
+
+          {% if section.blocks[forloop.index].type == 'header' %}
+            </div>
+            {% assign is_first_faq = true %}
+          {% endif %}
+        {% endif %}
+
+      {% endfor %}
+    </div>
+  </div>
+</faq-section>
+
+{% schema %}
+  {
+    "name": "FAQs",
+    "settings": [
+      {
+        "type": "header", 
+        "content": "Content"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Frequently Asked Questions"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text",
+        "default": "<p>Lorem ipsum dolor sit amet consectetur. Ornare amet arcu mattis ultrices turpis cras egestas lectus. At morbi nunc magna sed. Feugiat dictumst posuere urna amet porttitor integer nisi. Cras vel vulputate dui.</p>"
+      },
+      {
+        "type": "header", 
+        "content": "Config"
+      },
+      {
+        "type": "checkbox",
+        "id": "hide_navigation",
+        "label": "Hide Navigation Bar"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "header",
+        "name": "Header",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          }
+        ]
+      },
+      {
+        "type": "faq_item",
+        "name": "FAQ Item",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Question",
+            "default": "Lorem ipsum dolor sit amet consectetur adipiscing elit?"
+          },
+          {
+            "type": "richtext",
+            "id": "answer",
+            "label": "Answer",
+            "default": "<p>Lorem ipsum dolor sit amet consectetur. Ornare amet arcu mattis ultrices turpis cras egestas lectus. At morbi nunc magna sed. Feugiat dictumst posuere urna amet porttitor integer nisi. Cras vel vulputate dui.</p>"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

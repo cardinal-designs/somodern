@@ -1,0 +1,84 @@
+<article itemscope itemtype="http://schema.org/BlogPosting">
+  {% render 'featured-article' featured_article: article %}
+
+  <div class="article-template page-width mt-60 mb-80" itemscope itemtype="http://schema.org/BlogPosting">
+    <div class="text-editor max-w-custom mx-auto" style="--width: 800px;" itemprop="articleBody">
+      {{ article.content }}
+    </div>
+    <div class="h-[8px] w-[8px] mt-80 mx-auto rounded-full bg-black"></div>
+  </div>
+</article>
+
+{% if section.settings.featured_products != blank %}
+  <div class="page-width my-60 md:my-100">
+    <h2 class="mb-40 text-h4 font-serif italic text-center" data-animate>{{ section.settings.featured_products_title }}</h2>
+    <div class="grid grid-cols-2 gap-20 md:flex">
+      {% for product in section.settings.featured_products limit: 4 %}
+        <div class="md:basis-1/4" data-animate>
+          {% render 'product-card' prod: product %}
+        </div>
+      {% endfor %} 
+    </div>
+  </div>
+{% endif %}
+
+{% if section.settings.show_related_articles %}
+  {% if blog.previous_article or blog.next_article %}
+    <div class="page-width my-60 md:my-100">
+      <div class="max-w-custom w-full mx-auto" style="--width: 1115px;">
+        <h2 class="mb-40 text-h4 font-serif italic text-center" data-animate>{{ section.settings.related_articles_title }}</h2>
+        <div class="grid gap-30 md:grid-cols-2 md:gap-20" data-animate>
+          {% if blog.previous_article %}
+            {% render 'article-card' article: blog.previous_article %}
+          {% endif %}
+          {% if blog.next_article %}
+            {% render 'article-card' article: blog.next_article %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endif %}
+
+<script type="application/ld+json">
+  {{ article | structured_data }}
+</script>
+
+{% schema %}
+  {
+    "name": "Article",
+    "settings": [
+      {
+        "type": "header", 
+        "content": "Featured Products"
+      },
+      {
+        "type": "text",
+        "id": "featured_products_title",
+        "label": "Featured Products Title"
+      },
+      {
+        "type": "product_list",
+        "id": "featured_products",
+        "label": "Featured Products"
+      },
+      {
+        "type": "header", 
+        "content": "Related Articles"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_related_articles",
+        "label": "Show Related Articles Section",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "related_articles_title",
+        "label": "Related Articles Title",
+        "default": "Related Articles",
+        "visible_if": "{{ section.settings.show_related_articles == true }}"
+      }
+    ]
+  }
+{% endschema %}

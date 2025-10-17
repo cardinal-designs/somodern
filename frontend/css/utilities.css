@@ -1,0 +1,32 @@
+@layer utilities {
+  .inset {
+    @apply absolute top-0 right-0 bottom-0 left-0;
+  }
+
+  .rte {
+    @apply [&_ul]:pl-15 [&_strong]:font-medium [&_ul]:list-disc [&_a]:underline [&_p]:mb-20 [&_p:last-child]:mb-0;
+  }
+
+  .visually-hidden {
+    clip: rect(0 0 0 0);
+    @apply absolute overflow-hidden w-px h-px -m-px;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .skip-to-content-link:focus {
+    @apply z-top overflow-auto w-auto h-auto;
+    clip: rect(0 0 0 0);
+  }
+
+  .sticky-bar {
+    @apply sticky top-[var(--header-group-height)];
+  }
+}

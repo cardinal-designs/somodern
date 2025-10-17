@@ -1,0 +1,57 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header Group",
+  "sections": {
+    "announcement": {
+      "type": "announcement-bar",
+      "settings": {
+        "text": "Free Domestic and International Shipping",
+        "enable_country_selector": true
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "mega_menu_3BRjWk": {
+          "type": "mega_menu",
+          "settings": {
+            "title": "Shop",
+            "image_1": "shopify://shop_images/Image_-_2024-05-10T132849.587.jpg",
+            "title_1": "Spring 23",
+            "url_1": "shopify://collections/shop-all",
+            "image_2": "shopify://shop_images/Image_-_2024-05-10T132853.445.jpg",
+            "title_2": "Lookbook",
+            "url_2": "shopify://pages/lookbook"
+          }
+        }
+      },
+      "block_order": [
+        "mega_menu_3BRjWk"
+      ],
+      "settings": {
+        "menu": "main-menu",
+        "enable_search": true,
+        "logo_position": "center",
+        "logo": "shopify://shop_images/ohaei-logo.svg",
+        "logo_width": 125,
+        "mobile_logo_width": 110,
+        "transparent_logo": "shopify://shop_images/ohaei-logo-white.svg",
+        "enable_transparent_on_home": true,
+        "transparent_header_pages": "page.about, page.lookbook, page.contact, blog, article, register, login"
+      }
+    }
+  },
+  "order": [
+    "announcement",
+    "header"
+  ]
+}

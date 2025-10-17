@@ -1,0 +1,76 @@
+<div class="page-width my-40 md:my-60">
+  <a href="{{ section.settings.link }}" class="mb-30 block text-m-sh2 uppercase text-center md:mb-60 md:text-sh2" target="_blank">{{ section.settings.title }}</a>
+  <div class="grid grid-cols-2 gap-20{% if section.blocks.size == 5 %} md:grid-cols-5{% else %} md:grid-cols-4{% endif %}">
+    {% for block in section.blocks %}
+      <div class="aspect-tall relative overflow-hidden{% if forloop.index == 5 %} hidden md:block{% endif %}" data-animate {{ block.shopify_attributes }}>
+        {% render 'image'
+          image: block.settings.image,
+          classes: 'sizes-full inset object-cover',
+          sizes: '400x',
+          include_placeholder: true,
+          placeholder_name: 'collection-3',
+          src_set_type: 'grid'
+        %}
+        {% if section.settings.link != blank %}
+          <a href="{{ section.settings.link }}" class="inset" target="_blank"><span class="hidden visually-hidden">{{ section.settings.title }}</span></a>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Instagram",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "@handle"
+      },
+      {
+        "type": "url",
+        "id": "link",
+        "label": "Instagram Link"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "limit": 5,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Instagram",
+        "category": "Social",
+        "blocks": [
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          },
+          {
+            "type": "image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,126 @@
+<image-slider data-columns="{{ section.settings.desktop_columns }}">
+  <div class="my-60 block md:my-100">
+    <div class="page-width overflow-hidden">
+      <div class="mb-15 flex justify-between items-center gap-20 md:mb-30">
+        <h2 class="text-m-h3 font-serif italic md:text-h2" data-animate>{{ section.settings.title }}</h2>
+        <div class="swiper-buttons items-center gap-30{% if columns == '2' %} hidden md:flex{% else %} flex{% endif %}">
+          <button class="swiper-button swiper-button-prev rotate-180">
+            {% render 'icon' icon: 'arrow' %}
+          </button>
+          <button class="swiper-button swiper-button-next">
+            {% render 'icon' icon: 'arrow' %}
+          </button>
+        </div>
+      </div>
+      <div class="image-slider image-slider-{{ section.id }} group/slider overflow-visible">
+        <div class="swiper-wrapper group-[:not(.swiper-initialized)]/slider:overflow-hidden">
+          {% for block in section.blocks %}
+            <div class="swiper-slide" {{ block.shopify_attributes }}>
+              <div data-animate>
+                <div class="w-full aspect-tall overflow-hidden relative">
+                  {% render 'image'
+                    image: block.settings.image,
+                    classes: 'size-full inset object-cover',
+                    sizes: '(min-width: 767px) 50vw, 100vw',
+                    include_placeholder: true,
+                    placeholder_name: 'collection-1',
+                    src_set_type: 'grid'
+                  %}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</image-slider>
+
+<style>
+  /* Style before slider has loaded */
+  .image-slider-{{ section.id }}:not(.swiper-initialized) .swiper-wrapper {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.desktop_columns }}, 1fr);
+    grid-template-rows: 1fr;
+    grid-auto-rows: 0;
+    gap: 20px;
+  }
+
+  @media screen and (max-width: 767px) {
+    .image-slider-{{ section.id }}:not(.swiper-initialized) .swiper-wrapper {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Image Slider",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Config"
+      },
+      {
+        "type": "select",
+        "id": "desktop_columns",
+        "options": [
+          { "value": "2", "label": "2" },
+          { "value": "3", "label": "3" },
+          { "value": "4", "label": "4" }
+        ],
+        "default": "3",
+        "label": "Desktop Columns"
+      },
+      {
+        "type": "header",
+        "content": "Content"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Lorem Ipsum Dolor"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "block",
+        "name": "Block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image Slider",
+        "category": "Storytelling",
+        "blocks": [
+          {
+            "type": "block"
+          },
+          {
+            "type": "block"
+          },
+          {
+            "type": "block"
+          },
+          {
+            "type": "block"
+          },
+          {
+            "type": "block"
+          },
+          {
+            "type": "block"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

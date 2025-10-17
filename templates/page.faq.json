@@ -1,0 +1,216 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-faq",
+      "blocks": {
+        "header_qbLBpq": {
+          "type": "header",
+          "settings": {
+            "title": "Products & Materials"
+          }
+        },
+        "faq_item_qAed64": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Where are the materials sourced from?",
+            "answer": "<p>Lorem ipsum dolor sit amet consectetur. Ornare amet arcu mattis ultrices turpis cras egestas lectus. At morbi nunc magna sed. Feugiat dictumst posuere urna amet porttitor integer nisi. Cras vel vulputate dui.</p>"
+          }
+        },
+        "faq_item_HtLdpX": {
+          "type": "faq_item",
+          "settings": {
+            "title": "What are the recommended washing instructions for your products?",
+            "answer": "<p>Lorem ipsum dolor sit amet consectetur. Ornare amet arcu mattis ultrices turpis cras egestas lectus. At morbi nunc magna sed. Feugiat dictumst posuere urna amet porttitor integer nisi. Cras vel vulputate dui.</p>"
+          }
+        },
+        "faq_item_rBX9eF": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Do you offer a lifetime warranty on your products?",
+            "answer": "<p>Lorem ipsum dolor sit amet consectetur. Ornare amet arcu mattis ultrices turpis cras egestas lectus. At morbi nunc magna sed. Feugiat dictumst posuere urna amet porttitor integer nisi. Cras vel vulputate dui.</p>"
+          }
+        },
+        "faq_item_Dd4Tme": {
+          "type": "faq_item",
+          "settings": {
+            "title": "How can I ensure the perfect fit when ordering?",
+            "answer": ""
+          }
+        },
+        "faq_item_GEUftp": {
+          "type": "faq_item",
+          "settings": {
+            "title": "What measures are taken to ensure that your products maintain their quality over time?",
+            "answer": "<p>Lorem ipsum dolor sit amet consectetur. Ornare amet arcu mattis ultrices turpis cras egestas lectus. At morbi nunc magna sed. Feugiat dictumst posuere urna amet porttitor integer nisi. Cras vel vulputate dui.</p>"
+          }
+        },
+        "header_EbAj6B": {
+          "type": "header",
+          "settings": {
+            "title": "Shipping"
+          }
+        },
+        "faq_item_j8KLhA": {
+          "type": "faq_item",
+          "settings": {
+            "title": "What should I do if my package is lost or damaged during shipping?",
+            "answer": "<p>Lorem ipsum dolor sit amet consectetur. Ornare amet arcu mattis ultrices turpis cras egestas lectus. At morbi nunc magna sed. Feugiat dictumst posuere urna amet porttitor integer nisi. Cras vel vulputate dui.</p>"
+          }
+        },
+        "faq_item_mfbFg6": {
+          "type": "faq_item",
+          "settings": {
+            "title": "How long does it take for orders to be processed and shipped?",
+            "answer": "<p>Lorem ipsum dolor sit amet consectetur. Ornare amet arcu mattis ultrices turpis cras egestas lectus. At morbi nunc magna sed. Feugiat dictumst posuere urna amet porttitor integer nisi. Cras vel vulputate dui.</p>"
+          }
+        },
+        "faq_item_jBFBJU": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Do you offer eco-friendly shipping methods?",
+            "answer": "<p>Lorem ipsum dolor sit amet consectetur. Ornare amet arcu mattis ultrices turpis cras egestas lectus. At morbi nunc magna sed. Feugiat dictumst posuere urna amet porttitor integer nisi. Cras vel vulputate dui.</p>"
+          }
+        },
+        "faq_item_xM39X3": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Can I track my order once it has been shipped?",
+            "answer": "<p>Lorem ipsum dolor sit amet consectetur. Ornare amet arcu mattis ultrices turpis cras egestas lectus. At morbi nunc magna sed. Feugiat dictumst posuere urna amet porttitor integer nisi. Cras vel vulputate dui.</p>"
+          }
+        },
+        "faq_item_6eryrP": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Do you offer international shipping?",
+            "answer": "<p>Lorem ipsum dolor sit amet consectetur. Ornare amet arcu mattis ultrices turpis cras egestas lectus. At morbi nunc magna sed. Feugiat dictumst posuere urna amet porttitor integer nisi. Cras vel vulputate dui.</p>"
+          }
+        },
+        "header_yzNY7X": {
+          "type": "header",
+          "settings": {
+            "title": "Returns"
+          }
+        },
+        "faq_item_ecVEcU": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Do you offer free returns, and if not, what are the return shipping costs?",
+            "answer": "<p>Lorem ipsum dolor sit amet consectetur. Ornare amet arcu mattis ultrices turpis cras egestas lectus. At morbi nunc magna sed. Feugiat dictumst posuere urna amet porttitor integer nisi. Cras vel vulputate dui.</p>"
+          }
+        },
+        "faq_item_wC39gw": {
+          "type": "faq_item",
+          "settings": {
+            "title": "How long do I have to return an item?",
+            "answer": "<p>Lorem ipsum dolor sit amet consectetur. Ornare amet arcu mattis ultrices turpis cras egestas lectus. At morbi nunc magna sed. Feugiat dictumst posuere urna amet porttitor integer nisi. Cras vel vulputate dui.</p>"
+          }
+        },
+        "faq_item_QcwCHb": {
+          "type": "faq_item",
+          "settings": {
+            "title": "What is your return policy?",
+            "answer": "<p>Lorem ipsum dolor sit amet consectetur. Ornare amet arcu mattis ultrices turpis cras egestas lectus. At morbi nunc magna sed. Feugiat dictumst posuere urna amet porttitor integer nisi. Cras vel vulputate dui.</p>"
+          }
+        },
+        "faq_item_rTadrx": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Are there any items that cannot be returned?",
+            "answer": "<p>Lorem ipsum dolor sit amet consectetur. Ornare amet arcu mattis ultrices turpis cras egestas lectus. At morbi nunc magna sed. Feugiat dictumst posuere urna amet porttitor integer nisi. Cras vel vulputate dui.</p>"
+          }
+        },
+        "faq_item_3ppggk": {
+          "type": "faq_item",
+          "settings": {
+            "title": "How do I initiate a return and receive a refund or exchange?",
+            "answer": "<p>Lorem ipsum dolor sit amet consectetur. Ornare amet arcu mattis ultrices turpis cras egestas lectus. At morbi nunc magna sed. Feugiat dictumst posuere urna amet porttitor integer nisi. Cras vel vulputate dui.</p>"
+          }
+        },
+        "header_yWy4Ym": {
+          "type": "header",
+          "settings": {
+            "title": "Orders"
+          }
+        },
+        "faq_item_FetbVg": {
+          "type": "faq_item",
+          "settings": {
+            "title": "How can I check the status of my order?",
+            "answer": "<p>Lorem ipsum dolor sit amet consectetur. Ornare amet arcu mattis ultrices turpis cras egestas lectus. At morbi nunc magna sed. Feugiat dictumst posuere urna amet porttitor integer nisi. Cras vel vulputate dui.</p>"
+          }
+        },
+        "faq_item_TeYrHa": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Can I modify or cancel my order after it has been placed?",
+            "answer": "<p>Lorem ipsum dolor sit amet consectetur. Ornare amet arcu mattis ultrices turpis cras egestas lectus. At morbi nunc magna sed. Feugiat dictumst posuere urna amet porttitor integer nisi. Cras vel vulputate dui.</p>"
+          }
+        },
+        "faq_item_UWHrKi": {
+          "type": "faq_item",
+          "settings": {
+            "title": "What payment methods do you accept for orders?",
+            "answer": "<p>Lorem ipsum dolor sit amet consectetur. Ornare amet arcu mattis ultrices turpis cras egestas lectus. At morbi nunc magna sed. Feugiat dictumst posuere urna amet porttitor integer nisi. Cras vel vulputate dui.</p>"
+          }
+        },
+        "faq_item_VMCteX": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Do you offer gift wrapping or personalized messages for orders?",
+            "answer": "<p>Lorem ipsum dolor sit amet consectetur. Ornare amet arcu mattis ultrices turpis cras egestas lectus. At morbi nunc magna sed. Feugiat dictumst posuere urna amet porttitor integer nisi. Cras vel vulputate dui.</p>"
+          }
+        },
+        "faq_item_hDQxCc": {
+          "type": "faq_item",
+          "settings": {
+            "title": "How will I receive confirmation and tracking information for my order?",
+            "answer": "<p>Lorem ipsum dolor sit amet consectetur. Ornare amet arcu mattis ultrices turpis cras egestas lectus. At morbi nunc magna sed. Feugiat dictumst posuere urna amet porttitor integer nisi. Cras vel vulputate dui.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "header_qbLBpq",
+        "faq_item_qAed64",
+        "faq_item_HtLdpX",
+        "faq_item_rBX9eF",
+        "faq_item_Dd4Tme",
+        "faq_item_GEUftp",
+        "header_EbAj6B",
+        "faq_item_j8KLhA",
+        "faq_item_mfbFg6",
+        "faq_item_jBFBJU",
+        "faq_item_xM39X3",
+        "faq_item_6eryrP",
+        "header_yzNY7X",
+        "faq_item_ecVEcU",
+        "faq_item_wC39gw",
+        "faq_item_QcwCHb",
+        "faq_item_rTadrx",
+        "faq_item_3ppggk",
+        "header_yWy4Ym",
+        "faq_item_FetbVg",
+        "faq_item_TeYrHa",
+        "faq_item_UWHrKi",
+        "faq_item_VMCteX",
+        "faq_item_hDQxCc"
+      ],
+      "settings": {
+        "title": "Frequently Asked Questions",
+        "text": "<p>Lorem ipsum dolor sit amet consectetur. Ornare amet arcu mattis ultrices turpis cras egestas lectus. At morbi nunc magna sed. Feugiat dictumst posuere urna amet porttitor integer nisi. Cras vel vulputate dui.</p>",
+        "hide_navigation": false
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

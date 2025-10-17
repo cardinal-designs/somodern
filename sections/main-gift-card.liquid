@@ -1,0 +1,104 @@
+<div class="page-width mt-30 mb-60 text-center md:mt-40 md:mb-100">
+  <header class="">
+    <div class="logo w-[150px] mb-30 mx-auto md:mb-60">
+      {% if section.settings.logo != blank %}
+        <div class="block relative">
+          {{ section.settings.logo | image_url: width: 250 | image_tag: width: section.settings.logo.width, class: 'header-logo w-full', sizes: '250px', widths: '100, 150, 200, 300', preload: true, fetchpriority: 'high', width: 125, height: logo_height }}
+        </div>
+      {% else %}
+        <div class="py-10 text-m-h4 font-bold md:p-0 md:text-h4">{{ shop.name }}</div>
+      {% endif %}
+    </div>
+
+    <h1 class="mb-10 text-m-h3 md:text-h3">{{ 'gift_cards.issued.subtext' | t }}</h1>
+    
+    <div class="text-body-1">
+      <p>
+        {% if settings.currency_code_enabled %}
+          {{ gift_card.initial_value | money_with_currency }}
+        {% else %}
+          {{ gift_card.initial_value | money }}
+        {% endif %}
+      </p>
+      {% if gift_card.enabled == false or gift_card.expired %}
+        <p class="w-fit my-20 mx-auto px-15 py-5 text-cta uppercase bg-charcoal/10">{{ 'gift_cards.issued.expired' | t }}</p>
+      {% endif %}
+    </div>
+
+    {% if settings.currency_code_enabled %}
+      {% assign gift_card_balance = gift_card.balance | money_with_currency %}
+    {% else %}
+      {% assign gift_card_balance = gift_card.balance | money %}
+    {% endif %}
+    {% if gift_card.balance != gift_card.initial_value %}
+      <p class="gift-card__label caption-large">{{ 'gift_cards.issued.remaining_html' | t: balance: gift_card_balance }}</p>
+    {% endif %}
+  </header>
+
+  <main class="gift-card">
+    <div class="max-w-[400px] w-full mx-auto my-30 md:my-40">
+      {% if section.settings.gift_card_image != blank %}
+        {{ section.settings.gift_card_image | image_url: width: 450 | image_tag: width: section.settings.gift_card_image.width, class: 'w-full', sizes: '450px', widths: '100, 150, 200, 300, 400, 450' }}
+      {% else %}
+        <img src="{{ 'gift-card/card.svg' | shopify_asset_url }}" alt="" class="gift-card__image" height="{{ 570 | divided_by: 1.5 }}" width="570" loading="lazy">
+      {% endif %}
+    </div>
+    <div class="gift-card__qr-code my-30 flex justify-center md:my-40" data-identifier="{{ gift_card.qr_identifier }}"></div>
+    <div class="gift-card__information">
+      <input
+        type="text"
+        class="gift-card__number w-[200px] mx-auto text-center"
+        value="{{ gift_card.code | format_code }}"
+        aria-label="{{ 'gift_cards.issued.gift_card_code' | t }}"
+        readonly
+      >
+      <div class="gift-card__copy-code">
+        <button class="gift-card__copy-link text-cta uppercase underline underline-offset-4">{{ 'gift_cards.issued.copy_code' | t }}</button>
+        <span class="gift-card__copy-success mt-5 block text-[10px] italic text-green-600" role="status"></span>
+        <template>
+          {{ 'gift_cards.issued.copy_code_success' | t }}
+        </template>
+      </div>
+      {% if gift_card.pass_url %}
+        <a href="{{ gift_card.pass_url }}" class="gift_card__apple-wallet mt-20 flex justify-center">
+          <img src="{{ 'gift-card/add-to-apple-wallet.svg' | shopify_asset_url }}" width="120" height="40" alt="{{ 'gift_cards.issued.add_to_apple_wallet' | t }}" loading="lazy">
+        </a>
+      {% endif %}
+      <div class="gift-card__buttons no-print mt-30 md:mt-40">
+        <a
+          href="{{ shop.url }}"
+          class="button"
+          target="_blank"
+          rel="noopener"
+          aria-describedby="a11y-new-window-message"
+        >
+          {{ 'gift_cards.issued.shop_link' | t }}
+        </a>
+        <button
+          class="button"
+          onclick="window.print();"
+        >
+          {{ 'gift_cards.issued.print_gift_card' | t }}
+        </button>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% schema %}
+  {
+    "name": "Gift Card",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "gift_card_image",
+        "label": "Gift Card Image"
+      }
+    ]
+  }
+{% endschema %}

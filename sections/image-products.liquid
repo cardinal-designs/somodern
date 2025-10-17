@@ -1,0 +1,197 @@
+{% liquid
+  assign container = section.settings.container
+  assign image_ratio = section.settings.image_ratio
+  assign columns = section.settings.product_columns
+
+  assign contains_content = false
+  if section.settings.title != blank or section.settings.text != blank
+    assign contains_content = true
+  endif
+%}
+
+{% if contains_content %}
+  {% capture content %}
+    <div class="mb-30 max-w-custom flex flex-col gap-20 md:50 lg:mb-90{% unless section.settings.text != blank %} mx-auto text-center{% endunless %}" style="--width: 375px;">
+      {% if section.settings.title != blank %}
+        <h2 class="text-m-h1 font-serif italic text-balance md:text-h1">{{ section.settings.title }}</h2>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        <p class="text-body-3">{{ section.settings.text }}</p>
+      {% endif %}
+    </div>
+  {% endcapture %}
+{% endif %}
+
+<image-products data-columns="{{ columns }}" data-pagination="{{ section.settings.add_pagination }}">
+  <div class="image-products my-60 md:my-80{% if container == 'padding' %} page-width{% endif %}">
+    {% if content %}
+      <div class="block md:hidden" data-animate>{{ content }}</div>
+    {% endif %}
+    <div class="md:grid md:grid-cols-2 md:gap-20">
+      <div class="relative overflow-hidden{% if image_ratio == 'tall' %} aspect-tall{% else %} aspect-square{% endif %}">
+        {% render 'image'
+          image: section.settings.image,
+          classes: 'size-full inset object-cover',
+          sizes: '100vw',
+          include_placeholder: true,
+          placeholder_name: 'lifestyle-2',
+          src_set_type: 'full-width'
+        %}
+      </div>
+      <div
+        class="
+          flex justify-center items-center md:m-40
+          {% if container == 'full_width' %} px-20 md:p-0{% endif %}
+        "
+      >
+        <div class="max-w-custom w-full mt-30 md:m-0" style="--width: {% if columns == '2' %}500px{% else %}460px{% endif %};">
+          {% if content %}
+            <div class="hidden md:block" data-animate>{{ content }}</div>
+          {% endif %}
+          <div class="relative" data-animate>
+            <div class="mb-20 flex md:mb-30{% if columns == '2' %} justify-between gap-20 md:pb-5{% else %} justify-center{% endif %}">
+              {% if section.settings.product_slider_title != blank %}
+                <h3 class="{% if columns == '2' %}text-h5{% else %}text-m-h2 font-serif italic md:text-h2{% endif %}">{{ section.settings.product_slider_title }}</h3>
+              {% endif %}
+              <div class="swiper-buttons items-center gap-30{% if columns == '2' %} hidden md:flex{% else %} flex{% endif %}">
+                <button class="swiper-button swiper-button-prev rotate-180{% if columns == '1' %} swiper-button--absolute left-0 top-half -translate-y-half{% endif %}">
+                  {% render 'icon' icon: 'arrow' %}
+                </button>
+                <button class="swiper-button swiper-button-next{% if columns == '1' %} swiper-button--absolute right-0 top-half -translate-y-half{% endif %}">
+                  {% render 'icon' icon: 'arrow' %}
+                </button>
+              </div>
+            </div>
+            <div class="max-w-custom w-full min-w-0" style="--width: {% if columns == '2' %}500{% else %}460{% endif %}px;" data-animate>
+              <div class="product-slider swiper product-slider-{{ section.id }}{% if columns == '1' %} max-w-[195px] w-full mx-auto md:max-w-[240px]"{% endif %}">
+                <div class="swiper-wrapper">
+                  {% if section.settings.products != blank %}
+                    {% for current_product in section.settings.products %}
+                      <div class="swiper-slide">
+                        {% render 'product-card' prod: current_product %}
+                      </div>
+                    {% endfor %}
+                  {% else %}
+                    {% for i in (1..4) %}
+                      <div class="swiper-slide">
+                        {% render 'product-card-placeholder' %}
+                      </div>
+                    {% endfor %}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-30{% unless section.settings.add_pagination %} md:hidden{% endunless %}" data-animate>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</image-products>
+
+<style>
+  /* Style before slider has loaded */
+  .product-slider-{{ section.id }}:not(.swiper-initialized) .swiper-wrapper {
+    display: grid;
+    grid-template-columns: repeat({{ columns }}, 1fr);
+    grid-template-rows: 1fr;
+    grid-auto-rows: 0;
+    gap: 20px;
+    overflow: hidden;
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Image / Products",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Config"
+      },
+      {
+        "type": "select",
+        "id": "container",
+        "options": [
+          { "value": "full_width", "label": "Full Width" },
+          { "value": "padding", "label": "Padding" }
+        ],
+        "default": "padding",
+        "label": "Container"
+      },
+      {
+        "type": "header",
+        "content": "Media"
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "options": [
+          { "value": "square", "label": "Square" },
+          { "value": "tall", "label": "Tall" }
+        ],
+        "default": "tall",
+        "label": "Image Ratio"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "header",
+        "content": "Content"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Product Slider"
+      },
+      {
+        "type": "textarea",
+        "id": "text",
+        "label": "Text",
+        "default": "Lorem ipsum dolor sit amet consectetur. Justo molestie etiam gravida eget egestas potenti. Lorem ipsum dolor sit amet consectetur. Justo molestie etiam gravida eget egestas potenti."
+      },
+      {
+        "type": "header",
+        "content": "Products"
+      },
+      {
+        "type": "select",
+        "id": "product_columns",
+        "options": [
+          { "value": "1", "label": "1" },
+          { "value": "2", "label": "2" }
+        ],
+        "default": "2",
+        "label": "Product Columns"
+      },
+      {
+        "type": "checkbox",
+        "id": "add_pagination",
+        "label": "Add Pagination"
+      },
+      {
+        "type": "text",
+        "id": "product_slider_title",
+        "label": "Product Slider Title",
+        "default": "Best Sellers"
+      },
+      {
+        "type": "product_list",
+        "id": "products",
+        "label": "Products"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image / Products",
+        "category": "Products"
+      }
+    ]
+  }
+{% endschema %}

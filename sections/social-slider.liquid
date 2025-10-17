@@ -1,0 +1,159 @@
+<social-slider data-columns="{{ section.settings.desktop_columns }}">
+  <div class="my-60 md:my-100">
+    <div class="page-width overflow-hidden">
+      <div class="mb-15 flex justify-between items-center gap-20 md:mb-30">
+        <h2 class="text-m-h3 font-serif italic md:text-h3" data-animate>{{ section.settings.title }}</h2>
+        <div class="swiper-buttons items-center gap-30{% if columns == '2' %} hidden md:flex{% else %} flex{% endif %}">
+          <button class="swiper-button swiper-button-prev rotate-180">
+            {% render 'icon' icon: 'arrow' %}
+          </button>
+          <button class="swiper-button swiper-button-next">
+            {% render 'icon' icon: 'arrow' %}
+          </button>
+        </div>
+      </div>
+      <div class="social-slider social-slider-{{ section.id }} group/slider overflow-visible">
+        <div class="swiper-wrapper group-[:not(.swiper-initialized)]/slider:overflow-hidden">
+          {% for block in section.blocks %}
+            {% capture image %}
+              {% render 'image'
+                image: block.settings.image,
+                classes: 'size-full inset object-cover',
+                sizes: '(min-width: 767px) 50vw, 100vw',
+                include_placeholder: true,
+                placeholder_name: 'collection-1',
+                src_set_type: 'grid'
+              %}
+            {% endcapture %}
+            <div class="swiper-slide" {{ block.shopify_attributes }}>
+              <div class="w-full aspect-[10/17] overflow-hidden relative rounded-[20px]" data-animate>
+                {% if block.settings.video != blank %}
+                  {{
+                    block.settings.video
+                    | video_tag: loop: false, controls: false, image_size: '1400x'
+                    | class: 'size-full inset object-cover cursor-pointer'
+                  }}
+
+                  <button class="inset" data-play>
+                    {{ image }}
+                    <div class="absolute top-half left-half -translate-x-half -translate-y-half text-white">
+                      {% render 'icon' icon: 'play' %}
+                    </div>
+                  </button>
+                {% else %}
+                  {{ image }}
+                {% endif %}
+
+                {% if block.settings.handle %}
+                  <a href="{{ block.settings.handle_link }}" class="absolute left-20 bottom-20 text-body-3 text-white">{{ block.settings.handle }}</a>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</social-slider>
+
+<style>
+  /* Style before slider has loaded */
+  .social-slide-{{ section.id }}:not(.swiper-initialized) .swiper-wrapper {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.desktop_columns }}, 1fr);
+    grid-template-rows: 1fr;
+    grid-auto-rows: 0;
+    gap: 20px;
+  }
+
+  @media screen and (max-width: 767px) {
+    .social-slide-{{ section.id }}:not(.swiper-initialized) .swiper-wrapper {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Social Slider",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Config"
+      },
+      {
+        "type": "select",
+        "id": "desktop_columns",
+        "options": [
+          { "value": "2", "label": "2" },
+          { "value": "3", "label": "3" },
+          { "value": "4", "label": "4" }
+        ],
+        "default": "3",
+        "label": "Desktop Columns"
+      },
+      {
+        "type": "header",
+        "content": "Content"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Lorem Ipsum Dolor"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "block",
+        "name": "Block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "video",
+            "id": "video",
+            "label": "Video"
+          },
+          {
+            "type": "text",
+            "id": "handle",
+            "label": "Handle",
+            "default": "@handle"
+          },
+          {
+            "type": "url",
+            "id": "handle_link",
+            "label": "Handle Link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Social Slider",
+        "category": "Social",
+        "blocks": [
+          {
+            "type": "block"
+          },
+          {
+            "type": "block"
+          },
+          {
+            "type": "block"
+          },
+          {
+            "type": "block"
+          },
+          {
+            "type": "block"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

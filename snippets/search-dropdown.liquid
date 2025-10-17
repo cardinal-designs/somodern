@@ -1,0 +1,22 @@
+<search-dropdown class="group/search">
+  <div class="w-full absolute left-0 right-0 flex bg-background opacity-0 invisible transition-visibility duration-200 group-[.active]/search:opacity-100 group-[.active]/search:visible">
+    <predictive-search class="w-full">
+      <div class="w-full h-70 relative bg-beige">
+        <form action="{{ routes.search_url }}" method="get" role="search" class="w-full">
+          <input type="hidden" name="type" value="product">
+          <input type="hidden" name="options[prefix]" value="last">
+          <div class="flex">
+            <label id="search-label-{{ template.suffix }}" for="search-input-{{ template.suffix }}" class="hidden visually-hidden">Search</label>
+            <input aria-labelledby="search-label-{{ template.suffix }}" id="search-input-{{ template.suffix }}" class="w-full px-20 py-25 text-h5 bg-transparent appearance-none placeholder:text-text/50 placeholder:text-h5 focus-visible:outline-0 focus-visible:outline-transparent focus-visible:placeholder:text-text md:px-40" type="search" name="q" value="{{ search.terms | escape }}" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search">
+            <button type="submit" class=""></button>
+          </div>
+        </form>
+        <button class="p-5 absolute top-half right-20 -translate-y-half" data-close-search>
+          {% render 'icon' icon: 'close' %}
+          <span class="hidden visually-hidden">Close</span>
+        </button>
+      </div>
+      <div class="predictive-search" style="display: none;"></div>
+    </predictive-search>
+  </div>
+</search-dropdown>

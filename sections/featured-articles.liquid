@@ -1,0 +1,97 @@
+<div class="page-width my-60 md:my-80">
+  <div class="mb-20 flex justify-between items-center gap-40 md:mb-40">
+    {% if section.settings.title != blank %}
+      <h2 class="text-m-h2 font-serif italic md:text-h1" data-animate>{{ section.settings.title }}</h2>
+    {% endif %}
+    {% if section.settings.button_label != blank %}
+      <div class="hidden md:block" data-animate>
+        {% if section.settings.button_style == 'button' %}
+          <a href="{{ section.settings.button_link }}" class="w-fit button">{{ section.settings.button_label }}</a>
+        {% else %}
+          {% render 'text-link' link: section.settings.button_link, label: section.settings.button_label %}
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+  <div class="grid gap-40 md:grid-cols-3 md:gap-20">
+    {% for block in section.blocks %}
+      <div data-animate {{ block.shopify_attributes }}>
+        {% if block.settings.article != blank %}
+          {% assign article = articles[block.settings.article] %}
+          {% render 'article-card' article: article %}
+        {% else %}
+          {% render 'article-card-placeholder' %}
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Featured Articles",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "In the Journal"
+      },
+      {
+        "type": "header",
+        "content": "Button"
+      },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button Label",
+        "default": "All Articles"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link"
+      },
+      {
+        "type": "select",
+        "id": "button_style",
+        "options": [
+          { "value": "button", "label": "Button" },
+          { "value": "text", "label": "Text" }
+        ],
+        "default": "text",
+        "label": "Button Style"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "article",
+        "name": "Article",
+        "settings": [
+          {
+            "type": "article",
+            "id": "article",
+            "label": "Article"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured Articles",
+        "category": "Content",
+        "blocks": [
+          {
+            "type": "article"
+          },
+          {
+            "type": "article"
+          },
+          {
+            "type": "article"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

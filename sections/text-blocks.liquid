@@ -1,0 +1,85 @@
+{% assign bg_color = section.settings.background_color %}
+
+<div class="{{ section.settings.content_color }} {% if bg_color != blank and bg_color != 'rgba(0,0,0,0)' %} py-60" style="background-color: {{ bg_color }}"{% else %} my-60{% endif %}">
+  <div class="page-width flex flex-col justify-center items-center gap-30 md:flex-row lg:gap-60">
+    {% for block in section.blocks %}
+      <div data-animate {{ block.shopify_attributes }}>
+        <div class="max-w-custom w-full mx-auto text-center" style="--width: 350px;">
+          <h2 class="rte text-m-h2 font-serif italic md:text-h4">{{ block.settings.title }}</h2>
+          {% if block.settings.text != blank %}
+            <p class="rte mt-15 text-m-body-2 md:text-body-2">{{ block.settings.text }}</p>
+          {% endif %}
+        </div>
+      </div>
+      {% unless forloop.last %}
+        <div class="size-[6px] flex-shrink-0 rounded-full bg-current" data-animate></div>
+      {% endunless %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Text Blocks",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Config"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#EBF1E6"
+      },
+      {
+        "type": "select",
+        "id": "content_color",
+        "options": [
+          { "value": "text-white", "label": "Light" },
+          { "value": "text-text", "label": "Dark" }
+        ],
+        "default": "text-text",
+        "label": "Content Color"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "block",
+        "name": "Block",
+        "limit": 3,
+        "settings": [
+          {
+            "type": "inline_richtext",
+            "id": "title",
+            "label": "Title",
+            "default": "Text Block"
+          },
+          {
+            "type": "inline_richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Text Blocks",
+        "category": "Content",
+        "blocks": [
+          {
+            "type": "block"
+          },
+          {
+            "type": "block"
+          },
+          {
+            "type": "block"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

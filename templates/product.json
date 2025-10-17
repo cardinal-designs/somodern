@@ -1,0 +1,280 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "dropdown_f8XbkQ": {
+          "type": "dropdown",
+          "settings": {
+            "title": "Materials + Fit",
+            "text": "<p>Lorem ipsum dolor sit amet consectetur. Ultricies posuere egestas sapien augue. Quis faucibus porta magna parturient.</p>"
+          }
+        },
+        "dropdown_yQwAKq": {
+          "type": "dropdown",
+          "settings": {
+            "title": "Garment Care",
+            "text": "<p>Lorem ipsum dolor sit amet consectetur. Ultricies posuere egestas sapien augue. Quis faucibus porta magna parturient.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "dropdown_f8XbkQ",
+        "dropdown_yQwAKq"
+      ],
+      "settings": {
+        "description_position": "above",
+        "mobile_title_position": "below",
+        "zoom_type": "lightbox",
+        "slider_style": "thumbnails",
+        "mobile_slider_style": "center",
+        "extra_text": "Ships in 2 weeks.",
+        "value_props": "<p>Free Shipping Over $100</p><p>Free Returns and Exchanges</p><p>Have a Question?<a href=\"/\" title=\"/\"> See FAQs</a></p>",
+        "show_sharing": true,
+        "upsell_title": "Style It",
+        "product_upsells": "{{ product.metafields.custom.product_upsells.value }}",
+        "upsell_count": "1"
+      }
+    },
+    "social_slider_prhMLH": {
+      "type": "social-slider",
+      "blocks": {
+        "block_PWhDzr": {
+          "type": "block",
+          "settings": {
+            "image": "shopify://shop_images/Frame_f2a3c52e-81bc-4413-b692-7997da27addb.jpg",
+            "handle": "@ohaei",
+            "handle_link": ""
+          }
+        },
+        "block_GmrqXc": {
+          "type": "block",
+          "settings": {
+            "image": "shopify://shop_images/Frame-1.jpg",
+            "handle": "@ohaei",
+            "handle_link": ""
+          }
+        },
+        "block_UY3ch8": {
+          "type": "block",
+          "settings": {
+            "image": "shopify://shop_images/Frame-2.jpg",
+            "handle": "@ohaei",
+            "handle_link": ""
+          }
+        },
+        "block_BkzPx9": {
+          "type": "block",
+          "settings": {
+            "image": "shopify://shop_images/Frame-3.jpg",
+            "handle": "@ohaei",
+            "handle_link": ""
+          }
+        },
+        "block_WGLbrA": {
+          "type": "block",
+          "settings": {
+            "image": "shopify://shop_images/Frame_f2a3c52e-81bc-4413-b692-7997da27addb.jpg",
+            "handle": "@ohaei",
+            "handle_link": ""
+          }
+        },
+        "block_PY6jVr": {
+          "type": "block",
+          "settings": {
+            "image": "shopify://shop_images/Frame-1.jpg",
+            "handle": "@ohaei",
+            "handle_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "block_PWhDzr",
+        "block_GmrqXc",
+        "block_UY3ch8",
+        "block_BkzPx9",
+        "block_WGLbrA",
+        "block_PY6jVr"
+      ],
+      "settings": {
+        "desktop_columns": "3",
+        "title": "See it on social"
+      }
+    },
+    "double_image_text_EhfR3A": {
+      "type": "double-image-text",
+      "settings": {
+        "subtitle": "Lorem Ipsum Dolor",
+        "title": "About the Designers",
+        "text": "<p>Discover a collective of designers crafting elevated apparel with unmatched attention to detail and quality, ensuring every piece embodies timeless elegance and sophistication.</p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "button",
+        "image_1": "shopify://shop_images/Image_-_2024-06-05T164405.508.jpg",
+        "image_2": "shopify://shop_images/Image_-_2024-06-05T164409.308.jpg"
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "title": "You Might Like"
+      }
+    },
+    "hero_F8VNDb": {
+      "type": "hero",
+      "blocks": {
+        "title_DnBBHE": {
+          "type": "title",
+          "settings": {
+            "title": "The Spring Campaign — Behind the Scenes",
+            "font_size": "h1",
+            "mobile_font_size": "h1",
+            "margin_top": 0,
+            "margin_bottom": 0
+          },
+          "blocks": {}
+        },
+        "text_mYqCqE": {
+          "type": "text",
+          "settings": {
+            "text": "<p> Combining organic materials with sustainable manufacturing, our collection offers a sustainable choice this season.</p>",
+            "font_size": "regular",
+            "center_content": false,
+            "content_width": 560,
+            "margin_top": 0,
+            "margin_bottom": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "title_DnBBHE",
+        "text_mYqCqE"
+      ],
+      "settings": {
+        "content_position": "middle_center",
+        "mobile_content_position": "middle_center",
+        "content_width": 420,
+        "content_color": "text-white",
+        "media_type": "image",
+        "image": "shopify://shop_images/Rectangle_53.jpg",
+        "mobile_image": "shopify://shop_images/Group_3.jpg",
+        "add_overlay": true
+      }
+    },
+    "faq_3A8Jed": {
+      "type": "faq",
+      "blocks": {
+        "faq_item_k9YgRz": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Where are the materials sourced from?",
+            "answer": "<p>Our materials are sourced from trusted suppliers worldwide, adhering to high quality standards to ensure excellence in every garment.</p>"
+          }
+        },
+        "faq_item_T69Bgr": {
+          "type": "faq_item",
+          "settings": {
+            "title": "What is your return policy?",
+            "answer": "<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "faq_item_dRFqGN": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Do you offer customization options for your products?",
+            "answer": "<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "faq_item_jkxYgV": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Can I track my order once it has been shipped?",
+            "answer": "<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+        },
+        "faq_item_UQ8w7A": {
+          "type": "faq_item",
+          "settings": {
+            "title": "Where are the materials sourced from?",
+            "answer": "<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_k9YgRz",
+        "faq_item_T69Bgr",
+        "faq_item_dRFqGN",
+        "faq_item_jkxYgV",
+        "faq_item_UQ8w7A"
+      ],
+      "settings": {
+        "title": "Frequently Asked Questions"
+      }
+    },
+    "instagram_KfhUFQ": {
+      "type": "instagram",
+      "blocks": {
+        "image_6irMPL": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame.jpg"
+          }
+        },
+        "image_gBqTPc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1.jpg"
+          }
+        },
+        "image_tPXGJr": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_2.jpg"
+          }
+        },
+        "image_pfXrAd": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_3.jpg"
+          }
+        },
+        "image_9maLXh": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_4.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_6irMPL",
+        "image_gBqTPc",
+        "image_tPXGJr",
+        "image_pfXrAd",
+        "image_9maLXh"
+      ],
+      "settings": {
+        "title": "@ohaeiapparel",
+        "link": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "social_slider_prhMLH",
+    "double_image_text_EhfR3A",
+    "product-recommendations",
+    "hero_F8VNDb",
+    "faq_3A8Jed",
+    "instagram_KfhUFQ"
+  ]
+}

@@ -1,0 +1,114 @@
+{% comment %}
+    Renders a product card
+
+    Accepts:
+    - prod: {Object} Product Liquid object
+    - prioritize_loading: {Boolean} If 'true', the `loading="lazy"` attribute won't be added to the image (optional)
+
+    Usage:
+    {% render 'product-card', prod: product %}
+{% endcomment %}
+
+{% liquid
+  assign image = prod.featured_image
+
+  if prod.selected_or_first_available_variant.image != blank
+    assign image = prod.selected_or_first_available_variant.image
+  endif
+
+  assign prioritize_loading = prioritize_loading | default: false
+%}
+
+<product-card class="group/card block relative">
+  <div class="group/image relative">
+    <a href="{{ prod.url }}" class="block">
+      {% render 'image'
+        image: image,
+        classes: 'product-card-image w-full aspect-product object-cover',
+        sizes: '800px',
+        include_placeholder: true,
+        placeholder_name: 'product-1',
+        fallback_alt: prod.title,
+        src_set_type: 'thumbnail',
+        prioritize_loading: prioritize_loading
+      %}
+
+      {% if prod.images[1] != blank %}
+        <div class="inset opacity-0 transition-opacity group-hover/image:opacity-100">
+          {% render 'image'
+            image: prod.images[1],
+            classes: 'product-card-hover size-full inset object-cover hidden md:block',
+            sizes: '800px',
+            fallback_alt: prod.title,
+            src_set_type: 'thumbnail'
+          %}
+        </div>
+      {% endif %}
+    </a>
+
+    {% render 'product-badges' prod: prod, classes: 'absolute top-10 left-10' %}
+
+    {% if settings.enable_quickview %}
+      <div class="p-13 absolute left-0 right-0 bottom-0 hidden md:block">
+        <button
+          class="group/quickview w-full button opacity-0 translate-y-5 transition-all relative group-hover/image:opacity-100 group-hover/image:translate-y-0"
+          data-quick-view
+          data-href="{{ prod.url }}"
+          data-id="{{ prod.selected_or_first_available_variant.id }}"
+        >
+          <span class="transition-opacity group-[.loading]/quickview:opacity-0">Quick View</span>
+          <span class="inset flex items-center justify-center transition-opacity opacity-0 group-[.loading]/quickview:opacity-100">{% render 'loading-spinner' %}</span>
+        </button>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="mt-20 text-center">
+    <a href="{{ prod.url }}" class="text-body-1 font-serif">{{ prod.title }}</a>
+    {% render 'price' product: prod, classes: 'mt-10 justify-center text-cta uppercase' %}
+
+    {% unless prod.has_only_default_variant %}
+      {% for option in prod.options_with_values %}
+        {% if option.name == 'Color' %}
+          <div class="mt-20 pb-5 gap-10 flex justify-center">
+            {% for value in option.values %}
+              {% liquid
+                assign is_active = false
+                assign color_swatch_name = value | handleize
+                assign swatch_color = color_swatch_name
+                assign swatch_metaobject = shop.metaobjects.color_swatch[color_swatch_name]
+
+                if swatch_metaobject.hex_value != blank
+                  assign swatch_color = swatch_metaobject.hex_value
+                endif
+
+                if option.selected_value == value
+                  assign is_active = true
+                endif
+
+                for current_variant in prod.variants
+                  if current_variant.title contains value
+                    assign variant = current_variant
+                    break
+                  endif
+                endfor
+              %}
+
+              <button
+                class="color-button group/color w-13 h-13 block relative cursor-pointer bg-center{% if is_active %} active{% endif %}"
+                style="{% if swatch_metaobject.swatch_image != blank %}background-image: url('{{ swatch_metaobject.swatch_image | img_url: '50x' }}');{% else %}background-color: {{ swatch_color }};{% endif %}"
+                data-value="{{ value }}"
+                data-position="{{ option.position }}"
+                data-id="{{ variant.id }}"
+                {% if variant.image %}data-image="{{ variant.image | img_url: '800x' }}"{% endif %}
+              >
+                <div class="visually-hidden">{{ value }}</div>
+                <div class="absolute right-0 -bottom-[4px] left-0 border-b-1 border-transparent transition-colors group-[.active]/color:border-black"></div>
+              </button>
+            {% endfor %} 
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endunless %}
+  </div>
+</product-card>

@@ -1,0 +1,51 @@
+<p
+  class="text-sh2 uppercase"
+  style="margin-top: {{ block.settings.margin_top }}px;margin-bottom: {{ block.settings.margin_bottom }}px;"
+  data-animate {{ block.shopify_attributes }}
+>
+  {{ block.settings.title }}
+</p>
+
+{% schema %}
+  {
+    "name": "Subtitle",
+    "tag": null,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Subtitle"
+      },
+      {
+        "type": "header",
+        "content": "Config"
+      },
+      {
+        "type": "range",
+        "id": "margin_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 0,
+        "unit": "px",
+        "label": "Margin Top"
+      },
+      {
+        "type": "range",
+        "id": "margin_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 0,
+        "unit": "px",
+        "label": "Margin Bottom"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Subtitle"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,61 @@
+<div class="page-width mt-60 mb-100 md:mt-125 md:mb-150">
+  <div class="max-w-custom w-full mx-auto text-center" style="--width: 400px;">
+    <h1 class="text-[100px] font-serif italic">{{ section.settings.title }}</h1>
+    <div class="rte text-m-body-2 md:text-body-2">{{ section.settings.text }}</div>
+    {% if section.settings.button_label != blank %}
+      <div class="mt-40">
+        {% if section.settings.button_style == 'button' %}
+          <a href="{{ section.settings.button_link }}" class="button">{{ section.settings.button_label }}</a>
+        {% else %}
+          {% render 'text-link' link: section.settings.button_link, label: section.settings.button_label %}
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "404 Page",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "404"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text",
+        "default": "<p>Page not found.</p>"
+      },
+      {
+        "type": "header",
+        "content": "Button"
+      },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button Label",
+        "default": "Take Me Home"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link",
+        "default": "/"
+      },
+      {
+        "type": "select",
+        "id": "button_style",
+        "options": [
+          { "value": "button", "label": "Button" },
+          { "value": "text", "label": "Text" }
+        ],
+        "default": "button",
+        "label": "Button Style"
+      }
+    ]
+  }
+{% endschema %}

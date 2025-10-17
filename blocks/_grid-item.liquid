@@ -1,0 +1,145 @@
+{% liquid
+  assign content_position = ''
+  case block.settings.content_position
+    when 'top_left'
+      assign content_position = 'top justify-start'
+    when 'top_center'
+      assign content_position = 'top justify-center text-center'
+    when 'top_right'
+      assign content_position = 'top justify-end text-right'
+    when 'middle_left'
+      assign content_position = 'justify-start items-center'
+    when 'middle_center'
+      assign content_position = 'justify-center items-center text-center'
+    when 'middle_right'
+      assign content_position = 'justify-end items-center text-right'
+    when 'bottom_left'
+      assign content_position = 'justify-start items-end'
+    when 'bottom_center'
+      assign content_position = 'justify-center items-end text-center'
+    when 'bottom_right'
+      assign content_position = 'justify-end items-end text-right'
+  endcase
+
+  assign extra_padding = ''
+  if section.settings.desktop_columns == "2"
+    if block.settings.content_position == 'top_center'
+      assign extra_padding = 'pt-10 md:pt-60'
+    endif
+    if block.settings.content_position == 'bottom_center'
+      assign extra_padding = 'pb-10 md:pb-60'
+    endif
+  endif
+%}
+
+<div class="relative" data-animate {{ block.shopify_attributes }}>
+  <a href="{{ block.settings.button }}" class="block relative{% if section.settings.image_ratio == 'square' %} aspect-square{% else %} aspect-tall{% endif %}">
+    {% render 'image'
+      image: block.settings.image,
+      classes: 'size-full inset object-cover',
+      sizes: '(min-width: 767px) 50vw, 100vw',
+      include_placeholder: true,
+      placeholder_name: 'collection-2',
+      src_set_type: 'grid'
+    %}
+
+    {% if section.settings.add_overlay != blank %}
+      <div class="inset bg-black/20"></div>
+    {% endif %}
+
+    {% if block.settings.link != blank %}
+      <a href="{{ block.settings.link }}" class="inset"><span class="hidden visually-hidden">{{ block.settings.link }}</span></a>
+    {% endif %}
+  </a>
+
+  <div class="inset px-30 py-40 flex {{ content_position }} {{ block.settings.content_color }}">
+    <div class="max-w-custom w-full flex flex-col gap-5 relative {{ extra_padding }} no-animation" style="--width: 420px;">
+      {% content_for 'blocks' %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Grid Item",
+    "tag": null,
+    "settings": [
+      {
+        "type": "header",
+        "content": "Media"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "checkbox",
+        "id": "add_overlay",
+        "label": "Add Overlay",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Link"
+      },
+      {
+        "type": "url",
+        "id": "link",
+        "label": "Link"
+      },
+      {
+        "type": "header",
+        "content": "Config"
+      },
+      {
+        "type": "select",
+        "id": "content_position",
+        "options": [
+          { "value": "top_left", "label": "Top Left" },
+          { "value": "top_center", "label": "Top Center" },
+          { "value": "top_right", "label": "Top Right" },
+          { "value": "middle_left", "label": "Middle Left" },
+          { "value": "middle_center", "label": "Middle Center" },
+          { "value": "middle_right", "label": "Middle Right" },
+          { "value": "bottom_left", "label": "Bottom Left" },
+          { "value": "bottom_center", "label": "Bottom Center" },
+          { "value": "bottom_right", "label": "Bottom Right" }
+        ],
+        "default": "middle_center",
+        "label": "Content Position"
+      },
+      {
+        "type": "select",
+        "id": "content_color",
+        "options": [
+          { "value": "text-white", "label": "Light" },
+          { "value": "text-text", "label": "Dark" }
+        ],
+        "default": "text-white",
+        "label": "Content Color"
+      }
+    ],
+    "blocks": [{ "type": "@theme" }],
+    "presets": [
+      {
+        "name": "Grid Item",
+        "blocks": [
+          {
+            "type": "subtitle"
+          },
+          {
+            "type": "title",
+            "settings": {
+              "font_size": "h2",
+              "mobile_font_size": "h2"
+            }
+          },
+          {
+            "type": "button"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

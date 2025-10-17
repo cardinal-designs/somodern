@@ -1,0 +1,84 @@
+{% liquid
+  assign content_position_classes = ''
+  case block.settings.content_alignment
+    when 'center'
+      assign content_position_classes = 'mx-auto text-center'
+    when 'right'
+      assign content_position_classes = 'ml-auto text-right'
+  endcase
+%}
+
+<div data-animate {{ block.shopify_attributes }}>
+  <div class="block relative{% if section.settings.image_ratio == 'square' %} aspect-square{% else %} aspect-tall{% endif %}">
+    {% render 'image'
+      image: block.settings.image,
+      classes: 'size-full inset object-cover',
+      sizes: '(min-width: 767px) 50vw, 100vw',
+      include_placeholder: true,
+      placeholder_name: 'collection-1',
+      src_set_type: 'grid'
+    %}
+    {% if block.settings.link != blank %}
+      <a href="{{ block.settings.link }}" class="inset"><span class="hidden visually-hidden">{{ block.settings.link }}</span></a>
+    {% endif %}
+  </div>
+  <div class="max-w-custom w-full mt-15 {{ content_position_classes }} md:mt-20" style="--width: 400px;">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Column",
+    "tag": null,
+    "settings": [
+      {
+        "type": "header",
+        "content": "Media"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "header",
+        "content": "Link"
+      },
+      {
+        "type": "url",
+        "id": "link",
+        "label": "Link"
+      },
+      {
+        "type": "header",
+        "content": "Config"
+      },
+      {
+        "type": "select",
+        "id": "content_alignment",
+        "options": [
+          { "value": "left", "label": "Left" },
+          { "value": "center", "label": "Center" },
+          { "value": "right", "label": "Right" }
+        ],
+        "default": "center",
+        "label": "Content Alignment"
+      }
+    ],
+    "blocks": [{ "type": "@theme" }],
+    "presets": [
+      {
+        "name": "Column",
+        "blocks": [
+          {
+            "type": "text"
+          },
+          {
+            "type": "button"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

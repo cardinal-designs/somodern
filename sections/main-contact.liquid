@@ -1,0 +1,132 @@
+<div class="contact {% if section.settings.image != blank %} flex flex-col-reverse md:grid md:grid-cols-[0.6fr_0.4fr]{% endif %}">
+  {% if section.settings.image != blank %}
+    <div class="pb-full relative overflow-hidden md:p-0{% if section.settings.hide_image_mobile %}hidden md:block{% endif %}">
+      {% render 'image'
+        image: section.settings.image,
+        classes: 'size-full inset object-cover',
+        sizes: '(min-width: 767px) 65vw, 100vw',
+        src_set_type: 'full-width',
+        prioritize_loading: true
+      %}
+    </div>
+  {% endif %}
+  <div class="max-w-custom w-full mx-auto mt-40 mb-60 px-20 md:px-40{% if section.settings.image != blank %} md:mt-150 md:mb-100{% else %}  md:my-100{% endif %}" style="--width: 600px;">
+    <div class="mb-40 max-w-custom mx-auto w-full text-center" style="--width: 435px;">
+      <h1 class="text-m-h1 font-serif italic md:text-h1">{{ section.settings.title }}</h1>
+      {% if section.settings.text != blank %}
+        <div class="rte mt-20 text-m-body-2 text-center md:text-body-3">{{ section.settings.text }}</div>
+      {% endif %}
+    </div>
+    {% form 'contact', id: 'ContactForm' %}
+
+      <div class="mb-30">
+        <label class="field__label" for="ContactForm-name">Name</label>
+        <input class="field__input" autocomplete="name" type="text" id="ContactForm-name" name="contact[Name]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" placeholder="First & Last Name">
+      </div>
+
+      <div class="mb-30">
+        <label class="field__label" for="ContactForm-email">Email</label>
+        <input
+          autocomplete="email"
+          type="email"
+          id="ContactForm-email"
+          class="field__input"
+          name="contact[email]"
+          spellcheck="false"
+          autocapitalize="off"
+          value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+          aria-required="true"
+          {% if form.errors contains 'email' %}
+            aria-invalid="true"
+            aria-describedby="ContactForm-email-error"
+          {% endif %}
+          placeholder="Email"
+        >
+      </div>
+
+      <div class="mb-30">
+        <label class="form__label field__label" for="ContactForm-body">Message</label>
+        <textarea
+          rows="7"
+          id="ContactForm-body"
+          class="text-area field__input"
+          name="contact[Message]"
+          placeholder="Start typing..."
+        >
+          {{- form.body -}}
+        </textarea>
+
+        {% if form.posted_successfully? %}
+          <div class="mt-10 text-body-3" tabindex="-1" autofocus>{{ 'templates.contact.form.post_success' | t }}</div>
+        {% elsif form.errors %}
+          <div class="mt-10 text-body-3 text-error">{{ form.errors | default_errors }}</div>
+        {% endif %}
+      </div>
+
+      <button type="submit" class="button w-full">Submit</button>
+    {% endform %}
+  </div>
+</div>
+
+{% if section.settings.image != blank %}
+  <style>
+    .header {
+      color: black;
+    }
+
+    .header-logo {
+      opacity: 1;
+    }
+
+    .header-logo-transparent {
+      opacity: 0;
+    }
+
+    @media screen and (max-width: 767px) {
+      .header {
+        border-color: #F8F7F3;
+      }
+      
+      #MainContent {
+        margin-top: 0;
+      }
+    }
+  </style>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Contact",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_image_mobile",
+      "label": "Hide Image on Mobile"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Contact Us"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    }
+  ]
+}
+{% endschema %}

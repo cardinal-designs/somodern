@@ -1,0 +1,41 @@
+<div class="pb-[125%] relative md:h-full md:p-0 md:aspect-none">
+  <div class="size-full inset overflow-hidden">
+    {% render 'image'
+      image: block.settings.image,
+      classes: 'size-full inset object-cover',
+      sizes: '50vw',
+      include_placeholder: true,
+      placeholder_name: 'collection-1',
+      src_set_type: 'grid',
+      prioritize_loading: prioritize_loading
+    %}
+  </div>
+
+  {% if block.settings.add_overlay %}
+    <div class="inset bg-black opacity-30"></div>
+  {% endif %}
+
+  {% if block.settings.link != blank %}
+    <a href="{{ block.settings.link }}" class="absolute top-0 right-0 bottom-0 left-0"></a>
+  {% endif %}
+
+  <div class="p-20 inset flex justify-center items-center">
+    <div class="max-w-custom w-full text-center text-white z-20" style="--width: 280px;">
+      {% if block.settings.title != blank %}
+        <h2 class="text-m-h1 font-serif italic md:text-h1">{{ block.settings.title }}</h2>
+      {% endif %}
+      {% if block.settings.text != blank %}
+        <p class="mt-5 text-m-body-2 md:text-body-2">{{ block.settings.text }}</p>
+      {% endif %}
+      {% if block.settings.button_label != blank %}
+        {% if block.settings.button_style == 'button' %}
+          <a href="{{ block.settings.button_link }}" class="mt-20 w-fit button">{{ block.settings.button_label }}</a>
+        {% else %}
+          <div class="mt-20">
+            {% render 'text-link' link: block.settings.button_link, label: block.settings.button_label %}
+          </div>
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+</div>

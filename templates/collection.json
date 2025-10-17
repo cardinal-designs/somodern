@@ -1,0 +1,46 @@
+{
+  "sections": {
+    "product-grid": {
+      "type": "main-collection",
+      "blocks": {
+        "promo_card_6i9bKn": {
+          "type": "promo_card",
+          "settings": {
+            "card_position": 3,
+            "card_size": "large",
+            "image": "shopify:\/\/shop_images\/Image_-_2024-05-31T091434.327.jpg",
+            "add_overlay": false,
+            "title": "",
+            "text": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "text"
+          }
+        },
+        "promo_card_Q3M6Bg": {
+          "type": "promo_card",
+          "settings": {
+            "card_position": 5,
+            "card_size": "small",
+            "image": "shopify:\/\/shop_images\/Rectangle_52.jpg",
+            "add_overlay": true,
+            "title": "New Arrivals",
+            "text": "Shop New In Mens, Womens & Accessories.",
+            "button_label": "Shop",
+            "button_link": "",
+            "button_style": "button"
+          }
+        }
+      },
+      "block_order": [
+        "promo_card_6i9bKn",
+        "promo_card_Q3M6Bg"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "product-grid"
+  ]
+}

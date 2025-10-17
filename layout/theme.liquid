@@ -1,0 +1,103 @@
+<!doctype html>
+<html class="no-js group/html{% if settings.enable_animations %} enable-animations{% endif %}" lang="{{ request.locale.iso_code }}" data-editor-open="{{ request.design_mode }}">
+  <head>
+
+    {%- render 'meta-tags' -%}
+
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '32x32' }}">
+    {%- endif -%}
+
+    <title>
+      {{ page_title }}
+      {% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}
+      {% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}
+      {% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+    </title>
+
+    {{ content_for_header }}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" as="style" type="text/css" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+    {% style %}
+      :root {
+        --background: {{ settings.background_color }};
+        --text: {{ settings.text_color }};
+      }
+    {% endstyle %}
+    
+    {%- liquid
+      render 'vite-tag' with 'main.js'
+      render 'vite-tag' with 'main.css', preload_stylesheet: true
+    -%}
+
+    <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+  </head>
+
+  <body class="template-{{ template.name }}">
+    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+      {{- "accessibility.skip_to_text" | t -}}
+    </a>
+
+    <div class="page-overlay fixed top-0 right-0 bottom-0 left-0 bg-black/30 z-50 invisible opacity-0 transition-visibility"></div>
+    <div class="page-overlay-under fixed top-0 right-0 bottom-0 left-0 bg-black/30 z-30 invisible opacity-0 transition-visibility"></div>
+    <div class="page-overlay-popover fixed top-0 right-0 bottom-[330px] left-0 bg-black/30 z-50 invisible opacity-0 transition-visibility md:hidden"></div>
+
+    <div class="header-group sticky top-0 z-40">
+      {%- sections 'header-group' -%}
+    </div>
+
+    {%- section 'mobile-menu' -%}
+
+    {%- if template != 'cart' -%}
+      {%- section 'cart-drawer' -%}
+    {%- endif -%}
+
+    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {%- sections 'footer-group' -%}
+
+    {%- if settings.enable_quickview -%}
+      {%- render 'quick-view' -%}
+    {%- endif -%}
+
+    {%- render 'site-credits' -%}
+
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+    </ul>
+
+    <script>
+      window.shopUrl = '{{ shop.url }}';
+      window.routes = {
+        cart_add_url: '{{ routes.cart_add_url }}',
+        cart_change_url: '{{ routes.cart_change_url }}',
+        cart_update_url: '{{ routes.cart_update_url }}',
+        predictive_search_url: '{{ routes.predictive_search_url }}'
+      };
+
+      window.cartStrings = {
+        error: `{{ 'sections.cart.cart_error' | t }}`,
+        quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t: quantity: '[quantity]' }}`
+      }
+
+      window.variantStrings = {
+        addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+        soldOut: `{{ 'products.product.sold_out' | t }}`,
+        unavailable: `{{ 'products.product.unavailable' | t }}`,
+      }
+
+      window.accessibilityStrings = {
+        shareSuccess: `{{ 'general.share.success_message' | t }}`,
+      }
+    </script>
+  </body>
+</html>

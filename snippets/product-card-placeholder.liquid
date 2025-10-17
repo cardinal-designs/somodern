@@ -1,0 +1,21 @@
+{% comment %}
+    Renders a product card placeholder
+
+    Usage:
+    {% render 'product-card-placeholder' %}
+{% endcomment %}
+
+<div>
+  <div class="aspect-product relative">
+    {% render 'image'
+      classes: 'size-full inset object-cover',
+      sizes: '700x',
+      include_placeholder: true,
+      placeholder_name: 'product-1',
+      src_set_type: 'grid'
+    %}
+  </div>
+  <div class="mt-20 text-center">
+    <p class="text-body-1 font-serif">Product title</p>
+  </div>
+</div>

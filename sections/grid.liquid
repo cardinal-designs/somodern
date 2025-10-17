@@ -1,0 +1,60 @@
+<div class="page-width{% if section.settings.less_padding %} my-40{% else %} my-60 md:my-80{% endif %}">
+  <div class="grid gap-20{% if section.settings.desktop_columns == "3" %} md:grid-cols-3{% else %} md:grid-cols-2{% endif %}">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Grid",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Config"
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "options": [
+          { "value": "square", "label": "Square" },
+          { "value": "tall", "label": "Tall" }
+        ],
+        "default": "square",
+        "label": "Image Ratio"
+      },
+      {
+        "type": "select",
+        "id": "desktop_columns",
+        "options": [
+          { "value": "2", "label": "2" },
+          { "value": "3", "label": "3" }
+        ],
+        "default": "3",
+        "label": "Desktop Columns"
+      },
+      {
+        "type": "checkbox",
+        "id": "less_padding",
+        "label": "Less Padding"
+      }
+    ],
+    "blocks": [{ "type": "_grid-item" }],
+    "presets": [
+      {
+        "name": "Grid",
+        "category": "Storytelling",
+        "blocks": [
+          {
+            "type": "_grid-item"
+          },
+          {
+            "type": "_grid-item"
+          },
+          {
+            "type": "_grid-item"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

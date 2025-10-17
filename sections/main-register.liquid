@@ -1,0 +1,137 @@
+<div class="register {% if section.settings.image != blank %} flex flex-col-reverse md:grid md:grid-cols-[0.6fr_0.4fr] md:items-center{% endif %}">
+  {% if section.settings.image != blank %}
+    <div class="pb-full relative overflow-hidden md:h-full md:p-0">
+      {% render 'image'
+        image: section.settings.image,
+        classes: 'size-full inset object-cover',
+        sizes: '(min-width: 767px) 65vw, 100vw',
+        src_set_type: 'full-width',
+        prioritize_loading: true
+      %}
+    </div>
+  {% endif %}
+  <div class="max-w-custom w-full mx-auto mt-40 mb-60 px-20 md:px-40 md:my-100" style="--width: 600px;">
+    <div class="max-w-custom mx-auto w-full" style="--width: 435px;">
+      <h1 class="mb-40 text-m-h1 font-serif italic text-center md:mb-60 md:text-h1">Sign Up</h1>
+
+      {% form 'create_customer', novalidate: 'novalidate' %}
+
+        <div class="mb-30">  
+          <label class="field__label" for="RegisterForm-FirstName">First Name</label>    
+          <input
+            type="text"
+            class="field__input"
+            name="customer[first_name]"
+            id="RegisterForm-FirstName"
+            {% if form.first_name %}value="{{ form.first_name }}"{% endif %}
+            autocomplete="given-name"
+            placeholder="First Name"
+          >
+        </div>
+        
+        <div class="mb-30">
+          <label class="field__label" for="RegisterForm-LastName">Last Name</label>
+          <input
+            type="text"
+            class="field__input"
+            name="customer[last_name]"
+            id="RegisterForm-LastName"
+            {% if form.last_name %}value="{{ form.last_name }}"{% endif %}
+            autocomplete="family-name"
+            placeholder="Last Name"
+          >
+        </div>
+
+        <div class="mb-30">   
+          <label class="field__label" for="RegisterForm-email">Email</label>   
+          <input
+            type="email"
+            class="field__input"
+            name="customer[email]"
+            id="RegisterForm-email"
+            {% if form.email %} value="{{ form.email }}"{% endif %}
+            spellcheck="false"
+            autocapitalize="off"
+            autocomplete="email"
+            aria-required="true"
+            {% if form.errors contains 'email' %}
+              aria-invalid="true"
+              aria-describedby="RegisterForm-email-error"
+            {% endif %}
+            placeholder="Email"
+          >
+        </div>
+
+        <div class="mb-30">     
+          <label class="field__label" for="RegisterForm-password">Password</label>
+          <input
+            type="password"
+            class="field__input"
+            name="customer[password]"
+            id="RegisterForm-password"
+            aria-required="true"
+            {% if form.errors contains 'password' %}
+              aria-invalid="true"
+              aria-describedby="RegisterForm-password-error"
+            {% endif %}
+            placeholder="Password"
+          >
+
+          {% if form.errors %}
+            <div class="mt-10 text-body-2 text-error">{{ form.errors | default_errors }}</div>
+          {% endif %}
+        </div>
+
+        <button class="button w-full">Submit</button>
+
+        <div class="mt-15 text-center">
+          {% render 'text-link' label: 'Back to Log In', link: routes.account_login_url %}
+        </div>
+      {% endform %}
+    </div>
+
+  </div>
+</div>
+
+<style>
+  {% if section.settings.image != blank %}
+    .header {
+      color: black;
+    }
+
+    .header-logo {
+      opacity: 1;
+    }
+
+    .header-logo-transparent {
+      opacity: 0;
+    }
+
+    @media screen and (max-width: 767px) {
+      .header {
+        border-color: #F8F7F3;
+      }
+      
+      #MainContent {
+        margin-top: 0;
+      }
+    }
+  {% endif %}
+</style>
+
+{% schema %}
+  {
+    "name": "Register",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      }
+    ]
+  }
+{% endschema %}

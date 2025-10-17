@@ -1,0 +1,302 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Ohaei Theme",
+    "theme_version": "1.0.0",
+    "theme_author": "Cardinal & Co. Agency",
+    "theme_documentation_url": "https:\/\/cardinalco.agency\/",
+    "theme_support_url": "https:\/\/cardinalco.agency\/"
+  },
+  {
+    "name": "Global",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Colors"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#000000"
+      },
+      {
+        "type": "header",
+        "content": "Content"
+      },
+      {
+        "type": "url",
+        "id": "shop_all_link",
+        "label": "Shop All Link"
+      },
+      {
+        "type": "header",
+        "content": "Animations"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_animations",
+        "label": "Enable Animations",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Product",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Product Cards"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_quickview",
+        "label": "Enable Quickview"
+      },
+      {
+        "type": "header",
+        "content": "Product Page"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_quantity_selector",
+        "label": "Show Quantity Selector"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "text",
+        "id": "cart_title",
+        "label": "Cart Title",
+        "default": "Cart"
+      },
+      {
+        "type": "header",
+        "content": "Free Shipping Bar"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_shipping_bar",
+        "label": "Enable Shipping Bar"
+      },
+      {
+        "type": "number",
+        "id": "shipping_threshold",
+        "label": "Shipping Threshold",
+        "visible_if": "{{ settings.enable_shipping_bar == true }}"
+      },
+      {
+        "type": "header",
+        "content": "Gift Note"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_cart_note",
+        "label": "Enable Gift Note"
+      },
+      {
+        "type": "header",
+        "content": "Cart Upsells"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_cart_upsells",
+        "label": "Enable Cart Upsells"
+      },
+      {
+        "type": "text",
+        "id": "cart_upsells_title",
+        "label": "Cart Upsells Title",
+        "default": "You Might Like",
+        "visible_if": "{{ settings.enable_cart_upsells == true }}"
+      },
+      {
+        "type": "range",
+        "id": "cart_upsells_limit",
+        "label": "Cart Upsells Limit",
+        "min": 3,
+        "max": 9,
+        "step": 1,
+        "default": 4
+      },
+      {
+        "type": "radio",
+        "id": "cart_upsells_source",
+        "options": [
+          {
+            "value": "collection",
+            "label": "Collection"
+          },
+          {
+            "value": "product_list",
+            "label": "Product List"
+          }
+        ],
+        "default": "collection",
+        "label": "Cart Upsells Source"
+      },
+      {
+        "type": "collection",
+        "id": "cart_upsells_collection",
+        "label": "Cart Upsells Collection"
+      },
+      {
+        "type": "product_list",
+        "id": "cart_upsells_product_list",
+        "label": "Cart Upsells Product List"
+      }
+    ]
+  },
+  {
+    "name": "Product Badges",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Custom Product Badges"
+      },
+      {
+        "type": "text",
+        "id": "badge_tags_1",
+        "label": "Badge Tags 1"
+      },
+      {
+        "type": "color",
+        "id": "badge_tags_1_color",
+        "label": "Badge Tags 1 Color"
+      },
+      {
+        "type": "color",
+        "id": "badge_tags_1_text_color",
+        "label": "Badge Tags 1 Text Color"
+      },
+      {
+        "type": "text",
+        "id": "badge_tags_2",
+        "label": "Badge Tags 2"
+      },
+      {
+        "type": "color",
+        "id": "badge_tags_2_color",
+        "label": "Badge Tags 2 Color"
+      },
+      {
+        "type": "color",
+        "id": "badge_tags_2_text_color",
+        "label": "Badge Tags 2 Text Color"
+      },
+      {
+        "type": "text",
+        "id": "badge_tags_3",
+        "label": "Badge Tags 3"
+      },
+      {
+        "type": "color",
+        "id": "badge_tags_3_color",
+        "label": "Badge Tags 3 Color"
+      },
+      {
+        "type": "color",
+        "id": "badge_tags_3_text_color",
+        "label": "Badge Tags 3 Text Color"
+      },
+      {
+        "type": "text",
+        "id": "badge_tags_4",
+        "label": "Badge Tags 4"
+      },
+      {
+        "type": "color",
+        "id": "badge_tags_4_color",
+        "label": "Badge Tags 4 Color"
+      },
+      {
+        "type": "color",
+        "id": "badge_tags_4_text_color",
+        "label": "Badge Tags 4 Text Color"
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:settings_schema.social-media.settings.header.content"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook Link",
+        "info": "https:\/\/facebook.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram Link",
+        "info": "https:\/\/www.instagram.com\/shopify\/"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_link",
+        "label": "Pinterest Link",
+        "info": "https:\/\/pinterest.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "X Link",
+        "info": "https:\/\/twitter.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok_link",
+        "label": "TikTok Link",
+        "info": "https:\/\/tiktok.com\/@shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_tumblr_link",
+        "label": "Tumblr Link",
+        "info": "https:\/\/shopify.tumblr.com"
+      },
+      {
+        "type": "text",
+        "id": "social_snapchat_link",
+        "label": "Snapchat Link",
+        "info": "https:\/\/snapchat.com\/add\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_link",
+        "label": "Youtube Link",
+        "info": "https:\/\/youtube.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_vimeo_link",
+        "label": "Vimeo Link",
+        "info": "https:\/\/vimeo.com\/shopify"
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "Will be scaled down to 32 x 32px"
+      }
+    ]
+  }
+]

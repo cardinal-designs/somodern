@@ -1,0 +1,185 @@
+<collection-slider data-desktop-columns="{{ section.settings.desktop_columns }}" data-mobile-columns="{{ section.settings.mobile_columns }}">
+  <div class="my-60 md:my-80">
+    <div class="block overflow-hidden">
+      <div class="page-width">
+        <div {% unless section.blocks.size > 1 %}class="mb-10 flex justify-between items-center md:m-0"{% endunless %}>
+          {% if section.settings.title != blank %}
+            <h2 class="mb-10 text-m-h2 font-serif italic text-center md:mb-30 md:text-h2 md:text-left" data-animate>{{ section.settings.title }}</h2>
+          {% endif %}
+
+          <div class="mb-30 md:flex md:justify-between md:mb-40 md:gap-40" data-animate>
+            {% if section.blocks.size > 1 %}
+              <div class="-mx-20 px-20 overflow-scroll no-scrollbar md:m-0 md:p-0">
+                <div class="w-fit mx-auto flex gap-40">
+                  {% for block in section.blocks %}
+                    <button class="collection-slider-tab group/button pb-13 relative text-cta uppercase whitespace-nowrap{% if forloop.first %} active{% endif %}" data-id="collection-{{ section.id }}-{{ forloop.index }}" {{ block.shopify_attributes }}>
+                      {{ block.settings.collection_title }}
+                      <div class="absolute left-0 right-0 bottom-0 border-b-1 border-transparent transition-colors group-[.active]/button:border-black group-hover/button:border-black"></div>
+                    </button>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+
+            <div class="hidden md:block">
+              {% for block in section.blocks %}
+                <div class="swiper-buttons flex items-center gap-30{% unless forloop.first %} hidden{% endunless %}" data-id="collection-{{ section.id }}-{{ forloop.index }}" {{ block.shopify_attributes }}>
+                  <button class="swiper-button swiper-button-prev rotate-180">
+                    {% render 'icon' icon: 'arrow' %}
+                  </button>
+                  <button class="swiper-button swiper-button-next">
+                    {% render 'icon' icon: 'arrow' %}
+                  </button>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        
+        <div class="collection-slider-container">
+          {% for block in section.blocks %}
+            <div class="collection-slider-wrapper group-wrapper{% unless forloop.first %} hidden{% endunless %}" data-id="collection-{{ section.id }}-{{ forloop.index }}" {{ block.shopify_attributes }}>
+              <div class="collection-slider swiper collection-slider-{{ section.id }} group/slider overflow-visible md:overflow-hidden" data-id="collection-{{ section.id }}-{{ forloop.index }}">
+                <div class="swiper-wrapper group-[:not(.swiper-initialized)]/slider:overflow-hidden">
+                  {% if block.settings.collection != blank %}
+                    {% assign current_collection = collections[block.settings.collection] %}
+                    {% for current_product in current_collection.products limit: section.settings.maximum_products %}
+                      <div class="swiper-slide">
+                        <div data-animate>
+                          {% render 'product-card' prod: current_product %}
+                        </div>
+                      </div>
+                    {% endfor %}
+                  {% else %}
+                    {% for i in (1..8) %}
+                      <div class="swiper-slide">
+                        <div data-animate>
+                          {% render 'product-card-placeholder' %}
+                        </div>
+                      </div>
+                    {% endfor %}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</collection-slider>
+
+<style>
+  {% liquid
+    assign mobile_columns = section.settings.mobile_columns
+    if mobile_columns == '1.5'
+      assign mobile_columns = 1
+    endif
+  %}
+
+  /* Style before slider has loaded */
+  .collection-slider-{{ section.id }}:not(.swiper-initialized) .swiper-wrapper {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.desktop_columns }}, 1fr);
+    grid-template-rows: 1fr;
+    grid-auto-rows: 0;
+    gap: 20px;
+  }
+
+  @media screen and (max-width: 767px) {
+    .collection-slider-{{ section.id }}:not(.swiper-initialized) .swiper-wrapper {
+      grid-template-columns: repeat({{ mobile_columns }}, 1fr);
+    }
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Collection Slider",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Collection Slider"
+      },
+      {
+        "type": "header", 
+        "content": "Product List"
+      },
+      {
+        "type": "range",
+        "id": "maximum_products",
+        "min": 3,
+        "max": 20,
+        "step": 1,
+        "label": "Maximum Products",
+        "default": 12
+      },
+      {
+        "type": "select",
+        "id": "desktop_columns",
+        "options": [
+          { "value": "3", "label": "3" },
+          { "value": "4", "label": "4" },
+          { "value": "5", "label": "5" }
+        ],
+        "default": "4",
+        "label": "Desktop Columns"
+      },
+      {
+        "type": "select",
+        "id": "mobile_columns",
+        "options": [
+          { "value": "1", "label": "1" },
+          { "value": "1.5", "label": "1.5" },
+          { "value": "2", "label": "2" }
+        ],
+        "default": "1.5",
+        "label": "Mobile Columns"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "header", 
+            "content": "Collection"
+          },
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          },
+          {
+            "type": "text",
+            "id": "collection_title",
+            "label": "Collection Title"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection Slider",
+        "category": "Products",
+        "blocks": [
+          {
+            "type": "collection",
+            "settings": {
+              "collection_title": "First collection"
+            }
+          },
+          {
+            "type": "collection",
+            "settings": {
+              "collection_title": "Second collection"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

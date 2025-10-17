@@ -1,0 +1,42 @@
+<div class="sitemap">
+  <div class="py-[85px] text-center bg-beige">
+    <div class="page-width">
+      <h1 class="text-h1 font-serif italic">{{ section.settings.title }}</h1>
+    </div>
+  </div>
+  <div class="page-width mt-40 mb-60 md:my-80">
+    <div class="max-w-custom w-full mx-auto grid gap-x-30 gap-y-40 sm:grid-cols-2 md:grid-cols-4 md:gap-y-60" style="--width: 856px;">
+      {% for link in section.settings.menu.links %}
+        <div class="text-center sm:text-left">
+          <h2 class="mb-15 text-h3 font-serif italic">{{ link.title }}</h2>
+          <ul class="flex flex-col" role="list">
+            {% for child_link in link.links %}
+              <li>
+                <a href="{{ child_link.url }}" class="text-body-2 hover:underline">{{ child_link.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Sitemap",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Sitemap"
+      },
+      {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Menu"
+      }
+    ]
+  }
+{% endschema %}

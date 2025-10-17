@@ -1,0 +1,126 @@
+<div class="page-width">
+  <h1 class="mt-60 mb-40 text-m-h1 font-serif italic text-center md:mb-60 md:text-h1">My Account</h1>
+</div>
+
+<div class="px-20 border-b-1 border-mint overflow-scroll no-scrollbar md:px-40">
+  <div class="w-fit mx-auto flex items-center gap-40">
+    <a href="{{ routes.account_url }}" class="group/link py-13 block text-cta uppercase relative whitespace-nowrap" data-tab="addresses">
+      Addresses
+      <span class="absolute left-0 right-0 bottom-0 border-b-1 border-transparent transition-colors group-[.active]/link:border-black group-hover/link:border-black"></span>
+    </a>
+    <button class="group/link py-13 block text-cta uppercase relative whitespace-nowrap active" data-tab="orders">
+      Orders
+      <span class="absolute left-0 right-0 bottom-0 border-b-1 border-transparent transition-colors group-[.active]/link:border-black group-hover/link:border-black"></span>
+    </button>
+    <a href="{{ routes.account_logout_url }}" class="group/link py-13 block text-cta uppercase relative whitespace-nowrap">
+      Logout
+      <span class="absolute left-0 right-0 bottom-0 border-b-1 border-transparent transition-colors group-[.active]/link:border-black group-hover/link:border-black"></span>
+    </a>
+  </div>
+</div>
+
+<div class="page-width">
+  <div class="max-w-custom w-full mx-auto my-60 md:mt-60" style="--width: 890px;">
+
+    <div class="w-full md:grid md:grid-cols-[1fr_260px] md:gap-80">
+      <div class="">
+        <h2 class="mb-20 text-m-h2 font-serif italic md:text-h4">{{ 'customer.order.title' | t: name: order.name }}</h2>
+
+        {% assign order_date = order.created_at | time_tag: format: "date_at_time" %}
+        <p class="mb-20 text-body-2">{{ 'customer.order.date_html' | t: date: order_date }}</p>
+
+        {% if order.cancelled %}
+          {% assign cancelled_at = order.cancelled_at | time_tag: format: "date_at_time" %}
+          <div class="mb-20">
+            <p class="text-body-2">{{ 'customer.order.cancelled_html' | t: date: cancelled_at }}</p>
+            <p class="mt-10 text-body-2">{{ 'customer.order.cancelled_reason' | t: reason: order.cancel_reason_label }}</p>
+          </div>
+        {% endif %}
+  
+        <div class="">
+          <div class="">
+            {% for line_item in order.line_items %}
+              <div class="py-20 flex gap-10 border-t-1 border-mint md:gap-20">
+                <div class="w-80 relative flex-shrink-0">
+                  {{ line_item.image | image_url: width: 200 | image_tag: preload: true, width: section.settings.image.width, sizes: '200', widths: '200, 300', class: 'aspect-tall object-cover' }}
+                </div>
+                <div class="w-full">
+                  <div class="flex justify-between gap-20">
+                    <p class="mb-5 text-link-md font-serif">{{ line_item.product.title }}</p>
+                    <p class="text-body-3">{{ line_item.price | money }}</p>
+                  </div>
+                  <div class="text-body-3 opacity-50">
+                    {% if line_item.product.has_only_default_variant == false %}
+                      {% for option in line_item.options_with_values %}
+                        <span>
+                        {{ option.value }}{% unless forloop.last %},&nbsp;{% endunless %}
+                        </span>
+                      {% endfor %}
+                    {% endif %}
+                  </div>
+                  <p class="mt-10 text-body-3">Qty: {{ line_item.quantity }}</p>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+          <div class="border-t-1 border-mint">
+            {% if order.cart_level_discount_applications != blank %}
+              {% for discount_application in order.cart_level_discount_applications %}
+                <div class="py-20 flex justify-between border-b-1 border-mint">
+                  <p class="text-body-2">Discount - {{ discount_application.title }}</p>
+                  <p class="text-body-2">-{{ discount_application.total_allocated_amount | money }}</p>
+                </div>
+              {% endfor %}
+            {% endif %}
+            {% for shipping_method in order.shipping_methods %}
+              <div class="py-20 flex justify-between border-b-1 border-mint">
+                <p class="text-body-2">{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})</p>
+                <p class="text-body-2">{{ shipping_method.price | money }}</p>
+              </div>
+            {% endfor %}
+            {% for tax_line in order.tax_lines %}
+              <div class="py-20 flex justify-between border-b-1 border-mint">
+                <p class="text-body-2">{{ 'customer.order.tax' | t }} ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)</p>
+                <p class="text-body-2">{{ tax_line.price | money }}</p>
+              </div>
+            {% endfor %}
+            <div class="py-20 flex justify-between border-b-1 border-mint">
+              <p class="text-body-2">Total</p>
+              <p class="text-body-2">{{ order.total_price | money_with_currency }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-30 hidden md:block">
+          {% render 'text-link' label: 'Return to Account', link: routes.account_url %}
+        </div>
+      </div>
+
+      <div class="mt-30 md:mt-0">
+        <div class="order-detail__billing">
+          <h2 class="mb-10 text-m-h2 font-serif italic md:text-h4 md:mb-20 md:pb-20 md:border-b-1 md:border-mint">Billing Address</h2>
+          <div class="text-body-2">
+            {{ order.billing_address | format_address }}
+          </div>
+        </div>
+        <div class="mt-30 order-detail__shipping">
+          <h2 class="mb-10 text-m-h2 font-serif italic md:text-h4 md:mb-20 md:pb-20 md:border-b-1 md:border-mint">Shipping Address</h2>
+          <div class="text-body-2">
+            {{ order.shipping_address | format_address }}
+          </div>
+        </div>
+
+        <div class="mt-30 pb-20 border-b-1 border-mint md:pt-20 md:pb-0 md:border-t-1 md:border-b-0">
+          <p class="mb-10 text-body-2"><span class="font-semibold">Payment Status:</span> {{ order.financial_status_label }}</p>
+          <p class="text-body-2"><span class="font-semibold">Fufillment Status:</span> {{ order.fulfillment_status_label }}</p>
+        </div>
+
+        <div class="mt-30 md:hidden">
+          {% render 'text-link' label: 'Return to Account', link: routes.account_url %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

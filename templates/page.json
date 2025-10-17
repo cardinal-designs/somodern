@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "additional_text": "{{ page.metafields.custom.additional_text.value }}"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

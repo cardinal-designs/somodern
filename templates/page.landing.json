@@ -1,0 +1,31 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "landing",
+      "settings": {
+        "logo": "shopify:\/\/shop_images\/ohaei-logo-white.svg",
+        "logo_width": 145,
+        "mobile_logo_width": 125,
+        "background_color": "rgba(0,0,0,0)",
+        "background_image": "shopify:\/\/shop_images\/Rectangle_-_2024-10-31T152927.561.jpg",
+        "mobile_background_image": "shopify:\/\/shop_images\/67b9207cbc131cbed654b5e3135e47be.jpg",
+        "content_background_color": "#ffffff",
+        "content_color": "dark",
+        "title": "Coming Soon!",
+        "text": "Subscribe to be notified of launch dates, future product features and more!"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

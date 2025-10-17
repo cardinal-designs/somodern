@@ -1,0 +1,75 @@
+<div class="page-width my-60 md:my-100">
+  <div class="max-w-custom w-full mx-auto" style="--width: 1115px;">
+    {% if section.settings.title != blank %}
+      <div class="mb-20 text-m-h2 font-serif italic md:text-h2 md:mb-50">{{ section.settings.title }}</div>
+    {% endif %}
+    <div class="border-t-1 border-mint">
+      {% for block in section.blocks %}
+        <dropdown-item {{ block.shopify_attributes }}>
+          <div class="group/dropdown border-b-1 border-mint{% if forloop.first %} active{% endif %}" data-dropdown>
+            <button class="w-full py-20 flex justify-between items-center gap-20 text-left text-body-m-1 font-serif md:py-25 md:text-body-1" data-dropdown-toggle>
+              {{ block.settings.title }}
+              <span class="flex transition-transform group-[.active]/dropdown:rotate-180">
+                {% render 'icon' icon: 'dropdown' %}
+              </span>
+            </button>
+            <div class="hidden group-[.active]/dropdown:block" aria-hidden="true" data-dropdown-content>
+              <div class="max-w-custom w-full pb-20 rte text-m-body-2 md:text-body-3" style="--width: 650px;">{{ block.settings.answer }}</div>
+            </div>
+          </div>
+        </dropdown-item>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "FAQs",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Frequently Asked Questions"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "faq_item",
+        "name": "FAQ Item",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Question",
+            "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit?"
+          },
+          {
+            "type": "richtext",
+            "id": "answer",
+            "label": "Answer",
+            "default": "<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "FAQs",
+        "category": "Content",
+        "blocks": [
+          {
+            "type": "faq_item"
+          },
+          {
+            "type": "faq_item"
+          },
+          {
+            "type": "faq_item"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

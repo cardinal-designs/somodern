@@ -1,0 +1,41 @@
+<div class="page-width my-60 md:my-80">
+  <h1 class="mb-40 text-m-h2 font-bold text-center md:text-h2">{{ section.settings.title }}</h1>
+
+  <ul class="collection-list grid grid-cols-1 gap-20 md:grid-cols-2" role="list">
+    {% for collection in collections %}
+      <li class="collection-list__item grid__item">
+        <a class=""{% if collection.all_products_count > 0 %} href="{{ collection.url }}"{% endif %}>
+          <div class="pb-half relative overflow-hidden">
+            {% if collection.featured_image != blank %}
+              {{ collection.featured_image | image_url: width: 1000 | image_tag: width: collection.featured_image.width, sizes: '1000x', widths: '200, 300, 400, 500, 700, 900, 1000', class: 'w-full h-full inset object-cover' }}
+            {% endif %}
+
+            <div class="p-20 inset flex items-end bg-black/10">
+              {% unless section.settings.image_padding %}<div class="overlay-card"></div>{% endunless %}
+              <h2 class="flex items-center gap-10 text-m-h5 font-bold md:text-h5">
+                <span>{{- collection.title -}}</span>
+                <div class="[&_svg]:w-20">
+                  {% render 'icon' icon: 'arrow' %}
+                </div>
+              </h2>
+            </div>
+          </div>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "name": "Collection List",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Collections"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,67 @@
+{% if predictive_search.performed %}
+  <div class="page-width py-30">
+    <div class="grid gap-40 md:grid-cols-2">
+      <div class="">
+        {% if predictive_search.resources.products.size > 0 %}
+          <ul class="flex flex-col gap-20">
+            {% for current_product in predictive_search.resources.products limit: 3 %}
+              <li>
+                <a href="{{ current_product.url }}" class="flex gap-10 flex-shrink-0">
+                  <div class="w-60">
+                    {% render 'image'
+                      image: current_product.featured_image,
+                      classes: 'w-full aspect-square object-cover',
+                      sizes: '200px',
+                      include_placeholder: true,
+                      placeholder_name: 'product-1',
+                      src_set_type: 'thumbnail'
+                    %}
+                  </div>
+                  <div class="">
+                    <p class="text-sh2 uppercase">{{ current_product.title }}</p>
+                    <p class="price flex items-center gap-5 text-body-3">
+                      {% if current_product.compare_at_price > current_product.price %}
+                        <span class="line-through">{{ current_product.compare_at_price | money }}</span>
+                      {% endif %}
+                      {{ current_product.price | money }}
+                    </p>
+                  </div>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p class="text-body-2">No products found.</p>
+        {% endif %}
+      </div>
+      <div class="">
+        {% if predictive_search.resources.queries.size > 0 or predictive_search.resources.collections.size > 0 %}
+          <div class="max-w-custom w-full" style="--width: 335px;">
+            <h3 class="mb-20 pb-10 text-sh4 uppercase border-b-1 border-mint">Popular Searches</h3>
+            <ul class="flex flex-col gap-10">
+              {% for query in predictive_search.resources.queries %}
+                <li id="predictive-search-option-query-{{ forloop.index }}" class="" role="option" aria-selected="false">
+                  <a href="{{ query.url }}" class="" tabindex="-1">
+                    <p class="text-body-3 [&_mark]:bg-transparent [&_mark]:underline" aria-label="{{ query.text }}">
+                      {{ query.styled_text }}
+                    </p>
+                  </a>
+                </li>
+              {% endfor %}
+              {% for collection in predictive_search.resources.collections %}
+                <li id="predictive-search-option-collection-{{ forloop.index }}" class="" role="option" aria-selected="false">
+                  <a href="{{ collection.url }}" class="" tabindex="-1">
+                    <p class="text-body-3">{{ collection.title | escape }}</p>
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="max-w-custom w-full mt-60 mx-auto text-center md:mt-40" style="--width: 375px;">
+      <button class="w-full button" data-submit>See All Products</button>
+    </div>
+  </div>
+{% endif %}

@@ -1,0 +1,162 @@
+<footer class="footer pt-30 pb-20 {{ section.settings.content_color }} md:pt-80" style="background-color: {{ section.settings.background_color }}">
+  <div class="page-width">
+    <div class="flex flex-wrap gap-40 md:justify-between lg:flex-nowrap xl:gap-60">
+
+      <div class="max-w-custom w-full mx-auto flex-shrink-0 md:m-0" style="--width: 295px;">
+        {% if section.settings.logo != blank %}
+          <a href="{{ routes.root_url }}" class="w-125 mx-auto block md:m-0" aria-label="Footer Logo Link">
+            {{ section.settings.logo | image_url: width: 200 | image_tag: width: section.settings.logo.width, class: 'w-full', sizes: '200px', widths: '100, 150, 200, 300' }}
+          </a>
+        {% endif %}
+        {% if section.settings.brand_text != blank %}
+          <div class="rte text-body-4 opacity-70 text-center md:text-left{% if section.settings.logo != blank %} mt-10 md:mt-60{% endif %}">{{ section.settings.brand_text }}</div>
+        {% endif %}
+      </div>
+
+      <div class="w-full grid grid-cols-2 gap-x-20 gap-y-40 md:w-auto md:flex md:justify-evenly md:gap-80 lg:gap-40 lg:w-full xl:gap-100">
+        {% for link in section.settings.menu.links %}
+          <div>
+            <h2 class="mb-15 text-body-4">{{ link.title }}</h2>
+            <ul class="flex flex-col gap-5 md:gap-10">
+              {% for child_link in link.links %}
+                <li>
+                  <a href="{{ child_link.url }}" class="text-body-4 opacity-70 transition-opacity hover:opacity-100{% if child_link.active %} active{% endif %}">
+                    {{ child_link.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="w-full flex-shrink-0 lg:max-w-custom" style="--width: 300px;">
+        {% if section.settings.newsletter_title != blank %}
+          <h2 class="text-body-4">{{ section.settings.newsletter_title }}</h2>
+        {% endif %}
+        {% if section.settings.newsletter_text != blank %}
+          <div class="mt-15 text-body-4">{{ section.settings.newsletter_text }}</div>
+        {% endif %}
+
+        {% form 'customer', id: 'ContactFooter', class: 'mt-30' %}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div class="flex border-b-1 border-white">
+            <label class="field__label visually-hidden" for="NewsletterForm--{{ section.id }}">
+              {{ 'newsletter.label' | t }}
+            </label>
+            <input
+              class="w-full py-10 text-body-4 bg-transparent text-white placeholder:text-white/50"
+              id="NewsletterForm--{{ section.id }}"
+              type="email"
+              name="contact[email]"
+              value="{{ form.email }}"
+              aria-required="true"
+              autocorrect="off"
+              autocapitalize="off"
+              autocomplete="email"
+              {% if form.errors %}
+                autofocus
+                aria-invalid="true"
+                aria-describedby="ContactFooter-error"
+              {% elsif form.posted_successfully? %}
+                aria-describedby="ContactFooter-success"
+              {% endif %}
+              placeholder="Enter Email"
+              required
+            >
+            <button type="submit" class="h-auto text-cta uppercase" name="commit" aria-label="Submit">
+              Submit
+            </button>
+          </div>
+          {% if form.errors %}
+            <p class="text-body-3 text-error" id="ContactFooter-error">{{ form.errors.messages['email'] }}</p>
+          {% endif %}
+          {% if form.posted_successfully? %}
+            <p class="text-body-3" id="ContactFooter-success" tabindex="-1" autofocus>{{ 'newsletter.success' | t }}</p>
+          {% endif %}
+        {% endform %}
+      </div>
+    </div>
+
+    <div class="mt-40 md:flex md:justify-between md:gap-60">
+      <div class="mb-70 flex justify-center md:m-0 md:block">
+        {% render 'social' %}
+      </div>
+      <div class="flex flex-col items-center opacity-50 md:flex-row md:gap-10">
+        <p class="text-body-4">&copy;{{ 'now' | date: "%Y" }}  Ohaei Inc. All Rights Reserved.</p>
+        <button class="block text-body-4 underline" data-open-credits>Site Credits.</button>
+        <a href="/pages/sitemap" class="block text-body-4 underline">Sitemap.</a>
+      </div>
+    </div>
+  </div>
+
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Config"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "content_color",
+      "options": [
+        { "value": "text-white", "label": "Light" },
+        { "value": "text-text", "label": "Dark" }
+      ],
+      "default": "text-white",
+      "label": "Content Color"
+    },
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "richtext",
+      "id": "brand_text",
+      "label": "Brand Text",
+      "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Menu"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "footer"
+    },
+    {
+      "type": "header",
+      "content": "Newsletter"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_title",
+      "label": "Newsletter Title",
+      "default": "Sign Up"
+    },
+    {
+      "type": "richtext",
+      "id": "newsletter_text",
+      "label": "Newsletter Text",
+      "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,499 @@
+{% liquid
+  assign logo_position = section.settings.logo_position
+  assign enable_transparent_header = false
+  assign transparent_header_pages = section.settings.transparent_header_pages | downcase | split: ', '
+  
+  if section.settings.enable_transparent_on_home and template.name == 'index'
+    assign enable_transparent_header = true
+  endif
+
+  unless enable_transparent_header
+    for page_template in transparent_header_pages
+      if page_template contains '.'
+        assign template_name = page_template | split: '.' | first
+        assign suffix_name = page_template | split: '.' | last
+
+        if template_name == template.name and suffix_name == template.suffix
+          assign enable_transparent_header = true
+        endif
+      else
+        if page_template == template.name
+          assign enable_transparent_header = true
+        endif
+      endif
+    endfor
+  endunless
+%}
+
+{% capture cart %}
+  <span class="hidden items-center gap-10 text-cta uppercase md:flex">
+    <span>Cart</span>
+    {% if cart != empty %}
+      <span class="h-0 flex items-center">
+        <span class="h-25 w-25 pt-x pl-px flex justify-center items-center rounded-full border-1 border-current">{{ cart.item_count }}</span>
+      </span>
+    {% endif %}
+  </span>
+  <span class="relative block md:hidden">
+    {% render 'icon' icon: 'cart' %}
+    <span class="visually-hidden">Cart</span>
+    {% if cart != empty %}
+      <span class="pl-px absolute top-[7px] left-half -translate-x-half text-cta uppercase text-center">
+        {{ cart.item_count }}
+      </span>
+    {% endif %}
+  </span>
+{% endcapture %}
+
+<site-header>
+  <header
+    class="
+      header group/header
+      {% if enable_transparent_header %} border-b-1 border-transparent text-white transition-colors hover:bg-background hover:text-text hover:border-beige group-[.scrolled]/html:bg-background group-[.scrolled]/html:text-text group-[.scrolled]/html:border-beige{% else %} bg-background border-b-1 border-beige{% endif %}
+    "
+    {% if enable_transparent_header %}data-transparent-header="true"{% endif %}
+    data-section-id="{{ section.id }}"
+    data-section-type="header"
+  >
+    <div class="page-width">
+      <div class="grid grid-cols-thirds items-center gap-20 md:gap-60{% if logo_position == 'left' %} md:flex{% endif %}">
+
+        <!-- Navigation -->
+        {% if section.settings.menu != blank %}
+          <nav class="flex flex-shrink-0">
+            <ul class="hidden items-center gap-20 md:flex md:gap-40 lg:gap-60" role="list">
+              {% for link in section.settings.menu.links %}
+                {% assign downcased_link_title = link.title | downcase | strip %}
+                {% assign mega_menu_names = '' %}
+
+                {% for block in section.blocks %}
+                  {% if block.type == 'mega_menu' %}
+                    {% assign trim_mega_menu_name = block.settings.title | strip %}
+                    {% assign mega_menu_names = mega_menu_names | append: trim_mega_menu_name | append: ',' %}
+                  {% endif %}
+                {% endfor %}
+
+                {% assign mega_menu_names = mega_menu_names | downcase | split: ',' | compact %}
+                
+                {% unless mega_menu_names contains downcased_link_title %}
+                  <li class="group/nav">
+                    {% if link.links != blank %}
+                      <div class="group/link peer py-20 cursor-pointer relative">
+                        <div class="flex items-center gap-10">
+                          <span class="text-cta uppercase">{{ link.title | escape }}</span>
+                          <div class="transition-transform ease-in-out group-hover/nav:rotate-180">
+                            {% render 'icon' icon: 'dropdown' %}
+                          </div>
+                          <div class="absolute bottom-0 left-0 right-full border-b-1 border-black transition-position group-hover/link:right-0"></div>
+                        </div>
+
+                        <ul class="min-w-[170px] pt-20 px-20 pb-15 flex flex-col gap-5 absolute top-full -translate-x-20 -translate-y-px opacity-0 invisible bg-background border-1 border-beige group-hover/nav:opacity-100 group-hover/nav:visible transition-visibility ease-in-out" role="list" tabindex="-1">
+                          {% for child_link in link.links %}
+                            <li class="group/childnav relative">
+                              <a href="{{ child_link.url }}" class="pb-5 flex items-center gap-10 text-body-4 relative opacity-50 transition-opacity hover:opacity-100"{% if child_link.current %} aria-current="page"{% endif %}>
+                                {{ child_link.title | escape }}
+                                {% if child_link.links != blank %}
+                                  <span class="-rotate-90">
+                                    {% render 'icon' icon: 'dropdown' %}
+                                  </span>
+                                {% endif %}
+                              </a>
+                              {% if child_link.links != blank %}
+                                <ul class="min-w-[170px] pt-20 px-20 pb-15 flex flex-col gap-5 absolute top-full left-full translate-x-20 -translate-y-20 opacity-0 invisible bg-background border-1 border-beige group-hover/childnav:opacity-100 group-hover/childnav:visible transition-visibility ease-in-out" role="list" tabindex="-1">
+                                  {% for grandchild_link in child_link.links %}
+                                    <li>
+                                      <a href="{{ grandchild_link.url }}" class="pb-5 text-body-4 opacity-50 transition-opacity hover:opacity-100"{% if grandchild_link.current %} aria-current="page"{% endif %}>
+                                        {{ grandchild_link.title | escape }}
+                                      </a>
+                                    </li>
+                                  {% endfor %}
+                                </ul>
+                              {% endif %}
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                    {% else %}
+                      <a href="{{ link.url }}" class="group/link py-20 block text-cta uppercase relative"{% if link.current %} aria-current="page"{% endif %}>
+                        {{ link.title | escape }}
+                        <div class="absolute bottom-0 left-0 right-full border-b-1 border-black transition-position group-hover/link:right-0"></div>
+                      </a>
+                    {% endif %}
+                  </li>
+                {% else %}
+                  <li class="group/nav">
+                    <a href="{{ link.url }}" class="py-20 flex items-center gap-10 text-cta uppercase relative"{% if link.current %} aria-current="page"{% endif %}>
+                      {{ link.title | escape }}
+                      <div class="transition-transform origin-center ease-in-out group-hover/link:rotate-180">
+                        {% render 'icon' icon: 'dropdown' %}
+                      </div>
+                      <div class="absolute bottom-0 left-0 right-full border-b-1 border-black transition-position group-hover/nav:right-0"></div>
+                    </a>
+
+                    {% for block in section.blocks %}
+                      {% assign trim_mega_menu_name = block.settings.title | strip %}
+                      {% assign downcased_mega_menu_name = trim_mega_menu_name | downcase %}
+                      {% assign mega_menu_names = mega_menu_names | append: trim_mega_menu_name | append: ',' %}
+                      
+                      {% if downcased_mega_menu_name == downcased_link_title %}
+                        <div class="group/megamenu" {{ block.shopify_attributes }}>
+                          <div
+                            class="
+                              w-full absolute top-full left-0 invisible opacity-0 overflow-auto text-left z-20 bg-background border-b-1 border-beige transition-visibility duration-300
+                              group-hover/nav:visible group-hover/nav:opacity-100
+                              group-[.active]/megamenu:visible group-[.active]/megamenu:opacity-100
+                            "
+                          >
+                            <div class="page-width flex justify-between gap-60">
+                              <div class="py-40 flex gap-60 xl:gap-125">
+                                {% for child_link in link.links %}
+                                  <div>
+                                    <h2 class="mb-5 text-body-4">{{ child_link.title }}</h2>
+                                    <ul class="flex flex-col gap-5">
+                                      {% for grandchild_link in child_link.links %}
+                                        <li>
+                                          <a href="{{ grandchild_link.url }}" class="block text-body-4 opacity-50 transition-opacity hover:opacity-100">{{ grandchild_link.title }}</a>
+                                        </li>
+                                      {% endfor %}
+                                    </ul>
+                                  </div>
+                                {% endfor %}
+                              </div>
+                              <div class="flex gap-10">
+                                {% if block.settings.image_1 != blank %}
+                                  <div class="relative">
+                                    <div class="size-[280px] relative">
+                                      {% render 'image'
+                                        image: block.settings.image_1,
+                                        classes: 'h-full w-full inset object-cover',
+                                        sizes: '400x',
+                                        include_placeholder: true,
+                                        placeholder_name: 'collection-1',
+                                        src_set_type: 'grid'
+                                      %}
+                                    </div>
+                                    {% if block.settings.title_1 != blank %}
+                                      <p class="py-10 text-body-4">{{ block.settings.title_1 }}</p>
+                                    {% endif %}
+                                    {% if block.settings.url_1 != blank %}
+                                      <a href="{{ block.settings.url_1 }}" class="inset"><span class="hidden visually-hidden">{{ block.settings.title_1 }}</span></a>
+                                    {% endif %}
+                                  </div>
+                                {% endif %}
+                                {% if block.settings.image_2 != blank %}
+                                  <div class="relative hidden lg:block">
+                                    <div class="size-[280px] relative">
+                                      {% render 'image'
+                                        image: block.settings.image_2,
+                                        classes: 'h-full w-full inset object-cover',
+                                        sizes: '400x',
+                                        include_placeholder: true,
+                                        placeholder_name: 'collection-1',
+                                        src_set_type: 'grid'
+                                      %}
+                                    </div>
+                                    {% if block.settings.title_2 != blank %}
+                                      <p class="py-10 text-body-4">{{ block.settings.title_2 }}</p>
+                                    {% endif %}
+                                    {% if block.settings.url_2 != blank %}
+                                      <a href="{{ block.settings.url_2 }}" class="inset"><span class="hidden visually-hidden">{{ block.settings.title_2 }}</span></a>
+                                    {% endif %}
+                                  </div>
+                                {% endif %}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      {% endif %}
+                    {% endfor %}
+                  </li>
+                {% endunless %}
+              {% endfor %}
+            </ul>
+
+            <button class="mobile-menu-trigger group/mobile-menu relative md:hidden">
+              <div class="transition-all duration-100 group-[.open]/mobile-menu:opacity-0 group-[.open]/mobile-menu:scale-[.5]">
+                {% render 'icon' icon: 'hamburger' %}
+              </div>
+              <div class="absolute top-half left-half -translate-x-half -translate-y-half opacity-0 scale-[.5] transition-all duration-100 group-[.open]/mobile-menu:opacity-100 group-[.open]/mobile-menu:scale-100">
+                {% render 'icon' icon: 'close' %}
+              </div>
+              <span class="hidden">Menu Icon</span>
+            </button>
+          </nav>
+        {% endif %}
+
+        <!-- Logo -->
+        <div class="logo w-full py-20 md:p-0{% if logo_position == 'left' %} md:order-first{% endif %}">
+          {% if section.settings.logo != blank %}
+            <a href="{{ routes.root_url }}" class="block relative" aria-label="Header Logo Link">
+              {%- liquid
+                assign logo_height = 125 | divided_by: section.settings.logo.aspect_ratio | round
+              -%}
+              {% if enable_transparent_header and section.settings.transparent_logo != blank %}
+                {{ section.settings.transparent_logo | image_url: width: 250 | image_tag: width: section.settings.transparent_logo.width, class: 'header-logo-transparent w-full absolute top-0 transition-opacity group-hover/header:opacity-0 group-[.scrolled]/html:opacity-0', sizes: '250px', widths: '100, 150, 200, 300', preload: true, fetchpriority: 'high', width: 125, height: logo_height  }}
+                {{ section.settings.logo | image_url: width: 250 | image_tag: width: section.settings.logo.width, class: 'header-logo w-full opacity-0 transition-opacity group-hover/header:opacity-100 group-[.scrolled]/html:opacity-100', sizes: '250px', widths: '100, 150, 200, 300', preload: true, fetchpriority: 'high', width: 125, height: logo_height }}
+              {% else %}
+                {{ section.settings.logo | image_url: width: 250 | image_tag: width: section.settings.logo.width, class: 'header-logo w-full', sizes: '250px', widths: '100, 150, 200, 300', preload: true, fetchpriority: 'high', width: 125, height: logo_height }}
+              {% endif %}
+            </a>
+          {% else %}
+            <a href="{{ routes.root_url }}" class="py-10 text-m-h4 font-bold md:p-0 md:text-h4">{{ shop.name }}</a>
+          {% endif %}
+        </div>
+
+        <!-- Icons -->
+        <div class="flex justify-end items-center gap-20 flex-shrink-0 relative md:gap-40 lg:gap-60">
+          {% if section.settings.enable_search %}
+            <button class="group/link hidden relative md:block" data-open-search>
+              <span class="md:hidden">
+                {% render 'icon' icon: 'search' %}
+                <span class="visually-hidden">Search</span>
+              </span>
+              <span class="py-20 hidden text-cta uppercase md:block">Search</span>
+              <div class="hidden absolute bottom-0 left-0 right-full border-b-1 border-black transition-position group-hover/link:right-0 md:block"></div>
+            </button>
+          {% endif %}
+
+          {% if shop.customer_accounts_enabled %}
+            <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="group/link relative">
+              <span class="md:hidden">
+                {% render 'icon' icon: 'account' %}
+                <span class="visually-hidden">Account</span>
+              </span>
+              <span class="py-20 hidden text-cta uppercase md:block">Account</span>
+              <div class="hidden absolute bottom-0 left-0 right-full border-b-1 border-black transition-position group-hover/link:right-0 md:block"></div>
+            </a>
+          {% endif %}
+
+          {% if template != 'cart' %}
+            <button class="relative md:py-20" data-open-cart id="cart-icon-bubble" aria-label="Open Cart Drawer" data-id="{{ section.id }}">
+              {{ cart }}
+            </button>
+          {% else %}
+            <a href="{{ routes.cart_url }}" class="relative" id="cart-icon-bubble" data-id="{{ section.id }}">
+              {{ cart }}
+            </a>
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+
+    {% if section.settings.enable_search %}
+      {% render 'search-dropdown' %}
+    {% endif %}
+  </header>
+</site-header>
+
+<script>
+  {% if enable_transparent_header %}
+    document.body.classList.add('transparent-header');
+  {% endif %}
+</script>
+
+<style>
+  :root {
+    --header-height: 55px;
+    --header-group-height: 87px;
+  }
+
+  .header-logo {
+    width: {{ section.settings.logo_width }}px;
+  }
+
+  @media screen and (max-width: 767px) {
+    :root {
+      --header-height: 59px;
+      --header-from-top: 91px;
+    }
+
+    .header-logo {
+      width: {{ section.settings.mobile_logo_width }}px;
+    }
+  }
+
+  {% if enable_transparent_header %}
+    #MainContent {
+      margin-top: calc(var(--header-height) * -1);
+    }
+  {% endif %}
+</style>
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    {% if section.settings.logo %}
+      {% assign image_size = section.settings.logo.width | append: 'x' %}
+      "logo": {{ section.settings.logo | img_url: image_size | prepend: "https:" | json }},
+    {% endif %}
+    "sameAs": [
+      {{ settings.social_twitter_link | json }},
+      {{ settings.social_facebook_link | json }},
+      {{ settings.social_pinterest_link | json }},
+      {{ settings.social_instagram_link | json }},
+      {{ settings.social_tumblr_link | json }},
+      {{ settings.social_snapchat_link | json }},
+      {{ settings.social_youtube_link | json }},
+      {{ settings.social_vimeo_link | json }}
+    ],
+    "url": {{ shop.url | append: page.url | json }}
+  }
+</script>
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": {{ shop.name | json }},
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {{ potential_action_target | json }},
+      "query-input": "required name=search_term_string"
+    },
+    "url": {{ shop.url | append: page.url | json }}
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "site-header",
+  "settings": [
+    {
+      "type": "header", 
+      "content": "Navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_search",
+      "label": "Enable Search",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "select",
+      "id": "logo_position",
+      "options": [
+        { "value": "center", "label": "Center" },
+        { "value": "left", "label": "Left" }
+      ],
+      "default": "center",
+      "label": "Desktop Logo Position"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 50,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Logo Width",
+      "default": 125
+    },
+    {
+      "type": "range",
+      "id": "mobile_logo_width",
+      "min": 50,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile Logo Width",
+      "default": 110
+    },
+    {
+      "type": "header",
+      "content": "Transparent Header"
+    },
+    {
+      "type": "image_picker",
+      "id": "transparent_logo",
+      "label": "Transparent Logo"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_transparent_on_home",
+      "label": "Transparent Header on Homepage"
+    },
+    {
+      "type": "textarea",
+      "id": "transparent_header_pages",
+      "label": "Enable on additional templates",
+      "placeholder": "collection, product.landing, page.about",
+      "info": "Enter template names separated by commas to enable on multiple page templates."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "mega_menu",
+      "name": "Mega Menu",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Config"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Menu Item",
+          "info": "Enter menu item to apply a mega menu dropdown."
+        },
+        {
+          "type": "header",
+          "content": "Block 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title_1",
+          "label": "Title"
+        },
+        {
+          "type": "url",
+          "id": "url_1",
+          "label": "Link"
+        },
+        {
+          "type": "header",
+          "content": "Block 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title_2",
+          "label": "Title"
+        },
+        {
+          "type": "url",
+          "id": "url_2",
+          "label": "Link"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

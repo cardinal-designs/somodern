@@ -1,0 +1,47 @@
+{% comment %}
+    Renders a social sharing button
+
+    Accepts:
+    - url: {String}
+    - image: {Image} Image to share
+
+    Usage:
+    {% render 'social-sharing', url: product.url, image: product.featured_image %}
+{% endcomment %}
+
+<social-sharing class="social-sharing" data-url="{{ url }}">
+  <dropdown-item class="relative" data-is-overlay="true">
+    <div class="group/dropdown" data-dropdown>
+      <button class="py-5 flex items-center gap-15" data-dropdown-toggle>
+        {% render 'icon' icon: 'share' %}
+        <span class="text-cta uppercase">Share</span>
+      </button>
+      <div
+        class="
+          w-full p-20 absolute top-full translate-y-10 z-30 shadow-dropdown bg-white opacity-0 invisible transition-visibility
+          group-[.active]/dropdown:visible group-[.active]/dropdown:opacity-100
+        "
+        aria-hidden="true"
+        tabindex="0"
+        data-dropdown-content
+      >
+        <div class="flex relative border-1 border-cream">
+          <label id="share-label" for="share-input" class="hidden visually-hidden">Share</label>
+          <input aria-labelledby="share-label" id="share-input"
+            type="text"
+            class="w-full py-5 pl-10 text-body-3 text-ellipsis"
+            value="{{ url }}"
+            readonly
+          >
+          <button class="h-auto pr-10 pl-5 flex items-center" data-copy>
+            {% render 'icon' icon: 'clipboard' %}
+            <span class="hidden visually-hidden">Copy</span>
+          </button>
+          <div class="group/success" data-success>
+            <div class="inset py-5 pl-10 bg-white text-body-3 opacity-0 invisible transition-visibility group-[.active]/success:opacity-100 group-[.active]/success:visible">Link copied!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dropdown-item>
+</social-sharing>

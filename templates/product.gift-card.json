@@ -1,0 +1,39 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "description_position": "above",
+        "mobile_title_position": "below",
+        "zoom_type": "none",
+        "slider_style": "thumbnails",
+        "mobile_slider_style": "center",
+        "extra_text": "",
+        "value_props": "",
+        "show_sharing": false,
+        "upsell_title": "",
+        "product_upsells": [],
+        "upsell_count": "2"
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "title": "You Might Like"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product-recommendations"
+  ]
+}

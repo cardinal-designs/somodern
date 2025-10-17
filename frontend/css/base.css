@@ -1,0 +1,45 @@
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: antialiased;
+  }
+
+  .no-js:not(html) {
+    display: none !important;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--text);
+  }
+
+  body:not(.user-is-tabbing) :focus-visible {
+    outline: none;
+  }
+
+  .page-width {
+    @apply w-full px-20 md:px-40 xl:px-50;
+  }
+
+  .grecaptcha-badge {
+    display: none !important;
+  }
+
+  /* Animations */
+  html.enable-animations[data-editor-open="false"] [data-animate] {
+    opacity: 0;
+    /* transform: translateY(15px); */
+    transition: opacity 0.5s ease;
+  }
+
+  html.enable-animations[data-editor-open="false"] .shopify-section.animated [data-animate] {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Disable for nested animation elements */
+  [data-animate] [data-animate],
+  [data-animate] [data-animate] [data-animate] {
+    opacity: 1;
+  }
+}

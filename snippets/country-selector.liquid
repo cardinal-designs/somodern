@@ -1,0 +1,63 @@
+<country-selector>
+  {% form 'localization', class: 'disclosure-form' %}
+    <dropdown-item data-is-overlay="true">
+      <div
+        class="currency-selector group/dropdown relative"
+        data-dropdown
+      >
+        <h2 class="visually-hidden" id="currency-heading">Currency Selector</h2>
+        <button
+          type="button"
+          class="currency-selector-button flex items-center gap-10 text-cta uppercase"
+          aria-expanded="false"
+          aria-controls="currency-list-{{ id }}"
+          aria-describedby="currency-heading"
+          data-dropdown-toggle
+        >
+          <span class="currency-selector-current">{{ localization.country.currency.symbol }}{{ localization.country.iso_code }}</span>
+          <span class="group-[.active]/dropdown:rotate-180 transition-transform">
+            {% render 'icon' with icon: 'dropdown' %}
+          </span>
+        </button>
+        <ul
+          id="currency-list"
+          class="
+            w-80 max-h-[180px] overflow-y-scroll p-10 flex flex-col gap-10 absolute top-[23px] -left-10 bg-background text-text z-30 shadow-dropdown opacity-0 invisible transition-visibility
+            group-[.active]/dropdown:visible group-[.active]/dropdown:opacity-100
+          "
+          aria-hidden="true"
+          data-dropdown-content
+          tabindex="0"
+        >
+          {% for country in localization.available_countries %}
+            <li class="group/country text-cta{% if country.iso_code == localization.country.iso_code %} active{% endif %}">
+              <a
+                class="currency-selector-option group/link flex justify-between items-center"
+                href="#"
+                {% if country.iso_code == localization.country.iso_code %}
+                  aria-current="true"
+                {% endif %}
+                data-value="{{ country.iso_code }}"
+                data-replacement="{{ country.currency.symbol }}{{ country.iso_code }}"
+              >
+                <span class="underline-offset-2 group-hover/link:underline">
+                  {{ country.currency.symbol }}{{ country.iso_code }}
+                </span>
+
+                {% if country.iso_code == localization.country.iso_code %}
+                  <div class="w-5 h-5 mr-5 rounded-full bg-black"></div>
+                {% endif %}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+        <input
+          type="hidden"
+          name="country_code"
+          id="CurrencySelector"
+          value="{{ localization.country.iso_code }}"
+        >
+      </div>
+    </dropdown-item>
+  {% endform %}
+</country-selector>

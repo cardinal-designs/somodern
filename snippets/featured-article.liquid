@@ -1,0 +1,41 @@
+{% comment %}
+    Renders an featured article
+
+    Accepts:
+    - featured_article: {Object} Article object
+    - read_more: {Boolean} Show "Read More" button
+
+    Usage:
+    {% render 'featured-article' article: article, bg_color: bg_color, text_color: text_color %}
+{% endcomment %}
+
+<div class="flex bg-sage text-white md:min-h-[550px] lg:md:min-h-[650px]{% if featured_article.image %} flex flex-col-reverse md:grid md:grid-cols-2 lg:md:grid-cols-[0.4fr_0.6fr]{% endif %}">
+  <div class="h-auto p-40 flex justify-center items-center">
+    <div class="max-w-custom w-full mx-auto text-center md:pt-40" style="--width: 435px;">
+      {% if featured_article.tags[0] != blank %}
+        <p class="mb-10 text-sh2 uppercase md:mb-20" data-animate>{{ featured_article.tags[0] }}</p>
+      {% endif %}
+      <h1 class="text-m-h1 font-serif italic md:text-h1" data-animate>{{ featured_article.title }}</h1>
+      <p class="mt-10 text-m-body-2 md:mt-20 md:text-body-2" data-animate>{{ featured_article.created_at | date: '%B %d, %Y' }}</p>
+      {% if featured_article.excerpt %}
+        <div class="rte mt-20 text-m-body-2 md:mt-50 md:text-body-2 lg:mt-100" data-animate>{{ featured_article.excerpt }}</div>
+      {% endif %}
+      {% if read_more %}
+        <div class="mt-30" data-animate>
+          {% render 'text-link' link: featured_article.url, label: 'Read More' %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  {% if featured_article.image %}
+    <div class="relative overflow-hidden md:h-full">
+      {% render 'image'
+        image: featured_article.image,
+        classes: 'size-full md:inset md:object-cover',
+        sizes: '(min-width: 767px) 65vw, 100vw',
+        src_set_type: 'full-width',
+        prioritize_loading: true
+      %}
+    </div>
+  {% endif %}
+</div>

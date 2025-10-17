@@ -1,0 +1,57 @@
+<product-lightbox class="group/lightbox hidden md:block">
+  <div class="fixed top-0 right-0 bottom-0 left-0 bg-white z-top opacity-0 invisible transition-visibility group-[.active]/lightbox:opacity-100 group-[.active]/lightbox:visible">
+    <button class="p-10 absolute top-20 right-20" data-close>{% render 'icon' icon: 'close' %}</button>
+    <div class="w-fit mx-auto relative">
+
+      <div class="absolute left-[-200px] top-half -translate-y-half">
+        <ul class="lightbox-thumbs swiper w-50 h-[450px]">
+          <div class="swiper-wrapper">
+            {% for media in product.media %}
+              <li class="swiper-slide group/thumb cursor-pointer" style="height:auto; aspect-ratio: 3 / 4;" data-media-id="thumbs-{{ section.id }}-{{ media.id }}">
+                <div class="aspect-tall overflow-hidden relative border-1 border-transparent transition-colors group-[.swiper-slide-thumb-active]/thumb:border-navy">
+                  {% render 'image'
+                    image: media,
+                    classes: 'size-full inset object-cover',
+                    sizes: '300x',
+                    include_placeholder: true,
+                    placeholder_name: 'product-1',
+                    src_set_type: 'thumbnail'
+                  %}
+                </div>
+              </li>
+            {% endfor %}
+          </div>
+        </ul>
+      </div>
+
+      <ul class="lightbox-slider swiper h-[100vh] aspect-tall relative">
+        <div class="swiper-wrapper">
+          {% for media in product.media %}
+            <li class="swiper-slide" data-media-id="{{ section.id }}-{{ media.id }}">
+              {% render 'image'
+                image: media,
+                classes: 'w-full h-[100vh]',
+                sizes: '(min-width: 769px) 60vw, 100vw',
+                include_placeholder: true,
+                placeholder_name: 'product-1',
+                src_set_type: 'full-width'
+              %}
+            </li>
+          {% endfor %}
+        </div>
+      </ul>
+      <div class="swiper-buttons">
+        <div class="w-half absolute top-half -left-70 -translate-y-half z-30">
+          <button class="swiper-button swiper-button-prev p-5 rotate-180">
+            {% render 'icon' icon: 'arrow' %}
+          </button>
+        </div>
+        <div class="w-half absolute top-half -right-70 -translate-y-half z-30 flex justify-end">
+          <button class="swiper-button swiper-button-next p-5">
+            {% render 'icon' icon: 'arrow' %}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</product-lightbox>

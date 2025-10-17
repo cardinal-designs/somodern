@@ -1,0 +1,127 @@
+{% capture content %}
+  <div class="w-full flex flex-col items-start gap-10 text-center md:text-left sm:max-w-custom md:gap-20" style="--width: 320px">
+    {% if section.settings.subtitle != blank %}
+      <p class="text-m-sh2 uppercase md:text-sh2">{{ section.settings.subtitle }}</p>
+    {% endif %}
+    {% if section.settings.title != blank %}
+      <h2 class="text-m-h2 font-serif italic md:text-h4">{{ section.settings.title }}</h2>
+    {% endif %}
+    {% if section.settings.title != blank %}
+      <div class="rte text-m-body-2 md:text-body-2">{{ section.settings.text }}</div>
+    {% endif %}
+    {% if section.settings.button_label != blank %}
+      {% if section.settings.button_style == 'button' %}
+        <a href="{{ section.settings.button_link }}" class="button">{{ section.settings.button_label }}</a>
+      {% else %}
+        {% render 'text-link' link: section.settings.button_link, label: section.settings.button_label %}
+      {% endif %}
+    {% endif %}
+  </div>
+{% endcapture %}
+
+<div class="page-width my-60 flex justify-between items-center gap-40 overflow-hidden md:my-100 xl:gap-60">
+  <div class="hidden md:block">
+    {{ content }}
+  </div>
+  <div class="flex flex-col gap-40 md:flex-row md:gap-20{% if section.settings.image_1 == blank and section.settings.image_2 == blank %} w-full{% endif %}">
+    <div class="max-w-custom w-full mx-auto flex-shrink-0 block relative md:max-w-full md:w-auto md:m-0 md:hidden lg:block{% if section.settings.image_1 == blank %} md:h-[400px] aspect-tall{% else %} md:h-full{% endif %}" style="--width: 200px">
+      {% render 'image'
+        image: section.settings.image_1,
+        classes: 'w-auto md:h-[380px] xxl:h-[440px]',
+        include_placeholder: true,
+        placeholder_name: 'collection-1',
+        sizes: '750px',
+        src_set_type: 'grid'
+      %}
+    </div>
+
+    <div class="md:hidden">
+      {{ content }}
+    </div>
+    
+    <div class="-mx-20 flex-shrink-0 relative md:w-auto md:m-0{% if section.settings.image_2 == blank %} md:h-[400px] aspect-wide{% else %} md:h-full{% endif %}">
+      {% render 'image'
+        image: section.settings.image_2,
+        classes: 'w-auto md:h-[280px] lg:h-[380px] xxl:h-[440px]',
+        include_placeholder: true,
+        placeholder_name: 'lifestyle-1',
+        sizes: '750px',
+        src_set_type: 'grid'
+      %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Double Image / Text",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Content"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "default": "Lorem Ipsum Dolor"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Lorem Ipsum Dolor"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text",
+        "default": "<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>"
+      },
+      {
+        "type": "header",
+        "content": "Button"
+      },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button Label"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link"
+      },
+      {
+        "type": "select",
+        "id": "button_style",
+        "options": [
+          { "value": "button", "label": "Button" },
+          { "value": "text", "label": "Text" }
+        ],
+        "default": "button",
+        "label": "Button Style"
+      },
+      {
+        "type": "header",
+        "content": "Images"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_1",
+        "label": "Image 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_2",
+        "label": "Image 2"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Double Image / Text",
+        "category": "Storytelling"
+      }
+    ]
+  }
+{% endschema %}

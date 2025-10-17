@@ -1,0 +1,386 @@
+{% liquid
+  assign total_active_values = 0
+  if collection.url
+    assign results_url = collection.url
+  else 
+    assign terms = collection.terms | escape
+    assign results_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
+  endif
+
+  assign sort_by = collection.sort_by | default: collection.default_sort_by
+  assign sort_by_text = 'Featured'
+  case sort_by
+    when 'best-selling'
+      assign sort_by_text = 'Best Sellers'
+    when 'price-ascending'
+      assign sort_by_text = 'Price: Low to High'
+    when 'price-descending'
+      assign sort_by_text = 'Price: High to Low'
+  endcase
+%}
+
+{% for filter in collection.filters %}
+  {% if filter.type == 'list' %}
+    {% assign total_active_values = total_active_values | plus: filter.active_values.size %}
+  {% elsif filter.type == 'price_range' and filter.min_value.value or filter.max_value.value %}
+    {% assign total_active_values = total_active_values | plus: 1 %}
+  {% endif %}
+{% endfor %}
+
+<collection-filters class="-mx-20 collection-filters mb-20 block relative md:mx-0" data-base-url="{{ url }}" data-collection-url="{{ collection.url }}" data-current-sort="{{ collection.sort_by | default: collection.default_sort_by }}">
+
+  <div class="px-20 py-10 grid grid-cols-thirds items-center gap-20 border-y-1 border-mint md:pt-0 md:pb-20 md:px-0 md:flex md:justify-between md:gap-40 md:border-t-0">
+    <div class="flex items-center gap-20 lg:gap-40">
+      <button class="flex items-center gap-13 text-body-3" data-open-filters>
+        {% render 'icon' icon: 'filter' %}
+        Filter
+      </button>
+
+      <div class="filters-slideout max-w-full w-full h-full fixed top-0 left-0 overflow-hidden bg-background -translate-x-full transition-transform ease-in-out z-top aria-unhidden:translate-x-0 md:max-w-custom" style="--width: 500px;" aria-hidden="true">
+        <form class="filters-form h-full flex flex-col">
+          {% if is_search %}
+            <input type="hidden" name="q" value="{{ collection.terms | escape }}">
+            <input name="options[prefix]" type="hidden" value="last">
+          {% endif %}
+
+          <div class="mx-20 py-20 border-b-1 border-mint md:mx-30">
+            <div class="flex justify-between items-center gap-10">
+              <div class="flex items-center gap-10">
+                <h2 class="text-m-h4 font-serif italic md:text-h4" data-open-filters>Filters</h2>
+                <p id="product-count" class="text-cta uppercase">({{ collection.products_count }} Product{% if collection.products_count != 1 %}s{% endif %})</p>
+              </div>
+              <button class="text-body-1" data-close-filters>
+                {% render 'icon' icon: 'close' %}
+                <span class="hidden visually-hidden">Close</span>
+              </button>
+            </div>
+            <div id="active-filters-slideout">
+              {% if total_active_values > 0 %}
+                <div class="mt-20 flex gap-10 flex-wrap">
+                  {% for filter in collection.filters %}
+                    {% case filter.type %}
+                      {% when 'list' %}
+                        {% for value in filter.active_values %}
+                          <button class="px-[8px] py-[3px] flex flex-wrap items-center gap-10 text-body-2 bg-mint" data-remove-filter data-url="{{ filter.url_to_remove | remove: '%2F%3Fsection_id%3Dproduct-grid' }}" data-filter="{{ value.param_name }}-{{ value.value }}">
+                            {{ value.label | escape }}
+                            <div class="[&_svg]:w-[10px] [&_svg]:h-auto">
+                              {% render 'icon' icon: 'close' %}
+                            </div>
+                          </button>
+                        {% endfor %}
+                      {% when 'price_range' %}
+                        {% if filter.min_value or filter.max_value %}
+                          {% assign min_value = filter.min_value.value | default: 0 %}
+                          {% assign max_value = filter.max_value.value | default: filter.range_max %}
+                          {% assign min_value_formatted = min_value | money_without_trailing_zeros %}
+                          {% assign max_value_formatted = max_value | money_without_trailing_zeros %}
+                          
+                          {% if min_value != 0 or max_value != filter.range_max %}
+                            <button class="price-range px-[8px] py-[3px] flex flex-wrap items-center gap-10 text-body-2 bg-mint" data-remove-filter data-url="{{ filter.url_to_remove | remove: '%2F%3Fsection_id%3Dproduct-grid' }}" data-filter="{{ value.param_name }}-{{ value.value }}">
+                              {{ min_value_formatted }} - {{ max_value_formatted }}
+                              <div class="[&_svg]:w-[10px] [&_svg]:h-auto">
+                                {% render 'icon' icon: 'close' %}
+                              </div>
+                            </button>
+                          {% endif %}
+                        {% endif %}
+                    {% endcase %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="h-full flex flex-col overflow-y-scroll md:pb-0 md:overflow-y-auto">
+            <div class="h-full mx-20 flex flex-col overflow-y-scroll md:mx-30" id="filter-dropdowns">
+
+              {% for filter in collection.filters %}
+                {% case filter.type %}
+                  {% when 'price_range' %}
+                    <div class="dropdown border-b-1 border-mint">
+                      <button class="group/button peer filter-dropdown dropdown-header w-full pr-[2px] py-15 flex justify-between items-center gap-10 relative{% if filter.active_values != blank %} has-active-filters{% endif %}" id="{{ filter.label | handleize }}-dropdown">
+                        <span class="filter-label text-body-3">{{ filter.label }}{% if filter.active_values != blank %} ({{ filter.active_values.size }}){% endif %}</span>
+                        <span class="transition-transform ease-in-out group-[.active]/button:rotate-180">
+                          {% render 'icon' icon: 'dropdown-large' %}
+                        </span>
+                      </button>
+                      <div class="filter-dropdown__content dropdown-content hidden peer-[.active]:block">
+                        <div class="filter-dropdown__content-container pb-20 flex flex-col gap-10" id="collection-filter-{{ filter.param_name | escape }}">
+                          <price-range class="price-range">
+                            {% assign min_value = filter.min_value.value | default: 0.0 | divided_by: 100.0 %}
+                            {% assign max_value = filter.max_value.value | default: filter.range_max | divided_by: 100.0 %}
+                            {% assign range_max = filter.range_max | divided_by: 100.0 | ceil %}
+      
+                            {% assign lower_bound_progress = min_value | divided_by: range_max | times: 100.0 %}
+                            {% assign higher_bound_progress = max_value | divided_by: range_max | times: 100.0 %}
+
+                            <div class="price-range__range-group range-group h-[6px] mb-20 rounded-full relative" style="--range-min: {{ lower_bound_progress }}%; --range-max: {{ higher_bound_progress }}%;">
+                              <input type="range" aria-label="Price - From" class="range h-[7px] w-full absolute top-0 left-0" min="0" max="{{ range_max | ceil }}" value="{{ min_value | ceil }}">
+                              <input type="range" aria-label="Price - To" class="range h-[7px] w-full absolute top-0 left-0" min="0" max="{{ range_max | ceil }}" value="{{ max_value | ceil }}">
+                            </div>
+      
+                            <div class="price-range__input-group flex items-center">
+                              <div class="price-range__input w-full relative">
+                                <span class="price-range__currency absolute top-half left-15 -translate-y-half text-body-3">{{ cart.currency.symbol }}</span>
+                                <input aria-label="Price - From" class="price-range__input-field price-range__input-field--min w-full p-10 border-1 border-black text-right text-body-3" type="number" inputmode="numeric" {% if filter.min_value.value %}value="{{ min_value | ceil }}"{% endif %} name="{{ filter.min_value.param_name }}" id="{{ filter.min_value.param_name }}" min="0" max="{{ max_value | ceil }}" placeholder="0">
+                              </div>
+      
+                              <span class="price-range__delimiter mx-30 text-body-3">to</span>
+      
+                              <div class="price-range__input w-full relative">
+                                <span class="price-range__currency absolute top-half left-15 -translate-y-half text-body-3">{{ cart.currency.symbol }}</span>
+                                <input aria-label="Price - To" class="price-range__input-field price-range__input-field--max w-full p-10 border-1 border-black text-right text-body-3" type="number" inputmode="numeric" {% if filter.max_value.value %}value="{{ max_value | ceil }}"{% endif %} name="{{ filter.max_value.param_name }}" id="{{ filter.max_value.param_name }}" min="{{ min_value | ceil }}" max="{{ range_max | ceil }}" placeholder="{{ range_max | ceil }}">
+                              </div>
+                            </div>
+                          </price-range>
+                        </div>
+                      </div>
+                    </div>
+                  {% else %}
+                    {% assign downcase_filter = filter.label | downcase %}
+                      <div class="dropdown border-b-1 border-mint">
+                        <button class="group/button peer filter-dropdown dropdown-header w-full pr-[2px] py-15 flex justify-between items-center gap-10 relative{% if filter.active_values != blank %} has-active-filters{% endif %}" id="{{ filter.label | handleize }}-dropdown">
+                          <span class="filter-label text-body-3">{{ filter.label }}{% if filter.active_values != blank %} ({{ filter.active_values.size }}){% endif %}</span>
+                          <span class="transition-transform ease-in-out group-[.active]/button:rotate-180">
+                            {% render 'icon' icon: 'dropdown-large' %}
+                          </span>
+                        </button>
+                        <div class="filter-dropdown__content dropdown-content hidden peer-[.active]:block">
+                          <div class="filter-dropdown__content-container pt-10 pl-20 pb-20 flex flex-col gap-10" id="collection-filter-{{ filter.param_name | escape }}">
+                            {% for value in filter.values %}
+                              <div class="relative flex items-center cursor-pointer">
+                                <input type="checkbox"
+                                  class="filter-button peer visually-hidden"
+                                  name="{{ value.param_name }}"
+                                  value="{{ value.value }}"
+                                  data-filter="{{ value.param_name }}-{{ value.value }}"
+                                  id="Filter-{{ filter.label | escape }}-{{ forloop.index }}"
+                                  {% if value.active %}checked{% endif %}
+                                >
+                                <label for="Filter-{{ filter.label | escape }}-{{ forloop.index }}" class="flex items-center gap-10 text-body-3 cursor-pointer text-transparent peer-checked:text-text{% if value.count == 0 and value.active == false %} opacity-50{% endif %}">
+                                  <div class="h-[12px] w-[12px] border-1 border-black transition-colors relative bg-current">
+                                    <span class="absolute top-half left-half -translate-x-half -translate-y-half text-background">{% render 'icon' icon: 'checkmark' %}</span>
+                                  </div>
+                                  <div class="text-text">{{ value.label | escape }}</div>
+                                </label>
+                              </div>
+                            {% endfor %}
+                            {% if filter.active_values != blank %}
+                              <button class="block text-left text-body-3 underline opacity-50" data-clear-category-filters>Clear</button>
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                {% endcase %}
+              {% endfor %}
+            </div>
+
+            <div class="mx-20 pb-20 grid gap-10 bg-background md:mx-30 md:grid-cols-2 md:gap-20">
+              <button class="button button--outline w-full hidden md:block" data-clear-all-filters>Clear All</button>
+              <button class="button w-full" data-close-filters>Apply</button>
+              <div class="text-center text-text md:hidden">
+                <button class="group/text-link py-13 text-cta uppercase relative" data-clear-all-filters>
+                  Clear All
+                  <div class="absolute left-0 right-0 bottom-0 border-b-1 border-current transition-position group-hover/text-link:bottom-5"></div>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+
+    <div class="grid-toggle-container w-full flex justify-center md:justify-end">
+      <div class="hidden gap-13 md:flex">
+        <button class="toggle-desktop group/grid flex gap-[2px] active" data-grid-toggle="4">
+          {% for i in (i..3) %}
+            <div class="w-[6px] h-[12px] border-[1.5px] border-black transition-colors group-[.active]/grid:bg-black"></div>
+          {% endfor %}
+        </button>
+        <button class="toggle-desktop group/grid flex gap-[2px]" data-grid-toggle="3">
+          {% for i in (i..2) %}
+            <div class="w-[6px] h-[12px] border-[1.5px] border-black transition-colors group-[.active]/grid:bg-black"></div>
+          {% endfor %}
+        </button>
+      </div>
+      <div class="flex gap-20 md:hidden">
+        <button class="toggle-mobile group/grid flex gap-[2px]" data-grid-toggle="1">
+          <div class="w-[6px] h-[12px] border-[1.5px] border-black transition-colors group-[.active]/grid:bg-black"></div>
+        </button>
+        <button class="toggle-mobile group/grid flex gap-[2px] active" data-grid-toggle="2">
+          {% for i in (i..1) %}
+            <div class="w-[6px] h-[12px] border-[1.5px] border-black transition-colors group-[.active]/grid:bg-black"></div>
+          {% endfor %}
+        </button>
+      </div>
+    </div>
+
+    <form class="sort-form flex-shrink-0 relative">
+      <dropdown-item data-is-overlay="true">
+        <div class="group/dropdown flex justify-end relative" data-dropdown>
+          <button class="dropdown-header-sort py-10 flex justify-between items-center gap-10 text-body-3" data-dropdown-toggle>
+            <span>
+              <span class="hidden md:inline-block">Sort By:&nbsp;</span><span class="sort-by-current">{{ sort_by_text }}</span>
+            </span>
+            <span class="transition-transform ease-in-out group-[.active]/dropdown:rotate-180">
+              {% render 'icon' icon: 'dropdown-large' %}
+            </span>
+          </button>
+          <div class="min-w-[150px] absolute top-full right-0 translate-y-20 bg-background z-30 shadow-dropdown text-right hidden group-[.active]/dropdown:block" data-dropdown-content>
+            <div class="py-10 px-20 flex flex-col gap-5">
+              <div>
+                <input type="radio"
+                  class="sort-button peer visually-hidden"
+                  name="sort_by"
+                  value="best-selling"
+                  id="Sort-1"
+                  data-display="Best Sellers"
+                  {% if 'best-selling' == sort_by %}checked{% endif %}
+                >
+                <label for="Sort-1" class="text-body-3 opacity-50 transition-colors cursor-pointer peer-checked:opacity-100">
+                  Best Sellers
+                </label>
+              </div>
+              <div>
+                <input type="radio"
+                  class="sort-button peer visually-hidden"
+                  name="sort_by"
+                  value="manual"
+                  id="Sort-2"
+                  data-display="Featured"
+                  {% if 'manual' == sort_by %}checked{% endif %}
+                >
+                <label for="Sort-2" class="text-body-3 opacity-50 transition-colors cursor-pointer peer-checked:opacity-100">
+                  Featured
+                </label>
+              </div>
+              <div>
+                <input type="radio"
+                  class="sort-button peer visually-hidden"
+                  name="sort_by"
+                  value="price-ascending"
+                  id="Sort-3"
+                  data-display="Price: Low to High"
+                  {% if 'price-ascending' == sort_by %}checked{% endif %}
+                >
+                <label for="Sort-3" class="text-body-3 opacity-50 transition-colors cursor-pointer peer-checked:opacity-100">
+                  Price: Low to High
+                </label>
+              </div>
+              <div>
+                <input type="radio"
+                  class="sort-button peer visually-hidden"
+                  name="sort_by"
+                  value="price-descending"
+                  id="Sort-4"
+                  data-display="Price: High to Low"
+                  {% if 'price-descending' == sort_by %}checked{% endif %}
+                >
+                <label for="Sort-4" class="text-body-3 opacity-50 transition-colors cursor-pointer peer-checked:opacity-100">
+                  Price: High to Low
+                </label>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </dropdown-item>
+    </form>
+  </div>
+
+  <div id="active-filters">
+    {% if total_active_values > 0 %}
+      <div class="my-20 px-20 flex gap-x-20 gap-y-10 flex-wrap md:p-0">
+        {% for filter in collection.filters %}
+          {% case filter.type %}
+            {% when 'list' %}
+              {% for value in filter.active_values %}
+                <button class="px-[8px] py-[3px] flex flex-wrap items-center gap-10 text-body-2 bg-mint" data-remove-filter data-url="{{ filter.url_to_remove | remove: '%2F%3Fsection_id%3Dproduct-grid' }}" data-filter="{{ value.param_name }}-{{ value.value }}">
+                  {{ value.label | escape }}
+                  <div class="[&_svg]:w-[10px] [&_svg]:h-auto">
+                    {% render 'icon' icon: 'close' %}
+                  </div>
+                </button>
+              {% endfor %}
+            {% when 'price_range' %}
+              {% if filter.min_value or filter.max_value %}
+                {% assign min_value = filter.min_value.value | default: 0 %}
+                {% assign max_value = filter.max_value.value | default: filter.range_max %}
+                {% assign min_value_formatted = min_value | money_without_trailing_zeros %}
+                {% assign max_value_formatted = max_value | money_without_trailing_zeros %}
+                
+                {% if min_value != 0 or max_value != filter.range_max %}
+                  <button class="price-range px-[8px] py-[3px] flex flex-wrap items-center gap-10 text-body-2 bg-mint" data-remove-filter data-url="{{ filter.url_to_remove | remove: '%2F%3Fsection_id%3Dproduct-grid' }}" data-filter="{{ value.param_name }}-{{ value.value }}">
+                    {{ min_value_formatted }} - {{ max_value_formatted }}
+                    <div class="[&_svg]:w-[10px] [&_svg]:h-auto">
+                      {% render 'icon' icon: 'close' %}
+                    </div>
+                  </button>
+                {% endif %}
+              {% endif %}
+          {% endcase %}
+        {% endfor %}
+        <button class="text-body-3 opacity-50 underline" data-clear-all-filters>Clear Filters</button>
+      </div>
+    {% endif %}
+  </div>
+</collection-filters>
+
+<style>
+  .price-range__range-group {
+    background: linear-gradient(to right,#EBF1E6 var(--range-min),black var(--range-min),black var(--range-max),#EBF1E6 var(--range-max));
+  }
+
+  .price-range__range-group .range {
+    vertical-align: top;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+  }
+
+  .price-range__range-group .range::-webkit-slider-runnable-track {
+    background: none;
+  }
+
+  .price-range__range-group .range::-webkit-slider-thumb {
+    height: 14px;
+    width: 14px;
+    margin-top: -2px;
+    position: relative;
+    border-radius: 100%;
+    pointer-events: auto;
+    background: black;
+    z-index: 1;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .price-range__range-group .range::-moz-range-thumb {
+    height: 14px;
+    width: 14px;
+    margin-top: -5px;
+    position: relative;
+    border-radius: 100%;
+    pointer-events: auto;
+    background: black;
+    border: 0;
+    z-index: 1;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .price-range__range-group .range::-moz-range-progress,
+  .price-range__range-group .range::-moz-range-track {
+    background: none;
+  }
+
+  .price-range__input-field::-webkit-outer-spin-button,
+  .price-range__input-field::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+</style>

@@ -1,0 +1,58 @@
+<div class="page-width">
+  <div class="max-w-custom w-full mx-auto mt-40 mb-60 md:my-100" style="--width: 435px;">
+    <h1 class="mb-20 text-m-h1 font-serif italic text-center md:mb-60 md:text-h1">Reset Password</h1>
+    <p class="max-w-custom mx-auto mb-40 text-m-body-2 text-center md:text-body-3" style="--width: 320px;">{{ 'customer.activate_account.subtext' | t }}</p>
+
+    {% form 'activate_customer_password' %}
+
+      <div class="mb-30">    
+        <label class="field__label" for="password">
+          {{ 'customer.activate_account.password' | t }}
+        </label> 
+        <input
+          class="field__input"
+          type="password"
+          name="customer[password]"
+          id="password"
+          autocomplete="new-password"
+          placeholder="{{ 'customer.activate_account.password' | t }}"
+          {% if form.errors contains 'password' %}
+            aria-invalid="true"
+            aria-describedby="password-error"
+          {% endif %}
+        >
+      </div>
+
+      <div class="mb-30"> 
+        <label class="field__label" for="password_confirmation">
+          {{ 'customer.activate_account.password_confirm' | t }}
+        </label>    
+        <input
+        class="field__input"
+          type="password"
+          name="customer[password_confirmation]"
+          id="password_confirmation"
+          autocomplete="new-password"
+          placeholder="{{ 'customer.activate_account.password_confirm' | t }}"
+          {% if form.errors contains 'password' %}
+            aria-invalid="true"
+            aria-describedby="password_confirmation-error"
+          {% endif %}
+        >
+
+        {% if form.errors %}
+          <div class="mt-10 text-body-2 text-error">{{ form.errors | default_errors }}</div>
+        {% endif %}
+      </div>
+
+      <div class="text-center">
+        <button class="mb-20 button w-full block">Submit</button>
+        <button class="group/text-link py-13 text-cta uppercase relative" name="decline">
+          Cancel
+          <div class="absolute left-0 right-0 bottom-0 border-b-1 border-current transition-position group-hover/text-link:bottom-5"></div>
+        </button>
+      </div>
+
+    {% endform %}
+  </div>
+</div>

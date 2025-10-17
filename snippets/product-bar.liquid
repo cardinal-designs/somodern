@@ -1,0 +1,179 @@
+<product-bar class="group/bar w-full fixed left-0 right-0 bottom-0 block z-30 md:h-0 md:top-[var(--header-group-height)] md:bottom-auto">
+  <div class="
+    bg-background border-t-1 border-b-1 border-mint opacity-0 invisible transition-visibility duration-500
+    group-[.active]/bar:opacity-100 group-[.active]/bar:visible
+    md:pl-40 md:flex md:justify-between md:items-center md:gap-40
+  ">
+    <div class="hidden items-center gap-20 md:flex">
+      <h2 class="text-h4 font-serif italic">{{ prod.title }}</h2>
+      <p class="price flex justify-center items-center gap-5 text-link-md font-serif">
+        {% if prod.compare_at_price > prod.price %}
+          <span class="line-through">{{ prod.compare_at_price | money }}</span>
+        {% endif %}
+        {{ prod.price | money }}
+      </p>
+    </div>
+    <div class="md:flex md:items-center md:gap-60">
+      <div class="hidden lg:block">
+        {% unless prod.has_only_default_variant %}
+          <variant-radios class="no-js-hidden flex items-center gap-40 lg:gap-60" data-section="product-bar" data-url="{{ prod.url }}" data-render-info="false">
+            {% for option in prod.options_with_values %}
+              {% liquid
+                assign downcased_option = option.name | downcase
+    
+                assign variants_available_arr = prod.variants | map: 'available'
+                assign variants_option1_arr = prod.variants | map: 'option1'
+                assign variants_option2_arr = prod.variants | map: 'option2'
+                assign variants_option3_arr = prod.variants | map: 'option3'
+    
+                assign product_form_id = 'product-form-' | append: 'product-bar'
+              %}
+    
+              {% if downcased_option == 'color' %}
+                <fieldset class="product-form-input js block order-last">
+                  <div class="flex items-center gap-15 flex-row-reverse">
+                    <legend class="form__label flex items-center gap-10">
+                      <span class="pt-[2px] pl-5 text-body-4" data-selected-value>{{ option.selected_value }}</span>
+                    </legend>
+                    <div class="flex gap-y-5 flex-wrap{% if downcased_option == 'color' %} gap-x-20{% else %} gap-x-30{% endif %}">
+                      {% for value in option.values %}
+                        {% liquid
+                          assign option_disabled = true
+        
+                          for option1_name in variants_option1_arr
+                            case option.position
+                              when 1
+                                if variants_option1_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                  assign option_disabled = false
+                                endif
+                              when 2
+                                if option1_name == prod.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                  assign option_disabled = false
+                                endif
+                              when 3
+                                if option1_name == prod.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == prod.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                  assign option_disabled = false
+                                endif
+                            endcase
+                          endfor
+                        %}
+        
+                        <div>
+                          <input type="radio"
+                            class="visually-hidden peer"
+                            id="product-bar-{{ option.position }}-{{ forloop.index0 }}"
+                            name="{{ option.name }}"
+                            value="{{ value | escape }}"
+                            form="{{ product_form_id }}"
+                            {% if option.selected_value == value %}checked{% endif %}
+                          >
+                          {% liquid
+                            assign color_swatch_name = value | handleize
+                            assign swatch_color = color_swatch_name
+                            assign swatch_metaobject = shop.metaobjects.color_swatch[color_swatch_name]
+      
+                            if swatch_metaobject.hex_value != blank
+                              assign swatch_color = swatch_metaobject.hex_value
+                            endif
+                          %}
+                          
+                          <label class="w-30 h-30 block relative cursor-pointer text-transparent peer-checked:text-text md:w-20 md:h-20" style="{% if swatch_metaobject.swatch_image != blank %}background-image: url('{{ swatch_metaobject.swatch_image | img_url: '50x' }}');{% else %}background-color: {{ swatch_color }};{% endif %}" for="product-bar-{{ option.position }}-{{ forloop.index0 }}">
+                            <div class="visually-hidden">{{ value }}</div>
+                            <div class="absolute -bottom-[8px] left-0 right-0 border-b-1 border-current transition-colors md:-bottom-5"></div>
+                          </label>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </fieldset>
+              {% else %}
+                <fieldset class="product-form-input js block">
+                  <div class="flex items-center gap-15">
+                    <legend class="form__label flex items-center gap-10">
+                      <span class="text-sh2 uppercase">{{ option.name }}</span>
+                    </legend>
+                    <dropdown-item data-is-overlay="true">
+                      <div class="group/dropdown relative" data-dropdown>
+                        <button class="py-5 pr-5 flex items-center gap-10" data-dropdown-toggle>
+                          <span class="text-cta uppercase" data-selected-value>{{ option.selected_value }}</span>
+                          <div class="transition-transform group-[.active]/dropdown:rotate-180">
+                            {% render 'icon' icon: 'dropdown' %}
+                          </div>
+                        </button>
+                        <div
+                          class="
+                            w-full max-h-[300px] min-w-100 pb-5 overflow-scroll absolute top-full left-half translate-y-5 -translate-x-half flex flex-col items-center z-30
+                            bg-background shadow-dropdown opacity-0 invisible transition-visibility
+                            group-[.active]/dropdown:visible group-[.active]/dropdown:opacity-100
+                          "
+                          data-dropdown-content
+                        >
+                          {% for value in option.values %}
+                            {% liquid
+                              assign option_disabled = true
+            
+                              for option1_name in variants_option1_arr
+                                case option.position
+                                  when 1
+                                    if variants_option1_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                      assign option_disabled = false
+                                    endif
+                                  when 2
+                                    if option1_name == prod.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                      assign option_disabled = false
+                                    endif
+                                  when 3
+                                    if option1_name == prod.selected_or_first_available_variant.option1 and variants_option2_arr[forloop.index0] == prod.selected_or_first_available_variant.option2 and variants_option3_arr[forloop.index0] == value and variants_available_arr[forloop.index0]
+                                      assign option_disabled = false
+                                    endif
+                                endcase
+                              endfor
+                            %}
+            
+                            <div>
+                              <input type="radio"
+                                class="visually-hidden peer"
+                                id="product-bar-{{ option.position }}-{{ forloop.index0 }}"
+                                name="{{ option.name }}"
+                                value="{{ value | escape }}"
+                                form="{{ product_form_id }}"
+                                {% if option.selected_value == value %}checked{% endif %}
+                              >
+                              <label class="px-5 py-5 block relative text-body-4 cursor-pointer text-transparent peer-checked:text-text{% if option_disabled %} opacity-50{% endif %}" for="product-bar-{{ option.position }}-{{ forloop.index0 }}">
+                                <div class="text-text">{{ value }}</div>
+                                <div class="absolute bottom-0 left-0 right-0 border-b-1 border-current transition-colors"></div>
+                              </label>
+                            </div>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </dropdown-item>
+                  </div>
+                </fieldset>
+              {% endif %}
+            {% endfor %}
+            <script type="application/json">
+              {{ prod.variants | json }}
+            </script>
+          </variant-radios>
+        {% endunless %}
+      </div>
+      <button class="button group/button w-full -mt-px -mb-px relative disabled:opacity-50 md:h-[55px] md:w-[200px]" data-add-to-cart{% unless prod.selected_or_first_available_variant.available %} disabled{% endunless %}>
+        <span class="flex justify-center items-center gap-20 transition-opacity group-[.loading]/button:opacity-0">
+          <span class="group-disabled/button:hidden">Add to Cart</span>
+          <span class="hidden group-disabled/button:inline">Sold Out</span>
+          <span class="price flex justify-center items-center gap-5 md:hidden">
+            {% if prod.compare_at_price > prod.price %}
+              <span class="line-through">{{ prod.compare_at_price | money }}</span>
+            {% endif %}
+            {{ prod.price | money }}
+          </span>
+        </span>
+
+        <span class="inset flex items-center justify-center transition-opacity opacity-0 text-white group-[.loading]/button:opacity-100">
+          {% render 'loading-spinner' %}
+        </span>
+      </button>
+    </div>
+  </div>
+</product-bar>
