@@ -1,8 +1,8 @@
 <div class="page-width">
-  <h1 class="mt-60 mb-40 text-m-h1 font-serif italic text-center md:mb-60 md:text-h1">My Account</h1>
+  <h1 class="mt-60 mb-40 text-m-h1 font-serif text-center md:mb-60 md:text-h1">My Account</h1>
 </div>
 
-<div class="px-20 border-b-1 border-mint overflow-scroll no-scrollbar md:px-40">
+<div class="px-20 border-b-1 border-cafe overflow-scroll no-scrollbar md:px-40">
   <div class="w-fit mx-auto flex items-center gap-40">
     <button class="account-navigation-button group/link py-13 block text-cta uppercase relative whitespace-nowrap active" data-tab="addresses">
       Addresses
@@ -22,7 +22,7 @@
 <div class="page-width">
   <div class="max-w-custom w-full mx-auto my-60 md:mt-60" style="--width: 890px;">
     <div class="account-content" data-tab="addresses">
-      <h2 class="mb-30 pb-30 text-m-h2 font-serif italic border-b-1 border-mint md:text-h4">Billing Addresses</h2>
+      <h2 class="mb-30 pb-30 text-m-h2 font-serif border-b-1 border-cafe md:text-h4">Billing Addresses</h2>
 
       <div data-customer-addresses>
         {% render 'addresses' %}
@@ -36,27 +36,27 @@
 
           {% if customer.orders.size > 0 %}
 
-            <table role="table" class="order-history w-full block border-mint md:table">
+            <table role="table" class="order-history w-full block border-cafe md:table">
               <thead class="hidden md:table-header-group" role="rowgroup">
                 <tr class="text-left text-cta uppercase" role="row">
-                  <th class="pb-20 font-semibold border-b-1 border-mint" id="ColumnDate" scope="col" role="columnheader">{{ 'customer.orders.date' | t }}</th>
-                  <th class="pb-20 font-semibold border-b-1 border-mint" id="ColumnOrder" scope="col" role="columnheader">{{ 'customer.orders.order_number' | t }}</th>
-                  <th class="pb-20 font-semibold border-b-1 border-mint" id="ColumnTracking" scope="col" role="columnheader">Tracking No.</th>
-                  <th class="pb-20 font-semibold border-b-1 border-mint" id="ColumnTotal" scope="col" role="columnheader">{{ 'customer.orders.total' | t }}</th>
-                  <th class="pb-20 font-semibold border-b-1 border-mint" id="ColumnFulfillment" scope="col" role="columnheader">Status</th>
+                  <th class="pb-20 font-semibold border-b-1 border-cafe" id="ColumnDate" scope="col" role="columnheader">{{ 'customer.orders.date' | t }}</th>
+                  <th class="pb-20 font-semibold border-b-1 border-cafe" id="ColumnOrder" scope="col" role="columnheader">{{ 'customer.orders.order_number' | t }}</th>
+                  <th class="pb-20 font-semibold border-b-1 border-cafe" id="ColumnTracking" scope="col" role="columnheader">Tracking No.</th>
+                  <th class="pb-20 font-semibold border-b-1 border-cafe" id="ColumnTotal" scope="col" role="columnheader">{{ 'customer.orders.total' | t }}</th>
+                  <th class="pb-20 font-semibold border-b-1 border-cafe" id="ColumnFulfillment" scope="col" role="columnheader">Status</th>
                 </tr>
               </thead>
               <tbody class="w-full block md:table-row-group" role="rowgroup">
                 {%- for order in customer.orders -%}
                   <tr class="block md:table-row" role="row">
-                    <td class="text-body-2 border-b-0 border-mint block md:py-20 md:border-b-1 md:table-cell" headers="RowOrder ColumnDate" role="cell" data-label="{{ 'customer.orders.date' | t }}">
+                    <td class="text-body-2 border-b-0 border-cafe block md:py-20 md:border-b-1 md:table-cell" headers="RowOrder ColumnDate" role="cell" data-label="{{ 'customer.orders.date' | t }}">
                       <div class="py-5 flex justify-between items-center md:p-0">
                         <div class="text-body-2 md:hidden">{{ 'customer.orders.date' | t }}</div>
                         <div class="text-body-2">{{ order.created_at | time_tag: format: 'date' }}</div>
                       </div>
                     </td>
                     <td
-                      class="text-body-2 border-b-0 border-mint block md:py-20 md:border-b-1 md:table-cell"
+                      class="text-body-2 border-b-0 border-cafe block md:py-20 md:border-b-1 md:table-cell"
                       id="RowOrder"
                       role="cell"
                       headers="ColumnOrder"
@@ -68,7 +68,7 @@
                       </div>
                     </td>
                     <td
-                      class="text-body-2 border-b-0 border-mint block md:py-20 md:border-b-1 md:table-cell"
+                      class="text-body-2 border-b-0 border-cafe block md:py-20 md:border-b-1 md:table-cell"
                       headers="RowOrder ColumnTracking"
                       role="cell"
                       data-label="Tracking Number"
@@ -82,14 +82,14 @@
                         </div>
                       </div>
                     </td>
-                    <td class="text-body-2 border-b-0 border-mint block md:py-20 md:border-b-1 md:table-cell" headers="RowOrder ColumnTotal" role="cell" data-label="{{ 'customer.orders.total' | t }}">
+                    <td class="text-body-2 border-b-0 border-cafe block md:py-20 md:border-b-1 md:table-cell" headers="RowOrder ColumnTotal" role="cell" data-label="{{ 'customer.orders.total' | t }}">
                       <div class="py-5 flex justify-between items-center md:p-0">
                         <div class="text-body-2 md:hidden">{{ 'customer.orders.total' | t }}</div>
                         <div class="text-body-2">{{ order.total_net_amount | money_with_currency }}</div>
                       </div>
                     </td>
                     <td
-                      class="border-b-1 border-mint block md:py-20 md:table-cell"
+                      class="border-b-1 border-cafe block md:py-20 md:table-cell"
                       headers="RowOrder ColumnFulfillment"
                       role="cell"
                       data-label="{{ 'customer.orders.fulfillment_status' | t }}"

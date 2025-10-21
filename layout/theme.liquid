@@ -20,11 +20,8 @@
 
     {{ content_for_header }}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" as="style" type="text/css" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://use.typekit.net/yca3zul.css">
+    
     {% style %}
       :root {
         --background: {{ settings.background_color }};
@@ -53,6 +50,7 @@
       {%- sections 'header-group' -%}
     </div>
 
+    {%- section 'announcement-banner' -%}
     {%- section 'mobile-menu' -%}
 
     {%- if template != 'cart' -%}

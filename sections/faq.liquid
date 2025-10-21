@@ -1,12 +1,12 @@
 <div class="page-width my-60 md:my-100">
   <div class="max-w-custom w-full mx-auto" style="--width: 1115px;">
     {% if section.settings.title != blank %}
-      <div class="mb-20 text-m-h2 font-serif italic md:text-h2 md:mb-50">{{ section.settings.title }}</div>
+      <div class="mb-20 text-m-h2 font-serif md:text-h2 md:mb-50">{{ section.settings.title }}</div>
     {% endif %}
-    <div class="border-t-1 border-mint">
+    <div class="border-t-1 border-cafe">
       {% for block in section.blocks %}
         <dropdown-item {{ block.shopify_attributes }}>
-          <div class="group/dropdown border-b-1 border-mint{% if forloop.first %} active{% endif %}" data-dropdown>
+          <div class="group/dropdown border-b-1 border-cafe{% if forloop.first %} active{% endif %}" data-dropdown>
             <button class="w-full py-20 flex justify-between items-center gap-20 text-left text-body-m-1 font-serif md:py-25 md:text-body-1" data-dropdown-toggle>
               {{ block.settings.title }}
               <span class="flex transition-transform group-[.active]/dropdown:rotate-180">

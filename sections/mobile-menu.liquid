@@ -13,7 +13,7 @@
         <input type="hidden" name="type" value="product">
         <input type="hidden" name="options[prefix]" value="last">
         <label id="search-label" for="mobile-search" class="hidden visually-hidden">Search</label>
-        <input aria-labelledby="search-label" id="mobile-search" class="w-full py-10 px-20 text-m-body-2 bg-beige placeholder:text-text placeholder:opacity-50" type="search" name="q" value="{{ search.terms | escape }}" placeholder="Search">
+        <input aria-labelledby="search-label" id="mobile-search" class="w-full py-10 px-20 text-m-body-2 bg-[#F7F4F1] placeholder:text-text placeholder:opacity-50" type="search" name="q" value="{{ search.terms | escape }}" placeholder="Search">
         <button class="pr-20 pb-px flex items-center absolute top-0 right-0 bottom-0" aria-label="{{ 'general.search.search' | t }}">
           {% render 'icon' icon: 'search' %}
         </button>
@@ -21,20 +21,20 @@
       <div class="h-full px-20 pb-20 flex flex-col justify-between relative">
         <ul class="" role="list">
           {% for link in section.settings.menu.links %}
-            <li class="border-b-1 border-mint">
+            <li class="border-b-1 border-tan">
               {% if link.links != blank %}
-                <button class="dropdown-button w-full py-15 flex justify-between items-center text-m-body-3" href="{{ link.url }}">
+                <button class="dropdown-button w-full py-15 flex justify-between items-center text-m-sh2 uppercase" href="{{ link.url }}">
                   <span>{{ link.title }}</span>
                   {% render 'icon' icon: 'caret' %}
                 </button>
                 <div class="dropdown group/dropdown">
                   <div
                     class="
-                      px-20 absolute top-0 right-0 bottom-0 left-0 overflow-y-auto translate-x-full transition-transform bg-background
+                      px-20 absolute top-0 right-0 bottom-0 left-0 overflow-y-auto overflow-x-hidden translate-x-full transition-transform bg-background
                       group-[.active]/dropdown:translate-x-0
                     "
                   >
-                    <button class="dropdown-back w-full pl-10 py-15 flex items-center gap-15 border-b-1 border-mint text-m-body-3">
+                    <button class="dropdown-back w-full pl-10 py-15 flex items-center gap-15 border-b-1 border-tan text-m-sh2 uppercase">
                       <span class="rotate-180">
                         {% render 'icon' icon: 'caret' %}
                       </span>
@@ -42,16 +42,36 @@
                     </button>
                     <ul class="" role="list">
                       {% for child_link in link.links %}
-                        <li class="border-b-1 border-mint">
-                          <a class="-mt-5 py-15 pl-40 block text-m-body-3" href="{{ child_link.url }}">{{ child_link.title }}</a>
+                        <li class="border-b-1 border-tan">
                           {% if child_link.links != blank %}
-                            <ul class="pb-15 pl-60 flex flex-col">
-                              {% for grandchild_link in child_link.links %}
-                                <li>
-                                  <a class="pb-5 block text-m-body-2 opacity-50" href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
-                                </li>
-                              {% endfor %}
-                            </ul>
+                            <button class="dropdown-button w-full pl-40 py-15 flex justify-between items-center text-m-body-3 font-serif" href="{{ child_link.url }}">
+                              <span>{{ child_link.title }}</span>
+                              {% render 'icon' icon: 'caret' %}
+                            </button>
+                            <div class="dropdown group/secondary-dropdown">
+                              <div
+                                class="
+                                  px-20 absolute top-0 right-0 bottom-0 left-0 overflow-y-auto translate-x-full transition-transform bg-background
+                                  group-[.active]/secondary-dropdown:translate-x-0
+                                "
+                              >
+                                <button class="dropdown-back w-full pl-10 py-15 flex items-center gap-15 border-b-1 border-tan text-m-sh2 uppercase">
+                                  <span class="rotate-180">
+                                    {% render 'icon' icon: 'caret' %}
+                                  </span>
+                                  <span>{{ child_link.title }}</span>
+                                </button>
+                                <ul class="" role="list">
+                                  {% for grandchild_link in child_link.links %}
+                                    <li class="border-b-1 border-tan">
+                                      <a class="-mt-5 py-15 pl-40 block text-m-body-2" href="{{ grandchild_link.url }}">{{ grandchild_link.title }}</a>
+                                    </li>
+                                  {% endfor %}
+                                </ul>
+                              </div>
+                            </div>
+                          {% else %}
+                            <a class="py-15 block text-m-sh2 uppercase" href="{{ link.url }}">{{ link.title }}</a>
                           {% endif %}
                         </li>
                       {% endfor %}
@@ -59,7 +79,7 @@
                   </div>
                 </div>
               {% else %}
-                <a class="py-15 block text-m-body-3" href="{{ link.url }}">{{ link.title }}</a>
+                <a class="py-15 block text-m-sh2 uppercase" href="{{ link.url }}">{{ link.title }}</a>
               {% endif %}
             </li>
           {% endfor %}
@@ -68,7 +88,7 @@
           <ul class="" role="list">
             {% for link in section.settings.additional_menu.links %}
               <li>
-                <a class="py-10 block text-m-body-2 border-b-1 border-mint" href="{{ link.url }}">{{ link.title }}</a>
+                <a class="py-10 block text-m-body-2 border-b-1 border-tan" href="{{ link.url }}">{{ link.title }}</a>
               </li>
             {% endfor %}
           </ul>

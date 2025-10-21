@@ -9,9 +9,9 @@
  */
 {
   "current": {
-    "background_color": "#ffffff",
-    "text_color": "#000000",
-    "shop_all_link": "shopify://collections/shop-all",
+    "background_color": "#fffcf9",
+    "text_color": "#302e2d",
+    "shop_all_link": "",
     "enable_quickview": true,
     "show_quantity_selector": true,
     "cart_title": "My Bag",
@@ -34,7 +34,7 @@
     "social_pinterest_link": "https://pinterest.com/shopify",
     "social_twitter_link": "https://twitter.com/shopify",
     "social_tiktok_link": "https://tiktok.com/@shopify",
-    "favicon": "shopify://shop_images/ohaei-favicon.png",
+    "favicon": "shopify://shop_images/somodern-favicon.jpg",
     "sections": {
       "announcement-bar": {
         "type": "announcement-bar",
@@ -75,7 +75,7 @@
         "type": "mobile-menu",
         "settings": {
           "menu": "mobile-menu",
-          "additional_menu": "mobile-additional-menu"
+          "additional_menu": "additional-mobile-menu"
         }
       },
       "main-login": {
@@ -95,6 +95,37 @@
         "type": "main-gift-card",
         "settings": {
           "logo": "shopify://shop_images/ohaei-logo.svg"
+        }
+      },
+      "announcement-banner": {
+        "type": "announcement-banner",
+        "blocks": {
+          "block_Y3abRf": {
+            "type": "block",
+            "settings": {
+              "text": "<p>Fall into New Arrivals</p>"
+            }
+          },
+          "block_wp69pk": {
+            "type": "block",
+            "settings": {
+              "text": "<p>Save up to 60% on Clearance</p>"
+            }
+          },
+          "block_3hdWJD": {
+            "type": "block",
+            "settings": {
+              "text": "<p>Free Domestic Shipping</p>"
+            }
+          }
+        },
+        "block_order": [
+          "block_Y3abRf",
+          "block_wp69pk",
+          "block_3hdWJD"
+        ],
+        "settings": {
+          "hide_section": false
         }
       }
     },

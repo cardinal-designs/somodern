@@ -3,7 +3,7 @@
 {% if search.performed %}
   <div class="page-width">
     <div class="my-60 md:mt-80 md:mb-100">
-      <h1 class="mb-10 text-m-h4 font-serif italic text-center md:text-h4">Search Results for {{ search.terms }} ({{ search.results_count }})</h1>
+      <h1 class="mb-10 text-m-h4 font-serif text-center md:text-h4">Search Results for {{ search.terms }} ({{ search.results_count }})</h1>
       
       {% if search.results.size == 0 %}
         <p class="max-w-custom w-full mx-auto mt-20 text-body-3 text-center text-pretty" style="--width: 375px;">There are no results. Please check your spelling or try a broader search.</p>
@@ -13,7 +13,7 @@
         <form action="{{ routes.search_url }}" method="get" role="search" class="w-full">
           <input type="hidden" name="type" value="product">
           <input type="hidden" name="options[prefix]" value="last">
-          <div class="flex justify-between border-b-1 border-mint">
+          <div class="flex justify-between border-b-1 border-cafe">
             <label id="main-search-label" for="main-search" class="hidden visually-hidden">Search</label>
             <input aria-labelledby="main-search-label" id="main-search" class="w-full pb-10 text-body-2 bg-transparent appearance-none placeholder:text-text/50 focus-visible:outline-0 focus-visible:outline-transparent focus-visible:placeholder:text-text" type="search" name="q" value="{{ search.terms | escape }}" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search">
             <button type="submit" class="pb-5 flex items-center [&_svg]:w-15">
@@ -73,11 +73,11 @@
   <div class="page-width mb-20 md:mb-40">
     <div class="pt-80 pb-120 px-20 md:py-100 md:px-40">
       <div class="max-w-custom w-full mx-auto" style="--width: 375px;">
-        <h1 class="mb-50 text-m-h4 font-serif italic text-center md:text-h4">Search</h1>
+        <h1 class="mb-50 text-m-h4 font-serif text-center md:text-h4">Search</h1>
         <form action="{{ routes.search_url }}" method="get" role="search" class="w-full">
           <input type="hidden" name="type" value="product">
           <input type="hidden" name="options[prefix]" value="last">
-          <div class="flex justify-between border-b-1 border-mint">
+          <div class="flex justify-between border-b-1 border-cafe">
             <input class="w-full pb-10 text-body-2 bg-transparent appearance-none placeholder:text-text/50 focus-visible:outline-0 focus-visible:outline-transparent focus-visible:placeholder:text-text" type="search" name="q" value="{{ search.terms | escape }}" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search">
             <div class="pb-5 flex items-center [&_svg]:w-15">
               {% render 'icon' icon: 'search' %}

@@ -66,7 +66,7 @@
           {% render 'product-badges' prod: product, classes: 'mb-20 hidden md:block' %}
 
           <div class="{% if mobile_title_position == 'above' %} hidden md:block{% endif %}">
-            <h1 class="mb-10 text-m-h2 font-serif italic md:text-h4">
+            <h1 class="mb-10 text-m-h2 font-serif md:text-h4">
               {{ product.title | escape }}
             </h1>
 
@@ -87,7 +87,7 @@
           {% render 'product-form' prod: product, product_form_id: product_form_id, show_quantity: false, change_url: false %}
 
           {% if section.settings.extra_text != blank %}
-            <p class="mt-10 text-caption font-serif italic text-center">{{ section.settings.extra_text }}</p>
+            <p class="mt-10 text-caption font-serif text-center">{{ section.settings.extra_text }}</p>
           {% endif %}
         </div>
       </div>

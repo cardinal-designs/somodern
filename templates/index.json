@@ -12,21 +12,24 @@
     "hero_PmafBF": {
       "type": "hero",
       "blocks": {
-        "subtitle_jUccmQ": {
-          "type": "subtitle",
+        "title_TmKBrc": {
+          "type": "title",
           "settings": {
-            "title": "Luxury fabrics  |  Ethically made",
+            "title": "Fresh design meets everyday livability",
+            "font_size": "h1",
+            "mobile_font_size": "h1",
             "margin_top": 0,
             "margin_bottom": 0
           },
           "blocks": {}
         },
-        "title_TmKBrc": {
-          "type": "title",
+        "text_XRrNpG": {
+          "type": "text",
+          "name": "Text",
           "settings": {
-            "title": "Generations of expertise in premium outdoor apparel.",
-            "font_size": "h1",
-            "mobile_font_size": "h1",
+            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>",
+            "center_content": false,
+            "content_width": 425,
             "margin_top": 0,
             "margin_bottom": 0
           },
@@ -36,9 +39,9 @@
           "type": "button",
           "settings": {
             "text": "New Arrivals",
-            "button_link": "shopify://collections/shop-all",
-            "button_style": "text",
-            "button_color": "text",
+            "button_link": "",
+            "button_style": "button",
+            "button_color": "white",
             "center_button": false,
             "margin_top": 0,
             "margin_bottom": 0
@@ -47,72 +50,19 @@
         }
       },
       "block_order": [
-        "subtitle_jUccmQ",
         "title_TmKBrc",
+        "text_XRrNpG",
         "button_wecJP4"
       ],
       "settings": {
         "content_position": "bottom_left",
-        "mobile_content_position": "middle_center",
-        "content_width": 560,
+        "mobile_content_position": "bottom_left",
+        "content_width": 510,
         "content_color": "text-white",
         "media_type": "image",
-        "image": "shopify://shop_images/hero.jpg",
-        "mobile_image": "shopify://shop_images/hero-mobile.jpg",
-        "add_overlay": true
-      }
-    },
-    "press_marquee_GmmNxU": {
-      "type": "press-marquee",
-      "blocks": {
-        "block_PiX8b6": {
-          "type": "block",
-          "settings": {
-            "image": "shopify://shop_images/bazaar.png"
-          }
-        },
-        "block_86zfCQ": {
-          "type": "block",
-          "settings": {
-            "image": "shopify://shop_images/vanity.png"
-          }
-        },
-        "block_nhCFgN": {
-          "type": "block",
-          "settings": {
-            "image": "shopify://shop_images/instyle.png"
-          }
-        },
-        "block_Td6bPN": {
-          "type": "block",
-          "settings": {
-            "image": "shopify://shop_images/vogue.png"
-          }
-        },
-        "block_HNX9pP": {
-          "type": "block",
-          "settings": {
-            "image": "shopify://shop_images/hypebeast.png"
-          }
-        },
-        "block_KGrBTG": {
-          "type": "block",
-          "settings": {
-            "image": "shopify://shop_images/goop.png"
-          }
-        }
-      },
-      "block_order": [
-        "block_PiX8b6",
-        "block_86zfCQ",
-        "block_nhCFgN",
-        "block_Td6bPN",
-        "block_HNX9pP",
-        "block_KGrBTG"
-      ],
-      "settings": {
-        "background_color": "#f2f1e9",
-        "title": ""
+        "image": "shopify://shop_images/Rectangle_32.jpg",
+        "mobile_image": "shopify://shop_images/Rectangle_31.jpg",
+        "add_overlay": false
       }
     },
     "collection_slider_GJHAj6": {
@@ -121,36 +71,36 @@
         "collection_YrUt9F": {
           "type": "collection",
           "settings": {
-            "collection": "shop-all",
+            "collection": "",
             "collection_title": "Best Sellers"
           }
         },
         "collection_MWhLdA": {
           "type": "collection",
           "settings": {
-            "collection": "shop-all",
+            "collection": "",
             "collection_title": "New Arrivals"
           }
         },
         "collection_UdByUB": {
           "type": "collection",
           "settings": {
-            "collection": "tops",
-            "collection_title": "Tops"
+            "collection": "",
+            "collection_title": "Wall"
           }
         },
         "collection_TtjzGY": {
           "type": "collection",
           "settings": {
-            "collection": "bottoms",
-            "collection_title": "Bottoms"
+            "collection": "",
+            "collection_title": "Ceiling"
           }
         },
         "collection_Rhy9Fh": {
           "type": "collection",
           "settings": {
-            "collection": "accessories",
-            "collection_title": "Accessories"
+            "collection": "",
+            "collection_title": "Lamps"
           }
         }
       },
@@ -174,30 +124,32 @@
         "column_gtgPMm": {
           "type": "_column",
           "settings": {
-            "image": "shopify://shop_images/Rectangle_49.jpg",
-            "link": "shopify://collections/shop-all",
-            "content_alignment": "center"
+            "image": "shopify://shop_images/Image_88.jpg",
+            "link": "",
+            "content_alignment": "center",
+            "flex_desktop": true
           },
           "blocks": {
-            "text_F7zyq7": {
-              "type": "text",
+            "title_ziPEwM": {
+              "type": "title",
+              "name": "Title",
               "settings": {
-                "text": "<p>Embrace the warmth of tradition with our knitwear collection. Crafted for comfort and styled for the modern adventurer.</p>",
-                "font_size": "large",
-                "center_content": false,
-                "content_width": 560,
+                "title": "Get Inspired",
+                "font_size": "h2",
+                "mobile_font_size": "h1",
                 "margin_top": 0,
-                "margin_bottom": 15
+                "margin_bottom": 0
               },
               "blocks": {}
             },
-            "button_iEVDWB": {
+            "button_RWPN6q": {
               "type": "button",
+              "name": "Button",
               "settings": {
-                "text": "Shop Sweaters",
-                "button_link": "shopify://collections/shop-all",
+                "text": "Browse Inspiration",
+                "button_link": "",
                 "button_style": "text",
-                "button_color": "black",
+                "button_color": "white",
                 "center_button": false,
                 "margin_top": 0,
                 "margin_bottom": 0
@@ -206,53 +158,55 @@
             }
           },
           "block_order": [
-            "text_F7zyq7",
-            "button_iEVDWB"
+            "title_ziPEwM",
+            "button_RWPN6q"
           ]
         },
-        "column_Yf43bJ": {
+        "column_7dx8bL": {
           "type": "_column",
           "settings": {
-            "image": "shopify://shop_images/Image_-_2024-05-15T163646.882.jpg",
-            "link": "shopify://collections/shop-all",
-            "content_alignment": "center"
+            "image": "shopify://shop_images/Image_89.jpg",
+            "link": "",
+            "content_alignment": "center",
+            "flex_desktop": true
           },
           "blocks": {
-            "text_fFpyWC": {
-              "type": "text",
+            "title_NBHzaa": {
+              "type": "title",
+              "name": "Title",
               "settings": {
-                "text": "<p>Experience the essence of countryside charm with our matching set collection. Coordinated comfort done right.</p>",
-                "font_size": "large",
-                "center_content": false,
-                "content_width": 560,
-                "margin_top": 5,
-                "margin_bottom": 10
+                "title": "Discover New",
+                "font_size": "h2",
+                "mobile_font_size": "h1",
+                "margin_top": 0,
+                "margin_bottom": 0
               },
               "blocks": {}
             },
-            "button_3XgMVh": {
+            "button_TF4TD7": {
               "type": "button",
+              "name": "Button",
               "settings": {
-                "text": "Shop Sets",
-                "button_link": "shopify://collections/shop-all",
+                "text": "New Arrivals",
+                "button_link": "",
                 "button_style": "text",
                 "button_color": "white",
                 "center_button": false,
                 "margin_top": 0,
-                "margin_bottom": 15
+                "margin_bottom": 0
               },
               "blocks": {}
             }
           },
           "block_order": [
-            "text_fFpyWC",
-            "button_3XgMVh"
+            "title_NBHzaa",
+            "button_TF4TD7"
           ]
         }
       },
       "block_order": [
         "column_gtgPMm",
-        "column_Yf43bJ"
+        "column_7dx8bL"
       ],
       "settings": {
         "image_ratio": "square",
@@ -260,23 +214,59 @@
         "title": ""
       }
     },
-    "image_products_tMJXAQ": {
-      "type": "image-products",
+    "hero_T9nVEW": {
+      "type": "hero",
+      "blocks": {
+        "title_khF8Pw": {
+          "type": "title",
+          "settings": {
+            "title": "Just Landed: Pendants",
+            "font_size": "h1",
+            "mobile_font_size": "h1",
+            "margin_top": 0,
+            "margin_bottom": 0
+          },
+          "blocks": {}
+        },
+        "text_CrdqL3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>",
+            "center_content": true,
+            "content_width": 405,
+            "margin_top": 0,
+            "margin_bottom": 0
+          },
+          "blocks": {}
+        },
+        "button_MEE49z": {
+          "type": "button",
+          "settings": {
+            "text": "New Arrivals",
+            "button_link": "",
+            "button_style": "button",
+            "button_color": "white",
+            "center_button": false,
+            "margin_top": 0,
+            "margin_bottom": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "title_khF8Pw",
+        "text_CrdqL3",
+        "button_MEE49z"
+      ],
       "settings": {
-        "container": "padding",
-        "image_ratio": "tall",
-        "image": "shopify://shop_images/Image_-_2024-05-27T090100.260.jpg",
-        "title": "Ohaei Alpine Summer Basics",
-        "text": "Lorem ipsum dolor sit amet consectetur. Justo molestie etiam gravida eget egestas potenti. Lorem ipsum dolor sit amet consectetur. Justo molestie etiam gravida eget egestas potenti.",
-        "product_columns": "2",
-        "add_pagination": false,
-        "product_slider_title": "New Arrivals",
-        "products": [
-          "summit-stripe-shirt",
-          "park-trousers-tan",
-          "merino-pullover",
-          "horizon-day-bag"
-        ]
+        "content_position": "middle_center",
+        "mobile_content_position": "middle_center",
+        "content_width": 600,
+        "content_color": "text-white",
+        "media_type": "image",
+        "image": "shopify://shop_images/Image_86.jpg",
+        "mobile_image": "shopify://shop_images/Image_87.jpg",
+        "add_overlay": false
       }
     },
     "columns_NnVJPJ": {
@@ -285,15 +275,16 @@
         "column_Bq68ph": {
           "type": "_column",
           "settings": {
-            "image": "shopify://shop_images/Image_-_2024-05-15T172049.508.jpg",
-            "link": "shopify://collections/shop-all",
-            "content_alignment": "left"
+            "image": "shopify://shop_images/Image.jpg",
+            "link": "",
+            "content_alignment": "left",
+            "flex_desktop": false
           },
           "blocks": {
             "title_D964UJ": {
               "type": "title",
               "settings": {
-                "title": "Sets",
+                "title": "Ceiling",
                 "font_size": "h4",
                 "mobile_font_size": "h4",
                 "margin_top": 0,
@@ -309,15 +300,16 @@
         "column_YD9tHz": {
           "type": "_column",
           "settings": {
-            "image": "shopify://shop_images/Image_-_2024-05-15T172053.927.jpg",
-            "link": "shopify://collections/shop-all",
-            "content_alignment": "left"
+            "image": "shopify://shop_images/Image-1.jpg",
+            "link": "",
+            "content_alignment": "left",
+            "flex_desktop": false
           },
           "blocks": {
             "title_GwnMFL": {
               "type": "title",
               "settings": {
-                "title": "Sweaters",
+                "title": "Lamps",
                 "font_size": "h4",
                 "mobile_font_size": "h4",
                 "margin_top": 0,
@@ -333,15 +325,16 @@
         "column_hBV3MR": {
           "type": "_column",
           "settings": {
-            "image": "shopify://shop_images/Image_-_2024-05-15T172059.021.jpg",
-            "link": "shopify://collections/shop-all",
-            "content_alignment": "left"
+            "image": "shopify://shop_images/Image-2.jpg",
+            "link": "",
+            "content_alignment": "left",
+            "flex_desktop": false
           },
           "blocks": {
             "title_RmKYzV": {
               "type": "title",
               "settings": {
-                "title": "Tops",
+                "title": "Wall",
                 "font_size": "h4",
                 "mobile_font_size": "h4",
                 "margin_top": 0,
@@ -357,15 +350,16 @@
         "column_U6dD9e": {
           "type": "_column",
           "settings": {
-            "image": "shopify://shop_images/Image_-_2024-05-15T172104.759.jpg",
-            "link": "shopify://collections/shop-all",
-            "content_alignment": "left"
+            "image": "shopify://shop_images/Image-3.jpg",
+            "link": "",
+            "content_alignment": "left",
+            "flex_desktop": false
           },
           "blocks": {
             "title_BkQyKG": {
               "type": "title",
               "settings": {
-                "title": "Accessories",
+                "title": "Outdoor",
                 "font_size": "h4",
                 "mobile_font_size": "h4",
                 "margin_top": 0,
@@ -388,563 +382,66 @@
       "settings": {
         "image_ratio": "tall",
         "desktop_columns": "4",
-        "title": "Everyday outdoor attire"
+        "title": "Shop by category"
       }
     },
-    "hero_T9nVEW": {
-      "type": "hero",
+    "interactive_hero_tnFhbC": {
+      "type": "interactive-hero",
       "blocks": {
-        "title_khF8Pw": {
-          "type": "title",
+        "interactive_hero_slide_xgyTVh": {
+          "type": "_interactive-hero-slide",
           "settings": {
-            "title": "The Spring Campaign — Behind the Scenes",
-            "font_size": "h1",
-            "mobile_font_size": "h1",
-            "margin_top": 0,
-            "margin_bottom": 0
-          },
-          "blocks": {}
-        },
-        "text_CrdqL3": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Combining organic materials with sustainable manufacturing, our collection offers a sustainable choice this season.</p>",
-            "font_size": "regular",
-            "center_content": false,
-            "content_width": 560,
-            "margin_top": 0,
-            "margin_bottom": 0
-          },
-          "blocks": {}
-        },
-        "button_MEE49z": {
-          "type": "button",
-          "settings": {
-            "text": "Watch",
-            "button_link": "",
-            "button_style": "button",
-            "button_color": "white",
-            "center_button": false,
-            "margin_top": 0,
-            "margin_bottom": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "title_khF8Pw",
-        "text_CrdqL3",
-        "button_MEE49z"
-      ],
-      "settings": {
-        "content_position": "middle_left",
-        "mobile_content_position": "middle_center",
-        "content_width": 420,
-        "content_color": "text-white",
-        "media_type": "image",
-        "image": "shopify://shop_images/Rectangle_47.jpg",
-        "mobile_image": "shopify://shop_images/Rectangle_48.jpg",
-        "add_overlay": true
-      }
-    },
-    "text_blocks_qk9Vdn": {
-      "type": "text-blocks",
-      "blocks": {
-        "block_QWYgf9": {
-          "type": "block",
-          "settings": {
-            "title": "Sustainably Made",
-            "text": "The Collection combines organic materials with sustainable manufacturing."
-          }
-        },
-        "block_fUhKAN": {
-          "type": "block",
-          "settings": {
-            "title": "Original Designs",
-            "text": "These clothings are original designs and are not your typical trendy fast fashion products."
-          }
-        },
-        "block_rNQ76K": {
-          "type": "block",
-          "settings": {
-            "title": "Comfortable Fit",
-            "text": "The Sizing of our clothes take into account all shapes and sizes. We aim to be inclusive."
-          }
-        }
-      },
-      "block_order": [
-        "block_QWYgf9",
-        "block_fUhKAN",
-        "block_rNQ76K"
-      ],
-      "settings": {
-        "background_color": "#ebf1e6",
-        "content_color": "text-text"
-      }
-    },
-    "offset_images_wmbqg9": {
-      "type": "offset-images",
-      "settings": {
-        "large_image": "shopify://shop_images/Image_-_2024-05-26T135836.602.jpg",
-        "small_image": "shopify://shop_images/Image_-_2024-05-26T135832.288.jpg",
-        "reverse_layout": false,
-        "caption": "Our pants are made carefully with with the finest materials, ensuring unparalleled comfort and durability. They will last you a lifetime."
-      }
-    },
-    "grid_4kAA6j": {
-      "type": "grid",
-      "blocks": {
-        "grid_item_zB4hHQ": {
-          "type": "_grid-item",
-          "settings": {
-            "image": "shopify://shop_images/Auto_Layout_Horizontal_3.jpg",
-            "add_overlay": true,
-            "link": "",
-            "content_position": "bottom_left",
-            "content_color": "text-white"
+            "image": "shopify://shop_images/Image_90.jpg",
+            "mobile_image": "shopify://shop_images/Rectangle_33.jpg"
           },
           "blocks": {
-            "subtitle_6PKx6M": {
-              "type": "subtitle",
+            "interactive_hero_product_LMTV7b": {
+              "type": "_interactive-hero-product",
+              "name": "Interactive Hero Product",
               "settings": {
-                "title": "The History",
-                "margin_top": 0,
-                "margin_bottom": 0
-              },
-              "blocks": {}
-            },
-            "title_dqz3Gb": {
-              "type": "title",
-              "settings": {
-                "title": "About Us",
-                "font_size": "h2",
-                "mobile_font_size": "h2",
-                "margin_top": 0,
-                "margin_bottom": 0
-              },
-              "blocks": {}
-            },
-            "button_F9f4yN": {
-              "type": "button",
-              "settings": {
-                "text": "Shop Now",
-                "button_link": "shopify://collections/shop-all",
-                "button_style": "text",
-                "button_color": "white",
-                "center_button": false,
-                "margin_top": 0,
-                "margin_bottom": 0
+                "product": "",
+                "pos_x": 42,
+                "pos_y": 22,
+                "card_position": "bottom_right"
               },
               "blocks": {}
             }
           },
           "block_order": [
-            "subtitle_6PKx6M",
-            "title_dqz3Gb",
-            "button_F9f4yN"
+            "interactive_hero_product_LMTV7b"
           ]
         },
-        "grid_item_a7fedB": {
-          "type": "_grid-item",
+        "interactive_hero_slide_nHAPRM": {
+          "type": "_interactive-hero-slide",
           "settings": {
-            "image": "shopify://shop_images/Auto_Layout_Horizontal_4.jpg",
-            "add_overlay": true,
-            "link": "",
-            "content_position": "bottom_left",
-            "content_color": "text-white"
+            "image": "shopify://shop_images/Image_86.jpg",
+            "mobile_image": "shopify://shop_images/Image_87.jpg"
           },
           "blocks": {
-            "subtitle_fdUEwB": {
-              "type": "subtitle",
+            "interactive_hero_product_hdKYBP": {
+              "type": "_interactive-hero-product",
+              "name": "Interactive Hero Product",
               "settings": {
-                "title": "The Values",
-                "margin_top": 0,
-                "margin_bottom": 0
-              },
-              "blocks": {}
-            },
-            "title_FEMm9F": {
-              "type": "title",
-              "settings": {
-                "title": "Sustainability",
-                "font_size": "h2",
-                "mobile_font_size": "h2",
-                "margin_top": 0,
-                "margin_bottom": 0
-              },
-              "blocks": {}
-            },
-            "button_QPE6CM": {
-              "type": "button",
-              "settings": {
-                "text": "Shop Now",
-                "button_link": "shopify://collections/shop-all",
-                "button_style": "text",
-                "button_color": "white",
-                "center_button": false,
-                "margin_top": 0,
-                "margin_bottom": 0
+                "product": "",
+                "pos_x": 72,
+                "pos_y": 29,
+                "card_position": "bottom_left"
               },
               "blocks": {}
             }
           },
           "block_order": [
-            "subtitle_fdUEwB",
-            "title_FEMm9F",
-            "button_QPE6CM"
-          ]
-        },
-        "grid_item_DnBzDA": {
-          "type": "_grid-item",
-          "settings": {
-            "image": "shopify://shop_images/Auto_Layout_Horizontal_5.jpg",
-            "add_overlay": true,
-            "link": "",
-            "content_position": "bottom_left",
-            "content_color": "text-white"
-          },
-          "blocks": {
-            "subtitle_t9zHh7": {
-              "type": "subtitle",
-              "settings": {
-                "title": "This Season's Styles",
-                "margin_top": 0,
-                "margin_bottom": 0
-              },
-              "blocks": {}
-            },
-            "title_qfPi8M": {
-              "type": "title",
-              "settings": {
-                "title": "Explore the Campaign",
-                "font_size": "h2",
-                "mobile_font_size": "h2",
-                "margin_top": 0,
-                "margin_bottom": 0
-              },
-              "blocks": {}
-            },
-            "button_EPeLCh": {
-              "type": "button",
-              "settings": {
-                "text": "Shop Now",
-                "button_link": "shopify://collections/shop-all",
-                "button_style": "text",
-                "button_color": "white",
-                "center_button": false,
-                "margin_top": 0,
-                "margin_bottom": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "subtitle_t9zHh7",
-            "title_qfPi8M",
-            "button_EPeLCh"
+            "interactive_hero_product_hdKYBP"
           ]
         }
       },
       "block_order": [
-        "grid_item_zB4hHQ",
-        "grid_item_a7fedB",
-        "grid_item_DnBzDA"
+        "interactive_hero_slide_xgyTVh",
+        "interactive_hero_slide_nHAPRM"
       ],
+      "name": "Interactive Hero",
       "settings": {
-        "image_ratio": "tall",
-        "desktop_columns": "3",
-        "less_padding": false
-      }
-    },
-    "image_text_tfWAAB": {
-      "type": "image-text",
-      "blocks": {
-        "subtitle_MJD7Wi": {
-          "type": "subtitle",
-          "settings": {
-            "title": "About",
-            "margin_top": 0,
-            "margin_bottom": 0
-          },
-          "blocks": {}
-        },
-        "title_kFtwhE": {
-          "type": "title",
-          "settings": {
-            "title": "Where style meets sustainability",
-            "font_size": "h1",
-            "mobile_font_size": "h2",
-            "margin_top": 0,
-            "margin_bottom": 0
-          },
-          "blocks": {}
-        },
-        "text_PXqMcM": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Embracing the past, we make garments that resonate with timeless sophistication while forging a path towards a more sustainable future. </p>",
-            "font_size": "regular",
-            "center_content": false,
-            "content_width": 560,
-            "margin_top": 0,
-            "margin_bottom": 0
-          },
-          "blocks": {}
-        },
-        "button_433edP": {
-          "type": "button",
-          "settings": {
-            "text": "Shop Now",
-            "button_link": "shopify://collections/shop-all",
-            "button_style": "text",
-            "button_color": "white",
-            "center_button": false,
-            "margin_top": 0,
-            "margin_bottom": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "subtitle_MJD7Wi",
-        "title_kFtwhE",
-        "text_PXqMcM",
-        "button_433edP"
-      ],
-      "settings": {
-        "background_color": "",
-        "content_color": "text-text",
-        "image_position": "left",
-        "content_width": 380,
-        "add_margin": true,
-        "media_type": "image",
-        "image": "shopify://shop_images/Image_-_2024-05-26T153924.145.jpg"
-      }
-    },
-    "featured_articles_ymPaGz": {
-      "type": "featured-articles",
-      "blocks": {
-        "article_gEtbn7": {
-          "type": "article",
-          "settings": {
-            "article": "the-journal/countryside-chic-crafting-sustainable-style"
-          }
-        },
-        "article_BCEmrd": {
-          "type": "article",
-          "settings": {
-            "article": "the-journal/vacation-attire-for-your-mountain-retreat"
-          }
-        },
-        "article_cfqJPN": {
-          "type": "article",
-          "settings": {
-            "article": "the-journal/breathable-clothes-for-the-explorer"
-          }
-        }
-      },
-      "block_order": [
-        "article_gEtbn7",
-        "article_BCEmrd",
-        "article_cfqJPN"
-      ],
-      "settings": {
-        "title": "In the Journal",
-        "button_label": "All Articles",
-        "button_link": "shopify://blogs/the-journal",
-        "button_style": "text"
-      }
-    },
-    "richtext_3L9Htf": {
-      "type": "richtext",
-      "blocks": {
-        "subtitle_DaztaW": {
-          "type": "subtitle",
-          "settings": {
-            "title": "About",
-            "margin_top": 0,
-            "margin_bottom": 0
-          },
-          "blocks": {}
-        },
-        "title_8Vc8Qp": {
-          "type": "title",
-          "settings": {
-            "title": "Elevating Moments, Enriching Lives.",
-            "font_size": "h1",
-            "mobile_font_size": "h1",
-            "margin_top": 0,
-            "margin_bottom": 0
-          },
-          "blocks": {}
-        },
-        "text_qU8X4X": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Embrace life's milestones with lasting quality. Step outside and breathe the fresh air in style with our support.</p>",
-            "font_size": "regular",
-            "center_content": true,
-            "content_width": 410,
-            "margin_top": 0,
-            "margin_bottom": 0
-          },
-          "blocks": {}
-        },
-        "button_KNhxQM": {
-          "type": "button",
-          "settings": {
-            "text": "Shop Clothing",
-            "button_link": "shopify://collections/shop-all",
-            "button_style": "text",
-            "button_color": "white",
-            "center_button": false,
-            "margin_top": 5,
-            "margin_bottom": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "subtitle_DaztaW",
-        "title_8Vc8Qp",
-        "text_qU8X4X",
-        "button_KNhxQM"
-      ],
-      "settings": {
-        "background_color": "#ebf1e6",
-        "content_color": "text-text",
-        "content_width": 660
-      }
-    },
-    "image_products_P3DcM3": {
-      "type": "image-products",
-      "custom_css": [
-        "@media screen and (max-width: 767px) {.image-products {margin-top: 0; }}"
-      ],
-      "settings": {
-        "container": "full_width",
-        "image_ratio": "square",
-        "image": "shopify://shop_images/Image_-_2024-05-27T120814.346_670dcda4-5da2-4000-9262-87fc9ed4b2a5.jpg",
-        "title": "",
-        "text": "",
-        "product_columns": "1",
-        "add_pagination": true,
-        "product_slider_title": "Cozy Essentials",
-        "products": [
-          "summit-stripe-shirt",
-          "park-trousers-tan",
-          "merino-pullover"
-        ]
-      }
-    },
-    "grid_FrwzUt": {
-      "type": "grid",
-      "blocks": {
-        "grid_item_DQpaXA": {
-          "type": "_grid-item",
-          "settings": {
-            "image": "shopify://shop_images/Image_-_2024-05-15T163642.241.jpg",
-            "add_overlay": true,
-            "link": "",
-            "content_position": "top_center",
-            "content_color": "text-white"
-          },
-          "blocks": {
-            "title_Mita7b": {
-              "type": "title",
-              "settings": {
-                "title": "The Cabin Campaign — Behind the Scenes",
-                "font_size": "h1",
-                "mobile_font_size": "h2",
-                "margin_top": 0,
-                "margin_bottom": 0
-              },
-              "blocks": {}
-            },
-            "button_7HeiP8": {
-              "type": "button",
-              "settings": {
-                "text": "Explore",
-                "button_link": "shopify://collections/shop-all",
-                "button_style": "button",
-                "button_color": "white",
-                "center_button": false,
-                "margin_top": 20,
-                "margin_bottom": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "title_Mita7b",
-            "button_7HeiP8"
-          ]
-        },
-        "grid_item_TcJEea": {
-          "type": "_grid-item",
-          "settings": {
-            "image": "shopify://shop_images/Rectangle_50.jpg",
-            "add_overlay": true,
-            "link": "",
-            "content_position": "top_center",
-            "content_color": "text-white"
-          },
-          "blocks": {
-            "title_X8jmHb": {
-              "type": "title",
-              "settings": {
-                "title": "The Spring Campaign — Behind the Scenes",
-                "font_size": "h1",
-                "mobile_font_size": "h2",
-                "margin_top": 0,
-                "margin_bottom": 0
-              },
-              "blocks": {}
-            },
-            "button_AWJRiz": {
-              "type": "button",
-              "settings": {
-                "text": "Explore",
-                "button_link": "shopify://collections/shop-all",
-                "button_style": "button",
-                "button_color": "white",
-                "center_button": false,
-                "margin_top": 20,
-                "margin_bottom": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "title_X8jmHb",
-            "button_AWJRiz"
-          ]
-        }
-      },
-      "block_order": [
-        "grid_item_DQpaXA",
-        "grid_item_TcJEea"
-      ],
-      "settings": {
-        "image_ratio": "square",
-        "desktop_columns": "2",
-        "less_padding": false
-      }
-    },
-    "countdown_6CAgFN": {
-      "type": "countdown",
-      "settings": {
-        "background_color": "#ebf1e6",
-        "year": 2025,
-        "month": "july",
-        "day": "29",
-        "hour": "13",
-        "minute": "0",
-        "hide_when_complete": false,
-        "title": "Count Down Till Next Drop",
-        "button_label": "Get Notified",
-        "button_link": "",
-        "button_style": "text"
+        "title": "Styled for every setting"
       }
     },
     "instagram_JewbLy": {
@@ -959,25 +456,25 @@
         "image_gBqTPc": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Frame_1.jpg"
+            "image": "shopify://shop_images/Frame-1.jpg"
           }
         },
         "image_tPXGJr": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Frame_2.jpg"
+            "image": "shopify://shop_images/Frame-2.jpg"
           }
         },
         "image_pfXrAd": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Frame_3.jpg"
+            "image": "shopify://shop_images/Frame-3.jpg"
           }
         },
         "image_9maLXh": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Frame_4.jpg"
+            "image": "shopify://shop_images/Frame-4.jpg"
           }
         }
       },
@@ -989,28 +486,18 @@
         "image_9maLXh"
       ],
       "settings": {
-        "title": "@ohaeiapparel",
+        "title": "@somodern",
         "link": ""
       }
     }
   },
   "order": [
     "hero_PmafBF",
-    "press_marquee_GmmNxU",
     "collection_slider_GJHAj6",
     "columns_UGVwkK",
-    "image_products_tMJXAQ",
-    "columns_NnVJPJ",
     "hero_T9nVEW",
-    "text_blocks_qk9Vdn",
-    "offset_images_wmbqg9",
-    "grid_4kAA6j",
-    "image_text_tfWAAB",
-    "featured_articles_ymPaGz",
-    "richtext_3L9Htf",
-    "image_products_P3DcM3",
-    "grid_FrwzUt",
-    "countdown_6CAgFN",
+    "columns_NnVJPJ",
+    "interactive_hero_tnFhbC",
     "instagram_JewbLy"
   ]
 }

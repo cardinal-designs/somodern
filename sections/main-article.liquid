@@ -11,7 +11,7 @@
 
 {% if section.settings.featured_products != blank %}
   <div class="page-width my-60 md:my-100">
-    <h2 class="mb-40 text-h4 font-serif italic text-center" data-animate>{{ section.settings.featured_products_title }}</h2>
+    <h2 class="mb-40 text-h4 font-serif text-center" data-animate>{{ section.settings.featured_products_title }}</h2>
     <div class="grid grid-cols-2 gap-20 md:flex">
       {% for product in section.settings.featured_products limit: 4 %}
         <div class="md:basis-1/4" data-animate>
@@ -26,7 +26,7 @@
   {% if blog.previous_article or blog.next_article %}
     <div class="page-width my-60 md:my-100">
       <div class="max-w-custom w-full mx-auto" style="--width: 1115px;">
-        <h2 class="mb-40 text-h4 font-serif italic text-center" data-animate>{{ section.settings.related_articles_title }}</h2>
+        <h2 class="mb-40 text-h4 font-serif text-center" data-animate>{{ section.settings.related_articles_title }}</h2>
         <div class="grid gap-30 md:grid-cols-2 md:gap-20" data-animate>
           {% if blog.previous_article %}
             {% render 'article-card' article: blog.previous_article %}

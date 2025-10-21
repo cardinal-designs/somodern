@@ -2,14 +2,11 @@
   <div class="page-width">
     <div class="flex flex-wrap gap-40 md:justify-between lg:flex-nowrap xl:gap-60">
 
-      <div class="max-w-custom w-full mx-auto flex-shrink-0 md:m-0" style="--width: 295px;">
+      <div class="max-w-custom w-full mx-auto flex-shrink-0 md:m-0" style="--width: 200px;">
         {% if section.settings.logo != blank %}
           <a href="{{ routes.root_url }}" class="w-125 mx-auto block md:m-0" aria-label="Footer Logo Link">
             {{ section.settings.logo | image_url: width: 200 | image_tag: width: section.settings.logo.width, class: 'w-full', sizes: '200px', widths: '100, 150, 200, 300' }}
           </a>
-        {% endif %}
-        {% if section.settings.brand_text != blank %}
-          <div class="rte text-body-4 opacity-70 text-center md:text-left{% if section.settings.logo != blank %} mt-10 md:mt-60{% endif %}">{{ section.settings.brand_text }}</div>
         {% endif %}
       </div>
 
@@ -79,11 +76,11 @@
     </div>
 
     <div class="mt-40 md:flex md:justify-between md:gap-60">
-      <div class="mb-70 flex justify-center md:m-0 md:block">
+      <div class="mb-70 flex justify-center text-taupe md:m-0 md:block">
         {% render 'social' %}
       </div>
-      <div class="flex flex-col items-center opacity-50 md:flex-row md:gap-10">
-        <p class="text-body-4">&copy;{{ 'now' | date: "%Y" }}  Ohaei Inc. All Rights Reserved.</p>
+      <div class="flex flex-wrap justify-center items-center opacity-50 gap-x-5 md:justify-end">
+        <p class="w-full text-body-4 text-center md:w-auto">&copy;{{ 'now' | date: "%Y" }} SoModern. All Rights Reserved.</p>
         <button class="block text-body-4 underline" data-open-credits>Site Credits.</button>
         <a href="/pages/sitemap" class="block text-body-4 underline">Sitemap.</a>
       </div>
@@ -124,12 +121,6 @@
       "type": "image_picker",
       "id": "logo",
       "label": "Logo"
-    },
-    {
-      "type": "richtext",
-      "id": "brand_text",
-      "label": "Brand Text",
-      "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
     },
     {
       "type": "header",

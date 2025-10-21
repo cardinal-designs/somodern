@@ -9,9 +9,9 @@
             {% render 'shipping-bar' %}
           </div>
 
-          <div class="mx-20 py-20 flex justify-between items-center border-b-1 border-mint md:mx-30">
+          <div class="mx-20 py-20 flex justify-between items-center border-b-1 border-cafe md:mx-30">
             <div class="flex items-center gap-10">
-              <h2 class="text-m-h4 font-serif italic md:text-h4">{{ settings.cart_title }}</h2>
+              <h2 class="text-m-h4 font-serif md:text-h4">{{ settings.cart_title }}</h2>
               <div id="cart-count">
                 {% if cart.item_count > 0 %}
                   <p class="text-cta uppercase">({{ cart.item_count }} Item{% unless cart.item_count == 1 %}s{% endunless %})</p>
@@ -33,7 +33,7 @@
         {% else %}
           <div id="cart-drawer-items" class="w-full h-full px-20 flex flex-col overflow-y-scroll md:px-30">
             {% for item in cart.items %}
-              <div class="py-15 border-b-1 border-mint">
+              <div class="py-15 border-b-1 border-cafe">
                 {% render 'cart-item' item: item, idx: forloop.index %}
               </div>
             {% endfor %}
@@ -93,7 +93,7 @@
           </div>
         {% endif %}
 
-        <div class="w-full py-20 px-20 sticky bottom-0 bg-background border-t-1 border-mint md:px-30{% if cart.empty? %} hidden{% endif %}">
+        <div class="w-full py-20 px-20 sticky bottom-0 bg-background border-t-1 border-cafe md:px-30{% if cart.empty? %} hidden{% endif %}">
           {% if settings.enable_cart_note %}
             <button class="w-full -mt-20 mb-15 py-5 flex justify-between items-center gap-10 text-body-4" data-open-cart-note>
               <span>Add Gift Note</span>

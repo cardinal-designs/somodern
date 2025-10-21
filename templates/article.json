@@ -13,7 +13,6 @@
       "type": "main-article",
       "settings": {
         "featured_products_title": "Shop the Story",
-        "featured_products": "{{ article.metafields.custom.featured_products.value }}",
         "show_related_articles": true,
         "related_articles_title": "Related Articles"
       }

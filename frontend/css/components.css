@@ -1,11 +1,11 @@
 @layer components {
   /* Button */
   .button {
-    @apply px-30 py-[17.5px] inline-block text-cta uppercase text-center bg-black text-white border-1 border-transparent transition-colors hover:bg-charcoal;
+    @apply px-30 py-15 inline-block text-cta uppercase text-center bg-black text-beige transition-colors hover:bg-beige hover:text-black;
   }
 
   .button--white {
-    @apply bg-white text-black hover:bg-mint;
+    @apply bg-beige text-black hover:bg-taupe hover:text-beige;
   }
 
   .button--outline {
@@ -81,7 +81,7 @@
   }
 
   .swiper-pagination.swiper-pagination-bullets.swiper-pagination-horizontal .swiper-pagination-bullet {
-    @apply size-[6px] m-0 bg-mint opacity-100 transition-colors;
+    @apply size-[6px] m-0 bg-cafe opacity-100 transition-colors;
   }
 
   .swiper-pagination.swiper-pagination-bullets.swiper-pagination-horizontal .swiper-pagination-bullet-active {
@@ -98,7 +98,7 @@
 
   /* Image Placeholders */
   .placeholder {
-    @apply inset bg-sage;
+    @apply inset bg-cafe;
   }
 
   .placeholder svg {
@@ -156,7 +156,7 @@
   }
 
   .text-editor blockquote {
-    @apply max-w-[660px] w-full mx-auto text-m-h3 font-serif italic md:text-h3;
+    @apply max-w-[660px] w-full mx-auto text-m-h3 font-serif md:text-h3;
   }
 
   .text-editor p {
@@ -164,15 +164,15 @@
   }
 
   .text-editor h1 {
-    @apply text-m-h1 font-serif italic md:text-h1;
+    @apply text-m-h1 font-serif md:text-h1;
   }
 
   .text-editor h2 {
-    @apply text-m-h3 font-serif italic md:text-h3;
+    @apply text-m-h3 font-serif md:text-h3;
   }
 
   .text-editor h3 {
-    @apply text-m-h4 font-serif italic md:text-h4;
+    @apply text-m-h4 font-serif md:text-h4;
   }
 
   .text-editor h4 {

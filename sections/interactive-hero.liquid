@@ -1,0 +1,51 @@
+<interactive-hero>
+  <div class="interactive-hero my-60 md:m-0 md:py-40 md:bg-tan">
+    <div class="page-width">
+      <div class="mb-15 text-center flex justify-between items-center gap-20 relative md:mb-30 md:block">
+        <h2 class="text-m-h2 font-serif md:text-h2">{{ section.settings.title }}</h2>
+        <div class="swiper-buttons flex items-center gap-20">
+          <button class="swiper-button swiper-button-prev rotate-180 md:!absolute md:left-0 md:top-half md:-translate-y-half">
+            {% render 'icon' icon: 'arrow' %}
+          </button>
+          <button class="swiper-button swiper-button-next md:!absolute md:right-0 md:top-half md:-translate-y-half">
+            {% render 'icon' icon: 'arrow' %}
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="interactive-hero__slider swiper">
+      <div class="swiper-wrapper">
+        {% content_for 'blocks' %}
+      </div>
+    </div>
+  </div>
+</interactive-hero>
+
+{% schema %}
+  {
+    "name": "Interactive Hero",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Lorem Ipsum"
+      }
+    ],
+    "blocks": [{ "type": "_interactive-hero-slide" }],
+    "presets": [
+      {
+        "name": "Interactive Hero",
+        "category": "Products",
+        "blocks": [
+          {
+            "type": "_interactive-hero-slide"
+          },
+          {
+            "type": "_interactive-hero-slide"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

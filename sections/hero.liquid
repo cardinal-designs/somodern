@@ -44,7 +44,7 @@
   endcase
 %}
 
-<div class="hero page-width h-[600px] flex relative overflow-hidden  {{ mobile_content_position }} {{ content_position }} md:h-[700px]">
+<div class="hero page-width h-[125vw] max-h-[900px] flex relative overflow-hidden {{ mobile_content_position }} {{ content_position }} md:min-h-[500px] md:max-h-full md:h-[50vw]">
   <div>
     {% if section.settings.media_type == 'image' %}
       {% liquid

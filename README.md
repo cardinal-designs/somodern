@@ -20,7 +20,7 @@ $ npm install
 
 Run dev server with hot reload (accepts all [theme commands](https://shopify.dev/docs/api/shopify-cli/theme/theme-push)):
 ```
-$ npm run dev -- --store ohaei --live-reload hot-reload
+$ npm run dev -- --store somodern-lighting --live-reload hot-reload
 ```
 
 This will run both `shopify theme dev` and `vite:dev` to start the shopify server and vite compilation.
@@ -30,5 +30,5 @@ This will run both `shopify theme dev` and `vite:dev` to start the shopify serve
 
 Deploy theme store as new theme. Accepts all `shopify theme push` commands and does _not_ allow pushing to live. 
 ```
-$ npm run deploy -- --store ohaei 
+$ npm run deploy -- --store somodern-lighting 
 ```

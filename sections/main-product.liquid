@@ -9,7 +9,7 @@
 %}
 
 {% capture title_section %}
-  <h1 class="mb-10 text-m-h2 font-serif italic md:text-h4">
+  <h1 class="mb-10 text-m-h2 font-serif md:text-h4">
     {{ product.title | escape }}
   </h1>
 
@@ -172,7 +172,7 @@
           {% render 'product-form' prod: product, product_form_id: product_form_id, change_url: true %}
 
           {% if section.settings.extra_text != blank %}
-            <p class="mt-10 text-caption font-serif italic text-center">{{ section.settings.extra_text }}</p>
+            <p class="mt-10 text-caption font-serif text-center">{{ section.settings.extra_text }}</p>
           {% endif %}
 
           <div class="mt-50">
@@ -189,10 +189,10 @@
             {% endif %}
 
             {% if section.blocks.size > 0 %}
-              <div class="mt-40 border-t-1 border-cream md:mt-30">
+              <div class="mt-40 border-t-1 border-beige md:mt-30">
                 {% for block in section.blocks %}
                   <dropdown-item {{ block.shopify_attributes }}>
-                    <div class="group/dropdown border-b-1 border-cream" data-dropdown>
+                    <div class="group/dropdown border-b-1 border-beige" data-dropdown>
                       <button class="w-full py-20 flex justify-between text-caption font-serif" data-dropdown-toggle>
                         {{ block.settings.title }}
                         <span class="rotate-90 transition-transform group-[.active]/dropdown:rotate-[270deg]">
@@ -209,7 +209,7 @@
             {% endif %}
 
             {% if section.settings.value_props != blank %}
-              <div class="my-30 px-15 border-1 border-cream [&_p]:py-10 [&_p]:text-body-3 [&_p]:border-b-1 [&_p:last-child]:border-0 [&_p]:border-cream">{{ section.settings.value_props }}</div>
+              <div class="my-30 px-15 border-1 border-beige [&_p]:py-10 [&_p]:text-body-3 [&_p]:border-b-1 [&_p:last-child]:border-0 [&_p]:border-beige">{{ section.settings.value_props }}</div>
             {% endif %}
 
             {% if section.settings.show_sharing %}

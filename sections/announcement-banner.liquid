@@ -1,0 +1,51 @@
+{% unless section.settings.hide_section %}
+  <announcement-banner>
+    <div class="py-13 bg-tan">
+      <div class="page-width hidden justify-center items-center gap-x-20 gap-y-5 flex-wrap text-center md:flex lg:gap-x-40">
+        {% for block in section.blocks %}
+          <div class="text-cta uppercase" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+          {% unless forloop.last %}
+            <div class="h-20 border-r-1 border-black"></div>
+          {% endunless %}
+        {% endfor %}
+      </div>
+      <div class="md:hidden">
+        <div class="announcement-banner-slider swiper">
+          <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+              <div class="swiper-slide" {{ block.shopify_attributes }}>
+                <div class="px-20 text-cta uppercase text-center">{{ block.settings.text }}</div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </announcement-banner>
+{% endunless %}
+
+{% schema %}
+  {
+    "name": "Announcement Banner",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "hide_section",
+        "label": "Hide Section"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "block",
+        "name": "Block",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

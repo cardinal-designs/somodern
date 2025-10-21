@@ -1,10 +1,10 @@
 {% liquid
-  assign mobile_classes = 'font-serif italic text-m-h1'
+  assign mobile_classes = 'font-serif text-m-h1'
   case block.settings.mobile_font_size
     when 'h2'
-      assign mobile_classes = 'font-serif italic text-m-h2'
+      assign mobile_classes = 'font-serif text-m-h2'
     when 'h3'
-      assign mobile_classes = 'font-serif italic text-m-h3'
+      assign mobile_classes = 'font-serif text-m-h3'
     when 'h4'
       assign mobile_classes = 'font-serif text-m-sh4'
   endcase
@@ -16,7 +16,7 @@
     when 'h3'
       assign desktop_class = 'md:text-h3'
     when 'h4'
-      assign desktop_class = 'md:text-sh3'
+      assign desktop_class = 'md:text-h4'
   endcase
 %}
 

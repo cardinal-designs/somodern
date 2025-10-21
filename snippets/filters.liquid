@@ -29,7 +29,7 @@
 
 <collection-filters class="-mx-20 collection-filters mb-20 block relative md:mx-0" data-base-url="{{ url }}" data-collection-url="{{ collection.url }}" data-current-sort="{{ collection.sort_by | default: collection.default_sort_by }}">
 
-  <div class="px-20 py-10 grid grid-cols-thirds items-center gap-20 border-y-1 border-mint md:pt-0 md:pb-20 md:px-0 md:flex md:justify-between md:gap-40 md:border-t-0">
+  <div class="px-20 py-10 grid grid-cols-thirds items-center gap-20 border-y-1 border-cafe md:pt-0 md:pb-20 md:px-0 md:flex md:justify-between md:gap-40 md:border-t-0">
     <div class="flex items-center gap-20 lg:gap-40">
       <button class="flex items-center gap-13 text-body-3" data-open-filters>
         {% render 'icon' icon: 'filter' %}
@@ -43,10 +43,10 @@
             <input name="options[prefix]" type="hidden" value="last">
           {% endif %}
 
-          <div class="mx-20 py-20 border-b-1 border-mint md:mx-30">
+          <div class="mx-20 py-20 border-b-1 border-cafe md:mx-30">
             <div class="flex justify-between items-center gap-10">
               <div class="flex items-center gap-10">
-                <h2 class="text-m-h4 font-serif italic md:text-h4" data-open-filters>Filters</h2>
+                <h2 class="text-m-h4 font-serif md:text-h4" data-open-filters>Filters</h2>
                 <p id="product-count" class="text-cta uppercase">({{ collection.products_count }} Product{% if collection.products_count != 1 %}s{% endif %})</p>
               </div>
               <button class="text-body-1" data-close-filters>
@@ -61,7 +61,7 @@
                     {% case filter.type %}
                       {% when 'list' %}
                         {% for value in filter.active_values %}
-                          <button class="px-[8px] py-[3px] flex flex-wrap items-center gap-10 text-body-2 bg-mint" data-remove-filter data-url="{{ filter.url_to_remove | remove: '%2F%3Fsection_id%3Dproduct-grid' }}" data-filter="{{ value.param_name }}-{{ value.value }}">
+                          <button class="px-[8px] py-[3px] flex flex-wrap items-center gap-10 text-body-2 bg-cafe" data-remove-filter data-url="{{ filter.url_to_remove | remove: '%2F%3Fsection_id%3Dproduct-grid' }}" data-filter="{{ value.param_name }}-{{ value.value }}">
                             {{ value.label | escape }}
                             <div class="[&_svg]:w-[10px] [&_svg]:h-auto">
                               {% render 'icon' icon: 'close' %}
@@ -76,7 +76,7 @@
                           {% assign max_value_formatted = max_value | money_without_trailing_zeros %}
                           
                           {% if min_value != 0 or max_value != filter.range_max %}
-                            <button class="price-range px-[8px] py-[3px] flex flex-wrap items-center gap-10 text-body-2 bg-mint" data-remove-filter data-url="{{ filter.url_to_remove | remove: '%2F%3Fsection_id%3Dproduct-grid' }}" data-filter="{{ value.param_name }}-{{ value.value }}">
+                            <button class="price-range px-[8px] py-[3px] flex flex-wrap items-center gap-10 text-body-2 bg-cafe" data-remove-filter data-url="{{ filter.url_to_remove | remove: '%2F%3Fsection_id%3Dproduct-grid' }}" data-filter="{{ value.param_name }}-{{ value.value }}">
                               {{ min_value_formatted }} - {{ max_value_formatted }}
                               <div class="[&_svg]:w-[10px] [&_svg]:h-auto">
                                 {% render 'icon' icon: 'close' %}
@@ -97,7 +97,7 @@
               {% for filter in collection.filters %}
                 {% case filter.type %}
                   {% when 'price_range' %}
-                    <div class="dropdown border-b-1 border-mint">
+                    <div class="dropdown border-b-1 border-cafe">
                       <button class="group/button peer filter-dropdown dropdown-header w-full pr-[2px] py-15 flex justify-between items-center gap-10 relative{% if filter.active_values != blank %} has-active-filters{% endif %}" id="{{ filter.label | handleize }}-dropdown">
                         <span class="filter-label text-body-3">{{ filter.label }}{% if filter.active_values != blank %} ({{ filter.active_values.size }}){% endif %}</span>
                         <span class="transition-transform ease-in-out group-[.active]/button:rotate-180">
@@ -138,7 +138,7 @@
                     </div>
                   {% else %}
                     {% assign downcase_filter = filter.label | downcase %}
-                      <div class="dropdown border-b-1 border-mint">
+                      <div class="dropdown border-b-1 border-cafe">
                         <button class="group/button peer filter-dropdown dropdown-header w-full pr-[2px] py-15 flex justify-between items-center gap-10 relative{% if filter.active_values != blank %} has-active-filters{% endif %}" id="{{ filter.label | handleize }}-dropdown">
                           <span class="filter-label text-body-3">{{ filter.label }}{% if filter.active_values != blank %} ({{ filter.active_values.size }}){% endif %}</span>
                           <span class="transition-transform ease-in-out group-[.active]/button:rotate-180">
@@ -297,7 +297,7 @@
           {% case filter.type %}
             {% when 'list' %}
               {% for value in filter.active_values %}
-                <button class="px-[8px] py-[3px] flex flex-wrap items-center gap-10 text-body-2 bg-mint" data-remove-filter data-url="{{ filter.url_to_remove | remove: '%2F%3Fsection_id%3Dproduct-grid' }}" data-filter="{{ value.param_name }}-{{ value.value }}">
+                <button class="px-[8px] py-[3px] flex flex-wrap items-center gap-10 text-body-2 bg-cafe" data-remove-filter data-url="{{ filter.url_to_remove | remove: '%2F%3Fsection_id%3Dproduct-grid' }}" data-filter="{{ value.param_name }}-{{ value.value }}">
                   {{ value.label | escape }}
                   <div class="[&_svg]:w-[10px] [&_svg]:h-auto">
                     {% render 'icon' icon: 'close' %}
@@ -312,7 +312,7 @@
                 {% assign max_value_formatted = max_value | money_without_trailing_zeros %}
                 
                 {% if min_value != 0 or max_value != filter.range_max %}
-                  <button class="price-range px-[8px] py-[3px] flex flex-wrap items-center gap-10 text-body-2 bg-mint" data-remove-filter data-url="{{ filter.url_to_remove | remove: '%2F%3Fsection_id%3Dproduct-grid' }}" data-filter="{{ value.param_name }}-{{ value.value }}">
+                  <button class="price-range px-[8px] py-[3px] flex flex-wrap items-center gap-10 text-body-2 bg-cafe" data-remove-filter data-url="{{ filter.url_to_remove | remove: '%2F%3Fsection_id%3Dproduct-grid' }}" data-filter="{{ value.param_name }}-{{ value.value }}">
                     {{ min_value_formatted }} - {{ max_value_formatted }}
                     <div class="[&_svg]:w-[10px] [&_svg]:h-auto">
                       {% render 'icon' icon: 'close' %}

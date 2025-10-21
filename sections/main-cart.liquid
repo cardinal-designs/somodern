@@ -1,5 +1,5 @@
 {% capture cart_footer %}
-  <div class="mb-20 py-20 flex flex-col gap-15 border-b-1 border-mint md:mt-20 md:border-t-1">
+  <div class="mb-20 py-20 flex flex-col gap-15 border-b-1 border-cafe md:mt-20 md:border-t-1">
     {% if cart.cart_level_discount_applications.size > 0 %}
       <div class="flex justify-between items-center gap-20" id="cart-drawer-subtotal">
         <p class="text-sh5 uppercase">{{ discount_application.title }}</p>
@@ -15,7 +15,7 @@
 
   {% if settings.enable_cart_note %}
     <dropdown-item>
-      <div class="group/dropdown -mt-20 mb-10 border-b-1 border-mint" data-dropdown>
+      <div class="group/dropdown -mt-20 mb-10 border-b-1 border-cafe" data-dropdown>
         <button class="w-full py-5 flex justify-between items-center gap-20 text-left text-body-4" data-dropdown-toggle>
           Add Gift Note
           <span class="flex transition-transform group-[.active]/dropdown:rotate-180">
@@ -59,7 +59,7 @@
 <div class="overflow-hidden md:overflow-visible">
   <div class="page-width mt-20 mb-40 md:my-80">
     <div class="mb-30 flex justify-center gap-15 text-center">
-      <h1 class="text-m-h1 font-serif italic md:text-h1">{{ settings.cart_title }}</h1>
+      <h1 class="text-m-h1 font-serif md:text-h1">{{ settings.cart_title }}</h1>
       <div id="cart-item-count" class="h-25 w-25 flex justify-center items-center rounded-full text-cta uppercase border-1 border-black">{{ cart.item_count }}</div>
     </div>
 
@@ -79,7 +79,7 @@
 
         <div class="flex flex-col-reverse md:mt-40 md:grid md:grid-cols-[1fr_320px] md:gap-50 group-[.is-empty]:hidden">
 
-          <div class="border-t-1 border-mint">
+          <div class="border-t-1 border-cafe">
             
             <form
               action="{{ routes.cart_url }}"
@@ -92,7 +92,7 @@
                 <div class="js-contents-main">
                   {% if cart != empty %}
                     {% for item in cart.items %}
-                      <div class="py-15 border-b-1 border-mint">
+                      <div class="py-15 border-b-1 border-cafe">
                         {% render 'cart-item' item: item, idx: forloop.index, is_cart: true %}
                       </div>
                     {% endfor %}
@@ -114,7 +114,7 @@
                 {{ cart_footer }}
               </div>
 
-              <div class="cart-upsells mt-40 md:px-60 md:p-20 md:border-1 md:border-mint">
+              <div class="cart-upsells mt-40 md:px-60 md:p-20 md:border-1 md:border-cafe">
                 <div class="max-w-custom w-full mx-auto" style="--width: 500px;">
                   <div class="mb-20 flex justify-between items-center md:px-30 md:justify-center">
                     <h3 class="text-sh2 uppercase">{{ settings.cart_upsells_title }}</h3>

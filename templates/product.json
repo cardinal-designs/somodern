@@ -41,7 +41,6 @@
         "value_props": "<p>Free Shipping Over $100</p><p>Free Returns and Exchanges</p><p>Have a Question?<a href=\"/\" title=\"/\"> See FAQs</a></p>",
         "show_sharing": true,
         "upsell_title": "Style It",
-        "product_upsells": "{{ product.metafields.custom.product_upsells.value }}",
         "upsell_count": "1"
       }
     },

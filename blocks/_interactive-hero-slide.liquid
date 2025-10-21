@@ -1,0 +1,65 @@
+<div class="swiper-slide page-width">
+  <div class="relative">
+    <div class="min-h-full pb-full flex relative overflow-hidden md:pb-[50%] md:min-h-[500px]">
+      {% liquid
+        assign desktop_classes = 'size-full inset object-cover'
+        if block.settings.mobile_image != blank
+          assign desktop_classes = 'size-full inset object-cover hidden md:block'
+        endif
+      %}
+      
+      {% render 'image'
+        image: block.settings.image,
+        classes: desktop_classes,
+        sizes: '100vw',
+        include_placeholder: true,
+        placeholder_name: 'lifestyle-2',
+        src_set_type: 'full-width'
+      %}
+
+      {% if block.settings.mobile_image != blank %}
+        {% render 'image'
+          image: block.settings.mobile_image,
+          classes: 'size-full inset object-cover md:hidden',
+          sizes: '100vw',
+          include_placeholder: true,
+          placeholder_name: 'lifestyle-2',
+          src_set_type: 'full-width'
+        %}
+      {% endif %}
+    </div>
+    <div class="mt-15 flex flex-col gap-20 md:m-0 md:block">
+      {% content_for 'blocks' %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Interactive Hero Slide",
+    "tag": null,
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_image",
+        "label": "Mobile Image"
+      }
+    ],
+    "blocks": [{"type": "_interactive-hero-product"}],
+    "presets": [
+      {
+        "name": "Interactive Hero Slide",
+        "blocks": [
+          {
+            "type": "_interactive-hero-product"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

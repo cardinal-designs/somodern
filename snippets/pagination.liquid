@@ -135,7 +135,7 @@
     </nav>
 
     {% if show_item_count and show_load_more_button == false %}
-      <p id="item-count" class="mt-30 text-center text-caption font-serif italic">
+      <p id="item-count" class="mt-30 text-center text-caption font-serif">
         You're viewing {{ current_pagination_range }} of {{ paginate.items }} product{% unless paginate.items == 1 %}s{% endunless %}
       </p>
     {% endif %}

@@ -37,7 +37,7 @@
       <div class="">
         {% if predictive_search.resources.queries.size > 0 or predictive_search.resources.collections.size > 0 %}
           <div class="max-w-custom w-full" style="--width: 335px;">
-            <h3 class="mb-20 pb-10 text-sh4 uppercase border-b-1 border-mint">Popular Searches</h3>
+            <h3 class="mb-20 pb-10 text-sh4 uppercase border-b-1 border-cafe">Popular Searches</h3>
             <ul class="flex flex-col gap-10">
               {% for query in predictive_search.resources.queries %}
                 <li id="predictive-search-option-query-{{ forloop.index }}" class="" role="option" aria-selected="false">

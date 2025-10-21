@@ -126,14 +126,14 @@
                       tabindex="0"
                       data-dropdown-content
                     >
-                      <div class="w-full p-20 sticky top-0 flex justify-between items-center text-body-3 bg-background border-b-1 border-mint z-20 md:hidden">
+                      <div class="w-full p-20 sticky top-0 flex justify-between items-center text-body-3 bg-background border-b-1 border-cafe z-20 md:hidden">
                         Select Quantity
                         <button class="py-5 pl-5" data-close>
                           {% render 'icon' icon: 'close' %}
                         </button>
                       </div>
                       {% for i in (1..max_quantity) %}
-                        <button class="group/number px-20 py-15 text-body-3 text-left border-b-1 border-mint md:py-0 md:border-0 md:text-center{% if i == item.quantity %} active{% endif %}" data-number="{{ i }}">
+                        <button class="group/number px-20 py-15 text-body-3 text-left border-b-1 border-cafe md:py-0 md:border-0 md:text-center{% if i == item.quantity %} active{% endif %}" data-number="{{ i }}">
                           <span class="opacity-50 transition-opacity group-[.active]/number:opacity-100">{{ i }}</span>
                         </button>
                       {% endfor %}

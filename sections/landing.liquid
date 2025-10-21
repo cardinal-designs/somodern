@@ -42,14 +42,14 @@
           {% endif %}
         </a>
       {% else %}
-        <a href="{{ routes.root_url }}" class="py-10 text-m-h2 font-serif italic md:p-0 md:text-h2">{{ shop.name }}</a>
+        <a href="{{ routes.root_url }}" class="py-10 text-m-h2 font-serif md:p-0 md:text-h2">{{ shop.name }}</a>
       {% endif %}
     </div>
 
     <div class="px-20 py-30 md:p-40{% if section.settings.content_color == 'light' %} text-white{% endif %}"{% if section.settings.content_background_color != blank %} style="background-color: {{ section.settings.content_background_color }};"{% endif %}>
       <div class="max-w-custom w-full mx-auto text-center" style="--width: 400px;">
         <h1 class="visually-hidden">{{ shop.name }}</h1>
-        <h2 class="mb-20 text-m-h1 font-serif italic md:text-h1">{{ section.settings.title }}</h2>
+        <h2 class="mb-20 text-m-h1 font-serif md:text-h1">{{ section.settings.title }}</h2>
         <p class="text-m-body-2 md:text-body-2">{{ section.settings.text | newline_to_br }}</p>
       </div>
 

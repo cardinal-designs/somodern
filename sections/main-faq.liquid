@@ -1,7 +1,7 @@
 <faq-section class="faq mt-60 mb-40 block md:mt-80 md:mb-100">
   <div class="page-width">
     <div class="max-w-custom w-full mb-50 mx-auto text-center" style="--width: 435px;">
-      <h1 class="mb-10 text-m-h1 font-serif italic md:mb-20 md:text-h1">{{ section.settings.title }}</h1>
+      <h1 class="mb-10 text-m-h1 font-serif md:mb-20 md:text-h1">{{ section.settings.title }}</h1>
       {% if section.settings.text != blank %}
         <div class="text-m-body-2 md:text-body-3">{{ section.settings.text }}</div>
       {% endif %}
@@ -9,7 +9,7 @@
   </div>
 
   {% unless section.settings.hide_navigation %}
-    <div class="faq-navigation sticky-bar w-full px-20 overflow-x-scroll no-scrollbar bg-background border-b-1 border-mint md:px-40">
+    <div class="faq-navigation sticky-bar w-full px-20 overflow-x-scroll no-scrollbar bg-background border-b-1 border-cafe md:px-40">
       <div class="w-fit mx-auto flex justify-center gap-30">
         {% for block in section.blocks %}
           {% if block.type == 'header' %}
@@ -30,12 +30,12 @@
       {% for block in section.blocks %}
         {% if block.type == 'header' %}
           <div class="faq-component" data-section="{{ block.settings.title | handleize }}" id="{{ block.settings.title | handleize }}">
-            <div class="pt-50 pb-20 text-m-h2 font-serif italic md:pt-80 md:pb-40 md:text-h2">{{ block.settings.title }}</div>
+            <div class="pt-50 pb-20 text-m-h2 font-serif md:pt-80 md:pb-40 md:text-h2">{{ block.settings.title }}</div>
         {% endif %}
 
         {% if block.type == 'faq_item' %}
           <dropdown-item {{ block.shopify_attributes }}>
-            <div class="group/dropdown border-b-1 border-mint{% if is_first_faq %} border-t-1{% endif %}" data-dropdown>
+            <div class="group/dropdown border-b-1 border-cafe{% if is_first_faq %} border-t-1{% endif %}" data-dropdown>
               <button class="w-full py-20 flex justify-between items-center gap-20 text-left text-m-body-1 font-serif md:py-25 md:text-body-1" data-dropdown-toggle>
                 {{ block.settings.title }}
                 <span class="flex transition-transform group-[.active]/dropdown:rotate-180">

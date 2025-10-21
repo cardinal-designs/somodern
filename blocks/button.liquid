@@ -3,10 +3,6 @@
   case block.settings.button_color
     when 'white'
       assign classes = 'button button--white'
-    when 'black_outline'
-      assign classes = 'button button--outline'
-    when 'white_outline'
-      assign classes = 'button button--white-outline'
   endcase
 %}
 
@@ -47,7 +43,7 @@
           { "value": "button", "label": "Button" },
           { "value": "text", "label": "Text" }
         ],
-        "default": "text",
+        "default": "button",
         "label": "Button Style"
       },
       {
@@ -55,13 +51,11 @@
         "id": "button_color",
         "options": [
           { "value": "white", "label": "White" },
-          { "value": "black", "label": "Black" },
-          { "value": "white_outline", "label": "White Outline" },
-          { "value": "black_outline", "label": "Black Outline" }
+          { "value": "black", "label": "Black" }
         ],
         "default": "white",
         "label": "Button Color",
-        "info": "Only applies to button links."
+        "visible_if": "{{ block.settings.button_style == 'button' }}"
       },
       {
         "type": "header",

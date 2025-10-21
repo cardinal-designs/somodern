@@ -1,8 +1,8 @@
 <div class="page-width">
-  <h1 class="mt-60 mb-40 text-m-h1 font-serif italic text-center md:mb-60 md:text-h1">My Account</h1>
+  <h1 class="mt-60 mb-40 text-m-h1 font-serif text-center md:mb-60 md:text-h1">My Account</h1>
 </div>
 
-<div class="px-20 border-b-1 border-mint overflow-scroll no-scrollbar md:px-40">
+<div class="px-20 border-b-1 border-cafe overflow-scroll no-scrollbar md:px-40">
   <div class="w-fit mx-auto flex items-center gap-40">
     <a href="{{ routes.account_url }}" class="group/link py-13 block text-cta uppercase relative whitespace-nowrap" data-tab="addresses">
       Addresses
@@ -24,7 +24,7 @@
 
     <div class="w-full md:grid md:grid-cols-[1fr_260px] md:gap-80">
       <div class="">
-        <h2 class="mb-20 text-m-h2 font-serif italic md:text-h4">{{ 'customer.order.title' | t: name: order.name }}</h2>
+        <h2 class="mb-20 text-m-h2 font-serif md:text-h4">{{ 'customer.order.title' | t: name: order.name }}</h2>
 
         {% assign order_date = order.created_at | time_tag: format: "date_at_time" %}
         <p class="mb-20 text-body-2">{{ 'customer.order.date_html' | t: date: order_date }}</p>
@@ -40,7 +40,7 @@
         <div class="">
           <div class="">
             {% for line_item in order.line_items %}
-              <div class="py-20 flex gap-10 border-t-1 border-mint md:gap-20">
+              <div class="py-20 flex gap-10 border-t-1 border-cafe md:gap-20">
                 <div class="w-80 relative flex-shrink-0">
                   {{ line_item.image | image_url: width: 200 | image_tag: preload: true, width: section.settings.image.width, sizes: '200', widths: '200, 300', class: 'aspect-tall object-cover' }}
                 </div>
@@ -64,28 +64,28 @@
             {% endfor %}
           </div>
 
-          <div class="border-t-1 border-mint">
+          <div class="border-t-1 border-cafe">
             {% if order.cart_level_discount_applications != blank %}
               {% for discount_application in order.cart_level_discount_applications %}
-                <div class="py-20 flex justify-between border-b-1 border-mint">
+                <div class="py-20 flex justify-between border-b-1 border-cafe">
                   <p class="text-body-2">Discount - {{ discount_application.title }}</p>
                   <p class="text-body-2">-{{ discount_application.total_allocated_amount | money }}</p>
                 </div>
               {% endfor %}
             {% endif %}
             {% for shipping_method in order.shipping_methods %}
-              <div class="py-20 flex justify-between border-b-1 border-mint">
+              <div class="py-20 flex justify-between border-b-1 border-cafe">
                 <p class="text-body-2">{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})</p>
                 <p class="text-body-2">{{ shipping_method.price | money }}</p>
               </div>
             {% endfor %}
             {% for tax_line in order.tax_lines %}
-              <div class="py-20 flex justify-between border-b-1 border-mint">
+              <div class="py-20 flex justify-between border-b-1 border-cafe">
                 <p class="text-body-2">{{ 'customer.order.tax' | t }} ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)</p>
                 <p class="text-body-2">{{ tax_line.price | money }}</p>
               </div>
             {% endfor %}
-            <div class="py-20 flex justify-between border-b-1 border-mint">
+            <div class="py-20 flex justify-between border-b-1 border-cafe">
               <p class="text-body-2">Total</p>
               <p class="text-body-2">{{ order.total_price | money_with_currency }}</p>
             </div>
@@ -99,19 +99,19 @@
 
       <div class="mt-30 md:mt-0">
         <div class="order-detail__billing">
-          <h2 class="mb-10 text-m-h2 font-serif italic md:text-h4 md:mb-20 md:pb-20 md:border-b-1 md:border-mint">Billing Address</h2>
+          <h2 class="mb-10 text-m-h2 font-serif md:text-h4 md:mb-20 md:pb-20 md:border-b-1 md:border-cafe">Billing Address</h2>
           <div class="text-body-2">
             {{ order.billing_address | format_address }}
           </div>
         </div>
         <div class="mt-30 order-detail__shipping">
-          <h2 class="mb-10 text-m-h2 font-serif italic md:text-h4 md:mb-20 md:pb-20 md:border-b-1 md:border-mint">Shipping Address</h2>
+          <h2 class="mb-10 text-m-h2 font-serif md:text-h4 md:mb-20 md:pb-20 md:border-b-1 md:border-cafe">Shipping Address</h2>
           <div class="text-body-2">
             {{ order.shipping_address | format_address }}
           </div>
         </div>
 
-        <div class="mt-30 pb-20 border-b-1 border-mint md:pt-20 md:pb-0 md:border-t-1 md:border-b-0">
+        <div class="mt-30 pb-20 border-b-1 border-cafe md:pt-20 md:pb-0 md:border-t-1 md:border-b-0">
           <p class="mb-10 text-body-2"><span class="font-semibold">Payment Status:</span> {{ order.financial_status_label }}</p>
           <p class="text-body-2"><span class="font-semibold">Fufillment Status:</span> {{ order.fulfillment_status_label }}</p>
         </div>

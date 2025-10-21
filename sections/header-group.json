@@ -14,6 +14,8 @@
     "announcement": {
       "type": "announcement-bar",
       "settings": {
+        "background_color": "#302e2d",
+        "content_color": "text-white",
         "text": "Free Domestic and International Shipping",
         "enable_country_selector": true
       }
@@ -24,29 +26,117 @@
         "mega_menu_3BRjWk": {
           "type": "mega_menu",
           "settings": {
-            "title": "Shop",
-            "image_1": "shopify://shop_images/Image_-_2024-05-10T132849.587.jpg",
-            "title_1": "Spring 23",
-            "url_1": "shopify://collections/shop-all",
-            "image_2": "shopify://shop_images/Image_-_2024-05-10T132853.445.jpg",
-            "title_2": "Lookbook",
+            "title": "New Arrivals",
+            "image_1": "shopify://shop_images/Image_bf594353-197a-433b-ac04-6789044683a4.jpg",
+            "title_1": "Fall Favorites",
+            "url_1": "",
+            "image_2": "shopify://shop_images/Image-1_17f707e7-a4e9-4422-bc22-a49b338edffa.jpg",
+            "title_2": "Sale",
             "url_2": "shopify://pages/lookbook"
+          }
+        },
+        "mega_menu_BHbVTk": {
+          "type": "mega_menu",
+          "settings": {
+            "title": "Shop By",
+            "image_1": "shopify://shop_images/Image_91.jpg",
+            "title_1": "Set the Mood: Dining Room",
+            "url_1": "",
+            "title_2": "",
+            "url_2": ""
+          }
+        },
+        "mega_menu_RweWg4": {
+          "type": "mega_menu",
+          "settings": {
+            "title": "Ceiling",
+            "image_1": "shopify://shop_images/Image_9a9af5f4-8dde-4f56-9aac-1319e281d71f.jpg",
+            "title_1": "Fall Favorites",
+            "url_1": "",
+            "image_2": "shopify://shop_images/Image-1_d0506445-6500-4298-a63a-924530f39682.jpg",
+            "title_2": "Sale",
+            "url_2": ""
+          }
+        },
+        "mega_menu_jU3hjx": {
+          "type": "mega_menu",
+          "settings": {
+            "title": "Walls",
+            "image_1": "shopify://shop_images/Image_1b820875-9353-4e32-83b0-2594af99378b.jpg",
+            "title_1": "Wall Sconces",
+            "url_1": "",
+            "image_2": "shopify://shop_images/Image-1_100ea177-5e90-45fc-a10c-ea1ce67bb9e8.jpg",
+            "title_2": "Sale",
+            "url_2": ""
+          }
+        },
+        "mega_menu_DpLxAp": {
+          "type": "mega_menu",
+          "settings": {
+            "title": "Lamps",
+            "image_1": "shopify://shop_images/Image_e30ca0af-6cf8-4589-b366-9f6073cd4adb.jpg",
+            "title_1": "New Arrivals",
+            "url_1": "",
+            "image_2": "shopify://shop_images/Image-1_54b665c3-20e5-4f5e-bd79-33b7a718297a.jpg",
+            "title_2": "Sale",
+            "url_2": ""
+          }
+        },
+        "mega_menu_CxkQaf": {
+          "type": "mega_menu",
+          "settings": {
+            "title": "Outdoor",
+            "image_1": "shopify://shop_images/Image_3751251e-8175-41ca-b8de-b50f5fffffef.jpg",
+            "title_1": "Wall Sconces",
+            "url_1": "",
+            "image_2": "shopify://shop_images/Image-1_e9428d68-853d-4ead-bb5d-963b80a604cc.jpg",
+            "title_2": "Sale",
+            "url_2": ""
+          }
+        },
+        "mega_menu_34djiH": {
+          "type": "mega_menu",
+          "settings": {
+            "title": "Fans",
+            "image_1": "shopify://shop_images/Image_43d1b457-7d1c-433b-91e7-b115d348b4e2.jpg",
+            "title_1": "New Arrivals",
+            "url_1": "",
+            "image_2": "shopify://shop_images/Image-1_3c605476-e7c7-4543-9ba0-4f422db2fea8.jpg",
+            "title_2": "Sale",
+            "url_2": ""
+          }
+        },
+        "mega_menu_GjP9f6": {
+          "type": "mega_menu",
+          "settings": {
+            "title": "Architectural",
+            "image_1": "shopify://shop_images/Image_36acb79d-323b-4954-b657-0b993ae10238.jpg",
+            "title_1": "Track Lighting",
+            "url_1": "",
+            "image_2": "shopify://shop_images/Image-1_d9f608ee-d0cf-4169-87e2-666fbc5a8c72.jpg",
+            "title_2": "Sale",
+            "url_2": ""
           }
         }
       },
       "block_order": [
-        "mega_menu_3BRjWk"
+        "mega_menu_3BRjWk",
+        "mega_menu_BHbVTk",
+        "mega_menu_RweWg4",
+        "mega_menu_jU3hjx",
+        "mega_menu_DpLxAp",
+        "mega_menu_CxkQaf",
+        "mega_menu_34djiH",
+        "mega_menu_GjP9f6"
       ],
       "settings": {
-        "menu": "main-menu",
+        "menu": "main-menu-1",
+        "additional_menu": "additional-main-menu",
         "enable_search": true,
-        "logo_position": "center",
-        "logo": "shopify://shop_images/ohaei-logo.svg",
+        "logo_position": "left",
+        "logo": "shopify://shop_images/somodern-logo.svg",
         "logo_width": 125,
-        "mobile_logo_width": 110,
-        "transparent_logo": "shopify://shop_images/ohaei-logo-white.svg",
-        "enable_transparent_on_home": true,
-        "transparent_header_pages": "page.about, page.lookbook, page.contact, blog, article, register, login"
+        "mobile_logo_width": 110
       }
     }
   },
