@@ -258,7 +258,8 @@ export default class CollectionFilters extends HTMLElement {
       { id: 'product-grid' },
       { id: 'active-filters' },
       { id: 'active-filters-slideout' },
-      { id: 'product-count' }
+      { id: 'product-count' },
+      { id: 'product-count-2' }
     ]
   }
 

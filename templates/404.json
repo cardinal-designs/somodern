@@ -11,11 +11,118 @@
   "sections": {
     "main": {
       "type": "main-404",
+      "disabled": true,
       "settings": {
+        "title": "404",
+        "text": "<p>Page not found.</p>",
+        "button_label": "Take Me Home",
+        "button_link": "/",
+        "button_style": "button"
+      }
+    },
+    "hero_H4VCCh": {
+      "type": "hero",
+      "blocks": {
+        "subtitle_7hFNzM": {
+          "type": "subtitle",
+          "settings": {
+            "title": "404 Error",
+            "margin_top": 0,
+            "margin_bottom": 0
+          },
+          "blocks": {}
+        },
+        "title_UtaXJg": {
+          "type": "title",
+          "settings": {
+            "title": "The page you are looking for doesn’t exist",
+            "font_size": "h1",
+            "mobile_font_size": "h1",
+            "margin_top": 0,
+            "margin_bottom": 0
+          },
+          "blocks": {}
+        },
+        "button_aqJ69y": {
+          "type": "button",
+          "settings": {
+            "text": "Shop Best Sellers",
+            "button_link": "",
+            "button_style": "button",
+            "button_color": "white",
+            "center_button": false,
+            "margin_top": 0,
+            "margin_bottom": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "subtitle_7hFNzM",
+        "title_UtaXJg",
+        "button_aqJ69y"
+      ],
+      "name": "Hero",
+      "settings": {
+        "content_position": "middle_center",
+        "mobile_content_position": "middle_center",
+        "content_width": 660,
+        "content_color": "text-text",
+        "media_type": "image",
+        "image": "shopify://shop_images/Rectangle_51.jpg",
+        "add_overlay": false
+      }
+    },
+    "instagram_YUjt4p": {
+      "type": "instagram",
+      "blocks": {
+        "image_iNGYWy": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame.jpg"
+          }
+        },
+        "image_FrzAnm": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame-1.jpg"
+          }
+        },
+        "image_KxTUBP": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame-2.jpg"
+          }
+        },
+        "image_BPATgk": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame-3.jpg"
+          }
+        },
+        "image_R8hj3x": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame-4.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_iNGYWy",
+        "image_FrzAnm",
+        "image_KxTUBP",
+        "image_BPATgk",
+        "image_R8hj3x"
+      ],
+      "settings": {
+        "title": "@somodern",
+        "link": ""
       }
     }
   },
   "order": [
-    "main"
+    "main",
+    "hero_H4VCCh",
+    "instagram_YUjt4p"
   ]
 }

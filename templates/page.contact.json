@@ -1,12 +1,21 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "form": {
       "type": "main-contact",
       "settings": {
-        "image": "shopify:\/\/shop_images\/Image_-_2024-06-10T131341.912.jpg",
+        "image": "shopify://shop_images/Image_-_2025-10-30T133653.197.jpg",
         "hide_image_mobile": false,
         "title": "Contact Us",
-        "text": "<p>Fill out the form below or contact us directly at <a href=\"mailto:hello@ohaei.com\" title=\"mailto:hello@ohaei.com\">hello@ohaei.com<\/a><\/p>"
+        "text": "<p>Fill out the form below or contact us directly at <a href=\"mailto:hello@somodern.com\" title=\"mailto:hello@somodern.com\">hello@somodern.com</a></p>"
       }
     }
   },

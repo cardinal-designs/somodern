@@ -12,7 +12,7 @@
     "main": {
       "type": "main-product-quickview",
       "settings": {
-        "extra_text": "Ships in 2 weeks."
+        "extra_text": ""
       }
     }
   },

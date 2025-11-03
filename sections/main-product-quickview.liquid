@@ -4,7 +4,7 @@
   %}
 
   <product-section class="block">
-    <div class="product md:grid md:grid-cols-[minmax(0,1fr)_365px] md:items-center md:gap-40">
+    <div class="product md:grid md:grid-cols-[minmax(0,1fr)_365px] md:gap-40">
 
       <div class="relative">
         <div class="block md:grid md:grid-cols-[minmax(0,50px)_minmax(0,1fr)] md:gap-10">
@@ -29,7 +29,7 @@
             </ul>
           </div>
           <ul class="product-slider swiper w-full md:overflow-hidden" role="list">
-            <div class="swiper-wrapper{% if slider_desktop_style == 'grid' %} md:grid md:grid-cols-2 md:gap-[8px]{% endif %}">
+            <div class="swiper-wrapper">
               {% for media in product.media %}
                 {% if media.media_type == "image" %}
                   {% assign image_variants = product.images | where: 'src', media.src | first %}
@@ -66,11 +66,11 @@
           {% render 'product-badges' prod: product, classes: 'mb-20 hidden md:block' %}
 
           <div class="{% if mobile_title_position == 'above' %} hidden md:block{% endif %}">
-            <h1 class="mb-10 text-m-h2 font-serif md:text-h4">
+            <h1 class="mb-10 text-m-h2 font-serif md:text-h3">
               {{ product.title | escape }}
             </h1>
 
-            <p class="price mb-20 flex items-center gap-5 text-m-sh1 uppercase md:text-sh5">
+            <p class="price mb-20 flex items-center gap-5 text-body-2">
               {{ product.price | money }}
               {% if product.compare_at_price > product.price %}
                 <span class="line-through opacity-50">{{ product.compare_at_price | money }}</span>
@@ -89,6 +89,10 @@
           {% if section.settings.extra_text != blank %}
             <p class="mt-10 text-caption font-serif text-center">{{ section.settings.extra_text }}</p>
           {% endif %}
+
+          <div class="mt-10 text-center">
+            <a href="{{ product.url | within: collection }}" class="text-body-4 underline">View Full Product Details</a>
+          </div>
         </div>
       </div>
     </div>

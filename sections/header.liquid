@@ -11,8 +11,8 @@
     {% render 'icon' icon: 'cart' %}
     <span class="visually-hidden">Cart</span>
     {% if cart != empty %}
-      <span class="pl-px absolute top-[7px] left-half -translate-x-half text-nav text-center">
-        {{ cart.item_count }}
+      <span class="size-[8px] bg-taupe absolute top-px right-[-4px] rounded-full">
+        <span class="visually-hidden">{{ cart.item_count }}</span>
       </span>
     {% endif %}
   </span>
@@ -21,7 +21,6 @@
 <site-header>
   <header
     class="header group/header bg-background border-b-1 border-beige"
-    {% if enable_transparent_header %}data-transparent-header="true"{% endif %}
     data-section-id="{{ section.id }}"
     data-section-type="header"
   >
@@ -64,12 +63,12 @@
                 <input type="hidden" name="options[prefix]" value="last">
                 <div class="flex">
                   <label id="search-label-{{ template.suffix }}" for="search-input-{{ template.suffix }}" class="hidden visually-hidden">Search</label>
-                  <input aria-labelledby="search-label-{{ template.suffix }}" id="search-input-{{ template.suffix }}" class="w-full py-[3px] text-body-4 bg-transparent appearance-none placeholder:text-text/50 placeholder:text-body-4 focus-visible:outline-0 focus-visible:outline-transparent focus-visible:placeholder:text-text" type="search" name="q" value="{{ search.terms | escape }}" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search">
+                  <input aria-labelledby="search-label-{{ template.suffix }}" id="search-input-{{ template.suffix }}" class="w-full py-[3px] text-body-4 bg-transparent appearance-none cursor-text placeholder:text-text/50 placeholder:text-body-4 focus-visible:outline-0 focus-visible:outline-transparent focus-visible:placeholder:text-text" type="search" name="q" value="{{ search.terms | escape }}" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search">
                   <button type="submit" class="opacity-35">{% render 'icon' icon: 'search' %}</button>
                 </div>
               </form>
             </div>
-            <div class="predictive-search" style="display: none;"></div>
+            <div class="predictive-search fixed left-0 right-0 top-[var(--header-group-height)] bg-background z-60" style="display: none;"></div>
           </predictive-search>
         {% endif %}
 

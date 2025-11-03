@@ -32,7 +32,7 @@
   endif
 %}
 
-<div class="relative" data-animate {{ block.shopify_attributes }}>
+<div class="grid-item relative" data-animate {{ block.shopify_attributes }}>
   <a href="{{ block.settings.button }}" class="block relative{% if section.settings.image_ratio == 'square' %} aspect-square{% else %} aspect-tall{% endif %}">
     {% render 'image'
       image: block.settings.image,
@@ -52,7 +52,7 @@
     {% endif %}
   </a>
 
-  <div class="inset px-30 py-40 flex {{ content_position }} {{ block.settings.content_color }}">
+  <div class="grid-item__content inset px-30 py-40 flex {{ content_position }} {{ block.settings.content_color }}">
     <div class="max-w-custom w-full flex flex-col gap-5 relative {{ extra_padding }} no-animation" style="--width: 420px;">
       {% content_for 'blocks' %}
     </div>

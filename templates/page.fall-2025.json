@@ -15,21 +15,23 @@
         "title_bQTmbN": {
           "type": "title",
           "settings": {
-            "title": "Spring 2023",
+            "title": "Fall 2025",
             "font_size": "h1",
             "mobile_font_size": "h1",
             "margin_top": 0,
             "margin_bottom": 0
-          }
+          },
+          "blocks": {}
         },
         "text_amJUKm": {
           "type": "text",
           "settings": {
-            "text": "<p>Discover our latest arrivals, curated with care and precision, offering a blend of style and comfort for the adventurous individual. A collection designed to elevate your wardrobe effortlessly.</p>",
-            "font_size": "regular",
+            "text": "<p>Lorem ipsum dolor sit amet consectetur. Duis odio est est a morbi. Sed vel at lacus facilisi.</p>",
+            "center_content": false,
             "margin_top": 0,
             "margin_bottom": 0
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -38,6 +40,7 @@
       ],
       "settings": {
         "background_color": "rgba(0,0,0,0)",
+        "content_color": "text-text",
         "content_width": 630
       }
     },
@@ -47,104 +50,77 @@
         "grid_item_r4LngY": {
           "type": "_grid-item",
           "settings": {
-            "image": "shopify://shop_images/Image_-_2024-06-09T095250.200.jpg",
-            "add_overlay": true,
+            "image": "shopify://shop_images/Image_43128fda-9e25-4540-8773-0b46aad25cb5.jpg",
+            "add_overlay": false,
             "link": "",
             "content_position": "middle_center",
             "content_color": "text-white"
-          }
+          },
+          "blocks": {}
         },
         "grid_item_kJXLf9": {
           "type": "_grid-item",
           "settings": {
-            "image": "shopify://shop_images/Image_-_2024-06-09T095253.327.jpg",
-            "add_overlay": true,
+            "image": "shopify://shop_images/Image_-_2025-10-31T105430.595.jpg",
+            "add_overlay": false,
             "link": "",
             "content_position": "middle_center",
             "content_color": "text-white"
-          }
+          },
+          "blocks": {}
         },
         "grid_item_gzD63g": {
           "type": "_grid-item",
           "settings": {
-            "image": "shopify://shop_images/Rectangle_61.jpg",
-            "add_overlay": true,
+            "image": "shopify://shop_images/Top-Closeup.jpg",
+            "add_overlay": false,
             "link": "",
             "content_position": "middle_center",
             "content_color": "text-white"
-          }
+          },
+          "blocks": {}
         },
-        "grid_item_MD98K4": {
+        "grid_item_t7AQNm": {
           "type": "_grid-item",
           "settings": {
-            "image": "shopify://shop_images/Rectangle_61.jpg",
-            "add_overlay": true,
+            "image": "shopify://shop_images/Image_a12e94c3-bfa5-4f66-bc08-9c271316db41.jpg",
+            "add_overlay": false,
             "link": "",
             "content_position": "middle_center",
             "content_color": "text-white"
-          }
+          },
+          "blocks": {}
         },
-        "grid_item_n88Tiy": {
+        "grid_item_PUUzWz": {
           "type": "_grid-item",
           "settings": {
-            "image": "shopify://shop_images/Image_-_2024-06-09T095250.200.jpg",
-            "add_overlay": true,
+            "image": "shopify://shop_images/Image-1_c64df5fd-84e1-4336-8dd8-de202c89e2a5.jpg",
+            "add_overlay": false,
             "link": "",
             "content_position": "middle_center",
             "content_color": "text-white"
-          }
+          },
+          "blocks": {}
         },
-        "grid_item_bJngCj": {
+        "grid_item_rca9YK": {
           "type": "_grid-item",
           "settings": {
-            "image": "shopify://shop_images/Image_-_2024-06-09T095253.327.jpg",
-            "add_overlay": true,
+            "image": "shopify://shop_images/Image_43128fda-9e25-4540-8773-0b46aad25cb5.jpg",
+            "add_overlay": false,
             "link": "",
             "content_position": "middle_center",
             "content_color": "text-white"
-          }
-        },
-        "grid_item_N4NNDc": {
-          "type": "_grid-item",
-          "settings": {
-            "image": "shopify://shop_images/Image_-_2024-06-09T095250.200.jpg",
-            "add_overlay": true,
-            "link": "",
-            "content_position": "middle_center",
-            "content_color": "text-white"
-          }
-        },
-        "grid_item_BCXYzE": {
-          "type": "_grid-item",
-          "settings": {
-            "image": "shopify://shop_images/Image_-_2024-06-09T095253.327.jpg",
-            "add_overlay": true,
-            "link": "",
-            "content_position": "middle_center",
-            "content_color": "text-white"
-          }
-        },
-        "grid_item_Fg9PaM": {
-          "type": "_grid-item",
-          "settings": {
-            "image": "shopify://shop_images/Rectangle_61.jpg",
-            "add_overlay": true,
-            "link": "",
-            "content_position": "middle_center",
-            "content_color": "text-white"
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "grid_item_r4LngY",
         "grid_item_kJXLf9",
         "grid_item_gzD63g",
-        "grid_item_MD98K4",
-        "grid_item_n88Tiy",
-        "grid_item_bJngCj",
-        "grid_item_N4NNDc",
-        "grid_item_BCXYzE",
-        "grid_item_Fg9PaM"
+        "grid_item_t7AQNm",
+        "grid_item_PUUzWz",
+        "grid_item_rca9YK"
       ],
       "settings": {
         "image_ratio": "tall",

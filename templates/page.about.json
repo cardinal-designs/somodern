@@ -18,17 +18,19 @@
             "title": "Our Story",
             "margin_top": 0,
             "margin_bottom": 0
-          }
+          },
+          "blocks": {}
         },
         "title_VnfQbR": {
           "type": "title",
           "settings": {
-            "title": "Generations of expertise in premium outdoor apparel.",
+            "title": "Fresh design meets everyday livability",
             "font_size": "h1",
             "mobile_font_size": "h1",
             "margin_top": 0,
             "margin_bottom": 0
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -37,75 +39,127 @@
       ],
       "settings": {
         "content_position": "middle_center",
+        "mobile_content_position": "middle_center",
         "content_width": 470,
         "content_color": "text-white",
         "media_type": "image",
-        "image": "shopify://shop_images/Rectangle_56.jpg",
-        "mobile_image": "shopify://shop_images/Rectangle_57.jpg",
+        "image": "shopify://shop_images/Image_-_2025-10-30T141215.822.jpg",
+        "mobile_image": "shopify://shop_images/Image_-_2025-10-30T141221.397.jpg",
         "add_overlay": false
       }
     },
-    "richtext_Wchfby": {
-      "type": "richtext",
+    "press_marquee_YaqHdp": {
+      "type": "press-marquee",
       "blocks": {
-        "icon_i7yzzj": {
-          "type": "icon",
+        "block_bQXeJg": {
+          "type": "block",
           "settings": {
-            "icon": "shopify://shop_images/Frame_3.png",
-            "icon_width": 60,
-            "margin_top": 0,
-            "margin_bottom": 0,
-            "center_icon": true
+            "image": "shopify://shop_images/Frame.png"
           }
         },
-        "subtitle_JGWwCf": {
-          "type": "subtitle",
+        "block_3rDBnd": {
+          "type": "block",
           "settings": {
-            "title": "Exceptional clothing engineered for adventure",
-            "margin_top": 0,
-            "margin_bottom": 0
+            "image": "shopify://shop_images/Frame-1.png"
           }
         },
-        "title_7w9TfF": {
-          "type": "title",
+        "block_hgki9f": {
+          "type": "block",
           "settings": {
-            "title": "Where style meets sustainability",
-            "font_size": "h1",
-            "mobile_font_size": "h1",
-            "margin_top": 0,
-            "margin_bottom": 0
+            "image": "shopify://shop_images/Frame-2.png"
           }
         },
-        "text_TNdQYi": {
-          "type": "text",
+        "block_ct7ndx": {
+          "type": "block",
           "settings": {
-            "text": "<p>Embracing the past, we craft garments that resonate with timeless sophistication while forging a path towards a more sustainable future. </p>",
-            "font_size": "regular",
-            "center_content": false,
-            "content_width": 560,
-            "margin_top": 0,
-            "margin_bottom": 0
+            "image": "shopify://shop_images/Frame-3.png"
+          }
+        },
+        "block_8gNr4B": {
+          "type": "block",
+          "settings": {
+            "image": "shopify://shop_images/Frame-4.png"
+          }
+        },
+        "block_PaYLdQ": {
+          "type": "block",
+          "settings": {
+            "image": "shopify://shop_images/Frame-5.png"
           }
         }
       },
       "block_order": [
-        "icon_i7yzzj",
-        "subtitle_JGWwCf",
-        "title_7w9TfF",
-        "text_TNdQYi"
+        "block_bQXeJg",
+        "block_3rDBnd",
+        "block_hgki9f",
+        "block_ct7ndx",
+        "block_8gNr4B",
+        "block_PaYLdQ"
       ],
+      "name": "Press Marquee",
       "settings": {
-        "background_color": "rgba(0,0,0,0)",
-        "content_width": 660
+        "background_color": "#f7f4f1",
+        "title": ""
       }
     },
-    "offset_images_GxgH9e": {
-      "type": "offset-images",
+    "collage_3iX4Gz": {
+      "type": "collage",
+      "name": "Collage",
       "settings": {
-        "large_image": "shopify://shop_images/Image_-_2024-06-06T093656.827.jpg",
-        "small_image": "shopify://shop_images/Auto_Layout_Vertical_2.jpg",
-        "reverse_layout": true,
-        "caption": "Embrace the warmth of tradition with our knitwear collection. Crafted for comfort and styled for the modern adventurer."
+        "title": "Crafted to define your space",
+        "text": "<p>Our fixtures are designed to blend form and function, bringing modern elegance into every space. From statement pieces that spark conversation to subtle accents that set the mood, our collection is crafted to illuminate life beautifully.</p>",
+        "button_label": "New Arrivals",
+        "button_link": "",
+        "button_style": "text",
+        "image_1": "shopify://shop_images/Image_-_2025-10-30T144725.396.jpg",
+        "image_2": "shopify://shop_images/Image_-_2025-10-30T144729.042.jpg",
+        "image_3": "shopify://shop_images/Image_-_2025-10-30T144734.040.jpg"
+      }
+    },
+    "hero_34ifyX": {
+      "type": "hero",
+      "blocks": {
+        "title_L7q4xG": {
+          "type": "title",
+          "name": "Title",
+          "settings": {
+            "title": "Lorem ipsum dolor",
+            "font_size": "h1",
+            "mobile_font_size": "h1",
+            "margin_top": 0,
+            "margin_bottom": 0
+          },
+          "blocks": {}
+        },
+        "button_9JYnKn": {
+          "type": "button",
+          "name": "Button",
+          "settings": {
+            "text": "Shop New Arrivals",
+            "button_link": "",
+            "button_style": "button",
+            "button_color": "white",
+            "center_button": false,
+            "margin_top": 0,
+            "margin_bottom": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "title_L7q4xG",
+        "button_9JYnKn"
+      ],
+      "custom_css": [],
+      "settings": {
+        "content_position": "bottom_right",
+        "mobile_content_position": "bottom_center",
+        "content_width": 560,
+        "content_color": "text-white",
+        "media_type": "image",
+        "image": "shopify://shop_images/Image_-_2025-10-30T142558.684.jpg",
+        "mobile_image": "shopify://shop_images/Image_-_2025-10-30T142604.727.jpg",
+        "add_overlay": false
       }
     },
     "image_text_wMFXnD": {
@@ -114,292 +168,144 @@
         "title_NwG8zR": {
           "type": "title",
           "settings": {
-            "title": "Elevate Your Every Move",
+            "title": "Fresh design meets everyday livability",
             "font_size": "h2",
             "mobile_font_size": "h1",
             "margin_top": 0,
             "margin_bottom": 0
-          }
+          },
+          "blocks": {}
         },
         "text_UxfDEy": {
           "type": "text",
           "settings": {
-            "text": "<p>Our pants are made with the finest materials, ensuring unparalleled comfort and durability. Designed with attention to detail, we make our clothes with organic materials ensuring longevity.</p>",
-            "font_size": "regular",
+            "text": "<p>Lorem ipsum dolor sit amet consectetur. Sit quam enim risus interdum. Blandit hac erat sed eu rutrum. Dignissim felis id et scelerisque nibh habitasse arcu.</p>",
             "center_content": false,
             "content_width": 560,
             "margin_top": 0,
             "margin_bottom": 0
-          }
+          },
+          "blocks": {}
+        },
+        "button_F6UJ9F": {
+          "type": "button",
+          "name": "Button",
+          "settings": {
+            "text": "Best Sellers",
+            "button_link": "",
+            "button_style": "text",
+            "button_color": "white",
+            "center_button": false,
+            "margin_top": 0,
+            "margin_bottom": 0
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "title_NwG8zR",
-        "text_UxfDEy"
+        "text_UxfDEy",
+        "button_F6UJ9F"
       ],
       "settings": {
+        "background_color": "",
+        "content_color": "text-text",
         "image_position": "left",
+        "content_width": 380,
+        "add_margin": true,
         "media_type": "image",
-        "image": "shopify://shop_images/Image_-_2024-06-06T093757.041.jpg"
+        "image": "shopify://shop_images/Image_-_2025-10-30T142804.895.jpg"
       }
     },
-    "richtext_69VQdd": {
+    "richtext_Wchfby": {
       "type": "richtext",
       "blocks": {
-        "title_qPxeK4": {
+        "title_7w9TfF": {
           "type": "title",
           "settings": {
-            "title": "“Our mission is to create clothes that blend functionality with style, encouraging people to embrace outdoor adventures.”",
-            "font_size": "h1",
-            "mobile_font_size": "h1",
-            "margin_top": 0,
-            "margin_bottom": 0
-          }
-        },
-        "subtitle_HmWTFm": {
-          "type": "subtitle",
-          "settings": {
-            "title": "From the Founder",
-            "margin_top": 0,
-            "margin_bottom": 0
-          }
-        }
-      },
-      "block_order": [
-        "title_qPxeK4",
-        "subtitle_HmWTFm"
-      ],
-      "settings": {
-        "background_color": "#ebf1e6",
-        "content_width": 660
-      }
-    },
-    "image_slider_FqBeKp": {
-      "type": "image-slider",
-      "blocks": {
-        "block_HAfwJg": {
-          "type": "block",
-          "settings": {
-            "image": "shopify://shop_images/Rectangle_58.jpg"
-          }
-        },
-        "block_V6MMVq": {
-          "type": "block",
-          "settings": {
-            "image": "shopify://shop_images/Image_-_2024-06-06T134940.611.jpg"
-          }
-        },
-        "block_XbkJmK": {
-          "type": "block",
-          "settings": {
-            "image": "shopify://shop_images/Image_-_2024-06-05T164405.508.jpg"
-          }
-        },
-        "block_HQ3L7M": {
-          "type": "block",
-          "settings": {
-            "image": "shopify://shop_images/Auto_Layout_Vertical_2.jpg"
-          }
-        },
-        "block_DCMBjw": {
-          "type": "block",
-          "settings": {
-            "image": "shopify://shop_images/Top-3-VibeAlt.jpg"
-          }
-        },
-        "block_FGqhwh": {
-          "type": "block",
-          "settings": {
-            "image": "shopify://shop_images/Auto_Layout_Horizontal_5.jpg"
-          }
-        }
-      },
-      "block_order": [
-        "block_HAfwJg",
-        "block_V6MMVq",
-        "block_XbkJmK",
-        "block_HQ3L7M",
-        "block_DCMBjw",
-        "block_FGqhwh"
-      ],
-      "settings": {
-        "desktop_columns": "2",
-        "title": "The Spring Lookbooks"
-      }
-    },
-    "video_Mdt4DV": {
-      "type": "video",
-      "settings": {
-        "background_color": "#ebf1e6",
-        "title": "Lorem Ipsum",
-        "video_source": "external",
-        "external_video": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/_9VUPq3SxOc?si=aGvEseOqqcsqy0wR\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
-        "placeholder_image": "shopify://shop_images/Rectangle_59.jpg",
-        "mobile_placeholder_image": "shopify://shop_images/Rectangle_60.jpg",
-        "show_overlay": false
-      }
-    },
-    "image_text_zkq3YT": {
-      "type": "image-text",
-      "blocks": {
-        "title_dDbq6C": {
-          "type": "title",
-          "settings": {
-            "title": "Elevate Your Every Move",
+            "title": "“Lorem ipsum dolor sit amet consectetur. Pulvinar diam eu bibendum sodales. Morbi curabitur potenti cursus risus neque nascetur sapien.”",
             "font_size": "h2",
-            "mobile_font_size": "h1",
+            "mobile_font_size": "h2",
             "margin_top": 0,
             "margin_bottom": 0
-          }
+          },
+          "blocks": {}
         },
-        "text_JPLp3q": {
-          "type": "text",
+        "subtitle_RKg9a4": {
+          "type": "subtitle",
+          "name": "Subtitle",
           "settings": {
-            "text": "<p>Our pants are made with the finest materials, ensuring unparalleled comfort and durability. Designed with attention to detail, we make our clothes with organic materials ensuring longevity.</p>",
-            "font_size": "regular",
-            "center_content": false,
-            "content_width": 560,
+            "title": "From the founder",
             "margin_top": 0,
             "margin_bottom": 0
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "title_dDbq6C",
-        "text_JPLp3q"
+        "title_7w9TfF",
+        "subtitle_RKg9a4"
       ],
       "settings": {
-        "image_position": "right",
-        "media_type": "image",
-        "image": "shopify://shop_images/Image_-_2024-06-06T093757.041.jpg"
+        "background_color": "#f3ece5",
+        "content_color": "text-text",
+        "content_width": 830
       }
     },
-    "press_marquee_VDM4Bx": {
-      "type": "press-marquee",
-      "blocks": {
-        "block_PiX8b6": {
-          "type": "block",
-          "settings": {
-            "image": "shopify://shop_images/bazaar.png"
-          }
-        },
-        "block_86zfCQ": {
-          "type": "block",
-          "settings": {
-            "image": "shopify://shop_images/vanity.png"
-          }
-        },
-        "block_nhCFgN": {
-          "type": "block",
-          "settings": {
-            "image": "shopify://shop_images/instyle.png"
-          }
-        },
-        "block_Td6bPN": {
-          "type": "block",
-          "settings": {
-            "image": "shopify://shop_images/vogue.png"
-          }
-        },
-        "block_HNX9pP": {
-          "type": "block",
-          "settings": {
-            "image": "shopify://shop_images/hypebeast.png"
-          }
-        },
-        "block_KGrBTG": {
-          "type": "block",
-          "settings": {
-            "image": "shopify://shop_images/goop.png"
-          }
-        }
-      },
-      "block_order": [
-        "block_PiX8b6",
-        "block_86zfCQ",
-        "block_nhCFgN",
-        "block_Td6bPN",
-        "block_HNX9pP",
-        "block_KGrBTG"
-      ],
-      "settings": {
-        "background_color": "#f2f1e9",
-        "title": ""
-      }
-    },
-    "hero_34ifyX": {
-      "type": "hero",
-      "custom_css": [
-        "@media screen and (min-width: 768px) {.hero {margin-top: 80px; }}"
-      ],
-      "settings": {
-        "content_position": "middle_center",
-        "content_width": 560,
-        "content_color": "text-white",
-        "media_type": "image",
-        "image": "shopify://shop_images/Section_10.jpg",
-        "mobile_image": "shopify://shop_images/Image_-_2024-06-06T094027.140.jpg",
-        "add_overlay": false
-      }
-    },
-    "instagram_hkPUmB": {
+    "instagram_MWBzN6": {
       "type": "instagram",
       "blocks": {
-        "image_6irMPL": {
+        "image_KzAqxN": {
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/Frame.jpg"
           }
         },
-        "image_gBqTPc": {
+        "image_67VcCz": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Frame_1.jpg"
+            "image": "shopify://shop_images/Frame-1.jpg"
           }
         },
-        "image_tPXGJr": {
+        "image_CFdwAh": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Frame_2.jpg"
+            "image": "shopify://shop_images/Frame-2.jpg"
           }
         },
-        "image_pfXrAd": {
+        "image_yrcPjx": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Frame_3.jpg"
+            "image": "shopify://shop_images/Frame-3.jpg"
           }
         },
-        "image_9maLXh": {
+        "image_HjVHyd": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Frame_4.jpg"
+            "image": "shopify://shop_images/Frame-4.jpg"
           }
         }
       },
       "block_order": [
-        "image_6irMPL",
-        "image_gBqTPc",
-        "image_tPXGJr",
-        "image_pfXrAd",
-        "image_9maLXh"
+        "image_KzAqxN",
+        "image_67VcCz",
+        "image_CFdwAh",
+        "image_yrcPjx",
+        "image_HjVHyd"
       ],
       "settings": {
-        "title": "@ohaeiapparel",
+        "title": "@somodern",
         "link": ""
       }
     }
   },
   "order": [
     "main",
-    "richtext_Wchfby",
-    "offset_images_GxgH9e",
-    "image_text_wMFXnD",
-    "richtext_69VQdd",
-    "image_slider_FqBeKp",
-    "video_Mdt4DV",
-    "image_text_zkq3YT",
-    "press_marquee_VDM4Bx",
+    "press_marquee_YaqHdp",
+    "collage_3iX4Gz",
     "hero_34ifyX",
-    "instagram_hkPUmB"
+    "image_text_wMFXnD",
+    "richtext_Wchfby",
+    "instagram_MWBzN6"
   ]
 }

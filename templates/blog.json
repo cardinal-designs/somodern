@@ -12,8 +12,9 @@
     "main": {
       "type": "main-blog",
       "settings": {
-        "featured_article": "the-journal\/easy-elevated-spring-style",
-        "article_categories": ""
+        "featured_article": "journal/how-lighting-transforms-your-mood-and-space",
+        "article_categories": "",
+        "pagination": "false"
       }
     }
   },

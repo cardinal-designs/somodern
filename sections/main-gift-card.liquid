@@ -10,9 +10,9 @@
       {% endif %}
     </div>
 
-    <h1 class="mb-10 text-m-h3 md:text-h3">{{ 'gift_cards.issued.subtext' | t }}</h1>
+    <h1 class="mb-10 text-m-h1 font-serif md:text-h2">{{ 'gift_cards.issued.subtext' | t }}</h1>
     
-    <div class="text-body-1">
+    <div class="text-sh2 uppercase">
       <p>
         {% if settings.currency_code_enabled %}
           {{ gift_card.initial_value | money_with_currency }}
@@ -31,7 +31,7 @@
       {% assign gift_card_balance = gift_card.balance | money %}
     {% endif %}
     {% if gift_card.balance != gift_card.initial_value %}
-      <p class="gift-card__label caption-large">{{ 'gift_cards.issued.remaining_html' | t: balance: gift_card_balance }}</p>
+      <p class="gift-card__label text-sh2 uppercase">{{ 'gift_cards.issued.remaining_html' | t: balance: gift_card_balance }}</p>
     {% endif %}
   </header>
 

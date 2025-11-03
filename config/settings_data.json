@@ -11,24 +11,23 @@
   "current": {
     "background_color": "#fffcf9",
     "text_color": "#302e2d",
-    "shop_all_link": "",
+    "shop_all_link": "shopify://collections/shop-all",
     "enable_quickview": true,
-    "show_quantity_selector": true,
+    "show_quantity_selector": false,
     "cart_title": "My Bag",
     "enable_shipping_bar": true,
-    "shipping_threshold": 350,
-    "enable_cart_note": true,
+    "shipping_threshold": 100,
+    "enable_cart_note": false,
     "enable_cart_upsells": true,
-    "cart_upsells_source": "product_list",
-    "cart_upsells_product_list": [
-      "alpine-cable-knit",
-      "horizon-day-bag",
-      "park-trousers-tan",
-      "summit-stripe-shirt"
-    ],
+    "cart_upsells_source": "collection",
+    "cart_upsells_collection": "shop-all",
+    "cart_upsells_product_list": [],
     "badge_tags_1": "Best Seller",
-    "badge_tags_1_color": "#ebf1e6",
-    "badge_tags_1_text_color": "#000000",
+    "badge_tags_1_color": "#e6deb4",
+    "badge_tags_1_text_color": "#302e2d",
+    "badge_tags_2": "Just Arrived",
+    "badge_tags_2_color": "#acb09c",
+    "badge_tags_2_text_color": "#302e2d",
     "social_facebook_link": "https://facebook.com/shopify",
     "social_instagram_link": "http://instagram.com/shopify",
     "social_pinterest_link": "https://pinterest.com/shopify",
@@ -94,7 +93,8 @@
       "main-gift-card": {
         "type": "main-gift-card",
         "settings": {
-          "logo": "shopify://shop_images/ohaei-logo.svg"
+          "logo": "shopify://shop_images/somodern-logo.svg",
+          "gift_card_image": "shopify://shop_images/Frame_1.svg"
         }
       },
       "announcement-banner": {

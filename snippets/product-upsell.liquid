@@ -11,6 +11,10 @@
     {% render 'product-upsell', prod: product, size: 'small' %}
 {% endcomment %}
 
+{% liquid
+  assign has_size_option = prod.options_with_values | has: 'name', 'Size'
+%}
+
 <product-upsell>
   <div>
     {% render 'image'
@@ -27,7 +31,7 @@
     <div class="">
       <h3 class="text-m-body-1 font-serif md:text-body-1">{{ prod.title }}</h3>
       <div class="my-10{% if size == 'small' and prod.has_only_default_variant == false %} flex justify-between items-center flex-row-reverse{% endif %}">
-        {% render 'price' product: prod, classes: 'text-cta uppercase' %}
+        {% render 'price' product: prod, classes: 'text-body-3' %}
 
         {% unless prod.has_only_default_variant %}
           {% for option in prod.options_with_values %}
@@ -78,7 +82,7 @@
       </div>
     </div>
 
-    {% unless prod.has_only_default_variant %}
+    {% if has_size_option %}
       <div class="grid grid-cols-2{% if size == 'large' %} min-w-[140px]{% else %} mt-10{% endif %}">
         {% for option in prod.options_with_values %}
           {% if option.name == 'Size' %}
@@ -121,11 +125,11 @@
             </div>
           {% endif %}
         {% endfor %}
-        <button class="w-full button p-10" data-add-to-cart>Add</button>
+        <button class="w-full button mt-15 p-10" data-add-to-cart>Add</button>
       </div>
     {% else %}
-      <button class="button p-10{% if size == 'large' %} min-w-70{% else %} w-full{% endif %}" data-add-to-cart data-variant-id="{{ prod.selected_or_first_available_variant.id }}">Add</button>
-    {% endunless %}
+      <button class="button mt-15 p-10{% if size == 'large' %} min-w-70{% else %} w-full{% endif %}" data-add-to-cart data-variant-id="{{ prod.selected_or_first_available_variant.id }}">Add</button>
+    {% endif %}
   </div>
 
   <script class="product-upsell-data" type="application/json">

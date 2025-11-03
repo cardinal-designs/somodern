@@ -9,7 +9,7 @@
   }
 
   .button--outline {
-    @apply bg-transparent border-black text-black hover:bg-black hover:text-white;
+    @apply bg-transparent text-black border-1 border-black hover:bg-black hover:text-white;
   }
 
   .button--white-outline {
@@ -69,7 +69,7 @@
 
   .swiper-button-prev svg,
   .swiper-button-next svg {
-    @apply w-auto h-auto;
+    @apply w-auto h-auto !fill-none;
   }
 
   .swiper-button.swiper-button--absolute {
@@ -168,15 +168,15 @@
   }
 
   .text-editor h2 {
-    @apply text-m-h3 font-serif md:text-h3;
+    @apply text-m-h2 font-serif md:text-h2;
   }
 
   .text-editor h3 {
-    @apply text-m-h4 font-serif md:text-h4;
+    @apply text-m-h3 font-serif md:text-h3;
   }
 
   .text-editor h4 {
-    @apply text-sh1;
+   @apply text-m-h4 font-serif md:text-h4;
   }
 
   .text-editor h5 {
@@ -184,7 +184,7 @@
   }
 
   .text-editor h6 {
-    @apply text-m-body-1 font-serif md:text-body-1;
+    @apply text-body-4;
   }
 
   /* Loading Spinner */

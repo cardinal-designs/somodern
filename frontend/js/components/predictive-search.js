@@ -6,6 +6,7 @@ export default class PredictiveSearch extends HTMLElement {
 
     this.input = this.querySelector('input[type="search"]');
     this.predictiveSearchResults = this.querySelector('.predictive-search');
+    this.overlay = document.querySelector('.page-overlay-under');
 
     this.input.addEventListener('input', debounce((event) => {
       this.onChange(event);
@@ -47,6 +48,7 @@ export default class PredictiveSearch extends HTMLElement {
 
   open() {
     this.predictiveSearchResults.style.display = 'block';
+    this.overlay.classList.remove('invisible', 'opacity-0');
 
     // Show all results
     this.querySelector('[data-submit]').addEventListener('click', this.onSubmit.bind(this));
@@ -54,6 +56,7 @@ export default class PredictiveSearch extends HTMLElement {
 
   close() {
     this.predictiveSearchResults.style.display = 'none';
+    this.overlay.classList.add('invisible', 'opacity-0');
   }
 
   onSubmit(event) {

@@ -46,17 +46,17 @@
       {% endif %}
     </a>
 
-    {% render 'product-badges' prod: prod, classes: 'absolute top-10 left-10' %}
+    {% render 'product-badges' prod: prod, classes: 'absolute top-10 left-0' %}
 
     {% if settings.enable_quickview %}
       <div class="p-13 absolute left-0 right-0 bottom-0 hidden md:block">
         <button
-          class="group/quickview w-full button opacity-0 translate-y-5 transition-all relative group-hover/image:opacity-100 group-hover/image:translate-y-0"
+          class="group/quickview w-full button button--white bg-[#E1D5C7] opacity-0 translate-y-5 transition-all relative group-hover/image:opacity-100 group-hover/image:translate-y-0"
           data-quick-view
           data-href="{{ prod.url }}"
           data-id="{{ prod.selected_or_first_available_variant.id }}"
         >
-          <span class="transition-opacity group-[.loading]/quickview:opacity-0">Quick View</span>
+          <span class="transition-opacity group-[.loading]/quickview:opacity-0">+ Quick View</span>
           <span class="inset flex items-center justify-center transition-opacity opacity-0 group-[.loading]/quickview:opacity-100">{% render 'loading-spinner' %}</span>
         </button>
       </div>
@@ -74,13 +74,6 @@
             {% for value in option.values %}
               {% liquid
                 assign is_active = false
-                assign color_swatch_name = value | handleize
-                assign swatch_color = color_swatch_name
-                assign swatch_metaobject = shop.metaobjects.color_swatch[color_swatch_name]
-
-                if swatch_metaobject.hex_value != blank
-                  assign swatch_color = swatch_metaobject.hex_value
-                endif
 
                 if option.selected_value == value
                   assign is_active = true
@@ -96,7 +89,7 @@
 
               <button
                 class="color-button group/color w-13 h-13 block relative cursor-pointer bg-center{% if is_active %} active{% endif %}"
-                style="{% if swatch_metaobject.swatch_image != blank %}background-image: url('{{ swatch_metaobject.swatch_image | img_url: '50x' }}');{% else %}background-color: {{ swatch_color }};{% endif %}"
+                data-swatch="{{ value }}"
                 data-value="{{ value }}"
                 data-position="{{ option.position }}"
                 data-id="{{ variant.id }}"

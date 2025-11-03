@@ -1,73 +1,193 @@
-{% render 'breadcrumbs' show_home: true %}
+{% liquid
+  assign total_active_values = 0
+  
+  for filter in search.filters
+    assign total_active_values = total_active_values | plus: filter.active_values.size
+  endfor
+
+  if search.url
+    assign results_url = search.url
+  else 
+    assign terms = search.terms | escape
+    assign results_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
+  endif
+
+  assign sort_by = search.sort_by | default: search.default_sort_by
+  assign sort_by_text = 'Featured'
+  case sort_by
+    when 'best-selling'
+      assign sort_by_text = 'Best Sellers'
+    when 'price-ascending'
+      assign sort_by_text = 'Price: Low to High'
+    when 'price-descending'
+      assign sort_by_text = 'Price: High to Low'
+  endcase
+%}
 
 {% if search.performed %}
   <div class="page-width">
-    <div class="my-60 md:mt-80 md:mb-100">
-      <h1 class="mb-10 text-m-h4 font-serif text-center md:text-h4">Search Results for {{ search.terms }} ({{ search.results_count }})</h1>
-      
-      {% if search.results.size == 0 %}
-        <p class="max-w-custom w-full mx-auto mt-20 text-body-3 text-center text-pretty" style="--width: 375px;">There are no results. Please check your spelling or try a broader search.</p>
-      {% endif %}
-      
-      <div class="max-w-custom w-full mx-auto mt-40" style="--width: 400px;">
-        <form action="{{ routes.search_url }}" method="get" role="search" class="w-full">
-          <input type="hidden" name="type" value="product">
-          <input type="hidden" name="options[prefix]" value="last">
-          <div class="flex justify-between border-b-1 border-cafe">
-            <label id="main-search-label" for="main-search" class="hidden visually-hidden">Search</label>
-            <input aria-labelledby="main-search-label" id="main-search" class="w-full pb-10 text-body-2 bg-transparent appearance-none placeholder:text-text/50 focus-visible:outline-0 focus-visible:outline-transparent focus-visible:placeholder:text-text" type="search" name="q" value="{{ search.terms | escape }}" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search">
-            <button type="submit" class="pb-5 flex items-center [&_svg]:w-15">
-              {% render 'icon' icon: 'search' %}
-            </button>
-          </div>
-        </form>
-      </div>
+    <div class="my-60 text-center md:mt-80 md:mb-100">
+      <p class="mb-10 text-sh2 uppercase">Search Results for</p>
+      <h1 class="mb-10 text-m-h2 font-serif md:text-h2">“{{ search.terms }}”</h1> 
     </div>
-
-    {% unless search.results.size == 0 %}
-      <div>
+    <collection-filters class="collection-filters mb-20 block relative" data-base-url="{{ search.url }}" data-collection-url="{{ search.url }}" data-current-sort="{{ search.sort_by | default: search.default_sort_by }}">
+      <div class="md:grid md:grid-cols-[0.25fr_0.75fr] md:gap-20">
         {% render 'filters' collection: search, is_search: true %}
-      </div>
-    {% endunless %}
 
-    <div id="product-grid">
-      {% paginate search.results by 16 %}
-        {% if search.results.size == 0 %}
-          <div class="page-width mt-60 mb-150" data-id="{{ section.id }}">
-            <div class="loading-overlay"></div>
-            <div class="text-center">
-              <p class="mb-20 text-body-1">No products found.</p>
-              <a href="{{ routes.search_url }}" class="button">Clear Filters</a>
-            </div>
+        <div class="">
+          <div class="mb-20 -mx-20 px-20 pb-10 flex justify-between items-center gap-20 border-b-1 border-tan md:mx-0 md:p-0 md:border-0">
+            <p id="product-count-2" class="text-m-sh2 uppercase hidden md:block md:text-sh2">{{ search.results.size }} Product{% unless search.results.size == 1 %}s{% endunless %}</p>
+            <button class="flex items-center gap-13 text-body-3 md:hidden" data-open-filters>
+              {% render 'icon' icon: 'filter' %}
+              Filter
+            </button>
+            <form class="sort-form flex-shrink-0 relative">
+              <dropdown-item data-is-overlay="true">
+                <div class="group/dropdown flex justify-end relative" data-dropdown>
+                  <button class="dropdown-header-sort py-10 flex justify-between items-center gap-10 text-body-3" data-dropdown-toggle>
+                    <span>
+                      <span class="hidden md:inline-block">Sort By:&nbsp;</span><span class="sort-by-current">{{ sort_by_text }}</span>
+                    </span>
+                    <span class="transition-transform ease-in-out group-[.active]/dropdown:rotate-180">
+                      {% render 'icon' icon: 'dropdown-large' %}
+                    </span>
+                  </button>
+                  <div class="min-w-[150px] absolute top-full right-0 translate-y-10 bg-background z-30 shadow-dropdown text-right hidden group-[.active]/dropdown:block md:translate-y-20" data-dropdown-content>
+                    <div class="py-10 px-20 flex flex-col gap-5">
+                      <div>
+                        <input type="radio"
+                          class="sort-button peer visually-hidden"
+                          name="sort_by"
+                          value="best-selling"
+                          id="Sort-1"
+                          data-display="Best Sellers"
+                          {% if 'best-selling' == sort_by %}checked{% endif %}
+                        >
+                        <label for="Sort-1" class="text-body-3 opacity-50 transition-colors cursor-pointer peer-checked:opacity-100">
+                          Best Sellers
+                        </label>
+                      </div>
+                      <div>
+                        <input type="radio"
+                          class="sort-button peer visually-hidden"
+                          name="sort_by"
+                          value="manual"
+                          id="Sort-2"
+                          data-display="Featured"
+                          {% if 'manual' == sort_by %}checked{% endif %}
+                        >
+                        <label for="Sort-2" class="text-body-3 opacity-50 transition-colors cursor-pointer peer-checked:opacity-100">
+                          Featured
+                        </label>
+                      </div>
+                      <div>
+                        <input type="radio"
+                          class="sort-button peer visually-hidden"
+                          name="sort_by"
+                          value="price-ascending"
+                          id="Sort-3"
+                          data-display="Price: Low to High"
+                          {% if 'price-ascending' == sort_by %}checked{% endif %}
+                        >
+                        <label for="Sort-3" class="text-body-3 opacity-50 transition-colors cursor-pointer peer-checked:opacity-100">
+                          Price: Low to High
+                        </label>
+                      </div>
+                      <div>
+                        <input type="radio"
+                          class="sort-button peer visually-hidden"
+                          name="sort_by"
+                          value="price-descending"
+                          id="Sort-4"
+                          data-display="Price: High to Low"
+                          {% if 'price-descending' == sort_by %}checked{% endif %}
+                        >
+                        <label for="Sort-4" class="text-body-3 opacity-50 transition-colors cursor-pointer peer-checked:opacity-100">
+                          Price: High to Low
+                        </label>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </dropdown-item>
+            </form>
           </div>
-        {% else %}
-          <div class="collection mb-50">
-            <div class="loading-overlay"></div>
-
-            <ul
-            class="
-                product-grid-container group/product-grid grid gap-x-20 gap-y-40 grid-flow-row-dense
-                data-[mobile='2']:grid-cols-2
-                data-[desktop='4']:md:grid-cols-4 data-[desktop='3']:md:grid-cols-3 md:gap-y-60
-              "
-              data-id="{{ section.id }}"
-              data-desktop="4"
-              data-mobile="2"
-            >
-              {% for product in search.results %}
-                <li class="product-grid__item" data-animate>
-                  {% render 'product-card' prod: product, add_spacing: true %}
-                </li>
+          <div id="active-filters">
+          {% if total_active_values > 0 %}
+            <div class="my-20 flex gap-x-20 gap-y-10 flex-wrap md:p-0">
+              {% for filter in search.filters %}
+                {% case filter.type %}
+                  {% when 'list' %}
+                    {% for value in filter.active_values %}
+                      <button class="px-[8px] py-[3px] flex flex-wrap items-center gap-10 text-body-2 bg-taupe text-white" data-remove-filter data-url="{{ filter.url_to_remove | remove: '%2F%3Fsection_id%3Dproduct-grid' }}" data-filter="{{ value.param_name }}-{{ value.value }}">
+                        {{ value.label | escape }}
+                        <div class="[&_svg]:w-[10px] [&_svg]:h-auto">
+                          {% render 'icon' icon: 'close' %}
+                        </div>
+                      </button>
+                    {% endfor %}
+                  {% when 'price_range' %}
+                    {% if filter.min_value or filter.max_value %}
+                      {% assign min_value = filter.min_value.value | default: 0 %}
+                      {% assign max_value = filter.max_value.value | default: filter.range_max %}
+                      {% assign min_value_formatted = min_value | money_without_trailing_zeros %}
+                      {% assign max_value_formatted = max_value | money_without_trailing_zeros %}
+                      
+                      {% if min_value != 0 or max_value != filter.range_max %}
+                        <button class="price-range px-[8px] py-[3px] flex flex-wrap items-center gap-10 text-body-2 bg-taupe text-white" data-remove-filter data-url="{{ filter.url_to_remove | remove: '%2F%3Fsection_id%3Dproduct-grid' }}" data-filter="{{ value.param_name }}-{{ value.value }}">
+                          {{ min_value_formatted }} - {{ max_value_formatted }}
+                          <div class="[&_svg]:w-[10px] [&_svg]:h-auto">
+                            {% render 'icon' icon: 'close' %}
+                          </div>
+                        </button>
+                      {% endif %}
+                    {% endif %}
+                {% endcase %}
               {% endfor %}
-            </ul>
+              <button class="text-body-3 opacity-50 underline" data-clear-all-filters>Clear Filters</button>
+            </div>
+          {% endif %}
+        </div>
+          <div id="product-grid" class="mb-50 mb:mb-80">
+            {% paginate search.results by 36 %}
+              {% if search.results.size == 0 %}
+                <div class="page-width mt-60 mb-150" data-id="{{ section.id }}">
+                  <div class="loading-overlay"></div>
+                  <div class="text-center">
+                    <p class="mb-20 text-body-1">No products found.</p>
+                    <a href="{{ search.url }}" class="button">Clear Filters</a>
+                  </div>
+                </div>
+              {% else %}
+                <div class="collection">
+                  <div class="loading-overlay"></div>
 
-            {% if paginate.pages > 1 %}
-              {% render 'pagination', paginate: paginate, anchor: '' %}
-            {% endif %}
+                  <ul
+                    class="
+                      product-grid-container group/product-grid grid grid-cols-2 gap-x-20 gap-y-40 grid-flow-row-dense
+                      md:grid-cols-3 md:gap-y-60
+                    "
+                    data-id="{{ section.id }}"
+                  >
+                    {% for product in search.results %}
+                      <li class="product-grid-item" data-animate>
+                        {% render 'product-card' prod: product %}
+                      </li> 
+                    {% endfor %}
+                  </ul>
+
+                  {% render 'pagination', paginate: paginate, anchor: '', show_item_count: true, load_more: section.settings.pagination, target: '#product-grid' %}
+                </div>
+              {% endif %}
+            {% endpaginate %}
           </div>
-        {% endif %}
-      {% endpaginate %}
-    </div>
+          {% if search.metafields.custom.description != blank %}
+            <div class="max-w-[660px] w-full mx-auto mb-60 text-body-4 text-center opacity-50 md:mb-70" data-animate>{{ search.metafields.custom.description | metafield_tag }}</div>
+          {% endif %}
+        </div>
+      </div>
+    </collection-filters>
   </div>
 {% else %}
   <div class="page-width mb-20 md:mb-40">

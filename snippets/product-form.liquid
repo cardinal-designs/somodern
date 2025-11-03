@@ -37,9 +37,6 @@
           <fieldset class="product-form-input js mb-30 block">
             <legend class="form__label mb-10 flex items-center gap-10">
               <span class="text-sh2 uppercase">{{ option.name }}</span>
-              {% if downcased_option == 'color' %}
-                <span class="text-body-4 opacity-50" data-selected-value>{{ option.selected_value }}</span>
-              {% endif %}
             </legend>
             <div class="flex gap-y-5 flex-wrap{% if downcased_option == 'color' %} gap-x-20{% else %} gap-x-30{% endif %}">
               {% for value in option.values %}
@@ -74,17 +71,7 @@
                     {% if option.selected_value == value %}checked{% endif %}
                   >
                   {% if downcased_option == 'color' %}
-                    {% liquid
-                      assign color_swatch_name = value | handleize
-                      assign swatch_color = color_swatch_name
-                      assign swatch_metaobject = shop.metaobjects.color_swatch[color_swatch_name]
-
-                      if swatch_metaobject.hex_value != blank
-                        assign swatch_color = swatch_metaobject.hex_value
-                      endif
-                    %}
-                    
-                    <label class="w-30 h-30 block relative cursor-pointer text-transparent peer-checked:text-text md:w-20 md:h-20" style="{% if swatch_metaobject.swatch_image != blank %}background-image: url('{{ swatch_metaobject.swatch_image | img_url: '50x' }}');{% else %}background-color: {{ swatch_color }};{% endif %}" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                    <label class="size-20 block relative cursor-pointer text-transparent peer-checked:text-text" data-swatch="{{ value }}" for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
                       <div class="visually-hidden">{{ value }}</div>
                       <div class="absolute -bottom-[8px] left-0 right-0 border-b-1 border-current transition-colors md:-bottom-5"></div>
                     </label>
@@ -96,6 +83,9 @@
                   {% endif %}
                 </div>
               {% endfor %}
+              {% if downcased_option == 'color' %}
+                <span class="text-body-4" data-selected-value>{{ option.selected_value }}</span>
+              {% endif %}
             </div>
           </fieldset>
         {% endfor %}

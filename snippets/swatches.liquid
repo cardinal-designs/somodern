@@ -1,0 +1,21 @@
+{% paginate shop.metaobjects.swatches.values by 250 %}
+  {% assign colors = shop.metaobjects.swatches.values %}
+
+  {% if colors %}
+    {% style %}
+      {% for swatch in colors %}
+        {% liquid
+          assign hex_code = swatch['hex_code']
+          assign swatch_image = swatch['swatch_image']
+
+          assign swatch_style = 'background-color:' | append: hex_code | append: ';background-origin: border-box;'
+          if swatch_image != blank
+            assign image = swatch_image | img_url: '100x'
+            assign swatch_style = swatch_style | append: 'background-image: url("' | append: image | append: '");'
+          endif
+        %}
+        [data-swatch="{{ swatch.swatch_name }}"] { {{ swatch_style }} }
+      {% endfor %}
+    {% endstyle %}
+  {% endif %}
+{% endpaginate %}
