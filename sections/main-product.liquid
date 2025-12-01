@@ -13,7 +13,9 @@
     {{ product.title | escape }}
   </h1>
 
-  {% render 'price' product: product, classes: 'mb-10 text-m-sh1 md:text-body-2' %}
+  {% unless product.type == 'Gift Card' %}
+    {% render 'price' product: product, classes: 'mb-10 text-m-sh1 md:text-body-2' %}
+  {% endunless %}
 {% endcapture %}
 
 <product-section>
