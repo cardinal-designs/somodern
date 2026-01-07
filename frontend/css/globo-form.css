@@ -46,7 +46,7 @@
 @media (min-width: 768px) {
 
   #globo-formbuilder-126182 .globo-form-app .header {
-    margin-bottom: 45px;
+    margin-bottom: 60px;
   }
 
 }
@@ -129,6 +129,7 @@
   font-size: 12px;
   line-height: 1.8;
   letter-spacing: .04em;
+  font-weight: 400;
   text-transform: capitalize;
   color: #302E2D;
 }
@@ -327,11 +328,21 @@
   width: auto !important;
   text-transform: uppercase;
   min-width: 295px;
-  padding: 16px;
+  padding: 14px;
+  font-size: 11px;
+  font-family: "elza-text", sans-serif;
+  font-weight: 500;
+  line-height: 168%;
+  letter-spacing: .01em;
+}
+
+.globo-form-id-126182 .globo-form-app .gfb__footer button:hover {
+  background-color: rgb(225 213 199);
+  border-color: rgb(225 213 199);
+  color: rgb(48 46 45);
 }
 
 #globo-formbuilder-126182 .globo-form-control select {
-  color: rgb(48 46 45 / 50%);
   appearance: none !important;
   background: url(https://cdn.shopify.com/s/files/1/0697/9711/8105/files/select-dropdown.svg?v=1767792172) no-repeat right 20px center !important;
   padding-right: 40px !important;
@@ -339,6 +350,14 @@
 
 .globo-form-control .help-block.error {
   font-family: "elza-text", sans-serif;
+}
+
+@media screen and (min-width: 768px) {
+
+  .globo-form-row-item > .globo-form-control.layout-2-column {
+    width: calc(50% - 10px);
+  }
+
 }
 
 @media screen and (max-width: 767px) {
