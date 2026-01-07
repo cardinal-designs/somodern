@@ -87,6 +87,7 @@
         "title_RCbdiq",
         "group_j3rcdy"
       ],
+      "disabled": true,
       "settings": {
         "content_position": "middle_center",
         "mobile_content_position": "middle_center",
@@ -141,6 +142,7 @@
         "text_4L9paJ",
         "button_yxMhzR"
       ],
+      "disabled": true,
       "name": "Image / Text",
       "settings": {
         "background_color": "",
@@ -195,6 +197,7 @@
         "text_get9MT",
         "button_twCieq"
       ],
+      "disabled": true,
       "name": "Image / Text",
       "settings": {
         "background_color": "",
@@ -246,6 +249,7 @@
         "title_UqwpCM",
         "text_TyDbe7"
       ],
+      "disabled": true,
       "name": "Hero",
       "settings": {
         "content_position": "middle_center",
@@ -257,12 +261,30 @@
         "mobile_image": "shopify://shop_images/Image_-_2025-10-31T102627.015.jpg",
         "add_overlay": false
       }
+    },
+    "17677856605113a038": {
+      "type": "apps",
+      "blocks": {
+        "powerful_form_builder_app_block_6WzWwd": {
+          "type": "shopify://apps/powerful-form-builder/blocks/app-block/e4bcb1eb-35b2-42e6-bc37-bfe0e1542c9d",
+          "settings": {
+            "shortcode": "<div class=\"globo-formbuilder\" data-id=\"MTI2MTgy\"></div>"
+          }
+        }
+      },
+      "block_order": [
+        "powerful_form_builder_app_block_6WzWwd"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
     "main",
     "image_text_aijqqY",
     "image_text_eGCz9P",
-    "hero_faWXyf"
+    "hero_faWXyf",
+    "17677856605113a038"
   ]
 }

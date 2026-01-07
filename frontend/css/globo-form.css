@@ -1,0 +1,329 @@
+
+#globo-formbuilder-126182 .globo-form-app {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  --tw-text-opacity: 1;
+  color: rgb(71 39 21 / var(--tw-text-opacity));
+}
+
+@media (min-width: 768px) {
+
+  #globo-formbuilder-126182 .globo-form-app {
+    margin-top: 67px;
+    margin-bottom: 100px;
+  }
+
+}
+
+#globo-formbuilder-126182 .globo-form-app .header .title {
+  font-family: "richmond-display", serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 120%;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+
+  #globo-formbuilder-126182 .globo-form-app .header .title {
+    font-size: 40px;
+    line-height: 120%;
+  }
+
+}
+
+#globo-formbuilder-126182 .globo-form-app .header {
+    margin-bottom: 30px;
+}
+
+@media (min-width: 768px) {
+
+  #globo-formbuilder-126182 .globo-form-app .header {
+    margin-bottom: 45px;
+  }
+
+}
+
+#globo-formbuilder-126182 .globo-form-control {
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+
+  #globo-formbuilder-126182 .globo-form-control {
+      margin-bottom: 30px;
+  }
+
+}
+
+#globo-formbuilder-126182 .globo-form-row {
+  gap: 21px;
+}
+
+#globo-formbuilder-126182 .globo-form-control label {
+  margin-bottom: 11px;
+  font-family: fraunces,sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: .1em;
+  text-transform: lowercase;
+  --tw-text-opacity: 1;
+  color: rgb(71 39 21 / var(--tw-text-opacity));
+}
+
+@media (min-width: 768px) {
+
+  #globo-formbuilder-126182 .globo-form-control label {
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: .1em;
+  }
+
+}
+
+#globo-formbuilder-126182 .editor-actions {
+  display: none;
+}
+
+#globo-formbuilder-126182 .globo-form-control input,#globo-formbuilder-126182 .globo-form-control textarea,#globo-formbuilder-126182 .globo-form-control select {
+  min-height: 46px;
+  border-radius: 0;
+  border-width: 1px;
+  border-style: solid;
+  --tw-border-opacity: 1;
+  border-color: rgb(71 39 21 / var(--tw-border-opacity));
+  background-color: transparent;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  padding-left: 11px;
+  font-family: monotype-grotesque,sans-serif;
+  font-size: 12px;
+  line-height: 1.8;
+  letter-spacing: .04em;
+  --tw-text-opacity: 1;
+  color: rgb(71 39 21 / var(--tw-text-opacity));
+}
+
+#globo-formbuilder-126182 .globo-form-control input::-moz-placeholder,#globo-formbuilder-126182 .globo-form-control textarea::-moz-placeholder,#globo-formbuilder-126182 .globo-form-control select::-moz-placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(71 39 21 / var(--tw-text-opacity));
+  opacity: .5;
+}
+
+#globo-formbuilder-126182 .globo-form-control input::placeholder,#globo-formbuilder-126182 .globo-form-control textarea::placeholder,#globo-formbuilder-126182 .globo-form-control select::placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(71 39 21 / var(--tw-text-opacity));
+  opacity: .5;
+}
+
+#globo-formbuilder-126182 .globo-form-control .radio-wrapper .radio-input~.radio-label:before,#globo-formbuilder-126182 .globo-form-control .radio-wrapper .radio-input~.radio-label:after {
+  top: 5px;
+  left: -19px;
+  width: 11px;
+  height: 11px;
+  background-color: transparent;
+  font-family: monotype-grotesque,sans-serif;
+  font-size: 12px;
+  line-height: 1.8;
+  letter-spacing: .04em;
+}
+
+#globo-formbuilder-126182 .globo-form-control .radio-label {
+  margin-bottom: 10px;
+  font-family: monotype-grotesque,sans-serif;
+  font-size: 12px;
+  line-height: 1.8;
+  letter-spacing: .04em;
+  text-transform: capitalize;
+  --tw-text-opacity: 1;
+  color: rgb(71 39 21 / var(--tw-text-opacity));
+}
+
+#globo-formbuilder-126182 .globo-form-control .globo-list-control:last-child .radio-label {
+  margin-bottom: 0;
+}
+
+#globo-formbuilder-126182 .globo-form-control .radio-wrapper {
+  padding-left: 19px;
+}
+
+#globo-formbuilder-126182 .globo-form-app .panels {
+  z-index: 0;
+}
+
+#globo-formbuilder-126182 .globo-form-id-124686 .globo-form-app .gfb__footer button[type=submit] {
+  position: relative;
+  display: inline-block;
+  --tw-bg-opacity: 1;
+  background-color: rgb(247 244 239 / var(--tw-bg-opacity));
+  padding: 14px 38px;
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  --tw-text-opacity: 1;
+  color: rgb(71 39 21 / var(--tw-text-opacity));
+  transition-property: color,background-color,border-color,text-decoration-color,fill,stroke;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  transition-duration: .3s;
+}
+
+#globo-formbuilder-126182 .globo-form-id-124686 .globo-form-app .gfb__footer button[type=submit]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(71 39 21 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(247 244 239 / var(--tw-text-opacity));
+}
+
+#globo-formbuilder-126182 .globo-form-id-124686 .globo-form-app .gfb__footer button[type=submit]:before {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  bottom: 4px;
+  left: 4px;
+  border-width: 1px;
+  border-color: currentColor;
+  --tw-content: "";
+  content: var(--tw-content);
+}
+
+#globo-formbuilder-126182 .globo-form-id-124686 .globo-form-app .gfb__footer button[type=submit] .button-dots:before {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  display: flex;
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  justify-content: space-between;
+  --tw-content: "â€¢";
+  content: var(--tw-content);
+}
+
+#globo-formbuilder-126182 .globo-form-id-124686 .globo-form-app .gfb__footer button[type=submit] .button-dots:after {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  display: flex;
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  justify-content: space-between;
+  --tw-content: "â€¢";
+  content: var(--tw-content);
+}
+
+#globo-formbuilder-126182 .globo-form-id-124686 .globo-form-app .gfb__footer button[type=submit]:disabled {
+  pointer-events: none;
+  opacity: .5;
+}
+
+#globo-formbuilder-126182 .globo-form-id-124686 .globo-form-app .gfb__footer button[type=submit] {
+  max-width: 126px;
+  border-radius: 0;
+  border-style: none;
+  padding-top: 1rem;
+  font-family: monotype-grotesque,sans-serif;
+}
+
+#globo-formbuilder-126182 .globo-form-app .gfb__footer {
+  text-align: center;
+}
+
+#globo-formbuilder-126182 .globo-form-control .globo-list-control {
+  padding: 0;
+}
+
+#globo-formbuilder-126182 .globo-form-control .gfb__dropzone {
+  border-radius: 1px;
+  border-style: solid;
+  --tw-border-opacity: 1;
+  border-color: rgb(71 39 21 / var(--tw-border-opacity));
+  background-color: transparent;
+}
+
+#globo-formbuilder-126182 .globo-form-control .gfb__dropzone--placeholder--button {
+  position: relative;
+  display: inline-block;
+  --tw-bg-opacity: 1;
+  background-color: rgb(247 244 239 / var(--tw-bg-opacity));
+  padding: 14px 38px;
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  --tw-text-opacity: 1;
+  color: rgb(71 39 21 / var(--tw-text-opacity));
+  transition-property: color,background-color,border-color,text-decoration-color,fill,stroke;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  transition-duration: .3s;
+}
+
+#globo-formbuilder-126182 .globo-form-control .gfb__dropzone--placeholder--button:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(71 39 21 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(247 244 239 / var(--tw-text-opacity));
+}
+
+#globo-formbuilder-126182 .globo-form-control .gfb__dropzone--placeholder--button:before {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  bottom: 4px;
+  left: 4px;
+  border-width: 1px;
+  border-color: currentColor;
+  --tw-content: "";
+  content: var(--tw-content);
+}
+
+#globo-formbuilder-126182 .globo-form-control .gfb__dropzone--placeholder--button .button-dots:before {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  display: flex;
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  justify-content: space-between;
+  --tw-content: "â€¢";
+  content: var(--tw-content);
+}
+
+#globo-formbuilder-126182 .globo-form-control .gfb__dropzone--placeholder--button .button-dots:after {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  display: flex;
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  justify-content: space-between;
+  --tw-content: "â€¢";
+  content: var(--tw-content);
+}
+
+#globo-formbuilder-126182 .globo-form-control .gfb__dropzone--placeholder--button:disabled {
+  pointer-events: none;
+  opacity: .5;
+}
+
+#globo-formbuilder-126182 .globo-form-control .gfb__dropzone--placeholder--button {
+  border-radius: 0;
+  border-style: none;
+  font-family: monotype-grotesque,sans-serif;
+}
+
+#globo-formbuilder-126182 .globo-form-control .gfb__dropzone--placeholder--description,#globo-formbuilder-126182 .gfb__dropzone--placeholder--title {
+  font-family: monotype-grotesque,sans-serif;
+  font-size: 12px;
+  line-height: 1.8;
+  letter-spacing: .04em;
+  --tw-text-opacity: 1;
+  color: rgb(71 39 21 / var(--tw-text-opacity));
+}
+
+#globo-formbuilder-126182 .globo-form-control label .text-danger {
+  margin-left: -4px;
+}
