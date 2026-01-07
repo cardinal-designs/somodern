@@ -1,9 +1,12 @@
 
 #globo-formbuilder-126182 .globo-form-app {
-  margin-top: 50px;
-  margin-bottom: 50px;
-  --tw-text-opacity: 1;
-  color: rgb(71 39 21 / var(--tw-text-opacity));
+  margin-top: 52px;
+  margin-bottom: 60px;
+  color: #302E2D;
+}
+
+.globo-form-app .header .description {
+  display: none;
 }
 
 @media (min-width: 768px) {
@@ -18,10 +21,12 @@
 #globo-formbuilder-126182 .globo-form-app .header .title {
   font-family: "richmond-display", serif;
   font-weight: 400;
-  font-size: 40px;
-  line-height: 120%;
+  font-size: 35px;
+  line-height: 106%;
   letter-spacing: 0;
   text-align: center;
+  color: #302E2D;
+  margin: 0;
 }
 
 @media (min-width: 768px) {
@@ -29,6 +34,7 @@
   #globo-formbuilder-126182 .globo-form-app .header .title {
     font-size: 40px;
     line-height: 120%;
+    color: #000;
   }
 
 }
@@ -46,16 +52,8 @@
 }
 
 #globo-formbuilder-126182 .globo-form-control {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   padding: 0;
-}
-
-@media (min-width: 768px) {
-
-  #globo-formbuilder-126182 .globo-form-control {
-      margin-bottom: 30px;
-  }
-
 }
 
 #globo-formbuilder-126182 .globo-form-row {
@@ -63,22 +61,20 @@
 }
 
 #globo-formbuilder-126182 .globo-form-control label {
-  margin-bottom: 11px;
-  font-family: fraunces,sans-serif;
-  font-size: 12px;
-  line-height: 1.4;
-  letter-spacing: .1em;
-  text-transform: lowercase;
-  --tw-text-opacity: 1;
-  color: rgb(71 39 21 / var(--tw-text-opacity));
+  margin-bottom: 7px;
+  font-family: "elza-text", sans-serif;
+  font-size: 11px;
+  line-height: 150%;
+  letter-spacing: .06em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #302E2D;
 }
 
-@media (min-width: 768px) {
-
+@media screen and (min-width: 768px) {
+  
   #globo-formbuilder-126182 .globo-form-control label {
-    font-size: 14px;
-    line-height: 1.4;
-    letter-spacing: .1em;
+    margin-bottom: 11px;
   }
 
 }
@@ -92,29 +88,26 @@
   border-radius: 0;
   border-width: 1px;
   border-style: solid;
-  --tw-border-opacity: 1;
-  border-color: rgb(71 39 21 / var(--tw-border-opacity));
+  border-color: #302E2D;
   background-color: transparent;
   padding-top: .75rem;
   padding-bottom: .75rem;
   padding-left: 11px;
-  font-family: monotype-grotesque,sans-serif;
+  font-family: "elza-text", sans-serif;
   font-size: 12px;
   line-height: 1.8;
   letter-spacing: .04em;
-  --tw-text-opacity: 1;
-  color: rgb(71 39 21 / var(--tw-text-opacity));
+  font-weight: 400;
+  color: #302E2D;
 }
 
 #globo-formbuilder-126182 .globo-form-control input::-moz-placeholder,#globo-formbuilder-126182 .globo-form-control textarea::-moz-placeholder,#globo-formbuilder-126182 .globo-form-control select::-moz-placeholder {
-  --tw-text-opacity: 1;
-  color: rgb(71 39 21 / var(--tw-text-opacity));
+  color: #302E2D;
   opacity: .5;
 }
 
 #globo-formbuilder-126182 .globo-form-control input::placeholder,#globo-formbuilder-126182 .globo-form-control textarea::placeholder,#globo-formbuilder-126182 .globo-form-control select::placeholder {
-  --tw-text-opacity: 1;
-  color: rgb(71 39 21 / var(--tw-text-opacity));
+  color: #302E2D;
   opacity: .5;
 }
 
@@ -124,7 +117,7 @@
   width: 11px;
   height: 11px;
   background-color: transparent;
-  font-family: monotype-grotesque,sans-serif;
+  font-family: "elza-text", sans-serif;
   font-size: 12px;
   line-height: 1.8;
   letter-spacing: .04em;
@@ -132,13 +125,12 @@
 
 #globo-formbuilder-126182 .globo-form-control .radio-label {
   margin-bottom: 10px;
-  font-family: monotype-grotesque,sans-serif;
+  font-family: "elza-text", sans-serif;
   font-size: 12px;
   line-height: 1.8;
   letter-spacing: .04em;
   text-transform: capitalize;
-  --tw-text-opacity: 1;
-  color: rgb(71 39 21 / var(--tw-text-opacity));
+  color: #302E2D;
 }
 
 #globo-formbuilder-126182 .globo-form-control .globo-list-control:last-child .radio-label {
@@ -147,6 +139,7 @@
 
 #globo-formbuilder-126182 .globo-form-control .radio-wrapper {
   padding-left: 19px;
+  min-height: auto;
 }
 
 #globo-formbuilder-126182 .globo-form-app .panels {
@@ -255,17 +248,15 @@
   letter-spacing: .1em;
   text-transform: uppercase;
   --tw-text-opacity: 1;
-  color: rgb(71 39 21 / var(--tw-text-opacity));
+  color: #302e2d;
   transition-property: color,background-color,border-color,text-decoration-color,fill,stroke;
   transition-timing-function: cubic-bezier(.4,0,.2,1);
   transition-duration: .3s;
 }
 
 #globo-formbuilder-126182 .globo-form-control .gfb__dropzone--placeholder--button:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(71 39 21 / var(--tw-bg-opacity));
-  --tw-text-opacity: 1;
-  color: rgb(247 244 239 / var(--tw-text-opacity));
+  background-color: #302e2d;
+  color: #fffcf9;
 }
 
 #globo-formbuilder-126182 .globo-form-control .gfb__dropzone--placeholder--button:before {
@@ -312,18 +303,53 @@
 #globo-formbuilder-126182 .globo-form-control .gfb__dropzone--placeholder--button {
   border-radius: 0;
   border-style: none;
-  font-family: monotype-grotesque,sans-serif;
+  font-family: "elza-text", sans-serif;
 }
 
 #globo-formbuilder-126182 .globo-form-control .gfb__dropzone--placeholder--description,#globo-formbuilder-126182 .gfb__dropzone--placeholder--title {
-  font-family: monotype-grotesque,sans-serif;
+  font-family: "elza-text", sans-serif;
   font-size: 12px;
   line-height: 1.8;
   letter-spacing: .04em;
-  --tw-text-opacity: 1;
-  color: rgb(71 39 21 / var(--tw-text-opacity));
+  color: #302e2d;
+  opacity: .5;
 }
 
 #globo-formbuilder-126182 .globo-form-control label .text-danger {
   margin-left: -4px;
+}
+
+.globo-form-id-126182 .globo-form-app .globo-description {
+  margin-top: 15px;
+}
+
+.globo-form-id-126182 .globo-form-app .gfb__footer button {
+  width: auto !important;
+  text-transform: uppercase;
+  min-width: 295px;
+  padding: 16px;
+}
+
+#globo-formbuilder-126182 .globo-form-control select {
+  color: rgb(48 46 45 / 50%);
+  appearance: none !important;
+  background: url(https://cdn.shopify.com/s/files/1/0697/9711/8105/files/select-dropdown.svg?v=1767792172) no-repeat right 20px center !important;
+  padding-right: 40px !important;
+}
+
+.globo-form-control .help-block.error {
+  font-family: "elza-text", sans-serif;
+}
+
+@media screen and (max-width: 767px) {
+
+  .globo-form-id-126182 .globo-form-app .gfb__footer button {
+    min-width: auto;
+    width: 100% !important;
+  }
+
+  .globo-form-id-126182 .globo-form-app .globo-description {
+    margin: 0;
+  }
+
 }
