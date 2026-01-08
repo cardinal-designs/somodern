@@ -1,0 +1,202 @@
+
+.swym-storefront-layout-layout {
+    --swym-storefront-layout-color-text-default: #302e2d !important;
+    --swym-storefront-layout-notification-neutral-text-color: #302e2d !important;
+    --swym-storefront-layout-color-text-sub2: #302e2d !important;
+    --swym-storefront-layout-color-text-sub: #302e2d !important;
+    --swym-storefront-layout-font-size-text: 11px !important;
+    --swym-storefront-layout-font-size-sub-text: 11px !important;
+}
+
+.swym-storefront-layout-notification-container {
+    font-weight: 400 !important;
+}
+
+.swym-storefront-layout-root-component button,
+swym-storefront-layout-login-user .swym-storefront-layout-login-button,
+.swym-storefront-layout-empty-sfl-view-cart-button,
+.swym-ui-component .swym-is-button {
+    font-weight: 400 !important;
+    font-size: 11px !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    font-family: "elza-text", sans-serif !important;
+}
+
+.swym-storefront-layout-notification-message {
+    font-weight: 400 !important;
+    font-size: 14px !important;
+}
+
+.swym-storefront-layout-login-heading,
+.swym-storefront-layout-grid-item-title,
+.swym-storefront-layout-title,
+.swym-storefront-layout-action-title,
+.swym-storefront-layout-collection-title {
+    font-family: "richmond-display", serif !important;
+    font-size: 15px !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.13em !important;
+    text-transform: uppercase !important;
+    font-weight: 400 !important;
+}
+
+.swym-storefront-layout-container::-webkit-scrollbar-track,
+.swym-storefront-layout-body::-webkit-scrollbar-track {
+    background-color: trbansparent;
+}
+
+div#swym-storefront-layout-collection-grid-item-option-button {
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 5px !important;
+}
+
+.swym-ui-component div.swym-modal.swym-share-wishlist-modal {
+    z-index: 1000000001 !important;
+}
+
+#swym-storefront-layout-collection-grid-item-option-button svg {
+    margin: 0 !important;
+}
+
+.swym-storefront-layout-create-collection-name-form-group {
+    padding-left: 0 !important;
+}
+
+.swym-storefront-layout-container::-webkit-scrollbar,
+.swym-storefront-layout-body::-webkit-scrollbar {
+	width: 6px;
+    background-color: trbansparent;
+}
+
+.swym-storefront-layout-container::-webkit-scrollbar-thumb,
+.swym-storefront-layout-body::-webkit-scrollbar-thumb {
+	background-color: #302e2d;
+}
+
+#swym-storefront-layout-collection-option-button.swym-single-share-wishlist-btn,
+.swym-storefront-layout-title,
+.swym-storefront-layout-tab-button.swym-storefront-layout-tab-button-active,
+.swym-storefront-layout-notification-title,
+.swym-storefront-layout-notification-message,
+.swym-storefront-layout-login-heading,
+.swym-storefront-layout-login-description,
+.swym-ui-component .swym-sfl-popup-dialog.swym-control-centre-mode .swym-cc-sfl-popup-action-container>div .swym-cc-sfl-popup-content p,
+.swym-storefront-layout-total-list-items-count {
+    color: #302e2d !important;
+}
+
+swym-storefront-layout-as-drawer .swym-storefront-layout-layout {
+    border-radius: 0 !important;
+}
+
+.swym-ui-component .swym-sfl-popup-dialog.swym-control-centre-mode .swym-cc-sfl-popup-action-container>div .swym-cc-sfl-popup-content h3,
+.swym-storefront-layout-empty-sfl-title {
+    font-weight: 400 !important;
+}
+
+.swym-ui-component .swym-sfl-popup-dialog .swym-close-btn {
+    top: 10px !important;
+}
+
+.swym-ui-component .swym-sfl-popup-mobile {
+    margin-top: 15px !important;
+}
+
+.swym-ui-component .swym-sfl-popup-mobile button {
+    border: 1px solid !important;
+}
+
+.swym-storefront-layout-grid-item-add-to-cart-button {
+    padding: var(--swym-p-space-300) !important; 
+}
+
+.swym-storefront-layout-layout .swym-storefront-layout-close-button {
+    height: 20px !important;
+}
+
+quick-view .swym-btn-container .swym-button {
+    background: transparent !important;
+    outline: none !important;
+    opacity: 1 !important;
+}
+
+quick-view  .swym-button-bar {
+    margin: 0 !important;
+}
+
+.swym-button.swym-add-to-wishlist-view-product.swym-heart:after,
+quick-view .swym-button.swym-add-to-wishlist.swym-heart:after {
+    display: none !important;
+}
+
+.swym-button.swym-add-to-wishlist-view-product.swym-heart:not(.swym-added) svg + svg,
+quick-view .swym-button.swym-add-to-wishlist.swym-heart:not(.swym-added) svg + svg {
+    display: none !important;
+}
+
+.swym-button.swym-add-to-wishlist-view-product.swym-heart.swym-added svg,
+quick-view .swym-button.swym-add-to-wishlist.swym-heart.swym-added svg {
+    display: none !important;
+}
+
+.swym-button.swym-add-to-wishlist-view-product.swym-heart.swym-added svg + svg,
+quick-view .swym-button.swym-add-to-wishlist.swym-heart.swym-added svg + svg {
+    display: block !important;
+}
+
+.atw-button {
+    line-height: 1 !important;
+    transform: none !important;
+}
+
+.swym-wishlist-button-bar,.swym-btn-container.swym-inject,
+button.swym-button.swym-add-to-wishlist.swym-inject {
+    width:100% !important;
+}
+
+button.swym-button.swym-add-to-wishlist.swym-inject {
+    background-color: #302e2d !important;
+    font-weight: 400 !important;
+    font-size: 11px !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    font-family: "elza-text", sans-serif !important;
+    height: auto !important;
+    line-height: 1 !important;
+    padding: 20px 14px !important;
+    outline: none !important;
+    opacity: 1 !important;
+}
+
+.swym-btn-container .swym-button.swym-added *:not(.swym-tooltip) {
+    opacity: 1 !important;
+}
+
+.swym-wishlist-button-bar{
+    margin-top: 15px !important;
+}
+
+.swym-btn-container .swym-add-to-wishlist.swym-heart:after {
+    display: none !important;
+}
+
+.swym-storefront-layout-notification-container {
+    background: #fff !important;
+}
+
+.swym-ui-component .swym-sfl-popup-dialog.swym-control-centre-mode .swym-cc-sfl-popup-action-container>div figure {
+    height: 100% !important;
+}
+
+@media only screen and (max-width: 700px) {
+
+    .swym-ui-component .swym-sfl-popup-dialog.swym-control-centre-mode .swym-cc-sfl-popup-action-container>div figure img {
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+    }
+}
