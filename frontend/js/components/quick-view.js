@@ -57,6 +57,7 @@ export default class QuickView extends HTMLElement {
         setTimeout(() => {
           this.open();
           if (opener) opener.classList.remove('loading');
+          _swat.initializeActionButtons("body")
         }, 150);
 
 

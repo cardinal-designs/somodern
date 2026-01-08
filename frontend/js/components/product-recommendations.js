@@ -37,6 +37,7 @@ export default class ProductRecommendations extends HTMLElement {
               }
             }
           });
+          _swat.initializeActionButtons("body");
         })
         .catch(e => {
           console.error(e);

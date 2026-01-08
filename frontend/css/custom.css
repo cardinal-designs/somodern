@@ -9,22 +9,29 @@
 }
 
 .swym-storefront-layout-notification-container {
-    font-weight: 400 !important;
+    font-weight: 500 !important;
 }
 
 .swym-storefront-layout-root-component button,
 swym-storefront-layout-login-user .swym-storefront-layout-login-button,
 .swym-storefront-layout-empty-sfl-view-cart-button,
 .swym-ui-component .swym-is-button {
-    font-weight: 400 !important;
+    font-weight: 500 !important;
     font-size: 11px !important;
     letter-spacing: 0.1em !important;
     text-transform: uppercase !important;
     font-family: "elza-text", sans-serif !important;
+    outline: none !important;
+    border-radius: 0 !important;
+}
+
+swym-storefront-layout-login-user .swym-storefront-layout-login-button,
+.swym-ui-component .swym-is-button.swym-sfl-popup-save-btn {
+  color: #fffcf9 !important;
 }
 
 .swym-storefront-layout-notification-message {
-    font-weight: 400 !important;
+    font-weight: 500 !important;
     font-size: 14px !important;
 }
 
@@ -34,10 +41,10 @@ swym-storefront-layout-login-user .swym-storefront-layout-login-button,
 .swym-storefront-layout-action-title,
 .swym-storefront-layout-collection-title {
     font-family: "richmond-display", serif !important;
-    font-size: 15px !important;
+    font-size: 22px !important;
     line-height: 1.2 !important;
-    letter-spacing: 0.13em !important;
-    text-transform: uppercase !important;
+    letter-spacing: 0 !important;
+    text-transform: capitalize !important;
     font-weight: 400 !important;
 }
 
@@ -96,7 +103,7 @@ swym-storefront-layout-as-drawer .swym-storefront-layout-layout {
 
 .swym-ui-component .swym-sfl-popup-dialog.swym-control-centre-mode .swym-cc-sfl-popup-action-container>div .swym-cc-sfl-popup-content h3,
 .swym-storefront-layout-empty-sfl-title {
-    font-weight: 400 !important;
+    font-weight: 500 !important;
 }
 
 .swym-ui-component .swym-sfl-popup-dialog .swym-close-btn {
@@ -161,16 +168,26 @@ button.swym-button.swym-add-to-wishlist.swym-inject {
 
 button.swym-button.swym-add-to-wishlist.swym-inject {
     background-color: #302e2d !important;
-    font-weight: 400 !important;
+    color: #fffcf9 !important;
+    font-weight: 500 !important;
     font-size: 11px !important;
     letter-spacing: 0.1em !important;
     text-transform: uppercase !important;
     font-family: "elza-text", sans-serif !important;
     height: auto !important;
-    line-height: 1 !important;
-    padding: 20px 14px !important;
+    line-height: 1.2 !important;
+    padding: 15px 14px !important;
     outline: none !important;
     opacity: 1 !important;
+}
+
+.swym-btn-container[data-position=default] .swym-add-to-wishlist.swym-icontext {
+  text-indent: 0 !important;
+}
+
+button.swym-button.swym-add-to-wishlist.swym-inject:hover {
+  background-color: #fffcf9 !important;
+  color: #302e2d !important;
 }
 
 .swym-btn-container .swym-button.swym-added *:not(.swym-tooltip) {
