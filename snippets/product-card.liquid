@@ -61,6 +61,28 @@
         </button>
       </div>
     {% endif %}
+
+    <div class="p-15 absolute left-auto right-0 top-0">
+    <!-- Swym Wishlist Plus EPI Button with default first variant -->   
+      <button aria-label="Add to Wishlist" data-with-epi="true" class="swym-button swym-add-to-wishlist-view-product product_{{prod.id}}" data-swaction="addToWishlist" data-product-id="{{prod.id | json}}" data-variant-id="{{prod.variants[0].id}}" 
+      data-product-url="{{ shop.url }}{{ prod.url }}"> 
+        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="16" viewBox="0 0 19 16" fill="none">
+          <path d="M13.6836 0.505859C14.8998 0.442806 15.9126 0.921544 16.6074 1.74512C17.9567 3.3446 18.1849 6.39599 15.9023 9.46582L15.6738 9.7627C13.9681 11.9037 11.4113 13.871 9.06152 15.4941C6.71112 13.8699 4.15679 11.905 2.4502 9.7627C-0.0748214 6.59426 0.122995 3.39527 1.51562 1.74414C2.21034 0.920664 3.22338 0.442782 4.43945 0.505859C5.66479 0.56942 7.14336 1.18681 8.7207 2.65527L9.06152 2.97266L9.40234 2.65527C10.9796 1.18702 12.4582 0.569436 13.6836 0.505859Z" stroke="#472715"/>
+        </svg>
+        <svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_1621_7)">
+          <path d="M13.6839 0.5058C14.9001 0.442747 15.9129 0.921485 16.6077 1.74506C17.957 3.34454 18.1852 6.39593 15.9026 9.46576L15.6741 9.76264C13.9684 11.9036 11.4116 13.8709 9.06186 15.494C6.71146 13.8698 4.15713 11.9049 2.45054 9.76264C-0.0744842 6.5942 0.123332 3.39521 1.51596 1.74408C2.21068 0.920605 3.22372 0.442723 4.43979 0.5058C5.66513 0.569361 7.1437 1.18675 8.72104 2.65521L9.06186 2.9726L9.40268 2.65521C10.9799 1.18696 12.4585 0.569377 13.6839 0.5058Z" fill="#472715" stroke="#472715"/>
+          </g>
+          <defs>
+          <clipPath id="clip0_1621_7">
+          <rect width="19" height="16" fill="white"/>
+          </clipPath>
+          </defs>
+        </svg>
+      </button>   
+     <!-- Swym Wishlist Plus EPI Button-->
+    </div>
+
   </div>
 
   <div class="mt-10">

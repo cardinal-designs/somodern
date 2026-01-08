@@ -7,6 +7,8 @@
 /* Tailwind */
 @import 'tailwindcss/base';
 @import '../css/base.css';
+@import '../css/globo-form.css';
+@import '../css/custom.css';
 
 @import 'tailwindcss/components';
 @import '../css/components.css';

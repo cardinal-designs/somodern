@@ -95,6 +95,18 @@
             </a>
           {% endif %}
 
+          <div>
+            <a href="#swym-wishlist" class="swym-wishlist text-cta uppercase hidden md:block group/link md:py-20 relative">
+              Wishlist
+                {% comment %} <i aria-hidden="true" focusable="false" role="presentation" class="fa fa-heart"></i>  {% endcomment %}
+            </a>
+            <a href="#swym-wishlist" class="swym-wishlist text-cta uppercase md:hidden group/link md:py-20 relative">
+              <svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.6836 0.505859C14.8998 0.442806 15.9126 0.921544 16.6074 1.74512C17.9567 3.3446 18.1849 6.39599 15.9023 9.46582L15.6738 9.7627C13.9681 11.9037 11.4113 13.871 9.06152 15.4941C6.71112 13.8699 4.15679 11.905 2.4502 9.7627C-0.0748214 6.59426 0.122995 3.39527 1.51562 1.74414C2.21034 0.920664 3.22338 0.442782 4.43945 0.505859C5.66479 0.56942 7.14336 1.18681 8.7207 2.65527L9.06152 2.97266L9.40234 2.65527C10.9796 1.18702 12.4582 0.569436 13.6836 0.505859Z" stroke="currentColor"/>
+              </svg>
+            </a>
+          </div>
+
           {% if template != 'cart' %}
             <button class="relative md:py-20" data-open-cart id="cart-icon-bubble" aria-label="Open Cart Drawer" data-id="{{ section.id }}">
               {{ cart }}

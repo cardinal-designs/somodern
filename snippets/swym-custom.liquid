@@ -1,0 +1,35 @@
+<script defer>
+  function swymCallbackFn(swat){
+    function swymAttachEvents(){
+      swat.initializeActionButtons("body");
+      _swat.initializeActionButtons(".swym-button");
+      _swat.initializeActionButtons("body")
+    }
+    document.addEventListener('quickview:loaded', function(e) {
+      console.log("Quickview Loaded!",e.detail.productId);
+      swymAttachEvents();
+    });
+    document.addEventListener('variant:change', function(event) {
+      var variant_id = event.detail.variant.id;
+      var btn =  document.querySelector("#swym-quick-view");
+      if(btn){
+        btn.setAttribute("data-variant-id", variant_id);
+      }
+      swymAttachEvents();
+    });
+
+
+    // your API calls go here
+    document.addEventListener("swym:collections-loaded", function(){
+      swat.initializeActionButtons(".product-grid-container");
+      console.log("Swym Collections Loaded!");
+    })
+  }
+
+  if(!window.SwymCallbacks){
+    window.SwymCallbacks = [];
+  }
+  window.SwymCallbacks.push(swymCallbackFn);
+
+  document.dispatchEvent(new CustomEvent("swym:collections-loaded"));
+</script>
