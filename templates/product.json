@@ -11,26 +11,6 @@
   "sections": {
     "main": {
       "type": "main-product",
-      "blocks": {
-        "dropdown_f8XbkQ": {
-          "type": "dropdown",
-          "settings": {
-            "title": "Dimensions",
-            "text": "{{ product.metafields.custom.dimensions | metafield_tag }}"
-          }
-        },
-        "dropdown_yQwAKq": {
-          "type": "dropdown",
-          "settings": {
-            "title": "Material",
-            "text": "{{ product.metafields.custom.material | metafield_tag }}"
-          }
-        }
-      },
-      "block_order": [
-        "dropdown_f8XbkQ",
-        "dropdown_yQwAKq"
-      ],
       "settings": {
         "description_position": "below",
         "mobile_title_position": "below",
