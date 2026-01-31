@@ -428,13 +428,18 @@ a[aria-label="Created with Klaviyo - opens in a new tab"] {
     font-family: "elza-text", sans-serif !important;
     border-radius: 0 !important;
     padding: 0 !important;
-    font-weight: 400 !important;
+    font-weight: 500 !important;
     background: transparent !important;
     font-size: 11px !important;
     line-height: 150% !important;
     letter-spacing: .06em !important;
     text-transform: uppercase !important;
     border: none !important;
+}
+
+.needsclick.kl-private-reset-css-Xuajs1[aria-label="FLYOUT Form"] [aria-label="Close dialog"] {
+    right: 10px !important;
+    top: 10px !important;
 }
 
 
