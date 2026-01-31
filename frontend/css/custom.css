@@ -496,8 +496,8 @@ a[aria-label="Created with Klaviyo - opens in a new tab"] {
     }
 
     .needsclick.kl-private-reset-css-Xuajs1[aria-label="FLYOUT Form"] [aria-label="Close dialog"] {
-        margin-right: 5px !important;
-        margin-top: 5px !important;
+        margin-right: 4px !important;
+        margin-top: 4px !important;
         width: 25px !important;
         height: 25px !important;
     }
