@@ -277,12 +277,11 @@ button.swym-button.swym-add-to-wishlist.swym-inject:hover {
     font-family: "elza-text", sans-serif !important;
     border-radius: 0 !important;
     padding: 0 !important;
-    font-weight: 400 !important;
+    font-weight: 500 !important;
     background: transparent !important;
     font-size: 11px !important;
     line-height: 120% !important;
     letter-spacing: .1em !important;
-    font-weight: 400 !important;
     text-transform: uppercase !important;
     border: none !important;
 }
