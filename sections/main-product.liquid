@@ -180,8 +180,147 @@
               </div>
             {% endif %}
 
-            {% if section.blocks.size > 0 %}
-              <div class="mt-40 mb-20 border-t-1 border-tan md:mt-30">
+            <div class="mt-40 mb-20 border-t-1 border-tan md:mt-30">
+              <dropdown-item>
+                <div class="group/dropdown border-b-1 border-tan" data-dropdown>
+                  <button class="w-full py-20 flex justify-between text-m-sh2 uppercase md:text-sh2" data-dropdown-toggle>
+                    Specifications
+                    <span class="rotate-90 transition-transform group-[.active]/dropdown:rotate-[270deg]">
+                      {% render 'icon' icon: 'caret' %}
+                    </span>
+                  </button>
+                  <div class="hidden group-[.active]/dropdown:block" aria-hidden="true" data-dropdown-content>
+                    <div class="rte pb-20 text-m-body-2 md:text-body-4">
+                      <table>
+                        {% if product.metafields.custom.led_color_temperature != blank %}
+                          <tr>
+                            <td class="text-m-body-2 font-semibold">Color Temperature</td>
+                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.led_color_temperature }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.primary_dimension != blank %}
+                          <tr>
+                            <td class="text-m-body-2 font-semibold">Primary Dimension</td>
+                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.primary_dimension }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.fixture_dimensions != blank %}
+                          <tr>
+                            <td class="text-m-body-2 font-semibold">Fixture Dimensions</td>
+                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.fixture_dimensions }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.location_rating != blank %}
+                          <tr>
+                            <td class="text-m-body-2 font-semibold">Location Rating</td>
+                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.location_rating }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.wattage != blank %}
+                          <tr>
+                            <td class="text-m-body-2 font-semibold">Wattage</td>
+                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.wattage }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.cri != blank %}
+                          <tr>
+                            <td class="text-m-body-2 font-semibold">CRI</td>
+                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.cri }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.led_total_lumens != blank %}
+                          <tr>
+                            <td class="text-m-body-2 font-semibold">LED Total Lumens</td>
+                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.led_total_lumens }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.fixture_delivered_lumens != blank %}
+                          <tr>
+                            <td class="text-m-body-2 font-semibold">Fixture Delivered Lumens</td>
+                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.fixture_delivered_lumens }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.led_life_span_hr != blank %}
+                          <tr>
+                            <td class="text-m-body-2 font-semibold">LED Life Span</td>
+                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.led_life_span_hr }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.fixture_input_voltage != blank %}
+                          <tr>
+                            <td class="text-m-body-2 font-semibold">Fixture Input Voltage</td>
+                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.fixture_input_voltage }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.illumination_direction != blank %}
+                          <tr>
+                            <td class="text-m-body-2 font-semibold">Illumination Direction</td>
+                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.illumination_direction }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.material != blank %}
+                          <tr>
+                            <td class="text-m-body-2 font-semibold">Material</td>
+                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.material }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.diffuser_material != blank %}
+                          <tr>
+                            <td class="text-m-body-2 font-semibold">Diffuser Material</td>
+                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.diffuser_material }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.etl_compliant != blank %}
+                          <tr>
+                            <td class="text-m-body-2 font-semibold">ETL Compliant</td>
+                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.etl_compliant }}</td>
+                          </tr>
+                        {% endif %}
+                        {% if product.metafields.custom.country_of_origin != blank %}
+                          <tr>
+                            <td class="text-m-body-2 font-semibold">Country of Origin</td>
+                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.country_of_origin }}</td>
+                          </tr>
+                        {% endif %}
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </dropdown-item>
+
+              <dropdown-item>
+                <div class="group/dropdown border-b-1 border-tan" data-dropdown>
+                  <button class="w-full py-20 flex justify-between text-m-sh2 uppercase md:text-sh2" data-dropdown-toggle>
+                    Downloads
+                    <span class="rotate-90 transition-transform group-[.active]/dropdown:rotate-[270deg]">
+                      {% render 'icon' icon: 'caret' %}
+                    </span>
+                  </button>
+                  <div class="hidden group-[.active]/dropdown:block" aria-hidden="true" data-dropdown-content>
+                    <div class="rte pb-20 text-m-body-2">
+                      <ul>
+                        {% if product.metafields.custom.spec_sheet_url != blank %}
+                          <li><a href="{{ product.metafields.custom.spec_sheet_url }}" target="_blank">WV346006 Spec Sheet</a></li>
+                        {% endif %}
+                        {% if product.metafields.custom.install_sheet_url != blank %}
+                          <li><a href="{{ product.metafields.custom.install_sheet_url }}" target="_blank">WV346006 Installation Instructions</a></li>
+                        {% endif %}
+                        {% if product.metafields.custom.ies_zip_url != blank %}
+                          <li><a href="{{ product.metafields.custom.ies_zip_url }}" target="_blank">IES Files</a></li>
+                        {% endif %}
+                        {% if product.metafields.custom.revit_files_zip != blank %}
+                          <li><a href="{{ product.metafields.custom.revit_files_zip }}" target="_blank">REVIT Files</a></li>
+                        {% endif %}
+                        {% if product.metafields.custom.dimmer_pdf_url != blank %}
+                          <li><a href="{{ product.metafields.custom.dimmer_pdf_url }}" target="_blank">Suggested Dimmers</a></li>
+                        {% endif %}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </dropdown-item>
+
+              {% if section.blocks.size > 0 %}
                 {% for block in section.blocks %}
                   {% if block.settings.text != blank %}
                     
@@ -200,8 +339,8 @@
                     </div>
                   </dropdown-item>
                 {% endfor %}
-              </div>
-            {% endif %}
+              {% endif %}
+            </div>
 
             {% if section.settings.value_props != blank %}
               <div class="my-30 px-15 border-1 border-tan [&_p]:py-10 [&_p]:text-body-3 [&_p]:border-b-1 [&_p:last-child]:border-0 [&_p]:border-tan">{{ section.settings.value_props }}</div>
