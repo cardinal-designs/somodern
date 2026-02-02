@@ -35,6 +35,7 @@
           <div class="mt-15 text-body-4">{{ section.settings.newsletter_text }}</div>
         {% endif %}
 
+        {% if section.settings.footer_form == blank %}
         {% form 'customer', id: 'ContactFooter', class: 'mt-30' %}
           <input type="hidden" name="contact[tags]" value="newsletter">
           <div class="flex border-b-1 border-white">
@@ -72,6 +73,9 @@
             <p class="text-body-3" id="ContactFooter-success" tabindex="-1" autofocus>{{ 'newsletter.success' | t }}</p>
           {% endif %}
         {% endform %}
+        {% else %}
+          {{ section.settings.footer_form }}
+        {% endif %}
       </div>
     </div>
 
@@ -135,6 +139,11 @@
     {
       "type": "header",
       "content": "Newsletter"
+    },
+    {
+      "type": "html",
+      "id": "footer_form",
+      "label": "Klaviyo form"
     },
     {
       "type": "text",
