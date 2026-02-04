@@ -27,7 +27,7 @@
           "type": "text",
           "name": "Text",
           "settings": {
-            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>",
+            "text": "<p>SoModern delivers fresh, innovative decorative lighting curated for today’s top designer trends, elevating modern interiors with style and impact.</p>",
             "center_content": false,
             "content_width": 425,
             "margin_top": 0,
@@ -231,7 +231,7 @@
         "text_CrdqL3": {
           "type": "text",
           "settings": {
-            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>",
+            "text": "<p>Discover the latest SoModern pendant lighting, featuring fresh, design-forward styles curated to reflect today’s top trends and elevate modern spaces.</p>",
             "center_content": true,
             "content_width": 405,
             "margin_top": 0,
