@@ -53,7 +53,7 @@
                         assign prioritize_loading = true
                       endif
                     -%}
-                    <li role="listitem" class="swiper-slide group/thumb cursor-pointer" aria-label="Product Thumbnail {{ forloop.index }}" style="height: auto; aspect-ratio: 3 / 4;" data-media-id="thumbs-{{ section.id }}-{{ media.id }}">
+                    <li role="listitem" class="swiper-slide group/thumb cursor-pointer" aria-label="Product Thumbnail {{ forloop.index }}" style="height: auto; aspect-ratio: 1 / 1;" data-media-id="thumbs-{{ section.id }}-{{ media.id }}">
                       <div class="aspect-product overflow-hidden relative border-1 border-transparent transition-colors group-[.swiper-slide-thumb-active]/thumb:border-black">
                         {% render 'image'
                           image: media,
