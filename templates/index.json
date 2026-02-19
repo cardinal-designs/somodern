@@ -55,13 +55,13 @@
         "button_wecJP4"
       ],
       "settings": {
-        "content_position": "bottom_left",
-        "mobile_content_position": "bottom_left",
+        "content_position": "middle_center",
+        "mobile_content_position": "bottom_right",
         "content_width": 510,
         "content_color": "text-white",
         "media_type": "image",
-        "image": "shopify://shop_images/Rectangle_32.jpg",
-        "mobile_image": "shopify://shop_images/Rectangle_31.jpg",
+        "image": "shopify://shop_images/ARIEL_WV425112MBOP_LIFESTYLE_eac18718-ed90-4bd3-a2df-08e2b2c85602.jpg",
+        "mobile_image": "shopify://shop_images/ARIEL_WV425112MBOP_LIFESTYLE_0fa98d11-8edf-4fda-b488-af1c6635159a.jpg",
         "add_overlay": false
       }
     },
