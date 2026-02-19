@@ -427,12 +427,36 @@
                 "card_position": "bottom_left"
               },
               "blocks": {}
+            },
+            "interactive_hero_product_CQzaWb": {
+              "type": "_interactive-hero-product",
+              "name": "Interactive Hero Product",
+              "settings": {
+                "product": "",
+                "pos_x": 61,
+                "pos_y": 67,
+                "card_position": "bottom_left"
+              },
+              "blocks": {}
+            },
+            "interactive_hero_product_4fyAgj": {
+              "type": "_interactive-hero-product",
+              "name": "Interactive Hero Product",
+              "settings": {
+                "product": "",
+                "pos_x": 54,
+                "pos_y": 68,
+                "card_position": "bottom_left"
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "interactive_hero_product_LMTV7b",
             "interactive_hero_product_yNimQp",
-            "interactive_hero_product_GAwCXM"
+            "interactive_hero_product_GAwCXM",
+            "interactive_hero_product_CQzaWb",
+            "interactive_hero_product_4fyAgj"
           ]
         },
         "interactive_hero_slide_nHAPRM": {
