@@ -264,9 +264,9 @@
         "content_width": 600,
         "content_color": "text-white",
         "media_type": "image",
-        "image": "shopify://shop_images/Image_86.jpg",
-        "mobile_image": "shopify://shop_images/Image_87.jpg",
-        "add_overlay": false
+        "image": "shopify://shop_images/KYOTO_PD37018-VBGO-3WCCT-UNV_LIFESTYLE_661e3f09-76e0-4ac7-9be7-a99d809a89e7.jpg",
+        "mobile_image": "shopify://shop_images/KYOTO_PD37018-VBGO-3WCCT-UNV_LIFESTYLE_6d16b9d1-1650-4609-9450-cf7feeb74c95.jpg",
+        "add_overlay": true
       }
     },
     "columns_NnVJPJ": {
