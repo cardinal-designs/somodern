@@ -391,8 +391,8 @@
         "interactive_hero_slide_xgyTVh": {
           "type": "_interactive-hero-slide",
           "settings": {
-            "image": "shopify://shop_images/Image_90.jpg",
-            "mobile_image": "shopify://shop_images/Rectangle_33.jpg"
+            "image": "shopify://shop_images/StyledforEverySetting_1344x750_337819c7-e85a-40c6-a29e-1da52fac71b3.jpg",
+            "mobile_image": "shopify://shop_images/StyledforEverySetting_1344x750_fec9ac9d-ac67-4425-918e-0b8546e708a6.jpg"
           },
           "blocks": {
             "interactive_hero_product_LMTV7b": {
@@ -400,8 +400,8 @@
               "name": "Interactive Hero Product",
               "settings": {
                 "product": "",
-                "pos_x": 42,
-                "pos_y": 22,
+                "pos_x": 15,
+                "pos_y": 40,
                 "card_position": "bottom_right"
               },
               "blocks": {}
@@ -413,6 +413,7 @@
         },
         "interactive_hero_slide_nHAPRM": {
           "type": "_interactive-hero-slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Image_86.jpg",
             "mobile_image": "shopify://shop_images/Image_87.jpg"
