@@ -54,7 +54,7 @@
         "grid_item_hKmmdh": {
           "type": "_grid-item",
           "settings": {
-            "image": "shopify://shop_images/Image_43128fda-9e25-4540-8773-0b46aad25cb5.jpg",
+            "image": "shopify://shop_images/BLAKE_CH574632MBAG_LIFESTYLE.jpg",
             "add_overlay": false,
             "link": "shopify://pages/spring-2023",
             "content_position": "bottom_left",
@@ -64,7 +64,7 @@
             "button_UBVMGE": {
               "type": "button",
               "settings": {
-                "text": "Fall 25",
+                "text": "Chandeliers",
                 "button_link": "shopify://pages/spring-2023",
                 "button_style": "text",
                 "button_color": "white",
@@ -82,7 +82,7 @@
         "grid_item_38PRmf": {
           "type": "_grid-item",
           "settings": {
-            "image": "shopify://shop_images/Image-1_2c4d7569-6492-4d94-a5ed-b32ca157b004.jpg",
+            "image": "shopify://shop_images/MINORI_PD557015BGD_LIFESTYLE.jpg",
             "add_overlay": false,
             "link": "shopify://pages/spring-2023",
             "content_position": "bottom_left",
@@ -92,7 +92,7 @@
             "button_MRGC7Y": {
               "type": "button",
               "settings": {
-                "text": "Essentials Collection",
+                "text": "Pendants",
                 "button_link": "shopify://pages/spring-2023",
                 "button_style": "text",
                 "button_color": "white",
@@ -110,7 +110,7 @@
         "grid_item_JJCFF7": {
           "type": "_grid-item",
           "settings": {
-            "image": "shopify://shop_images/Image-2_6aad103e-2624-4d50-87d5-40919422ef1d.jpg",
+            "image": "shopify://shop_images/CURSIVE_LP95354-BK-UNV_LIFESTYLE_02.jpg",
             "add_overlay": false,
             "link": "shopify://pages/spring-2023",
             "content_position": "bottom_left",
@@ -120,7 +120,7 @@
             "button_pyEHVz": {
               "type": "button",
               "settings": {
-                "text": "Modern Simplicity",
+                "text": "Linear Pendants",
                 "button_link": "",
                 "button_style": "text",
                 "button_color": "white",
@@ -138,7 +138,7 @@
         "grid_item_XQmmkr": {
           "type": "_grid-item",
           "settings": {
-            "image": "shopify://shop_images/Image-1_2c4d7569-6492-4d94-a5ed-b32ca157b004.jpg",
+            "image": "shopify://shop_images/CHERISE_MP579707BGGR_LIFESTYLE.jpg",
             "add_overlay": false,
             "link": "shopify://pages/spring-2023",
             "content_position": "bottom_left",
@@ -148,7 +148,7 @@
             "button_RdaERH": {
               "type": "button",
               "settings": {
-                "text": "Essentials Collection",
+                "text": "Multi Pendants",
                 "button_link": "shopify://pages/spring-2023",
                 "button_style": "text",
                 "button_color": "white",
@@ -166,7 +166,7 @@
         "grid_item_jLPM7w": {
           "type": "_grid-item",
           "settings": {
-            "image": "shopify://shop_images/Image-2_6aad103e-2624-4d50-87d5-40919422ef1d.jpg",
+            "image": "shopify://shop_images/HARVEY_SF426012AW_LIFESTYLE.jpg",
             "add_overlay": false,
             "link": "shopify://pages/spring-2023",
             "content_position": "bottom_left",
@@ -176,7 +176,7 @@
             "button_YwQQEa": {
               "type": "button",
               "settings": {
-                "text": "Modern Simplicity",
+                "text": "Flush Mounts",
                 "button_link": "",
                 "button_style": "text",
                 "button_color": "white",
@@ -194,7 +194,7 @@
         "grid_item_bRTbym": {
           "type": "_grid-item",
           "settings": {
-            "image": "shopify://shop_images/Image_43128fda-9e25-4540-8773-0b46aad25cb5.jpg",
+            "image": "shopify://shop_images/RUE_VL416102BG_LIFESTYLE.jpg",
             "add_overlay": false,
             "link": "shopify://pages/spring-2023",
             "content_position": "bottom_left",
@@ -204,7 +204,7 @@
             "button_H4EDaU": {
               "type": "button",
               "settings": {
-                "text": "Fall 25",
+                "text": "Vanities",
                 "button_link": "shopify://pages/spring-2023",
                 "button_style": "text",
                 "button_color": "white",
@@ -218,6 +218,174 @@
           "block_order": [
             "button_H4EDaU"
           ]
+        },
+        "grid_item_Wk73Mk": {
+          "type": "_grid-item",
+          "settings": {
+            "image": "shopify://shop_images/CASTILLA_WV506108MBOP_LIFESTYLE.jpg",
+            "add_overlay": false,
+            "link": "shopify://pages/spring-2023",
+            "content_position": "bottom_left",
+            "content_color": "text-white"
+          },
+          "blocks": {
+            "button_LaQtLA": {
+              "type": "button",
+              "settings": {
+                "text": "Wall Sconces",
+                "button_link": "shopify://pages/spring-2023",
+                "button_style": "text",
+                "button_color": "white",
+                "center_button": false,
+                "margin_top": 0,
+                "margin_bottom": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "button_LaQtLA"
+          ]
+        },
+        "grid_item_Anzkhz": {
+          "type": "_grid-item",
+          "settings": {
+            "image": "shopify://shop_images/CURSIVE_FL95360-BK_LIFESTYLE_02.jpg",
+            "add_overlay": false,
+            "link": "shopify://pages/spring-2023",
+            "content_position": "bottom_left",
+            "content_color": "text-white"
+          },
+          "blocks": {
+            "button_aqmVF3": {
+              "type": "button",
+              "settings": {
+                "text": "Floor Lamps",
+                "button_link": "shopify://pages/spring-2023",
+                "button_style": "text",
+                "button_color": "white",
+                "center_button": false,
+                "margin_top": 0,
+                "margin_bottom": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "button_aqmVF3"
+          ]
+        },
+        "grid_item_6Xnakp": {
+          "type": "_grid-item",
+          "settings": {
+            "image": "shopify://shop_images/POPPY_TL437012PGN_LIFESTYLE.jpg",
+            "add_overlay": false,
+            "link": "shopify://pages/spring-2023",
+            "content_position": "bottom_left",
+            "content_color": "text-white"
+          },
+          "blocks": {
+            "button_znfGFT": {
+              "type": "button",
+              "settings": {
+                "text": "Table Lamps",
+                "button_link": "shopify://pages/spring-2023",
+                "button_style": "text",
+                "button_color": "white",
+                "center_button": false,
+                "margin_top": 0,
+                "margin_bottom": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "button_znfGFT"
+          ]
+        },
+        "grid_item_8ChW6T": {
+          "type": "_grid-item",
+          "settings": {
+            "image": "shopify://shop_images/TENKO_EW526312BKGO_LIFESTYLE.jpg",
+            "add_overlay": false,
+            "link": "shopify://pages/spring-2023",
+            "content_position": "bottom_left",
+            "content_color": "text-white"
+          },
+          "blocks": {
+            "button_E9BXkD": {
+              "type": "button",
+              "settings": {
+                "text": "Exterior",
+                "button_link": "shopify://pages/spring-2023",
+                "button_style": "text",
+                "button_color": "white",
+                "center_button": false,
+                "margin_top": 0,
+                "margin_bottom": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "button_E9BXkD"
+          ]
+        },
+        "grid_item_P3Gpz6": {
+          "type": "_grid-item",
+          "settings": {
+            "image": "shopify://shop_images/BAYLOR_CF97860-MBNW_CROPLS.jpg",
+            "add_overlay": true,
+            "link": "shopify://pages/spring-2023",
+            "content_position": "bottom_left",
+            "content_color": "text-white"
+          },
+          "blocks": {
+            "button_wfNB8d": {
+              "type": "button",
+              "settings": {
+                "text": "Fans",
+                "button_link": "shopify://pages/spring-2023",
+                "button_style": "text",
+                "button_color": "white",
+                "center_button": false,
+                "margin_top": 0,
+                "margin_bottom": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "button_wfNB8d"
+          ]
+        },
+        "grid_item_TLywBF": {
+          "type": "_grid-item",
+          "settings": {
+            "image": "shopify://shop_images/ELLEN_PL447120BG_LIFESTYLE.jpg",
+            "add_overlay": true,
+            "link": "shopify://pages/spring-2023",
+            "content_position": "bottom_left",
+            "content_color": "text-white"
+          },
+          "blocks": {
+            "button_tD3Aib": {
+              "type": "button",
+              "settings": {
+                "text": "Picture Lights",
+                "button_link": "shopify://pages/spring-2023",
+                "button_style": "text",
+                "button_color": "white",
+                "center_button": false,
+                "margin_top": 0,
+                "margin_bottom": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "button_tD3Aib"
+          ]
         }
       },
       "block_order": [
@@ -226,7 +394,13 @@
         "grid_item_JJCFF7",
         "grid_item_XQmmkr",
         "grid_item_jLPM7w",
-        "grid_item_bRTbym"
+        "grid_item_bRTbym",
+        "grid_item_Wk73Mk",
+        "grid_item_Anzkhz",
+        "grid_item_6Xnakp",
+        "grid_item_8ChW6T",
+        "grid_item_P3Gpz6",
+        "grid_item_TLywBF"
       ],
       "custom_css": [
         ".grid-item__content {padding: 20px;}"
