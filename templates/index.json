@@ -78,28 +78,28 @@
         "collection_MWhLdA": {
           "type": "collection",
           "settings": {
-            "collection": "",
+            "collection": "shop-all",
             "collection_title": "New Arrivals"
           }
         },
         "collection_UdByUB": {
           "type": "collection",
           "settings": {
-            "collection": "",
+            "collection": "wall-sconces-1",
             "collection_title": "Wall"
           }
         },
         "collection_TtjzGY": {
           "type": "collection",
           "settings": {
-            "collection": "",
+            "collection": "chandeliers",
             "collection_title": "Ceiling"
           }
         },
         "collection_Rhy9Fh": {
           "type": "collection",
           "settings": {
-            "collection": "",
+            "collection": "shop-all",
             "collection_title": "Lamps"
           }
         }
@@ -125,7 +125,7 @@
           "type": "_column",
           "settings": {
             "image": "shopify://shop_images/NELLY_WV442612BGGR_LIFESTYLE_02_190363d6-5f11-4745-9522-09b847d04fc2.jpg",
-            "link": "",
+            "link": "shopify://pages/lookbooks",
             "content_alignment": "center",
             "flex_desktop": true
           },
@@ -147,7 +147,7 @@
               "name": "Button",
               "settings": {
                 "text": "Browse Inspiration",
-                "button_link": "",
+                "button_link": "shopify://pages/lookbooks",
                 "button_style": "text",
                 "button_color": "white",
                 "center_button": false,
@@ -166,7 +166,7 @@
           "type": "_column",
           "settings": {
             "image": "shopify://shop_images/ELLEN_PL447120BG_LIFESTYLE_1500x1500_df9c51b7-596a-4724-8de8-d62de35edce1.jpg",
-            "link": "",
+            "link": "shopify://collections/shop-all",
             "content_alignment": "center",
             "flex_desktop": true
           },
@@ -188,7 +188,7 @@
               "name": "Button",
               "settings": {
                 "text": "New Arrivals",
-                "button_link": "",
+                "button_link": "shopify://collections/shop-all",
                 "button_style": "text",
                 "button_color": "white",
                 "center_button": false,
@@ -243,7 +243,7 @@
           "type": "button",
           "settings": {
             "text": "New Arrivals",
-            "button_link": "",
+            "button_link": "shopify://collections/shop-all",
             "button_style": "button",
             "button_color": "white",
             "center_button": false,
@@ -276,7 +276,7 @@
           "type": "_column",
           "settings": {
             "image": "shopify://shop_images/ETTA_FM16512-PW-3WCCT-UNV_LIFESTYLE.jpg",
-            "link": "",
+            "link": "shopify://collections/chandeliers",
             "content_alignment": "left",
             "flex_desktop": false
           },
@@ -326,7 +326,7 @@
           "type": "_column",
           "settings": {
             "image": "shopify://shop_images/WALDO_WV411309AGMB_LIFESTYLE.jpg",
-            "link": "",
+            "link": "shopify://collections/wall-sconces-1",
             "content_alignment": "left",
             "flex_desktop": false
           },
