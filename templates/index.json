@@ -39,7 +39,7 @@
           "type": "button",
           "settings": {
             "text": "New Arrivals",
-            "button_link": "",
+            "button_link": "shopify://collections/shop-all",
             "button_style": "button",
             "button_color": "white",
             "center_button": false,
