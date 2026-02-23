@@ -232,7 +232,7 @@
           "type": "text",
           "settings": {
             "text": "<p>Discover the latest SoModern pendant lighting, featuring fresh, design-forward styles curated to reflect today’s top trends and elevate modern spaces.</p>",
-            "center_content": true,
+            "center_content": false,
             "content_width": 405,
             "margin_top": 0,
             "margin_bottom": 0
@@ -259,7 +259,7 @@
         "button_MEE49z"
       ],
       "settings": {
-        "content_position": "middle_center",
+        "content_position": "bottom_left",
         "mobile_content_position": "middle_center",
         "content_width": 600,
         "content_color": "text-white",
