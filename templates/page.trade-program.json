@@ -126,7 +126,7 @@
           "type": "button",
           "settings": {
             "text": "Join Now",
-            "button_link": "",
+            "button_link": "shopify://pages/trade-program-application",
             "button_style": "text",
             "button_color": "white",
             "center_button": false,
@@ -180,7 +180,7 @@
           "type": "button",
           "settings": {
             "text": "Contact Us",
-            "button_link": "",
+            "button_link": "shopify://pages/contact",
             "button_style": "text",
             "button_color": "white",
             "center_button": false,
