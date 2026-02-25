@@ -88,13 +88,6 @@
             </nav>
           {% endif %}
 
-          {% if shop.customer_accounts_enabled %}
-            <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="group/link relative md:hidden">
-              {% render 'icon' icon: 'account' %}
-              <span class="visually-hidden">Account</span>
-            </a>
-          {% endif %}
-
           <div>
             <a href="#swym-wishlist" class="swym-wishlist text-cta uppercase hidden md:block group/link md:py-20 relative">
               Wishlist
@@ -106,6 +99,13 @@
               </svg>
             </a>
           </div>
+
+          {% if shop.customer_accounts_enabled %}
+            <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="group/link relative md:hidden">
+              {% render 'icon' icon: 'account' %}
+              <span class="visually-hidden">Account</span>
+            </a>
+          {% endif %}
 
           {% if template != 'cart' %}
             <button class="relative md:py-20" data-open-cart id="cart-icon-bubble" aria-label="Open Cart Drawer" data-id="{{ section.id }}">
