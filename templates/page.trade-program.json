@@ -246,6 +246,9 @@
         "title_UqwpCM",
         "text_TyDbe7"
       ],
+      "custom_css": [
+        ".image img {object-position: top;}"
+      ],
       "name": "Hero",
       "settings": {
         "content_position": "middle_center",
@@ -254,7 +257,7 @@
         "content_color": "text-white",
         "media_type": "image",
         "image": "shopify://shop_images/RICO_WS30-016-BN_LIFESTYLE.jpg",
-        "add_overlay": false
+        "add_overlay": true
       }
     }
   },
