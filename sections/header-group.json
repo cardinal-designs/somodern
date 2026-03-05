@@ -16,8 +16,8 @@
       "settings": {
         "background_color": "#302e2d",
         "content_color": "text-white",
-        "text": "Free Domestic and International Shipping",
-        "enable_country_selector": true
+        "text": "Free Domestic Shipping",
+        "enable_country_selector": false
       }
     },
     "header": {
