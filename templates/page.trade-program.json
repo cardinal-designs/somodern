@@ -65,8 +65,8 @@
               "type": "button",
               "name": "Button",
               "settings": {
-                "text": "Shop Now",
-                "button_link": "shopify://collections/shop-all",
+                "text": "Apply",
+                "button_link": "shopify://pages/trade-program-application",
                 "button_style": "button",
                 "button_color": "white",
                 "center_button": false,
@@ -115,7 +115,7 @@
         "text_4L9paJ": {
           "type": "text",
           "settings": {
-            "text": "<p>Our trade program is here to support interior and hospitality designers, home stagers, architects, and procurement agents. We do not offer support for wholesale or business to business buying at this time.‌</p>",
+            "text": "<p>Our Trade Program supports interior designers, decorators, small builders, and hospitality specifiers with access to top-trending lighting styles at competitive, trade-exclusive pricing.</p>",
             "center_content": false,
             "margin_top": 0,
             "margin_bottom": 0
@@ -169,7 +169,7 @@
         "text_get9MT": {
           "type": "text",
           "settings": {
-            "text": "<p>Lorem ipsum dolor sit amet consectetur. Sit quam enim risus interdum. Blandit hac erat sed eu rutrum. Dignissim felis id et scelerisque nibh habitasse arcu.</p>",
+            "text": "<p>As a SoModern Trade Partner, enjoy exclusive pricing, early access to new collections, and best-in-class customer care designed to support your projects from concept to completion.</p>",
             "center_content": false,
             "margin_top": 0,
             "margin_bottom": 0
@@ -209,32 +209,12 @@
     "hero_faWXyf": {
       "type": "hero",
       "blocks": {
-        "subtitle_Kj6PAQ": {
-          "type": "subtitle",
-          "settings": {
-            "title": "featured project",
-            "margin_top": 0,
-            "margin_bottom": 0
-          },
-          "blocks": {}
-        },
         "title_UqwpCM": {
           "type": "title",
           "settings": {
-            "title": "“Lorem ipsum dolor sit amet consectetur. Pulvinar diam eu bibendum sodales. Morbi curabitur potenti cursus risus neque nascetur sapien.”",
+            "title": "SoModern’s Trade Program makes sourcing lighting simple and seamless for professionals. With exclusive pricing and responsive support, it’s designed to save time and make every project easier.",
             "font_size": "h2",
             "mobile_font_size": "h2",
-            "margin_top": 0,
-            "margin_bottom": 0
-          },
-          "blocks": {}
-        },
-        "text_TyDbe7": {
-          "type": "text",
-          "name": "Text",
-          "settings": {
-            "text": "<p>Lorem Ipsum</p>",
-            "center_content": false,
             "margin_top": 0,
             "margin_bottom": 0
           },
@@ -242,9 +222,7 @@
         }
       },
       "block_order": [
-        "subtitle_Kj6PAQ",
-        "title_UqwpCM",
-        "text_TyDbe7"
+        "title_UqwpCM"
       ],
       "custom_css": [
         ".image img {object-position: top;}"
