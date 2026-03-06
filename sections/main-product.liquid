@@ -3,20 +3,7 @@
 
   assign slider_desktop_style = section.settings.slider_style
   assign slider_mobile_style = section.settings.mobile_slider_style
-  
-  assign description_position = section.settings.description_position
-  assign mobile_title_position = section.settings.mobile_title_position
 %}
-
-{% capture title_section %}
-  <h1 class="mb-10 text-m-h2 font-serif md:text-h3">
-    {{ product.title | escape }}
-  </h1>
-
-  {% unless product.type == 'Gift Card' %}
-    {% render 'price' product: product, classes: 'mb-10 text-m-sh1 md:text-body-2' %}
-  {% endunless %}
-{% endcapture %}
 
 <product-section>
   <div class="page-width max-w-[1540px] mx-auto">
@@ -24,12 +11,6 @@
       <a class="skip-to-content-link button visually-hidden" href="#ProductInfo-{{ section.id }}">
         {{ "accessibility.skip_to_product_info" | t }}
       </a>
-
-      {% if mobile_title_position == 'above' %}
-        <div class="my-20 md:hidden">
-          {{ title_section }}
-        </div>
-      {% endif %}
 
       <div class="-mx-20 px-20 relative overflow-hidden md:m-0 md:p-0 md:overflow-visible">
         <product-slider
@@ -147,229 +128,205 @@
         </div>
 
         <div class="sticky-bar w-full pt-20">
-          <div class="mb-20 hidden md:block">
-            {% render 'product-badges' prod: product %}
-          </div>
 
-          <div class="mb-30 md:mb-40{% if mobile_title_position == 'above' %} hidden md:block{% endif %}">
-            {{ title_section }}
-          </div>
-
-          {% if product.description != blank and description_position == 'above' %}
-            <div class="rte mt-40 mb-30 text-body-4 hidden md:block">
-              {{ product.description }}
-            </div>
-          {% endif %}
-
-          {% render 'product-form' prod: product, product_form_id: product_form_id, change_url: true %}
-
-          {% if section.settings.extra_text != blank %}
-            <p class="mt-10 text-caption font-serif text-center">{{ section.settings.extra_text }}</p>
-          {% endif %}
-
-          <div class="mt-30">
-            {% if product.description != blank %}
-              <div class="rte mb-30 text-m-body-2 md:text-body-4{% unless description_position == 'below' %} md:hidden{% endunless %}">
-                {{ product.description }}
-              </div>
-            {% endif %}
-
-            {% if slider_desktop_style == 'grid' or mobile_title_position == 'above' %}
-              <div class="mb-30 block md:hidden">
-                {% render 'breadcrumbs' breadcrumbs_only: true, change_url: true %}
-              </div>
-            {% endif %}
-
-            <div class="mt-40 mb-20 border-t-1 border-tan md:mt-30">
-              <dropdown-item>
-                <div class="group/dropdown border-b-1 border-tan" data-dropdown>
-                  <button class="w-full py-20 flex justify-between text-m-sh2 uppercase md:text-sh2" data-dropdown-toggle>
-                    Specifications
-                    <span class="rotate-90 transition-transform group-[.active]/dropdown:rotate-[270deg]">
-                      {% render 'icon' icon: 'caret' %}
-                    </span>
-                  </button>
-                  <div class="hidden group-[.active]/dropdown:block" aria-hidden="true" data-dropdown-content>
-                    <div class="rte pb-20 text-m-body-2 md:text-body-4">
-                      <table>
-                        {% if product.metafields.custom.led_color_temperature != blank %}
-                          <tr>
-                            <td class="text-m-body-2 font-semibold">Color Temperature</td>
-                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.led_color_temperature }}</td>
-                          </tr>
-                        {% endif %}
-                        {% if product.metafields.custom.primary_dimension != blank %}
-                          <tr>
-                            <td class="text-m-body-2 font-semibold">Primary Dimension</td>
-                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.primary_dimension }}</td>
-                          </tr>
-                        {% endif %}
-                        {% if product.metafields.custom.fixture_dimensions != blank %}
-                          <tr>
-                            <td class="text-m-body-2 font-semibold">Fixture Dimensions</td>
-                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.fixture_dimensions }}</td>
-                          </tr>
-                        {% endif %}
-                        {% if product.metafields.custom.location_rating != blank %}
-                          <tr>
-                            <td class="text-m-body-2 font-semibold">Location Rating</td>
-                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.location_rating }}</td>
-                          </tr>
-                        {% endif %}
-                        {% if product.metafields.custom.wattage != blank %}
-                          <tr>
-                            <td class="text-m-body-2 font-semibold">Wattage</td>
-                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.wattage }}</td>
-                          </tr>
-                        {% endif %}
-                        {% if product.metafields.custom.cri != blank %}
-                          <tr>
-                            <td class="text-m-body-2 font-semibold">CRI</td>
-                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.cri }}</td>
-                          </tr>
-                        {% endif %}
-                        {% if product.metafields.custom.led_total_lumens != blank %}
-                          <tr>
-                            <td class="text-m-body-2 font-semibold">LED Total Lumens</td>
-                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.led_total_lumens }}</td>
-                          </tr>
-                        {% endif %}
-                        {% if product.metafields.custom.fixture_delivered_lumens != blank %}
-                          <tr>
-                            <td class="text-m-body-2 font-semibold">Fixture Delivered Lumens</td>
-                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.fixture_delivered_lumens }}</td>
-                          </tr>
-                        {% endif %}
-                        {% if product.metafields.custom.led_life_span_hr != blank %}
-                          <tr>
-                            <td class="text-m-body-2 font-semibold">LED Life Span</td>
-                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.led_life_span_hr }}</td>
-                          </tr>
-                        {% endif %}
-                        {% if product.metafields.custom.fixture_input_voltage != blank %}
-                          <tr>
-                            <td class="text-m-body-2 font-semibold">Fixture Input Voltage</td>
-                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.fixture_input_voltage }}</td>
-                          </tr>
-                        {% endif %}
-                        {% if product.metafields.custom.illumination_direction != blank %}
-                          <tr>
-                            <td class="text-m-body-2 font-semibold">Illumination Direction</td>
-                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.illumination_direction }}</td>
-                          </tr>
-                        {% endif %}
-                        {% if product.metafields.custom.material != blank %}
-                          <tr>
-                            <td class="text-m-body-2 font-semibold">Material</td>
-                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.material }}</td>
-                          </tr>
-                        {% endif %}
-                        {% if product.metafields.custom.diffuser_material != blank %}
-                          <tr>
-                            <td class="text-m-body-2 font-semibold">Diffuser Material</td>
-                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.diffuser_material }}</td>
-                          </tr>
-                        {% endif %}
-                        {% if product.metafields.custom.etl_compliant != blank %}
-                          <tr>
-                            <td class="text-m-body-2 font-semibold">ETL Compliant</td>
-                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.etl_compliant }}</td>
-                          </tr>
-                        {% endif %}
-                        {% if product.metafields.custom.country_of_origin != blank %}
-                          <tr>
-                            <td class="text-m-body-2 font-semibold">Country of Origin</td>
-                            <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.country_of_origin }}</td>
-                          </tr>
-                        {% endif %}
-                      </table>
+          <div class="flex flex-col gap-10">
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'title' %}
+                  <h1 class="mb-10 text-m-h2 font-serif md:text-h3" {{ block.shopify_attributes }}>
+                    {{ product.title | escape }}
+                  </h1>
+                {% when 'price' %}
+                  {% unless product.type == 'Gift Card' %}
+                    <div {{ block.shopify_attributes }}>
+                      {% render 'price' product: product, classes: 'mb-10 text-m-sh1 md:text-body-2' %}
                     </div>
+                  {% endunless %}
+                {% when 'badge' %}
+                  <div class="mb-10 hidden md:block" {{ block.shopify_attributes }}>
+                    {% render 'product-badges' prod: product %}
                   </div>
-                </div>
-              </dropdown-item>
-
-              <dropdown-item>
-                <div class="group/dropdown border-b-1 border-tan" data-dropdown>
-                  <button class="w-full py-20 flex justify-between text-m-sh2 uppercase md:text-sh2" data-dropdown-toggle>
-                    Downloads
-                    <span class="rotate-90 transition-transform group-[.active]/dropdown:rotate-[270deg]">
-                      {% render 'icon' icon: 'caret' %}
-                    </span>
-                  </button>
-                  <div class="hidden group-[.active]/dropdown:block" aria-hidden="true" data-dropdown-content>
-                    <div class="rte pb-20 text-m-body-2">
-                      <ul>
-                        {% if product.metafields.custom.spec_sheet_url != blank %}
-                          <li><a href="{{ product.metafields.custom.spec_sheet_url }}" target="_blank">WV346006 Spec Sheet</a></li>
-                        {% endif %}
-                        {% if product.metafields.custom.install_sheet_url != blank %}
-                          <li><a href="{{ product.metafields.custom.install_sheet_url }}" target="_blank">WV346006 Installation Instructions</a></li>
-                        {% endif %}
-                        {% if product.metafields.custom.ies_zip_url != blank %}
-                          <li><a href="{{ product.metafields.custom.ies_zip_url }}" target="_blank">IES Files</a></li>
-                        {% endif %}
-                        {% if product.metafields.custom.revit_files_zip != blank %}
-                          <li><a href="{{ product.metafields.custom.revit_files_zip }}" target="_blank">REVIT Files</a></li>
-                        {% endif %}
-                        {% if product.metafields.custom.dimmer_pdf_url != blank %}
-                          <li><a href="{{ product.metafields.custom.dimmer_pdf_url }}" target="_blank">Suggested Dimmers</a></li>
-                        {% endif %}
-                      </ul>
-                    </div>
+                {% when 'description' %}
+                  <div class="rte my-10 text-body-4" {{ block.shopify_attributes }}>
+                    {{ product.description }}
                   </div>
-                </div>
-              </dropdown-item>
+                {% when 'form' %}
+                  <div {{ block.shopify_attributes }}>
+                    {% render 'product-form' prod: product, product_form_id: product_form_id, change_url: true %}
 
-              {% if section.blocks.size > 0 %}
-                {% for block in section.blocks %}
-                  {% if block.settings.text != blank %}
-                    
-                  {% endif %}
-                  <dropdown-item {{ block.shopify_attributes }}>
-                    <div class="group/dropdown border-b-1 border-tan" data-dropdown>
-                      <button class="w-full py-20 flex justify-between text-m-sh2 uppercase md:text-sh2" data-dropdown-toggle>
-                        {{ block.settings.title }}
-                        <span class="rotate-90 transition-transform group-[.active]/dropdown:rotate-[270deg]">
-                          {% render 'icon' icon: 'caret' %}
-                        </span>
-                      </button>
-                      <div class="hidden group-[.active]/dropdown:block" aria-hidden="true" data-dropdown-content>
-                        <div class="rte pb-20 text-m-body-2 md:text-body-4">{{ block.settings.text }}</div>
+                    {% if section.settings.extra_text != blank %}
+                      <p class="mt-10 text-caption font-serif text-center">{{ section.settings.extra_text }}</p>
+                    {% endif %}
+                  </div>
+                {% when 'dropdown' %}
+                  <div class="mt-40 mb-20 border-t-1 border-tan md:mt-30" {{ block.shopify_attributes }}>
+                    <dropdown-item>
+                      <div class="group/dropdown border-b-1 border-tan" data-dropdown>
+                        <button class="w-full py-20 flex justify-between text-m-sh2 uppercase md:text-sh2" data-dropdown-toggle>
+                          Specifications
+                          <span class="rotate-90 transition-transform group-[.active]/dropdown:rotate-[270deg]">
+                            {% render 'icon' icon: 'caret' %}
+                          </span>
+                        </button>
+                        <div class="hidden group-[.active]/dropdown:block" aria-hidden="true" data-dropdown-content>
+                          <div class="rte pb-20 text-m-body-2 md:text-body-4">
+                            <table>
+                              {% if product.metafields.custom.led_color_temperature != blank %}
+                                <tr>
+                                  <td class="text-m-body-2 font-semibold">Color Temperature</td>
+                                  <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.led_color_temperature }}</td>
+                                </tr>
+                              {% endif %}
+                              {% if product.metafields.custom.primary_dimension != blank %}
+                                <tr>
+                                  <td class="text-m-body-2 font-semibold">Primary Dimension</td>
+                                  <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.primary_dimension }}</td>
+                                </tr>
+                              {% endif %}
+                              {% if product.metafields.custom.fixture_dimensions != blank %}
+                                <tr>
+                                  <td class="text-m-body-2 font-semibold">Fixture Dimensions</td>
+                                  <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.fixture_dimensions }}</td>
+                                </tr>
+                              {% endif %}
+                              {% if product.metafields.custom.location_rating != blank %}
+                                <tr>
+                                  <td class="text-m-body-2 font-semibold">Location Rating</td>
+                                  <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.location_rating }}</td>
+                                </tr>
+                              {% endif %}
+                              {% if product.metafields.custom.wattage != blank %}
+                                <tr>
+                                  <td class="text-m-body-2 font-semibold">Wattage</td>
+                                  <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.wattage }}</td>
+                                </tr>
+                              {% endif %}
+                              {% if product.metafields.custom.cri != blank %}
+                                <tr>
+                                  <td class="text-m-body-2 font-semibold">CRI</td>
+                                  <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.cri }}</td>
+                                </tr>
+                              {% endif %}
+                              {% if product.metafields.custom.led_total_lumens != blank %}
+                                <tr>
+                                  <td class="text-m-body-2 font-semibold">LED Total Lumens</td>
+                                  <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.led_total_lumens }}</td>
+                                </tr>
+                              {% endif %}
+                              {% if product.metafields.custom.fixture_delivered_lumens != blank %}
+                                <tr>
+                                  <td class="text-m-body-2 font-semibold">Fixture Delivered Lumens</td>
+                                  <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.fixture_delivered_lumens }}</td>
+                                </tr>
+                              {% endif %}
+                              {% if product.metafields.custom.led_life_span_hr != blank %}
+                                <tr>
+                                  <td class="text-m-body-2 font-semibold">LED Life Span</td>
+                                  <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.led_life_span_hr }}</td>
+                                </tr>
+                              {% endif %}
+                              {% if product.metafields.custom.fixture_input_voltage != blank %}
+                                <tr>
+                                  <td class="text-m-body-2 font-semibold">Fixture Input Voltage</td>
+                                  <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.fixture_input_voltage }}</td>
+                                </tr>
+                              {% endif %}
+                              {% if product.metafields.custom.illumination_direction != blank %}
+                                <tr>
+                                  <td class="text-m-body-2 font-semibold">Illumination Direction</td>
+                                  <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.illumination_direction }}</td>
+                                </tr>
+                              {% endif %}
+                              {% if product.metafields.custom.material != blank %}
+                                <tr>
+                                  <td class="text-m-body-2 font-semibold">Material</td>
+                                  <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.material }}</td>
+                                </tr>
+                              {% endif %}
+                              {% if product.metafields.custom.diffuser_material != blank %}
+                                <tr>
+                                  <td class="text-m-body-2 font-semibold">Diffuser Material</td>
+                                  <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.diffuser_material }}</td>
+                                </tr>
+                              {% endif %}
+                              {% if product.metafields.custom.etl_compliant != blank %}
+                                <tr>
+                                  <td class="text-m-body-2 font-semibold">ETL Compliant</td>
+                                  <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.etl_compliant }}</td>
+                                </tr>
+                              {% endif %}
+                              {% if product.metafields.custom.country_of_origin != blank %}
+                                <tr>
+                                  <td class="text-m-body-2 font-semibold">Country of Origin</td>
+                                  <td class="py-5 px-10 text-m-body-2">{{ product.metafields.custom.country_of_origin }}</td>
+                                </tr>
+                              {% endif %}
+                            </table>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </dropdown-item>
-                {% endfor %}
-              {% endif %}
-            </div>
+                    </dropdown-item>
 
-            {% if section.settings.value_props != blank %}
-              <div class="my-30 px-15 border-1 border-tan [&_p]:py-10 [&_p]:text-body-3 [&_p]:border-b-1 [&_p:last-child]:border-0 [&_p]:border-tan">{{ section.settings.value_props }}</div>
-            {% endif %}
-
-            {% if section.settings.show_sharing %}
-              {% render 'social-sharing' url: product_url, image: product.featured_image %}
-            {% endif %}
-
-            {% if section.settings.product_upsells != blank %}
-              {% assign upsell_count = section.settings.upsell_count | times: 1.0 | round %}
-              <div class="mt-40">
-                {% if section.settings.upsell_title != blank %}
-                  <p class="mb-20 text-h3 font-serif md:text-h4">{{ section.settings.upsell_title }}</p>
-                  <div class="{% if upsell_count == 2 %} grid grid-cols-2 gap-20{% endif %}">
-                    {% for current_product in section.settings.product_upsells limit: upsell_count %}
-                      {% liquid
-                        assign size = 'small'
-                        if upsell_count == 1
-                          assign size = 'large'
-                        endif
-                      %}
-                      {% render 'product-upsell' prod: current_product, size: size %}
-                    {% endfor %}
+                    <dropdown-item>
+                      <div class="group/dropdown border-b-1 border-tan" data-dropdown>
+                        <button class="w-full py-20 flex justify-between text-m-sh2 uppercase md:text-sh2" data-dropdown-toggle>
+                          Downloads
+                          <span class="rotate-90 transition-transform group-[.active]/dropdown:rotate-[270deg]">
+                            {% render 'icon' icon: 'caret' %}
+                          </span>
+                        </button>
+                        <div class="hidden group-[.active]/dropdown:block" aria-hidden="true" data-dropdown-content>
+                          <div class="rte pb-20 text-m-body-2">
+                            <ul>
+                              {% if product.metafields.custom.spec_sheet_url != blank %}
+                                <li><a href="{{ product.metafields.custom.spec_sheet_url }}" target="_blank">WV346006 Spec Sheet</a></li>
+                              {% endif %}
+                              {% if product.metafields.custom.install_sheet_url != blank %}
+                                <li><a href="{{ product.metafields.custom.install_sheet_url }}" target="_blank">WV346006 Installation Instructions</a></li>
+                              {% endif %}
+                              {% if product.metafields.custom.ies_zip_url != blank %}
+                                <li><a href="{{ product.metafields.custom.ies_zip_url }}" target="_blank">IES Files</a></li>
+                              {% endif %}
+                              {% if product.metafields.custom.revit_files_zip != blank %}
+                                <li><a href="{{ product.metafields.custom.revit_files_zip }}" target="_blank">REVIT Files</a></li>
+                              {% endif %}
+                              {% if product.metafields.custom.dimmer_pdf_url != blank %}
+                                <li><a href="{{ product.metafields.custom.dimmer_pdf_url }}" target="_blank">Suggested Dimmers</a></li>
+                              {% endif %}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </dropdown-item>
                   </div>
-                {% endif %}
-              </div>
-            {% endif %}
-
+                {% when 'upsells' %}
+                  {% if block.settings.product_upsells != blank %}
+                    {% assign upsell_count = block.settings.upsell_count | times: 1.0 | round %}
+                    <div class="mt-40">
+                      {% if block.settings.upsell_title != blank %}
+                        <p class="mb-20 text-h3 font-serif md:text-h4">{{ block.settings.upsell_title }}</p>
+                        <div class="{% if upsell_count == 2 %} grid grid-cols-2 gap-20{% endif %}">
+                          {% for current_product in block.settings.product_upsells limit: upsell_count %}
+                            {% liquid
+                              assign size = 'small'
+                              if upsell_count == 1
+                                assign size = 'large'
+                              endif
+                            %}
+                            {% render 'product-upsell' prod: current_product, size: size %}
+                          {% endfor %}
+                        </div>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                {% when 'share' %}
+                  <div>
+                    {% render 'social-sharing' url: product_url, image: product.featured_image %}
+                  </div>
+                {% when 'value_props' %}
+                  <div class="my-30 px-15 border-1 border-tan [&_p]:py-10 [&_p]:text-body-3 [&_p]:border-b-1 [&_p:last-child]:border-0 [&_p]:border-tan">{{ section.settings.value_props }}</div>
+              {% endcase %}
+            {% endfor %}
           </div>
         </div>
 
@@ -459,28 +416,7 @@
     "settings": [
       {
         "type": "header",
-        "content": "Config"
-      },
-      {
-        "type": "select",
-        "id": "description_position",
-        "options": [
-          { "value": "above", "label": "Above" },
-          { "value": "below", "label": "Below" }
-        ],
-        "default": "above",
-        "label": "Description Position",
-        "info": "This applies to desktop only."
-      },
-      {
-        "type": "select",
-        "id": "mobile_title_position",
-        "options": [
-          { "value": "above", "label": "Above" },
-          { "value": "below", "label": "Below" }
-        ],
-        "default": "below",
-        "label": "Mobile Title Position"
+        "content": "Slider"
       },
       {
         "type": "select",
@@ -492,10 +428,6 @@
           {"label": "None", "value": "none"}
         ],
         "default": "lightbox"
-      },
-      {
-        "type": "header",
-        "content": "Slider"
       },
       {
         "type": "select",
@@ -516,52 +448,48 @@
         ],
         "default": "center",
         "label": "Mobile Slider Style"
-      },
-      {
-        "type": "header",
-        "content": "Content"
-      },
-      {
-        "type": "text",
-        "id": "extra_text",
-        "label": "Extra Text"
-      },
-      {
-        "type": "richtext",
-        "id": "value_props",
-        "label": "Value Props"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_sharing",
-        "label": "Show Share Button"
-      },
-      {
-        "type": "header",
-        "content": "Upsells"
-      },
-      {
-        "type": "text",
-        "id": "upsell_title",
-        "label": "Upsell Title"
-      },
-      {
-        "type": "product_list",
-        "id": "product_upsells",
-        "label": "Product Upsells"
-      },
-      {
-        "type": "select",
-        "id": "upsell_count",
-        "options": [
-          { "value": "1", "label": "1" },
-          { "value": "2", "label": "2" }
-        ],
-        "default": "2",
-        "label": "Upsell Count"
       }
     ],
     "blocks": [
+      {
+        "type": "title",
+        "name": "Title",
+        "settings": [
+
+        ]
+      },
+      {
+        "type": "price",
+        "name": "Price",
+        "settings": [
+
+        ]
+      },
+      {
+        "type": "badge",
+        "name": "Badge",
+        "settings": [
+
+        ]
+      },
+      {
+        "type": "description",
+        "name": "Description",
+        "settings": [
+
+        ]
+      },
+      {
+        "type": "form",
+        "name": "Form",
+        "settings": [
+          {
+            "type": "text",
+            "id": "extra_text",
+            "label": "Extra Text"
+          }
+        ]
+      },
       {
         "type": "dropdown",
         "name": "Dropdown",
@@ -575,6 +503,50 @@
             "type": "richtext",
             "id": "text",
             "label": "Text"
+          }
+        ]
+      },
+      {
+        "type": "upsells",
+        "name": "Upsells",
+        "settings": [
+          {
+            "type": "text",
+            "id": "upsell_title",
+            "label": "Upsell Title"
+          },
+          {
+            "type": "product_list",
+            "id": "product_upsells",
+            "label": "Product Upsells"
+          },
+          {
+            "type": "select",
+            "id": "upsell_count",
+            "options": [
+              { "value": "1", "label": "1" },
+              { "value": "2", "label": "2" }
+            ],
+            "default": "2",
+            "label": "Upsell Count"
+          }
+        ]
+      },
+      {
+        "type": "share",
+        "name": "Share",
+        "settings": [
+
+        ]
+      },
+      {
+        "type": "value_props",
+        "name": "Value Props",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "value_props",
+            "label": "Value Props"
           }
         ]
       }

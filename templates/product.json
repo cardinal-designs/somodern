@@ -11,18 +11,63 @@
   "sections": {
     "main": {
       "type": "main-product",
+      "blocks": {
+        "badge_tPPEw6": {
+          "type": "badge",
+          "settings": {}
+        },
+        "title_EYRVEU": {
+          "type": "title",
+          "settings": {}
+        },
+        "price_rPC7YE": {
+          "type": "price",
+          "settings": {}
+        },
+        "form_ADMp33": {
+          "type": "form",
+          "settings": {
+            "extra_text": ""
+          }
+        },
+        "description_444RBm": {
+          "type": "description",
+          "settings": {}
+        },
+        "dropdown_nNJRhE": {
+          "type": "dropdown",
+          "settings": {
+            "title": "",
+            "text": ""
+          }
+        },
+        "upsells_QrGnMa": {
+          "type": "upsells",
+          "settings": {
+            "upsell_title": "You Might Like",
+            "product_upsells": "{{ product.metafields.custom.product_upsells.value }}",
+            "upsell_count": "2"
+          }
+        },
+        "share_MYEkMy": {
+          "type": "share",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "badge_tPPEw6",
+        "title_EYRVEU",
+        "price_rPC7YE",
+        "form_ADMp33",
+        "description_444RBm",
+        "dropdown_nNJRhE",
+        "upsells_QrGnMa",
+        "share_MYEkMy"
+      ],
       "settings": {
-        "description_position": "below",
-        "mobile_title_position": "below",
         "zoom_type": "lightbox",
         "slider_style": "thumbnails",
-        "mobile_slider_style": "center",
-        "extra_text": "",
-        "value_props": "",
-        "show_sharing": true,
-        "upsell_title": "You Might Like",
-        "product_upsells": "{{ product.metafields.custom.product_upsells.value }}",
-        "upsell_count": "2"
+        "mobile_slider_style": "center"
       }
     },
     "social_slider_prhMLH": {
