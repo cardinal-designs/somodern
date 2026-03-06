@@ -25,7 +25,7 @@
     data-section-type="header"
   >
     <div class="page-width">
-      <div class="grid grid-cols-thirds items-center gap-20 md:gap-40">
+      <div class="grid grid-cols-thirds items-center gap-20 xl:gap-40">
 
        <!-- Mobile Menu -->
         <div class="md:hidden">
@@ -56,7 +56,7 @@
 
         <!-- Search -->
         {% if section.settings.enable_search %}
-          <predictive-search class="w-full mx-auto hidden md:w-[300px] md:block lg:md:w-[420px] xl:w-[520px]">
+          <predictive-search class="w-full mx-auto hidden md:w-[300px] md:block lg:md:w-[350px] xl:w-[520px]">
             <div class="border-b-1 border-black/35">
               <form action="{{ routes.search_url }}" method="get" role="search" class="w-full">
                 <input type="hidden" name="type" value="product">
@@ -73,10 +73,10 @@
         {% endif %}
 
         <!-- Icons -->
-        <div class="flex justify-end items-center gap-20 flex-shrink-0 relative md:gap-40 lg:gap-60">
+        <div class="flex justify-end items-center gap-20 flex-shrink-0 relative md:gap-20 xl:gap-60">
           {% if section.settings.additional_menu != blank %}
             <nav class="hidden md:flex">
-              <ul class="hidden items-center gap-20 md:flex md:gap-40 lg:gap-60" role="list">
+              <ul class="hidden items-center gap-20 md:flex md:gap-20 xl:gap-60" role="list">
                 {% for link in section.settings.additional_menu.links %}
                   <li class="group/nav flex">
                     <a href="{{ link.url }}" class="text-cta uppercase"{% if link.current %} aria-current="page"{% endif %}>
@@ -84,6 +84,11 @@
                     </a>
                   </li>
                 {% endfor %}
+                <li class="group/nav flex">
+                  <a href="#swym-wishlist" class="text-cta uppercase">
+                    Wishlist
+                  </a>
+                </li>
               </ul>
             </nav>
           {% endif %}
@@ -101,6 +106,15 @@
             </a>
           </div>
           {% endcomment %}
+
+          
+          <div class="md:hidden">
+            <a href="#swym-wishlist" class="swym-wishlist text-cta uppercase md:hidden group/link md:py-20 relative">
+              <svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.6836 0.505859C14.8998 0.442806 15.9126 0.921544 16.6074 1.74512C17.9567 3.3446 18.1849 6.39599 15.9023 9.46582L15.6738 9.7627C13.9681 11.9037 11.4113 13.871 9.06152 15.4941C6.71112 13.8699 4.15679 11.905 2.4502 9.7627C-0.0748214 6.59426 0.122995 3.39527 1.51562 1.74414C2.21034 0.920664 3.22338 0.442782 4.43945 0.505859C5.66479 0.56942 7.14336 1.18681 8.7207 2.65527L9.06152 2.97266L9.40234 2.65527C10.9796 1.18702 12.4582 0.569436 13.6836 0.505859Z" stroke="currentColor"/>
+              </svg>
+            </a>
+          </div>
 
           {% if shop.customer_accounts_enabled %}
             <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="group/link relative md:hidden">
@@ -148,7 +162,7 @@
                         <div class="absolute bottom-[4px] left-0 right-full border-b-1 border-black transition-position group-hover/link:right-0"></div>
                       </div>
 
-                      <ul class="min-w-[170px] pt-20 px-20 pb-15 flex flex-col gap-5 absolute top-full -translate-x-20 -translate-y-px opacity-0 invisible bg-background border-1 border-beige group-hover/nav:opacity-100 group-hover/nav:visible transition-visibility ease-in-out" role="list" tabindex="-1">
+                      <ul class="min-w-[170px] pt-20 px-20 pb-15 flex flex-col gap-5 absolute top-full -translate-x-20 right-[-20px] left-auto -translate-y-px opacity-0 invisible bg-background border-1 border-beige group-hover/nav:opacity-100 group-hover/nav:visible transition-visibility ease-in-out" role="list" tabindex="-1">
                         {% for child_link in link.links %}
                           <li class="group/childnav relative">
                             <a href="{{ child_link.url }}" class="pb-5 flex items-center gap-10 text-body-4 relative opacity-50 transition-opacity hover:opacity-100"{% if child_link.current %} aria-current="page"{% endif %}>
