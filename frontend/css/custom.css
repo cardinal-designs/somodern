@@ -15,6 +15,7 @@
 .swym-storefront-layout-root-component button,
 swym-storefront-layout-login-user .swym-storefront-layout-login-button,
 .swym-storefront-layout-empty-sfl-view-cart-button,
+.swym-storefront-layout-empty-sfl-view-cart-button,
 .swym-ui-component .swym-is-button {
     font-weight: 500 !important;
     font-size: 11px !important;
@@ -184,8 +185,14 @@ swym-storefront-layout-as-drawer .swym-storefront-layout-layout {
 
 .swym-storefront-layout-grid-item-add-to-cart-button,
 .swym-ui-component .swym-wishlist-grid .swym-wishlist-item .swym-add-to-cart-btn,
-.swym-ui-component.swym-wishlist-page .swym-sfl-tab-container .swym-sfl-list-view .swym-sfl-layout-grid .swym-sfl-card-product-item .swym-sfl-add-to-cart-btn {
+.swym-ui-component.swym-wishlist-page .swym-sfl-tab-container .swym-sfl-list-view .swym-sfl-layout-grid .swym-sfl-card-product-item .swym-sfl-add-to-cart-btn,
+.swym-storefront-layout-empty-sfl-view-cart-button {
     padding: 11px var(--swym-p-space-300) !important; 
+}
+
+.swym-storefront-layout-empty-sfl-view-cart-button {
+    color: var(--swym-storefront-layout-button-color-text-primary) !important;
+    background: var(--swym-storefront-layout-button-color-bg-primary) !important;
 }
 
 .swym-storefront-layout-layout .swym-storefront-layout-close-button {
