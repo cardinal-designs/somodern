@@ -97,12 +97,72 @@ div#swym-storefront-layout-collection-grid-item-option-button {
 .swym-storefront-layout-login-heading,
 .swym-storefront-layout-login-description,
 .swym-ui-component .swym-sfl-popup-dialog.swym-control-centre-mode .swym-cc-sfl-popup-action-container>div .swym-cc-sfl-popup-content p,
-.swym-storefront-layout-total-list-items-count {
+.swym-storefront-layout-total-list-items-count,
+.swym-ui-component .swym-wishlist-main-title.swym-heading.swym-heading-1, 
+h3.swym-empty-wishlist-title.swym-heading.swym-heading-1,
+p.swym-empty-wishlist-text.swym-text.swym-text-1, 
+.swym-clear-wishlist-modal-dialog h2.swym-text-heading.swym-heading.swym-heading-1, 
+.swym-ui-component .swym-text-content.swym-text.swym-text-1, 
+.swym-save-wishlist-modal-dialog h2.swym-text-heading.swym-heading.swym-heading-1, 
+.swym-ui-component .swym-text-content.swym-text.swym-text-1, 
+.swym-ui-component .swym-text-content.swym-text.swym-text-1, 
+.swym-text-content.swym-text.swym-text-1, 
+.swym-text-content.swym-text.swym-text-1 > span.swym-color-2, 
+.swym-ui-component .swym-wishlist-list-card .swym-wishlist-name, 
+.swym-ui-component .swym-wishlist-list-card .swym-wishlist-product-count, 
+.swym-ui-component .swym-wishlist-list-card .swym-empty-wishlist-list, 
+.swym-ui-component .swym-wishlist-selector-dropdown .swym-selected-wishlist-container .swym-selected-wishlist-label, 
+.swym-ui-component .swym-wishlist-selector-dropdown .swym-selected-wishlist-container .swym-selected-wishlist-name, 
+.swym-ui-component .swym-add-wishlist-modal .swym-modal-content .swym-wishlist-item .swym-icon::before, 
+.swym-ui-component .swym-add-wishlist-modal .swym-modal-content .swym-new-wishlist-item .swym-icon::before, 
+.swym-ui-component .swym-add-wishlist-modal .swym-modal-content .swym-wishlist-item, 
+.swym-ui-component .swym-add-wishlist-modal .swym-modal-content .swym-new-wishlist-item, 
+.swym-ui-component .swym-wishlist-context-menu .swym-wishlist-context-menu-item, 
+.swym-ui-component .swym-add-wishlist-modal .swym-modal-content .swym-wishlist-items-title, 
+.swym-ui-component .swym-add-wishlist-modal .swym-modal-content .swym-product-name, 
+.swym-ui-component .swym-share-wishlist-modal .swym-share-wishlist-modal-dialog .swym-close-btn, 
+.swym-ui-component .swym-save-wishlist-modal .swym-save-wishlist-modal-dialog .swym-close-btn, 
+.swym-ui-component .swym-share-wishlist-login-modal .swym-share-wishlist-login-modal-dialog .swym-close-btn, 
+.swym-ui-component .swym-duplicate-wishlist-modal .swym-duplicate-wishlist-modal-dialog .swym-close-btn, 
+.swym-ui-component .swym-wishlist-selector-dropdown .swym-wishlist-item, 
+.swym-wishlist-search-list .swym-no-results, 
+.swym-share-wishlist-modal-dialog h2.swym-text-heading.swym-heading.swym-heading-1, 
+.swym-ui-component.swym-wishlist-page .swym-wishlist-detail .swym-action-bar .swym-back-btn, 
+.swym-ui-component .swym-action-bar .swym-back-btn, 
+.swym-ui-component .swym-share-wishlist-login-modal .swym-share-wishlist-login-modal-dialog .swym-message-content, 
+.swym-ui-component .swym-share-wishlist-login-modal .swym-share-wishlist-login-modal-dialog .swym-text-heading, 
+.swym-duplicate-wishlist-modal-dialog h2.swym-text-heading.swym-heading.swym-heading-1, 
+.swym-ui-component .swym-wishlist-list-header .swym-heading.swym-heading-1, 
+.swym-ui-component .swym-htc-tabs .swym-htc-tab-item, 
+.swym-ui-component.swym-wishlist-page .swym-sfl-tab-container .swym-sfl-list-view .swym-sfl-list-heading .swym-sfl-title, 
+.swym-ui-component .swym-simple-wishlist-container .swym-sfl-tab-container .swym-sfl-list-view .swym-sfl-list-heading .swym-sfl-title, 
+.swym-ui-component .swym-sfl-list-empty-content .swym-sfl-list-empty-text, 
+.swym-ui-component .swym-sfl-list-empty-content .swym-sfl-list-empty-text2, 
+.swym-sfl-action-button .swym-share-sfl-btn, 
+.swym-ui-component .swym-share-wishlist-modal .swym-share-wishlist-modal-dialog .swym-share-wishlist-input-container .swym-share-wishlist-name, 
+.swym-ui-component .swym-share-wishlist-modal .swym-share-wishlist-modal-dialog .swym-share-wishlist-input-container .swym-share-wishlist-email, 
+.swym-ui-component .swym-share-wishlist-modal .swym-share-wishlist-modal-dialog .swym-share-wishlist-input-container .swym-share-wishlist-note, 
+.swym-ui-component .swym-duplicate-wishlist-modal .swym-duplicate-wishlist-modal-dialog .swym-duplicate-wishlist-input-container .swym-duplicate-list-name, 
+.swym-ui-component .swym-wishlist-selector-dropdown .swym-wishlist-input, 
+.swym-ui-component .swym-save-wishlist-modal .swym-save-wishlist-modal-dialog .swym-save-list .swym-input, 
+.swym-ui-component .swym-add-wishlist-modal .swym-modal-content .swym-new-wishlist-item .swym-new-wishlist-name, 
+.swym-ui-component .swym-share-wishlist-modal .swym-share-wishlist-modal-dialog .swym-share-wishlist-input-container .swym-input-label, 
+.swym-share-wishlist-input-container .swym-text-md.swym-info-grey, 
+.swym-ui-component .swym-save-wishlist-modal .swym-save-wishlist-modal-dialog .swym-save-list .swym-input-label, 
+.swym-save-list .swym-text-md.swym-info-grey {
     color: #302e2d !important;
 }
 
 swym-storefront-layout-as-drawer .swym-storefront-layout-layout {
     border-radius: 0 !important;
+}
+
+.swym-ui-component .swym-sfl-popup-dialog.swym-control-centre-mode .swym-cc-sfl-popup-action-container>div .swym-cc-sfl-popup-content p {
+    font-family: "elza-text", sans-serif !important;
+    font-size: 12px !important;
+    line-height: 180% !important;
+    letter-spacing: 0.04em !important;
+    margin-bottom: 5px !important;
 }
 
 .swym-ui-component .swym-sfl-popup-dialog.swym-control-centre-mode .swym-cc-sfl-popup-action-container>div .swym-cc-sfl-popup-content h3,
@@ -280,6 +340,7 @@ swym-storefront-layout-as-modal .swym-storefront-layout-layout {
     letter-spacing: 6% !important;
     text-align: center !important;
     text-transform: uppercase !important;
+    color: #302E2D !important;
 }
 
 .swym-ui-component .swym-empty-wishlist-container .swym-empty-wishlist-title {
@@ -308,6 +369,7 @@ swym-storefront-layout-as-modal .swym-storefront-layout-layout {
     letter-spacing: 0.04em !important;
     text-align: center !important;
     margin: 30px 0 !important;
+    color: #302E2D !important;
 }
 
 .swym-ui-component .swym-empty-wishlist-container .swym-empty-wishlist-continue-btn {
@@ -328,13 +390,14 @@ swym-storefront-layout-as-modal .swym-storefront-layout-layout {
     font-family: "elza-text", sans-serif !important;
 }
 
-swym-storefront-layout-tabs,
+/* swym-storefront-layout-tabs, */
 .swym-storefront-layout-title svg,
 .swym-storefront-layout-total-list-items-count {
     display: none;
 }
 
-#swym-storefront-layout-collection-option-button.swym-single-share-wishlist-btn {
+#swym-storefront-layout-collection-option-button.swym-single-share-wishlist-btn,
+#swym-storefront-layout-collection-option-button {
     display: none !important;
 }
 
@@ -393,10 +456,6 @@ swym-storefront-layout #swym-storefront-layout-items-container {
     border-radius: 0 !important;
 }
 
-.swym-storefront-layout-drawer.swym-storefront-layout-hide-view .swym-storefront-layout-layout {
-    height: 100vh !important;
-}
-
 .swym-ui-component.swym-wishlist-page {
     padding-left: 20px !important;
     padding-right: 20px !important;
@@ -443,12 +502,30 @@ div#swym-wishlist-render-container,
 }
 
 .swym-ui-component.swym-wishlist-page .swym-wishlist-container-title-bar .swym-wishlist-main-title,
+.swym-ui-component .swym-share-wishlist-modal .swym-share-wishlist-modal-dialog .swym-text-heading,
 .swym-ui-component.swym-wishlist-page .swym-sfl-tab-container .swym-sfl-list-view .swym-sfl-list-heading .swym-sfl-title {
     font-family: "richmond-display", serif !important;
     font-weight: 400 !important;
     font-size: 22px !important;
     line-height: 128% !important;
     letter-spacing: 0% !important;
+}
+
+.swym-ui-component .swym-share-wishlist-modal .swym-share-wishlist-modal-dialog .swym-share-wishlist-input-container .swym-input-label {
+    font-weight: bold !important;
+    margin-bottom: 5px !important;
+    display: block;
+}
+
+.swym-ui-component .swym-delete-btn .swym-icon::before {
+    color: #000 !important;
+    font-size: 11px !important;
+    content: "" !important;
+}
+
+.swym-ui-component .swym-share-wishlist-modal .swym-share-wishlist-modal-dialog,
+.swym-ui-components .swym-input, .swym-ui-component .swym-input {
+    background: #FFFCF9 !important;
 }
 
 .swym-ui-component.swym-wishlist-page .swym-wishlist-container-title-bar {
@@ -573,23 +650,35 @@ div#swym-wishlist-render-container,
     border: none !important;
 }
 
+.swym-storefront-layout-login-user-container {
+    background: #fffcf9 !important;
+}
+
 @media (min-width: 768px) {
 
     swym-storefront-layout-as-modal #swym-storefront-layout-items-container {
-        grid-template-columns: repeat(auto-fit, minmax(calc(25% - 15px), 1fr)) !important;
+        grid-template-columns: repeat(4, 1fr) !important;
     }
+
+    /* swym-storefront-layout-as-modal #swym-storefront-layout-items-container swym-storefront-layout-item {
+        width: calc(25% - 15px);
+    } */
 
     swym-storefront-layout #swym-storefront-layout-items-container {
         gap: 20px !important;
     }
 
-    swym-storefront-layout-as-modal .swym-storefront-layout-layout {
-        height: 41vh !important;
-    }
-
     .swym-ui-component.swym-wishlist-page {
         padding-left: 40px !important;
         padding-right: 40px !important;
+    }
+
+}
+
+@media only screen and (max-width: 900px) {
+
+    .swym-ui-component.swym-wishlist-page .swym-sfl-tab-container .swym-sfl-list-view .swym-sfl-list-heading .swym-sfl-action-button {
+        justify-content: center !important;
     }
 
 }
@@ -602,12 +691,12 @@ div#swym-wishlist-render-container,
     }
 
     swym-storefront-layout-as-modal #swym-storefront-layout-items-container {
-        grid-template-columns: repeat(auto-fit, minmax(calc(50% - 5px), 1fr)) !important;
+        grid-template-columns: repeat(2, 1fr) !important;
     }
 
-    swym-storefront-layout-as-modal .swym-storefront-layout-layout {
-        height: 77vh !important;
-    } 
+    /* swym-storefront-layout-as-modal #swym-storefront-layout-items-container swym-storefront-layout-item {
+        width: calc(50% - 5px);
+    } */
 
     .swym-storefront-layout-title {
         font-size: 24px !important;
@@ -638,8 +727,15 @@ div#swym-wishlist-render-container,
         width: calc(50% - 10px) !important;
     }
 
-    .swym-ui-component.swym-wishlist-page .swym-sfl-tab-container .swym-sfl-list-view .swym-sfl-list-heading .swym-sfl-action-button {
-        justify-content: center !important;
+    .swym-ui-component.swym-wishlist-page .swym-wishlist-container-title-bar .swym-wishlist-main-title, .swym-ui-component .swym-share-wishlist-modal .swym-share-wishlist-modal-dialog .swym-text-heading, .swym-ui-component.swym-wishlist-page .swym-sfl-tab-container .swym-sfl-list-view .swym-sfl-list-heading .swym-sfl-title {
+        font-size: 18px !important;
+        line-height: 110% !important;
+    }
+
+    .swym-ui-component .swym-user-login-status {
+        font-size: 12px !important;
+        line-height: 180% !important;
+        letter-spacing: 0.02em !important;
     }
 
 }
