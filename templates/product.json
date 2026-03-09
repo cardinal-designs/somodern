@@ -155,6 +155,7 @@
     },
     "double_image_text_EhfR3A": {
       "type": "double-image-text",
+      "disabled": true,
       "settings": {
         "subtitle": "",
         "title": "About the Collection",
@@ -213,6 +214,7 @@
         "image_VEiaRp",
         "image_WewhJR"
       ],
+      "disabled": true,
       "settings": {
         "title": "@somodern",
         "link": ""

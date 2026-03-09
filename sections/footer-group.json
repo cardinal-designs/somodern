@@ -11,6 +11,35 @@
   "type": "footer",
   "name": "Footer Group",
   "sections": {
+    "1773082988abaa832d": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_fEzVLW": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_fEzVLW"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "footer": {
       "type": "footer",
       "settings": {
@@ -18,13 +47,14 @@
         "content_color": "text-white",
         "logo": "shopify://shop_images/white-logo.svg",
         "menu": "footer-1",
-        "footer_form": "<div class=\"klaviyo-form-VDFXsT\"></div>",
+        "footer_form": "",
         "newsletter_title": "Newsletter",
         "newsletter_text": "<p>Subscribe to receive the latest news, exclusive offers and 10% off your first order.</p>"
       }
     }
   },
   "order": [
+    "1773082988abaa832d",
     "footer"
   ]
 }
