@@ -73,7 +73,7 @@
       "mobile-menu": {
         "type": "mobile-menu",
         "settings": {
-          "menu": "mobile-menu",
+          "menu": "mobile-menu-1",
           "additional_menu": "additional-mobile-menu"
         }
       },
