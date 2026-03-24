@@ -68,6 +68,13 @@
     "collection_slider_GJHAj6": {
       "type": "collection-slider",
       "blocks": {
+        "collection_MWhLdA": {
+          "type": "collection",
+          "settings": {
+            "collection": "new-arrivals",
+            "collection_title": "New Arrivals"
+          }
+        },
         "collection_YrUt9F": {
           "type": "collection",
           "settings": {
@@ -75,38 +82,31 @@
             "collection_title": "Best Sellers"
           }
         },
-        "collection_MWhLdA": {
-          "type": "collection",
-          "settings": {
-            "collection": "shop-all",
-            "collection_title": "New Arrivals"
-          }
-        },
         "collection_UdByUB": {
           "type": "collection",
           "settings": {
-            "collection": "wall-sconces-1",
+            "collection": "wall",
             "collection_title": "Wall"
           }
         },
         "collection_TtjzGY": {
           "type": "collection",
           "settings": {
-            "collection": "chandeliers",
+            "collection": "ceiling",
             "collection_title": "Ceiling"
           }
         },
         "collection_Rhy9Fh": {
           "type": "collection",
           "settings": {
-            "collection": "shop-all",
+            "collection": "lamps",
             "collection_title": "Lamps"
           }
         }
       },
       "block_order": [
-        "collection_YrUt9F",
         "collection_MWhLdA",
+        "collection_YrUt9F",
         "collection_UdByUB",
         "collection_TtjzGY",
         "collection_Rhy9Fh"
