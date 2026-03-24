@@ -39,7 +39,7 @@
           "type": "button",
           "settings": {
             "text": "New Arrivals",
-            "button_link": "shopify://collections/shop-all",
+            "button_link": "shopify://collections/new-arrivals",
             "button_style": "button",
             "button_color": "white",
             "center_button": false,
@@ -188,7 +188,7 @@
               "name": "Button",
               "settings": {
                 "text": "New Arrivals",
-                "button_link": "shopify://collections/shop-all",
+                "button_link": "shopify://collections/new-arrivals",
                 "button_style": "text",
                 "button_color": "white",
                 "center_button": false,
@@ -243,7 +243,7 @@
           "type": "button",
           "settings": {
             "text": "New Arrivals",
-            "button_link": "shopify://collections/shop-all",
+            "button_link": "shopify://collections/new-arrivals",
             "button_style": "button",
             "button_color": "white",
             "center_button": false,
@@ -276,7 +276,7 @@
           "type": "_column",
           "settings": {
             "image": "shopify://shop_images/ETTA_FM16512-PW-3WCCT-UNV_LIFESTYLE.jpg",
-            "link": "shopify://collections/chandeliers",
+            "link": "shopify://collections/ceiling",
             "content_alignment": "left",
             "flex_desktop": false
           },
@@ -301,7 +301,7 @@
           "type": "_column",
           "settings": {
             "image": "shopify://shop_images/POPPY_TL437012PGN_LIFESTYLE.jpg",
-            "link": "",
+            "link": "shopify://collections/lamps",
             "content_alignment": "left",
             "flex_desktop": false
           },
@@ -326,7 +326,7 @@
           "type": "_column",
           "settings": {
             "image": "shopify://shop_images/WALDO_WV411309AGMB_LIFESTYLE.jpg",
-            "link": "shopify://collections/wall-sconces-1",
+            "link": "shopify://collections/wall",
             "content_alignment": "left",
             "flex_desktop": false
           },
@@ -351,7 +351,7 @@
           "type": "_column",
           "settings": {
             "image": "shopify://shop_images/VESTA_AT7924-BK_LIFESTYLE.jpg",
-            "link": "",
+            "link": "shopify://collections/outdoor",
             "content_alignment": "left",
             "flex_desktop": false
           },
