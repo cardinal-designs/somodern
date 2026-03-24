@@ -41,7 +41,7 @@
             "title": "Shop By",
             "image_1": "shopify://shop_images/AKOYA_PD321718CH-UNV-010_PD321725CH-UNV-010_LIFESTYLE_d8cc4b2c-a80b-4ce9-9010-a977737e9748.jpg",
             "title_1": "Set the Mood: Dining Room",
-            "url_1": "",
+            "url_1": "shopify://collections/dining-room",
             "title_2": "",
             "url_2": ""
           }
@@ -61,10 +61,10 @@
         "mega_menu_jU3hjx": {
           "type": "mega_menu",
           "settings": {
-            "title": "Walls",
+            "title": "Wall",
             "image_1": "shopify://shop_images/NELLY_WV442612BGGR_LIFESTYLE_02_1.jpg",
             "title_1": "Wall Sconces",
-            "url_1": "",
+            "url_1": "shopify://collections/sconces",
             "image_2": "shopify://shop_images/ELLEN_PL447120BG_LIFESTLYE.jpg",
             "title_2": "Sale",
             "url_2": ""
@@ -88,7 +88,7 @@
             "title": "Outdoor",
             "image_1": "shopify://shop_images/PERI_EW77209-BKOP_LIFESTYLE_b7ee1f8b-aafb-45d9-824c-1e15a5d39908.jpg",
             "title_1": "Wall Sconces",
-            "url_1": "",
+            "url_1": "shopify://collections/sconces",
             "image_2": "shopify://shop_images/BONDI_PD631920BGOP_LIFESTYLE_9b95d5c4-d652-4b83-9898-5ee763b97c28.jpg",
             "title_2": "Sale",
             "url_2": ""
