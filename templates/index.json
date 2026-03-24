@@ -492,52 +492,6 @@
       "settings": {
         "title": "Styled for every setting"
       }
-    },
-    "instagram_JewbLy": {
-      "type": "instagram",
-      "blocks": {
-        "image_6irMPL": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Frame.jpg"
-          }
-        },
-        "image_gBqTPc": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Frame-1.jpg"
-          }
-        },
-        "image_tPXGJr": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Frame-2.jpg"
-          }
-        },
-        "image_pfXrAd": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Frame-3.jpg"
-          }
-        },
-        "image_9maLXh": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Frame-4.jpg"
-          }
-        }
-      },
-      "block_order": [
-        "image_6irMPL",
-        "image_gBqTPc",
-        "image_tPXGJr",
-        "image_pfXrAd",
-        "image_9maLXh"
-      ],
-      "settings": {
-        "title": "@somodern",
-        "link": ""
-      }
     }
   },
   "order": [
@@ -546,7 +500,6 @@
     "columns_UGVwkK",
     "hero_T9nVEW",
     "columns_NnVJPJ",
-    "interactive_hero_tnFhbC",
-    "instagram_JewbLy"
+    "interactive_hero_tnFhbC"
   ]
 }
