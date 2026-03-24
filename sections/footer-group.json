@@ -29,7 +29,7 @@
             "link_color": "#000000",
             "background_color": "",
             "feed_id": "",
-            "html_area": "<div class=\"page-width text-center mt-30\">\n<a href=\"https://www.instagram.com/somodern\" class=\"mb-30 block text-m-sh2 uppercase text-center md:mb-30 md:text-sh2\" target=\"_blank\">@SOMODERN</a>\n</div>"
+            "html_area": "<div class=\"page-width text-center mt-60\">\n<a href=\"https://www.instagram.com/somodern\" class=\"mb-30 block text-m-sh2 uppercase text-center md:mb-30 md:text-sh2\" target=\"_blank\">@SOMODERN</a>\n</div>"
           }
         }
       },
