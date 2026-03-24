@@ -21,15 +21,15 @@
             "title_color": "",
             "title_size_v2": 0,
             "alignment": "center",
-            "instafeed_margin_top": 0,
-            "instafeed_margin_bottom": 0,
+            "instafeed_margin_top": 30,
+            "instafeed_margin_bottom": 60,
             "instafeed_margin_sides": 0,
             "show_instagram_link": false,
             "link_alignment": "left",
             "link_color": "#000000",
             "background_color": "",
             "feed_id": "",
-            "html_area": ""
+            "html_area": "<div class=\"page-width text-center mt-40\">\n<a href=\"https://www.instagram.com/somodern\" class=\"mb-30 block text-m-sh2 uppercase text-center md:mb-60 md:text-sh2\" target=\"_blank\">@SOMODERN</a>\n</div>"
           }
         }
       },
