@@ -109,7 +109,7 @@
         "title": "Crafted to define your space",
         "text": "<p>Our fixtures are designed to blend form and function, bringing modern elegance into every space. From statement pieces that spark conversation to subtle accents that set the mood, our collection is crafted to illuminate life beautifully.</p>",
         "button_label": "New Arrivals",
-        "button_link": "shopify://collections/shop-all",
+        "button_link": "shopify://collections/new-arrivals",
         "button_style": "text",
         "image_1": "shopify://shop_images/CLEO_WS77909-BGOP_LIFESTYLE.jpg",
         "image_2": "shopify://shop_images/BOLLA_CH3117-BKOP_LIFESTYLE.jpg",
@@ -136,7 +136,7 @@
           "name": "Button",
           "settings": {
             "text": "Shop New Arrivals",
-            "button_link": "shopify://collections/shop-all",
+            "button_link": "shopify://collections/new-arrivals",
             "button_style": "button",
             "button_color": "white",
             "center_button": false,
@@ -192,7 +192,7 @@
           "name": "Button",
           "settings": {
             "text": "Best Sellers",
-            "button_link": "shopify://collections/shop-all",
+            "button_link": "shopify://collections/best-sellers",
             "button_style": "text",
             "button_color": "white",
             "center_button": false,
@@ -293,6 +293,7 @@
         "image_yrcPjx",
         "image_HjVHyd"
       ],
+      "disabled": true,
       "settings": {
         "title": "@somodern",
         "link": ""
