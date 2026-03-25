@@ -103,13 +103,13 @@
           "block_Y3abRf": {
             "type": "block",
             "settings": {
-              "text": "<p>Spring Into New Arrivals</p>"
+              "text": "<p><a href=\"/collections/new-arrivals\" title=\"New Arrivals\">Fall into new arrivals</a></p>"
             }
           },
           "block_wp69pk": {
             "type": "block",
             "settings": {
-              "text": "<p>Save up to 50% on Clearance </p>"
+              "text": "<p><a href=\"/collections/sale\" title=\"Sale\">Save up to 50% on Clearance </a></p>"
             }
           },
           "block_3hdWJD": {
