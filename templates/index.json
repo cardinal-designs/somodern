@@ -28,7 +28,7 @@
           "name": "Text",
           "settings": {
             "text": "<p>SoModern delivers fresh, innovative decorative lighting curated for today’s top designer trends, elevating modern interiors with style and impact.</p>",
-            "center_content": false,
+            "center_content": true,
             "content_width": 425,
             "margin_top": 0,
             "margin_bottom": 0
