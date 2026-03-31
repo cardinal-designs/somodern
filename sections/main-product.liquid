@@ -94,7 +94,7 @@
                     {% endif %}
 
                     {% if section.settings.zoom_type == 'lightbox' and product.type != 'Gift Card' %}
-                      <button class="absolute left-10 bottom-10 opacity-0 transition-opacity text-white group-hover/image:opacity-100" data-open-zoom data-index="{{ forloop.index0 }}">
+                      <button class="absolute left-10 bottom-10 opacity-0 transition-opacity text-white group-hover/image:opacity-100" aria-label="Zoom image" data-open-zoom data-index="{{ forloop.index0 }}">
                         {% render 'icon' icon: 'expand' %}
                       </button>
                     {% endif %}
