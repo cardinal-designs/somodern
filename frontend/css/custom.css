@@ -532,3 +532,46 @@ a[aria-label="Created with Klaviyo - opens in a new tab"] {
 }
 
 /* Popup Newsletter Klaviyo Form CSS end */
+
+.shopify-policy__container {
+    margin-top: 80px;
+    margin-bottom: 80px;
+    max-width: 890px;
+}
+
+.shopify-policy__title h1 {
+    font-size: 40px;
+    line-height: 1.2;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    font-family: "dejanire-text", sans-serif;
+    margin-bottom: 60px;
+}
+
+.shopify-policy__body {
+    font-size: 13px;
+    line-height: 1.8;
+    letter-spacing: 0.04em;
+}
+
+@media only screen and (max-width: 767px) {
+
+    .shopify-policy__container {
+        margin-top: 60px;
+        margin-bottom: 60px;
+    }
+
+    .shopify-policy__title h1 {
+        font-size: 20px;
+        line-height: 1.2;
+        letter-spacing: 0.13em;
+        margin-bottom: 40px;
+    }
+
+    .shopify-policy__body {
+        font-size: 12px;
+        line-height: 1.8;
+        letter-spacing: 0.04em;
+    }
+
+}
