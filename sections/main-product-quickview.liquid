@@ -9,10 +9,10 @@
       <div class="relative">
         <div class="block md:grid md:grid-cols-[minmax(0,50px)_minmax(0,1fr)] md:gap-10">
           <div class="relative hidden md:block">
-            <ul class="product-thumbs swiper w-full inset md:overflow-hidden" style="position:absolute" role="list">
+            <div class="product-thumbs swiper w-full inset md:overflow-hidden" style="position:absolute">
               <div class="swiper-wrapper">
                 {% for media in product.media %}
-                  <li class="swiper-slide group/thumb cursor-pointer" style="height:auto; aspect-ratio: 3 / 4;" data-media-id="thumbs-{{ section.id }}-{{ media.id }}">
+                  <div class="swiper-slide group/thumb cursor-pointer" style="height:auto; aspect-ratio: 3 / 4;" data-media-id="thumbs-{{ section.id }}-{{ media.id }}">
                     <div class="aspect-product overflow-hidden relative border-1 border-transparent transition-colors group-[.swiper-slide-thumb-active]/thumb:border-black">
                       {% render 'image'
                         image: media,
@@ -23,18 +23,18 @@
                         src_set_type: 'thumbnail'
                       %}
                     </div>
-                  </li>
+                  </div>
                 {% endfor %}
               </div>
-            </ul>
+            </div>
           </div>
-          <ul class="product-slider swiper w-full md:overflow-hidden" role="list">
+          <div class="product-slider swiper w-full md:overflow-hidden">
             <div class="swiper-wrapper">
               {% for media in product.media %}
                 {% if media.media_type == "image" %}
                   {% assign image_variants = product.images | where: 'src', media.src | first %}
                 {% endif %}
-                <li data-initial-slide="{% if product.selected_or_first_available_variant.image == media %}true{% else %}false{% endif %}" data-media-index="{{ forloop.index0 }}" class="swiper-slide" data-media-id="{{ section.id }}-{{ media.id }}" {% if media.media_type == "image" %}data-image-variants="{{ image_variants.variants | map: 'id' | join: "," }}"{% endif %}>
+                <div data-initial-slide="{% if product.selected_or_first_available_variant.image == media %}true{% else %}false{% endif %}" data-media-index="{{ forloop.index0 }}" class="swiper-slide" data-media-id="{{ section.id }}-{{ media.id }}" {% if media.media_type == "image" %}data-image-variants="{{ image_variants.variants | map: 'id' | join: "," }}"{% endif %}>
                   <div class="aspect-product overflow-hidden relative">
                     {% render 'image'
                       image: media,
@@ -45,13 +45,13 @@
                       src_set_type: 'full-width'
                     %}
                   </div>
-                </li>
+                </div>
               {% endfor %}
             </div>
             <div class="absolute z-20 bottom-20 left-half -translate-x-half md:hidden">
               <div class="swiper-pagination"></div>
             </div>
-          </ul>
+          </div>
 
         </div>
         <div class="absolute z-20 md:hidden{% if slider_mobile_style == 'center' %} top-10 left-0{% else %} top-13 left-13{% endif %}">

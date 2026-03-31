@@ -64,7 +64,7 @@
                 <div class="flex">
                   <label id="search-label-{{ template.suffix }}" for="search-input-{{ template.suffix }}" class="hidden visually-hidden">Search</label>
                   <input aria-labelledby="search-label-{{ template.suffix }}" id="search-input-{{ template.suffix }}" class="w-full py-[3px] text-body-4 bg-transparent appearance-none cursor-text placeholder:text-text/50 placeholder:text-body-4 focus-visible:outline-0 focus-visible:outline-transparent focus-visible:placeholder:text-text" type="search" name="q" value="{{ search.terms | escape }}" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search">
-                  <button type="submit" class="opacity-35">{% render 'icon' icon: 'search' %}</button>
+                  <button type="submit" class="opacity-35 min-w-[24px] min-h-[24px]" aria-label="Search">{% render 'icon' icon: 'search' %}</button>
                 </div>
               </form>
             </div>
