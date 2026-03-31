@@ -48,7 +48,7 @@
     {% endif %}
 
     {% if block.settings.link != blank %}
-      <a href="{{ block.settings.link }}" class="inset"><span class="hidden visually-hidden">{{ block.settings.link }}</span></a>
+      <a href="{{ block.settings.link }}" class="inset" aria-label="{{ block.settings.link | split: '/' | last |  capitalize }}"><span class="visually-hidden">{{ block.settings.link | split: '/' | last |  capitalize }}</span></a>
     {% endif %}
   </a>
 

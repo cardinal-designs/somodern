@@ -12,7 +12,7 @@
   endcase
 %}
 <div class="interactive-hero__item group/item md:absolute" style="top: {{ block.settings.pos_y }}%;left: {{ block.settings.pos_x }}%;" {{ block.shopify_attributes }}>
-  <button class="interactive-hero__button hidden md:block">
+  <button class="interactive-hero__button hidden md:block" aria-label="Shop now">
     <svg class="relative z-20 transition-transform group-[.active]/item:rotate-[45deg]" width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.833984" y="0.451172" width="30" height="30" rx="15" fill="#E6D5C2"/><path d="M16.5861 14.9319L16.5861 9.08249L15.3855 9.08249L15.3855 14.9319L9.35378 14.9319L9.35378 16.1324L15.3855 16.1324L15.3855 22.2884L16.5861 22.2884L16.5861 16.1324L22.5597 16.1324V14.9319L16.5861 14.9319Z" fill="#472715"/></svg>
   </button>
   <a href="{{ current_product.url }}" class="interactive-hero__product w-[330px] mx-auto {{ position }} py-10 pl-10 pr-20 grid grid-cols-[75px_1fr] gap-20 bg-beige border-1 border-taupe/30 md:opacity-0 md:transition-opacity md:group-[.active]/item:opacity-100 md:absolute md:w-[300px] md:m-0 md:border-0">

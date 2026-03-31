@@ -25,7 +25,7 @@
 <image-products data-columns="{{ columns }}" data-pagination="{{ section.settings.add_pagination }}">
   <div class="image-products my-60 md:my-80{% if container == 'padding' %} page-width{% endif %}">
     {% if content %}
-      <div class="block md:hidden" data-animate>{{ content }}</div>
+      <div class="block md:hidden px-20" data-animate>{{ content }}</div>
     {% endif %}
     <div class="md:grid md:grid-cols-2 md:gap-20">
       <div class="relative overflow-hidden{% if image_ratio == 'tall' %} aspect-tall{% else %} aspect-square{% endif %}">

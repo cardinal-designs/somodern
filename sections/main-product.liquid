@@ -24,7 +24,7 @@
         >
           {% if slider_desktop_style == 'thumbnails' and product.media.size > 1 %}
             <div class="relative hidden lg:block">
-              <ul class="product-thumbs swiper w-full inset md:overflow-hidden" style="position: absolute" role="list">
+              <div class="product-thumbs swiper w-full inset md:overflow-hidden" style="position: absolute">
                 <div class="swiper-wrapper">
                   {% for media in product.media %}
                     {%- liquid
@@ -34,7 +34,7 @@
                         assign prioritize_loading = true
                       endif
                     -%}
-                    <li role="listitem" class="swiper-slide group/thumb cursor-pointer" aria-label="Product Thumbnail {{ forloop.index }}" style="height: auto; aspect-ratio: 1 / 1;" data-media-id="thumbs-{{ section.id }}-{{ media.id }}">
+                    <div class="swiper-slide group/thumb cursor-pointer" aria-label="Product Thumbnail {{ forloop.index }}" style="height: auto; aspect-ratio: 1 / 1;" data-media-id="thumbs-{{ section.id }}-{{ media.id }}">
                       <div class="aspect-product overflow-hidden relative border-1 border-transparent transition-colors group-[.swiper-slide-thumb-active]/thumb:border-black">
                         {% render 'image'
                           image: media,
@@ -50,13 +50,13 @@
                           <span class="inset flex justify-center items-center bg-black/5 text-white [&_svg]:w-40 [&_svg]:h-auto">{% render 'icon' icon: 'play' %}</span>
                         {% endif %}
                       </div>
-                    </li>
+                    </div>
                   {% endfor %}
                 </div>
-              </ul>
+              </div>
             </div>
           {% endif %}
-          <ul class="product-slider product-slider-{{ section.id }} swiper w-full md:overflow-hidden" role="list">
+          <div class="product-slider product-slider-{{ section.id }} swiper w-full md:overflow-hidden">
             <div class="swiper-wrapper{% if slider_desktop_style == 'grid' %} md:grid md:grid-cols-2 md:gap-[8px]{% endif %}">
               {% for media in product.media %}
                 {% if media.media_type == "image" %}
@@ -75,7 +75,7 @@
                     assign image_ratio = 'aspect-square'
                   endif
                 -%}
-                <li role="listitem" aria-label="Product Main Image {{ forloop.index }}" data-initial-slide="{% if product.selected_or_first_available_variant.image == media %}true{% else %}false{% endif %}" data-media-index="{{ forloop.index0 }}" class="swiper-slide relative" data-media-id="{{ section.id }}-{{ media.id }}" {% if media.media_type == "image" %}data-image-variants="{{ image_variants.variants | map: 'id' | join: "," }}"{% endif %}>
+                <div aria-label="Product Main Image {{ forloop.index }}" data-initial-slide="{% if product.selected_or_first_available_variant.image == media %}true{% else %}false{% endif %}" data-media-index="{{ forloop.index0 }}" class="swiper-slide relative" data-media-id="{{ section.id }}-{{ media.id }}" {% if media.media_type == "image" %}data-image-variants="{{ image_variants.variants | map: 'id' | join: "," }}"{% endif %}>
                   {% if section.settings.zoom_type == 'hover' and media.media_type != 'video' %}<image-zoom> {% assign image_zoom = true %}{% endif %}
                   <div class="group/image overflow-hidden relative {{ image_ratio }}">
                     {% if media.media_type == 'video' %}
@@ -94,13 +94,13 @@
                     {% endif %}
 
                     {% if section.settings.zoom_type == 'lightbox' and product.type != 'Gift Card' %}
-                      <button class="absolute left-10 bottom-10 opacity-0 transition-opacity text-white group-hover/image:opacity-100" data-open-zoom data-index="{{ forloop.index0 }}">
+                      <button class="absolute left-10 bottom-10 opacity-0 transition-opacity text-white group-hover/image:opacity-100" aria-label="Zoom image" data-open-zoom data-index="{{ forloop.index0 }}">
                         {% render 'icon' icon: 'expand' %}
                       </button>
                     {% endif %}
                   </div>
                   {% if section.settings.zoom_type == 'hover' %}</image-zoom>{% endif %}
-                </li>
+                </div>
               {% endfor %}
             </div>
             <div
@@ -112,7 +112,7 @@
             >
               <div class="swiper-pagination"></div>
             </div>
-          </ul>
+          </div>
 
         </product-slider>
         <div class="absolute z-20 md:hidden{% if slider_mobile_style == 'center' %} top-10 left-0{% else %} top-13 left-13{% endif %}">
