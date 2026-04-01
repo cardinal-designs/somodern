@@ -12,7 +12,7 @@
     "17677856605113a038": {
       "type": "apps",
       "blocks": {
-        "powerful_form_builder_app_block_6WzWwd": {
+        "powerful_form_builder_app_block_R8CNNq": {
           "type": "shopify://apps/powerful-form-builder/blocks/app-block/e4bcb1eb-35b2-42e6-bc37-bfe0e1542c9d",
           "settings": {
             "shortcode": "<div class=\"globo-formbuilder\" data-id=\"MTM5ODAz\"></div>"
@@ -20,7 +20,7 @@
         }
       },
       "block_order": [
-        "powerful_form_builder_app_block_6WzWwd"
+        "powerful_form_builder_app_block_R8CNNq"
       ],
       "settings": {
         "include_margins": true
