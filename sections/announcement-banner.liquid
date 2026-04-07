@@ -3,19 +3,51 @@
     <div class="py-13 bg-tan">
       <div class="page-width hidden justify-center items-center gap-x-20 gap-y-5 flex-wrap text-center md:flex lg:gap-x-40">
         {% for block in section.blocks %}
-          <div class="text-cta uppercase" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
-          {% unless forloop.last %}
-            <div class="h-20 border-r-1 border-black"></div>
-          {% endunless %}
+          {% assign block_text = block.settings.text %}
+
+          {% if block_text contains '/collections/sale' %}
+            {% if collections['sale'].products_count > 0 %}
+              <div class="text-cta uppercase" {{ block.shopify_attributes }}>
+                {{ block.settings.text }}
+              </div>
+
+              {% unless forloop.last %}
+                <div class="h-20 border-r-1 border-black"></div>
+              {% endunless %}
+            {% endif %}
+          {% else %}
+            <div class="text-cta uppercase" {{ block.shopify_attributes }}>
+              {{ block.settings.text }}
+            </div>
+
+            {% unless forloop.last %}
+              <div class="h-20 border-r-1 border-black"></div>
+            {% endunless %}
+          {% endif %}
         {% endfor %}
       </div>
+
       <div class="md:hidden">
         <div class="announcement-banner-slider swiper">
           <div class="swiper-wrapper">
             {% for block in section.blocks %}
-              <div class="swiper-slide" {{ block.shopify_attributes }}>
-                <div class="px-20 text-cta uppercase text-center">{{ block.settings.text }}</div>
-              </div>
+              {% assign block_text = block.settings.text %}
+
+              {% if block_text contains '/collections/sale' %}
+                {% if collections['sale'].products_count > 0 %}
+                  <div class="swiper-slide" {{ block.shopify_attributes }}>
+                    <div class="px-20 text-cta uppercase text-center">
+                      {{ block.settings.text }}
+                    </div>
+                  </div>
+                {% endif %}
+              {% else %}
+                <div class="swiper-slide" {{ block.shopify_attributes }}>
+                  <div class="px-20 text-cta uppercase text-center">
+                    {{ block.settings.text }}
+                  </div>
+                </div>
+              {% endif %}
             {% endfor %}
           </div>
         </div>
