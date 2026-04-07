@@ -113,25 +113,5 @@
         shareSuccess: `{{ 'general.share.success_message' | t }}`,
       }
     </script>
-    <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const productGrid = document.querySelector(".product-grid-container");
-  if (!productGrid) return;
-
-  const productItems = Array.from(productGrid.children);
-
-  const outOfStockItems = [];
-  productItems.forEach(item => {
-    const stockEl = item.querySelector("[data-available]");
-    // Если есть data-available и оно false
-    if (stockEl && stockEl.dataset.available === "false") {
-      outOfStockItems.push(item);
-    }
-  });
-
-  // Перемещаем Out of Stock в конец
-  outOfStockItems.forEach(item => productGrid.appendChild(item));
-});
-</script>
   </body>
 </html>
