@@ -399,7 +399,7 @@
               "type": "_interactive-hero-product",
               "name": "Interactive Hero Product",
               "settings": {
-                "product": "",
+                "product": "issa-fl418761-alora-mood",
                 "pos_x": 15,
                 "pos_y": 40,
                 "card_position": "bottom_right"
@@ -410,7 +410,7 @@
               "type": "_interactive-hero-product",
               "name": "Interactive Hero Product",
               "settings": {
-                "product": "",
+                "product": "seno-wv450706-alora-mood",
                 "pos_x": 42,
                 "pos_y": 35,
                 "card_position": "bottom_left"
@@ -421,7 +421,7 @@
               "type": "_interactive-hero-product",
               "name": "Interactive Hero Product",
               "settings": {
-                "product": "",
+                "product": "seno-ch450732-alora-mood",
                 "pos_x": 62,
                 "pos_y": 17,
                 "card_position": "bottom_left"
@@ -432,7 +432,7 @@
               "type": "_interactive-hero-product",
               "name": "Interactive Hero Product",
               "settings": {
-                "product": "",
+                "product": "marni-tl321904-alora",
                 "pos_x": 61,
                 "pos_y": 67,
                 "card_position": "bottom_left"
@@ -443,7 +443,7 @@
               "type": "_interactive-hero-product",
               "name": "Interactive Hero Product",
               "settings": {
-                "product": "",
+                "product": "marni-tl321903-alora",
                 "pos_x": 54,
                 "pos_y": 68,
                 "card_position": "bottom_left"
