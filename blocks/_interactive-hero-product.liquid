@@ -18,8 +18,8 @@
   <a href="{{ current_product.url }}" class="interactive-hero__product w-[330px] mx-auto {{ position }} py-10 pl-10 pr-20 grid grid-cols-[75px_1fr] gap-20 bg-beige border-1 border-taupe/30 md:opacity-0 md:transition-opacity md:group-[.active]/item:opacity-100 md:absolute md:w-[300px] md:m-0 md:border-0">
     <div class="w-full aspect-tall overflow-hidden relative">
       {% render 'image'
-        image: current_product.image,
-        classes: 'w-full aspect-tall object-cover',
+        image: current_product.featured_image,
+        classes: 'w-full aspect-product object-cover',
         sizes: '200px',
         include_placeholder: true,
         placeholder_name: 'product-1',
