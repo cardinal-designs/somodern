@@ -92,7 +92,7 @@
         "collection_TtjzGY": {
           "type": "collection",
           "settings": {
-            "collection": "ceiling",
+            "collection": "new-ceiling",
             "collection_title": "Ceiling"
           }
         },
@@ -276,7 +276,7 @@
           "type": "_column",
           "settings": {
             "image": "shopify://shop_images/ETTA_FM16512-PW-3WCCT-UNV_LIFESTYLE.jpg",
-            "link": "shopify://collections/ceiling",
+            "link": "shopify://collections/new-ceiling",
             "content_alignment": "left",
             "flex_desktop": false
           },
