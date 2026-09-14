@@ -22,7 +22,7 @@
         <li class="text-body-4 opacity-50">
           <span class="active" aria-current="page">{{ product.title }}</span>
         </li>
-      {% when 'collection' and collection.handle %}
+      {% when 'collection' %}
         {% if settings.shop_all_link != collection.url and settings.shop_all_link != blank %}
           <li class="text-body-4 opacity-50">
             <a class="" href="{{ settings.shop_all_link }}">Shop All</a> /&nbsp;
@@ -56,4 +56,13 @@
       {{ breadcrumbs_inner }}
     </div>
   </nav>
-{% endif %}
+{% endif %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% when 'collection' and collection.handle %}"
+  to: "{% when 'collection' %}"
+  position: 933..956
+{%- endcomment -%}
