@@ -16,7 +16,7 @@
         >
           <span class="currency-selector-current">{{ localization.country.currency.symbol }}{{ localization.country.iso_code }}</span>
           <span class="group-[.active]/dropdown:rotate-180 transition-transform">
-            {% render 'icon' with icon: 'dropdown' %}
+            {% render 'icon' with icon, icon: 'dropdown' %}
           </span>
         </button>
         <ul
@@ -60,4 +60,13 @@
       </div>
     </dropdown-item>
   {% endform %}
-</country-selector>
+</country-selector>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'icon' with icon: 'dropdown' %}"
+  to: "{% render 'icon' with icon, icon: 'dropdown' %}"
+  position: 820..867
+{%- endcomment -%}
